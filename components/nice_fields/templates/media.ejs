@@ -1,0 +1,27 @@
+<div class="nice_field NiceField <%- field['class']; %> <%- field['size']; %>">
+
+    <span class="label"><%- field['label']; %></span>
+    <div class="area">
+        <span
+                class="input MediaField <%- field['field_class']; %> with_icon"
+                contenteditable="true"
+                spellcheck="<%- field['spellcheck']; %>"
+                data-type="<%- field['type']; %>"
+                data-name="<%- field['name']; %>"
+                data-validation="<%- field['validation']; %>"
+                data-placeholder="<%- field['placeholder']; %>"
+                data-required="<%- field['required']; %>"
+        ><%- field['value']; %></span>
+        <span class="media_icon click_able MediaFieldButton nice_svg <%- field['icon_class']; %> <%- field['size']; %>">
+            <svg><use href="#add_image"></use></svg>
+        </span>
+        <% if ( field['validation'] != 'false' ) { %>
+            <span class="success_icon"><svg><use href="#check"></use></svg></span>
+            <span class="error_icon"><svg><use href="#close"></use></svg></span>
+        <% } %>
+    </div>
+    <% if ( field['validation'] !== 'false' ) { %>
+        <span class="error_message"><%- field['error_message']; %></span>
+    <% } %>
+
+</div>

@@ -1,0 +1,252 @@
+.nice_field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    font-family: var( --regular_font_family );
+    flex-shrink: 0;
+    align-items: flex-start;
+}
+
+.nice_field.large {
+    min-width: 320px;
+    min-height: 80px;
+}
+
+.nice_field.medium {
+    min-width: 270px;
+    min-height: 70px;
+}
+
+.nice_field.small {
+    min-width: 220px;
+    min-height: 60px;
+}
+
+.nice_field.tiny {
+    min-width: 170px;
+    min-height: 50px;
+}
+
+.nice_field:last-of-type {
+    margin-bottom: 0;
+}
+
+.nice_field .label {
+    font-size: 16px;
+    color: var( --support_font_color );
+    margin-bottom: 2px;
+}
+
+.nice_field .area {
+    display: inline-flex;
+    position: relative;
+    min-width: 270px;
+    flex-wrap: wrap;
+}
+
+.nice_field .input {
+    display: inline-flex;
+    color: var( --field_font_color );
+    border: 1px solid var( --field_border );
+    background-color: var( --field_background );
+    outline: none;
+    transition: 0.4s;
+    border-radius: 6px;
+    padding: 12px 48px 12px 24px;
+    overflow-x: hidden;
+    word-break: break-word;
+}
+
+.nice_field.large .input {
+    min-width: 320px;
+    font-size: 22px;
+    padding: 14px 52px 14px 32px;
+}
+
+.nice_field.large input.input {
+    width: 320px;
+}
+
+.nice_field.medium .input {
+    min-width: 270px;
+    font-size: 20px;
+    padding: 12px 48px 12px 24px;
+}
+
+.nice_field.medium input.input {
+    width: 270px;
+}
+
+.nice_field.small .input {
+    min-width: 220px;
+    font-size: 16px;
+    padding: 10px 40px 10px 20px;
+}
+
+.nice_field.small input.input {
+    width: 220px;
+}
+
+.nice_field.tiny .input {
+    min-width: 170px;
+    font-size: 14px;
+    padding: 8px 32px 6px 16px;
+}
+
+.nice_field.tiny input.input {
+    width: 170px;
+}
+
+.nice_field .input.hidetext {
+    font-family: text-security-disc, sans-serif;
+}
+
+.nice_field.large .input.with_icon {
+    padding-left: 62px;
+}
+
+.nice_field.medium .input.with_icon {
+    padding-left: 56px;
+}
+
+.nice_field.small .input.with_icon {
+    padding-left: 50px;
+}
+
+.nice_field.tiny .input.with_icon {
+    padding-left: 44px;
+}
+
+.nice_field .input[contenteditable=true]:empty:before {
+    content: attr(data-placeholder);
+    display: block;
+    color: var( --field_placeholder );
+    cursor: text;
+    font-weight: normal;
+}
+
+.nice_field.large .input[contenteditable=true]:empty:before {
+    font-size: 22px;
+}
+
+.nice_field.medium .input[contenteditable=true]:empty:before {
+    font-size: 18px;
+}
+
+.nice_field.small .input[contenteditable=true]:empty:before {
+    font-size: 15px;
+}
+
+.nice_field.tiny .input[contenteditable=true]:empty:before {
+    font-size: 14px;
+}
+
+.nice_field .input::placeholder {
+    font-size: 18px;
+    color: var( --field_placeholder );
+    font-weight: normal;
+    cursor: text;
+}
+
+.nice_field.large .input::placeholder {
+    font-size: 22px;
+}
+
+.nice_field.medium .input::placeholder {
+    font-size: 18px;
+}
+
+.nice_field.small .input::placeholder {
+    font-size: 15px;
+}
+
+.nice_field.tiny .input::placeholder {
+    font-size: 14px;
+}
+
+.nice_field .input[data-required=true]:after {
+    content: '*';
+    position: absolute;
+    color: var( --sub_font_color );
+    top: 0;
+    left: 4px;
+}
+
+.nice_field .nice_svg {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nice_field .nice_svg.click_able:hover svg {
+    fill: var( --icon_hover_color );
+}
+
+.nice_field .nice_svg:hover svg {
+    fill: var( --icon_color );
+}
+
+
+.nice_field .input:focus {
+    border-color: var( --field_focus_color );
+    box-shadow: 0 0 4px 2px var( --field_focus_color );
+}
+
+/** Validating **/
+
+.nice_field .error_message,
+.nice_field .error_icon,
+.nice_field .success_icon {
+    display: none;
+}
+
+.nice_field.error .input {
+    border-color: var( --field_validate_error );
+    box-shadow: 0 0 4px 2px var( --field_validate_error );
+}
+
+.nice_field.error .error_message {
+    display: flex;
+    color: var( --field_validate_error );
+    padding-top: 6px;
+}
+
+.nice_field.error .error_icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}
+
+.nice_field.error .error_icon svg {
+    width: 24px;
+    height: 24px;
+    fill: var( --field_validate_error );
+}
+
+.nice_field.success .input {
+    border-color: var( --field_validate_success );
+    box-shadow: 0 0 4px 2px var( --field_validate_success );
+}
+
+.nice_field.success .success_icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+}
+
+.nice_field.success .success_icon svg {
+    width: 24px;
+    height: 24px;
+    fill: var( --field_validate_success );
+}

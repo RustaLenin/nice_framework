@@ -1,0 +1,42 @@
+.nice_svg {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nice_svg svg {
+    transition: var( --regular_transition );
+    opacity: var( --opacity_blured );
+    fill: var( --icon_color );
+}
+
+.nice_svg:hover svg {
+    fill: var( --icon_hover_color );
+    opacity: 1;
+}
+
+.nice_svg.tiny svg {
+    width: 20px;
+    height: 20px;
+}
+
+.nice_svg.small svg {
+    width: 24px;
+    height: 24px;
+}
+
+.nice_svg.medium svg {
+    width: 28px;
+    height: 28px;
+}
+
+.nice_svg.large svg {
+    width: 32px;
+    height: 32px;
+}
+
+.nice_svg.huge svg {
+    width: 38px;
+    height: 38px;
+}
