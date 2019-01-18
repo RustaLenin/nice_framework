@@ -1,10 +1,10 @@
 console.log('nice notifications loaded...');
 
-jQuery(document).ready( function () {
+export function InsertNotifyArea() {
     jQuery(document.body).prepend('<div class="notify_area NotifyArea"></div>');
-});
+}
 
-function Notify( notify ) {
+export function NiceNotify( notify ) {
 
     var area = '.NotifyArea';
 
@@ -23,7 +23,7 @@ function Notify( notify ) {
 
 }
 
-function RenderNotify( notify) {
+export function RenderNotify( notify) {
     return `
     <div class="notify Notify ${notify.type}">
         <span class="nice_svg large"><svg><use href="#notify_${notify.type}"></use></svg></span>

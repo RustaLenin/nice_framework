@@ -2,15 +2,15 @@
 
 console.log('nice_settings.js loaded...');
 
-function ToggleCollapseSettingsMenu( elem ) {
+export function ToggleCollapseSettingsMenu( elem ) {
     jQuery(elem).parent('.SettingsNavigation').toggleClass('collapsed');
 }
 
-function SwitchSettingsTab( elem ) {
+export function SwitchSettingsTab( elem ) {
 
     let Tab = jQuery(elem);
 
-    let TabName = Tab.attr('data-tab');                                           // Get name of tab on which we will switch
+    let TabName = Tab.attr('data-tab');                                     // Get name of tab on which we will switch
     if ( !TabName ) {
         return                                                                    // If no name in data attribute - stop working
     }
@@ -27,12 +27,13 @@ function SwitchSettingsTab( elem ) {
 
 }
 
-function ToggleSettingBlock( elem ) {
+export function ToggleSettingBlock( elem ) {
     let Block = jQuery( elem );
     Block.parents('.SettingBlock').toggleClass('collapsed');
 }
 
-function ExpandAllTabsBlocks( elem ) {
+export function ExpandAllTabsBlocks( elem ) {
+
     let SettingsArea = jQuery(elem).parents('.SettingsContainer');
     if ( !SettingsArea ) {
         SettingsArea = document
@@ -42,7 +43,8 @@ function ExpandAllTabsBlocks( elem ) {
 
 }
 
-function CollapseAllTabsBlocks( elem ) {
+export function CollapseAllTabsBlocks( elem ) {
+
     let SettingsArea = jQuery(elem).parents('.SettingsContainer');
     if ( !SettingsArea ) {
         SettingsArea = document

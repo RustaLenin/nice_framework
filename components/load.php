@@ -1,12 +1,13 @@
 <?php
 
-$files = scandir(NICE_COM );
+$dir = dirname( __FILE__ );
+$files = scandir( $dir );
 
 foreach ( $files as $file ) {
 
-    if ( is_dir( NICE_COM . $file ) ) {
-        if ( file_exists( NICE_COM . $file . '/' . $file . '.php' ) ) {
-            include_once ( NICE_COM . $file . '/' . $file . '.php' );
+    if ( is_dir( $dir . '/' . $file ) ) {
+        if ( file_exists( $dir . '/' . $file . '/' . $file . '.php' ) ) {
+            include_once ( $dir . '/' . $file . '/' . $file . '.php' );
         }
     }
 

@@ -3,7 +3,7 @@
 /*
 Plugin Name: Nice FrameWork
 Plugin URI: https://github.com/RustaLenin/nice_framework
-Description: Simple framework for WP
+Description: Simple framework PHP + JS
 Version: 0.1
 Author: IT Forge
 Text Domain: nice_framework
@@ -28,28 +28,36 @@ Copyright 2018 IT Forge LTD ( email: dev@it-forge.tech )
 */
 
 define( 'NICE_DIR', dirname( __FILE__ )                              );
-define( 'NICE_ADM', dirname( __FILE__ ) . '/admin/'                  );
-define( 'NICE_COR', dirname( __FILE__ ) . '/core/'                   );
 define( 'NICE_COM', dirname( __FILE__ ) . '/components/'             );
 define( 'NICE_ASS', dirname( __FILE__ ) . '/assets/'                 );
 
-/**
- * Dependencies
- **/
-
-require_once( ABSPATH . 'wp-includes/pluggable.php'      ); // Cause many wp functions won't work without it!!! It's very important!!! And it must go first of.
-
-// Other depending's may be useful for add page
-
-require_once( ABSPATH . 'wp-admin/includes/image.php'    );
-require_once( ABSPATH . 'wp-admin/includes/file.php'     );
-require_once( ABSPATH . 'wp-admin/includes/media.php'    );
-require_once( ABSPATH . 'wp-admin/includes/template.php' );
-
-
-/**Pages **/
-require_once( NICE_ADM . 'menu.php');
-require_once( NICE_COR . 'setup/setup_page.php');
-
 /** Components **/
 require_once( NICE_COM . 'load.php');
+
+if ( class_exists('WP_Query') ) {
+    include( NICE_DIR . 'wp/wp.php' );
+}
+
+Class NICE_FRAMEWORK {
+
+    public static function enqueue_all( $url_to) {
+
+        if ( !$url_to ) { $url_to = $_SERVER['SERVER_NAME']; }
+
+        ?>
+        <link rel="stylesheet" href="<?php echo $url_to; ?>/nice_framework/nice.css">
+        <script type="module" src="<?php echo $url_to; ?>/nice_framework/nice.js"></script>
+        <?php
+    }
+
+    public static function wp_enqueue_all() {
+
+        if ( class_exists('WP_Query') ) {
+            wp_enqueue_style('nice_framework', plugin_dir_url( __FILE__ ) . 'nice.css' ); ?>
+            <script type="module" src="<?php echo plugin_dir_url( __FILE__) . 'nice.js';?>"></script>
+            <?php
+        }
+
+    }
+
+}

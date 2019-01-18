@@ -1,0 +1,89 @@
+.notify_area {
+    min-width: 160px;
+    max-width: 480px;
+    position: fixed;
+    top: 7vh;
+    right: 5vh;
+    background-color: transparent;
+    z-index: 12;
+}
+
+.notify {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 140px;
+    background-color: var( --content_background );
+    text-align: center;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    padding: 14px;
+    overflow: hidden;
+    opacity: 0;
+    transition: var( --regular_transition );
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+}
+
+.notify.show {
+    opacity: 1;
+}
+
+.notify .nice_svg {
+    margin-right: 8px;
+}
+
+.notify .nice_svg svg{
+    opacity: 1;
+}
+
+.notify.success svg {
+    fill: var( --success );
+}
+
+.notify.info svg {
+    fill: var( --info );
+}
+
+.notify.warning svg {
+    fill: var( --warning );
+}
+
+.notify.error svg {
+    fill: var( --error );
+}
+
+.notify .body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding-right: 16px;
+}
+
+.notify .title {
+    font-size: 16px;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.notify.success .title {
+    color: var( --success );
+}
+
+.notify.info .title {
+    color: var( --info );
+}
+
+.notify.warning .title {
+    color: var( --warning );
+}
+
+.notify.error .title {
+    color: var( --error );
+}
+
+.notify .message {
+    font-size: 16px;
+    color: var( --regular_font_color );
+    text-align: left;
+}

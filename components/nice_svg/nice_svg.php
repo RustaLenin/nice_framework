@@ -1,12 +1,44 @@
 <?php
 
+$svg_dir = dirname( __FILE__ ) . '/icons';
+$files = scandir( $svg_dir );
+$sprite = array();
+
+foreach ( $files as $file ) {
+
+    if ( !is_dir( $svg_dir. '/' . $file ) ) {
+        if ( file_exists( $svg_dir. '/' . $file ) ) {
+            $sprite[ substr( $file, 0, -4 ) ] = file_get_contents( $svg_dir. '/' . $file );
+        }
+    }
+
+}
+
+define( 'NICE_SPRITE', $sprite );
+
+if ( !function_exists( 'nice_svg' ) ) {
+    function nice_svg( $icon ) {
+        return NICE_SVG::render( $icon );
+    }
+}
+
 Class NICE_SVG {
 
-    public static function simple_import(){ ?>
+    public static function render( $icon ) {
 
-        <script src="<?php echo plugin_dir_url( __FILE__ ) . 'nice_svg.js'; ?>" type="module"></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url( __FILE__ ) . 'nice_svg.css'; ?>">
-        <?php
+        if ( !$icon )                     { $icon                     = array(); }
+
+        if ( !$icon['key'] )              { $icon['key']              = 'cog'; }
+        if ( !$icon['size'] )             { $icon['size']             = 'medium'; }
+
+        extract( $icon );
+        ob_start();
+
+        include('templates/regular.php');
+
+        $html = ob_get_clean();
+        return $html;
+
     }
 
 }

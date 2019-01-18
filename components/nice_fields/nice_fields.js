@@ -1,4 +1,4 @@
-function NiceField( field ) {
+export function NiceField( field ) {
 
     if ( !field )                     { field                     = {} }
 

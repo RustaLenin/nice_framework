@@ -22,12 +22,7 @@ class NICE_FRAMEWORK_MENU {
         );
 
         foreach ( $suffixes as $suffix ) {
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_FIELDS', 'wp_enqueue') );
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_TEMPLATES', 'wp_enqueue') );
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_SVG', 'simple_import') );
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_BUTTONS', 'wp_enqueue') );
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_NOTIFICATIONS', 'wp_enqueue') );
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'NICE_SETTINGS', 'wp_enqueue') );
+            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'nice_framework', 'wp_enqueue_all') );
         }
 
 //        /** Settings page **/

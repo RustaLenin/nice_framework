@@ -8,18 +8,6 @@ if ( !function_exists( 'nice_field' ) ) {
 
 Class NICE_FIELDS {
 
-    public static function wp_enqueue() {
-        wp_enqueue_script( 'nice_fields', plugin_dir_url( __FILE__ ) . 'nice_fields.js' );
-        wp_enqueue_style('nice_fields', plugin_dir_url( __FILE__ ) . 'nice_fields.css' );
-    }
-
-    public static function simple_import( $attr ){ ?>
-        <script src="<?php echo plugin_dir_url( __FILE__ ) . 'nice_fields.js'; ?>" type="text/javascript"
-            <?php if ( $attr == 'async' || $attr == 'defer') { echo $attr; } ?>></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url( __FILE__ ) . 'nice_fields.css'; ?>">
-        <?php
-    }
-
     public static function render( $field ) {
 
         if ( !$field )                     { $field                     = array(); }

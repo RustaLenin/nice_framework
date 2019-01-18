@@ -8,19 +8,6 @@ if ( !function_exists( 'nice_settings') ) {
 
 Class NICE_SETTINGS {
 
-    public static function wp_enqueue() {
-        wp_enqueue_script( 'nice_settings', plugin_dir_url( __FILE__ ) . 'nice_settings.js' );
-        wp_enqueue_style('nice_settings', plugin_dir_url( __FILE__ ) . 'nice_settings.css' );
-    }
-
-    public static function simple_import( $attr ){ ?>
-
-        <script src="<?php echo plugin_dir_url( __FILE__ ) . 'nice_settings.js'; ?>" type="text/javascript"
-            <?php if ( $attr == 'async' || $attr == 'defer') { echo $attr; } ?>></script>
-        <link rel="stylesheet" type="text/css" href="<?php echo plugin_dir_url( __FILE__ ) . 'nice_settings.css'; ?>">
-        <?php
-    }
-
     public static function render ( $settings ) {
 
         if ( !$settings ) {
