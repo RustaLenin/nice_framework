@@ -1,6 +1,6 @@
 /** Submit Button **/
 
-.submit_button {
+.nice_submit {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,78 +15,78 @@
     cursor: pointer;
 }
 
-.submit_button.tiny {
+.nice_submit.tiny {
     font-size: 12px;
     padding: 2px 8px;
 }
 
-.submit_button.tiny .nice_svg {
+.nice_submit.tiny .nice_svg {
     margin-right: 4px;
 }
 
-.submit_button.small {
+.nice_submit.small {
     font-size: 14px;
     padding: 4px 12px;
 }
 
-.submit_button.small .nice_svg {
+.nice_submit.small .nice_svg {
     margin-right: 6px;
 }
 
-.submit_button.medium {
+.nice_submit.medium {
     font-size: 16px;
     padding: 6px 16px;
 }
 
-.submit_button.medium .nice_svg {
+.nice_submit.medium .nice_svg {
     margin-right: 8px;
 }
 
-.submit_button.large {
+.nice_submit.large {
     font-size: 16px;
     padding: 8px 20px;
 }
 
-.submit_button.large .nice_svg {
+.nice_submit.large .nice_svg {
     margin-right: 10px;
 }
 
-.submit_button.huge {
+.nice_submit.huge {
     font-size: 18px;
     padding: 12px 24px;
 }
 
-.submit_button.huge .nice_svg {
+.nice_submit.huge .nice_svg {
     margin-right: 12px;
 }
 
-.submit_button .nice_svg svg {
+.nice_submit .nice_svg svg {
     fill: var( --icon_reverce_accent_color );
 }
 
-.submit_button:hover .nice_svg svg {
+.nice_submit:hover .nice_svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
 
-.submit_button.accent {
+.nice_submit.accent {
     background-color: var( --accent_button_color );
 }
 
-.submit_button.w100 {
+.nice_submit.w100 {
     width: 100%;
     text-align: center;
 }
 
-.submit_button.unactive {
+.nice_submit.unactive {
     background-color: var( --sub_bacground );
 }
 
-.submit_button:hover {
+.nice_submit:hover {
     opacity: 1;
 }
 
-.submit_button.disabled {
+.nice_submit.disabled {
     background-color: var( --disabled_button_color );
 }
 

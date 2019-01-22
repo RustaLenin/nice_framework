@@ -62,6 +62,6 @@ class Nice {
 
 jQuery(document).ready(function () {
    window.Nice = new Nice();
-    console.log('nice_framework loaded and ready');
+    console.log('Nice framework loaded and ready');
     console.log( window.Nice );
 });
