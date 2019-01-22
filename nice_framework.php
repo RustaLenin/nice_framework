@@ -45,8 +45,8 @@ Class NICE_FRAMEWORK {
         if ( !$url_to ) { $url_to = $_SERVER['SERVER_NAME']; }
 
         ?>
-        <link rel="stylesheet" href="<?php echo $url_to; ?>/nice_framework/nice.css">
-        <script type="module" src="<?php echo $url_to; ?>/nice_framework/nice.js"></script>
+        <link rel="stylesheet" href="<?php echo $url_to; ?>nice_framework/nice.css">
+        <script type="module" src="<?php echo $url_to; ?>nice_framework/nice.js"></script>
         <?php
     }
 

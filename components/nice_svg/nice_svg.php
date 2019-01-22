@@ -14,15 +14,15 @@ foreach ( $files as $file ) {
 
 }
 
-define( 'NICE_SPRITE', $sprite );
+define( 'NiceSprite', $sprite );
 
 if ( !function_exists( 'nice_svg' ) ) {
     function nice_svg( $icon ) {
-        return NICE_SVG::render( $icon );
+        return NiceSvg::render( $icon );
     }
 }
 
-Class NICE_SVG {
+Class NiceSvg {
 
     public static function render( $icon ) {
 
@@ -30,6 +30,7 @@ Class NICE_SVG {
 
         if ( !$icon['key'] )              { $icon['key']              = 'cog'; }
         if ( !$icon['size'] )             { $icon['size']             = 'medium'; }
+        if ( !$icon['sprite'] )           { $icon['sprite']           = 'NiceSprite';}
 
         extract( $icon );
         ob_start();

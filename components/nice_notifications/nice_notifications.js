@@ -1,10 +1,10 @@
 console.log('nice notifications loaded...');
 
-export function InsertNotifyArea() {
+export function insertNotifyArea() {
     jQuery(document.body).prepend('<div class="notify_area NotifyArea"></div>');
 }
 
-export function NiceNotify( notify ) {
+export function niceNotify( notify ) {
 
     var area = '.NotifyArea';
 
@@ -13,7 +13,7 @@ export function NiceNotify( notify ) {
     if ( typeof notify['title'] === 'undefined' ) { notify['title'] = 'Notification'; }
     if ( typeof notify['message'] === 'undefined' ) { notify['message'] = 'Something happens ¯\\_(ツ)_/¯'; }
 
-    jQuery(area).prepend( RenderNotify( notify ) );
+    jQuery(area).prepend( renderNotify( notify ) );
     jQuery(area).find('.Notify:first-of-type').addClass('show').delay(3500).animate({
         right: -800,
         opacity: 0
@@ -23,7 +23,7 @@ export function NiceNotify( notify ) {
 
 }
 
-export function RenderNotify( notify) {
+export function renderNotify( notify) {
     return `
     <div class="notify Notify ${notify.type}">
         <span class="nice_svg large"><svg><use href="#notify_${notify.type}"></use></svg></span>

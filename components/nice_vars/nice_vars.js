@@ -1,7 +1,8 @@
 console.log('nice templates loaded...');
 
-let DefaultTempalte = `
-    <style id="vars">
+export function defaultTempalte() {
+   return `
+    <style id="CSSVars">
         :root {
             /** BackGrounds **/
             --main_background: #F7F3F2;
@@ -64,8 +65,10 @@ let DefaultTempalte = `
             --regular_transition: 0.4s;
         }
     </style>
-`;
+    `;
+}
 
-jQuery(document).ready(function () {
-   jQuery(document.body).prepend( DefaultTempalte );
-});
+export function insertCssVars( template = null) {
+   if ( !template ) { template = 'default'; }
+      jQuery(document.body).prepend( Nice.CSSTemplates.template() );
+}
