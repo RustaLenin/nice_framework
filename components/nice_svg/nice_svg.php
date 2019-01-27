@@ -30,7 +30,8 @@ Class NiceSvg {
 
         if ( !$icon['key'] )              { $icon['key']              = 'cog'; }
         if ( !$icon['size'] )             { $icon['size']             = 'medium'; }
-        if ( !$icon['sprite'] )           { $icon['sprite']           = 'NiceSprite';}
+        if ( !$icon['click_able'] )       { $icon['click_able']       = false; }
+        if ( !$icon['sprite'] )           { $icon['sprite']           = NiceSprite;}
 
         extract( $icon );
         ob_start();

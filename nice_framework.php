@@ -35,7 +35,7 @@ define( 'NICE_ASS', dirname( __FILE__ ) . '/assets/'                 );
 require_once( NICE_COM . 'load.php');
 
 if ( class_exists('WP_Query') ) {
-    include( NICE_DIR . 'wp/wp.php' );
+    include( NICE_DIR . '/wp/wp.php' );
 }
 
 Class NICE_FRAMEWORK {

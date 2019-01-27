@@ -4,7 +4,7 @@ import { niceField, regularField, vanillaField, mediaField } from './components/
 import { niceNotify, insertNotifyArea } from './components/nice_notifications/nice_notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, switchSettingsTab, toggleSettingBlock } from './components/nice_settings/nice_settings.js';
 import { insertSvgSprite } from './components/nice_svg/nice_svg.js';
-import { defaultTempalte, insertCssVars } from "./components/nice_vars/nice_vars";
+import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/nice_vars/nice_vars.js';
 
 class Nice {
 
@@ -43,8 +43,11 @@ class Nice {
         if ( modules['css_vars'] ) {
             /** Css Templates & vars **/
             this.insertCssVars = insertCssVars;
+            this.replaceCssVars = replaceCssVars;
             this.CSSTemplates = {};
             this.CSSTemplates.default = defaultTempalte;
+            this.CSSTemplates.binomo = binomoTempalte();
+            this.CSSTemplates.notFound = notFoundTemplate();
         }
 
         if ( modules['settings'] ) {
