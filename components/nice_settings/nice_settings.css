@@ -14,41 +14,41 @@
     margin-top: 16px;
 }
 
-.settings_header,
-.settings_buttons {
+.nice_settings .settings_header,
+.nice_settings .settings_buttons {
     display: flex;
     align-items: center;
 }
 
-.settings_buttons .nice_button {
+.nice_settings .settings_buttons .nice_button {
     margin-right: 12px;
 }
 
-.settings_buttons .CollapseAllTabsBloocks svg {
+.nice_settings .settings_buttons .CollapseAllTabsBloocks svg {
     transform: rotate( 180deg );
 }
 
-.settings_buttons .CollapseAllTabsBloocks:hover svg,
-.settings_buttons .ExpandAllTabsBlocks:hover svg {
+.nice_settings .settings_buttons .CollapseAllTabsBloocks:hover svg,
+.nice_settings .settings_buttons .ExpandAllTabsBlocks:hover svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
 
-.settings_body {
+.nice_settings .settings_body {
     display: grid;
     grid-template-columns: auto 1fr;
     height: 100%;
     overflow: hidden;
 }
 
-.settings_header {
+.nice_settings .settings_header {
     height: 50px;
     border-bottom: 1px solid var( --divider_color );
     padding: 0 16px;
     justify-content: space-between;
 }
 
-.settings_title {
+.nice_settings .settings_title {
     font-size: 24px;
     color: var( --regular_font_color );
     margin-right: 24px;
@@ -56,19 +56,19 @@
 
 /** Settings navigation **/
 
-.settings_navigation {
+.nice_settings .settings_navigation {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     border-right: 1px solid var( --divider_color );
 }
 
-.tabs_head {
+.nice_settings .tabs_head {
     display: flex;
     flex-direction: column;
 }
 
-.settings_navigation .menu_item {
+.nice_settings .settings_navigation .menu_item {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -80,11 +80,11 @@
     z-index: 3;
 }
 
-.settings_navigation .menu_item:last-of-type {
+.nice_settings .settings_navigation .menu_item:last-of-type {
     border-bottom: none;
 }
 
-.settings_navigation .menu_item .item_name {
+.nice_settings .settings_navigation .menu_item .item_name {
     font-size: 18px;
     font-family: var( --regular_font_family );
     color: var( --second_font_color );
@@ -94,38 +94,38 @@
 
 }
 
-.settings_navigation .menu_item .nice_svg {
+.nice_settings .settings_navigation .menu_item .nice_svg {
     margin-right: 8px;
 }
 
-.settings_navigation .menu_item .nice_svg svg {
+.nice_settings .settings_navigation .menu_item .nice_svg svg {
     fill: var( --icon_color );
 }
 
-.settings_navigation .menu_item:hover .item_name,
-.settings_navigation .menu_item:hover .nice_svg svg {
+.nice_settings .settings_navigation .menu_item:hover .item_name,
+.nice_settings .settings_navigation .menu_item:hover .nice_svg svg {
     opacity: 1;
     color: var( --accent_hover_font_color );
     fill: var( --accent_hover_icon_color );
 }
 
-.settings_navigation .menu_item.current {
+.nice_settings .settings_navigation .menu_item.current {
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --accent_background );
 }
 
-.settings_navigation .menu_item.current .item_name {
+.nice_settings .settings_navigation .menu_item.current .item_name {
     color: var( --font_reverce_accent_color );
     opacity: 1;
 }
 
-.settings_navigation .menu_item.current .nice_svg svg {
+.nice_settings .settings_navigation .menu_item.current .nice_svg svg {
     fill: var( --icon_reverce_accent_color);
     opacity: 1;
 }
 
-.settings_navigation .menu_item.current:before,
-.settings_navigation .menu_item.current:after {
+.nice_settings .settings_navigation .menu_item.current:before,
+.nice_settings .settings_navigation .menu_item.current:after {
     display: block;
     content: ' ';
     position: absolute;
@@ -133,27 +133,27 @@
     border-right: 25px solid transparent;
 }
 
-.settings_navigation .menu_item.current:before {
+.nice_settings .settings_navigation .menu_item.current:before {
     border-top: 25px solid var( --accent_background );
     bottom: 0;
 }
 
-.settings_navigation .menu_item.current:after {
+.nice_settings .settings_navigation .menu_item.current:after {
     border-bottom: 25px solid var( --accent_background );
     top: 0;
 }
 
-.settings_navigation.collapsed .menu_item  {
+.nice_settings .settings_navigation.collapsed .menu_item  {
     padding: 0 16px;
     justify-content: center;
     width: 50px;
 }
 
-.settings_navigation.collapsed .menu_item .nice_svg {
+.nice_settings .settings_navigation.collapsed .menu_item .nice_svg {
     margin-right: 0;
 }
 
-.settings_navigation.collapsed .menu_item .item_name {
+.nice_settings .settings_navigation.collapsed .menu_item .item_name {
     opacity: 0;
     visibility: hidden;
     width: 0;
@@ -169,14 +169,14 @@
     color: var( --regular_font_color );
 }
 
-.settings_navigation.collapsed .menu_item:hover .item_name {
+.nice_settings .settings_navigation.collapsed .menu_item:hover .item_name {
     opacity: 1;
     visibility: visible;
     width: max-content;
 }
 
-.settings_navigation.collapsed .menu_item:hover .item_name:before,
-.settings_navigation.collapsed .menu_item:hover .item_name:after {
+.nice_settings .settings_navigation.collapsed .menu_item:hover .item_name:before,
+.nice_settings .settings_navigation.collapsed .menu_item:hover .item_name:after {
     content: '';
     display: block;
     position: absolute;
@@ -184,25 +184,25 @@
     transform: translateY(-50%);
 }
 
-.settings_navigation.collapsed .menu_item:hover .item_name:before {
+.nice_settings .settings_navigation.collapsed .menu_item:hover .item_name:before {
     border: 10px solid;
     border-color: transparent #ccc;
     border-left-width: 0;
     left: -10px;
 }
 
-.settings_navigation.collapsed .menu_item:hover .item_name:after {
+.nice_settings .settings_navigation.collapsed .menu_item:hover .item_name:after {
     border: 9px solid;
     border-color: transparent #fff;
     border-left-width: 0;
     left: -8px;
 }
 
-.settings_navigation.collapsed .menu_item.current .item_name {
+.nice_settings .settings_navigation.collapsed .menu_item.current .item_name {
     left: calc(100% + 35px );
 }
 
-.settings_navigation .menu_toggle {
+.nice_settings .settings_navigation .menu_toggle {
     display: flex;
     align-items: center;
     padding: 8px;
@@ -211,11 +211,11 @@
     margin-bottom: 8px;
 }
 
-.settings_navigation .menu_toggle .nice_svg {
+.nice_settings .settings_navigation .menu_toggle .nice_svg {
     margin-right: 16px;
 }
 
-.settings_navigation .menu_toggle .text {
+.nice_settings .settings_navigation .menu_toggle .text {
     font-size: 18px;
     font-weight: 600;
     color: var( --second_font_color );
@@ -223,33 +223,33 @@
     opacity: var( --opacity_notfocus );
 }
 
-.settings_navigation .menu_toggle .nice_svg svg {
+.nice_settings .settings_navigation .menu_toggle .nice_svg svg {
     transform: rotate(90deg);
 }
 
-.settings_navigation .menu_toggle:hover .nice_svg svg {
+.nice_settings .settings_navigation .menu_toggle:hover .nice_svg svg {
     fill: var( --accent_hover_icon_color );
     opacity: 1;
 }
 
-.settings_navigation .menu_toggle:hover .text {
+.nice_settings .settings_navigation .menu_toggle:hover .text {
     color: var( --accent_hover_font_color );
     opacity: 1;
 }
 
-.settings_navigation.collapsed .menu_toggle {
+.nice_settings .settings_navigation.collapsed .menu_toggle {
     justify-content: center;
 }
 
-.settings_navigation.collapsed .menu_toggle .nice_svg{
+.nice_settings .settings_navigation.collapsed .menu_toggle .nice_svg{
     margin-right: 0;
 }
 
-.settings_navigation.collapsed .menu_toggle .nice_svg svg {
+.nice_settings .settings_navigation.collapsed .menu_toggle .nice_svg svg {
     transform: rotate(270deg);
 }
 
-.settings_navigation.collapsed .menu_toggle .text {
+.nice_settings .settings_navigation.collapsed .menu_toggle .text {
     opacity: 0;
     visibility: hidden;
     width: 0;
@@ -257,11 +257,11 @@
 
 /** Settings Content **/
 
-.settings_content {
+.nice_settings .settings_content {
     overflow-y: auto;
 }
 
-.tabs_content {
+.nice_settings .tabs_content {
     display: flex;
     flex-direction: column;
     visibility: hidden;
@@ -271,13 +271,13 @@
     overflow: hidden;
 }
 
-.tabs_content.current {
+.nice_settings .tabs_content.current {
     visibility: visible;
     opacity: 1;
     height: auto;
 }
 
-.tabs_content .custom_content {
+.nice_settings .tabs_content .custom_content {
     display: flex;
     flex-direction: column;
     padding: 16px 32px;
@@ -285,7 +285,7 @@
 
 /** Settings Blocks **/
 
-.setting_block .header {
+.nice_settings .setting_block .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -297,45 +297,45 @@
     border-bottom: 1px solid var( --divider_color );
 }
 
-.setting_block .header:hover {
+.nice_settings .setting_block .header:hover {
     background-color: var( --accent_sub_background );
 }
 
-.setting_block .header .meta {
+.nice_settings .setting_block .header .meta {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.setting_block .header .title {
+.nice_settings .setting_block .header .title {
     font-size: 20px;
     font-weight: 600;
     color: var( --regular_font_color );
 }
 
-.setting_block .header .toggle_block_icon svg {
+.nice_settings .setting_block .header .toggle_block_icon svg {
     transform: rotate( 180deg );
     opacity: 1;
 }
 
-.setting_block.collapsed .header .toggle_block_icon svg {
+.nice_settings .setting_block.collapsed .header .toggle_block_icon svg {
     transform: rotate( 0deg );
 }
 
-.setting_block .header:hover .toggle_block_icon svg,
-.setting_block .header:hover .block_icon svg {
+.nice_settings .setting_block .header:hover .toggle_block_icon svg,
+.nice_settings .setting_block .header:hover .block_icon svg {
     fill: var( --icon_reverce_accent_color );
 }
 
-.setting_block .header .block_icon {
+.nice_settings .setting_block .header .block_icon {
     margin-right: 8px;
 }
 
-.setting_block .header .block_icon svg {
+.nice_settings .setting_block .header .block_icon svg {
     opacity: 1;
 }
 
-.setting_block .content {
+.nice_settings .setting_block .content {
     display: flex;
     flex-direction: column;
     padding: 16px 32px;
@@ -345,7 +345,7 @@
     height: auto;
 }
 
-.setting_block.collapsed .content {
+.nice_settings .setting_block.collapsed .content {
     visibility: hidden;
     height: 0;
     opacity: 0;

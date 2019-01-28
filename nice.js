@@ -5,6 +5,7 @@ import { niceNotify, insertNotifyArea } from './components/nice_notifications/ni
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, switchSettingsTab, toggleSettingBlock } from './components/nice_settings/nice_settings.js';
 import { insertSvgSprite } from './components/nice_svg/nice_svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/nice_vars/nice_vars.js';
+import { switchTabs } from './components/nice_tabs/nice_tabs.js'
 
 class Nice {
 
@@ -16,7 +17,8 @@ class Nice {
                 'notify':   true,
                 'svg':      true,
                 'settings': true,
-                'css_vars': true
+                'css_vars': true,
+                'tabs':     true
             };
         }
 
@@ -58,6 +60,10 @@ class Nice {
             this.settings.expandAllTabsBlocks = expandAllTabsBlocks;
             this.settings.switchSettingsTab = switchSettingsTab;
             this.settings.toggleSettingBlock = toggleSettingBlock;
+        }
+
+        if ( modules['tabs'] ) {
+            this.switchTabs = switchTabs;
         }
 
     }

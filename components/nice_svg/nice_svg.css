@@ -16,6 +16,11 @@
     opacity: 1;
 }
 
+.nice_svg.micro svg {
+    width: 12px;
+    height: 12px;
+}
+
 .nice_svg.tiny svg {
     width: 20px;
     height: 20px;
