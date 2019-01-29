@@ -6,6 +6,7 @@ import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks,
 import { insertSvgSprite } from './components/nice_svg/nice_svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/nice_vars/nice_vars.js';
 import { switchTabs } from './components/nice_tabs/nice_tabs.js'
+import { toggleMetaBox } from './components/nice_metabox/nice_metabox.js';
 
 class Nice {
 
@@ -18,7 +19,8 @@ class Nice {
                 'svg':      true,
                 'settings': true,
                 'css_vars': true,
-                'tabs':     true
+                'tabs':     true,
+                'metabox':  true
             };
         }
 
@@ -64,6 +66,10 @@ class Nice {
 
         if ( modules['tabs'] ) {
             this.switchTabs = switchTabs;
+        }
+
+        if ( modules['metabox'] ) {
+            this.toggleMetaBox = toggleMetaBox;
         }
 
     }

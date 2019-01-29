@@ -1,0 +1,56 @@
+.nice_metabox {
+    display: inline-flex;
+    flex-direction: column;
+    background: var( --content_background );
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+
+.nice_metabox .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid var( --divider_color );
+    cursor: pointer;
+}
+
+.nice_metabox .head .title {
+    font-size: 22px;
+    color: var( --regular_font_color );
+    display: flex;
+    align-items: center;
+}
+
+.nice_metabox .head .about_icon {
+    margin-right: 8px;
+}
+
+.nice_metabox .head .collapse_icon {
+
+}
+
+.nice_metabox .body {
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    transition: var( --regular_transition );
+    height: auto;
+    visibility: visible;
+    opacity: 1;
+}
+
+.nice_metabox.closed {
+
+}
+
+.nice_metabox.closed .head .collapse_icon {
+    transform: rotate( 180deg );
+}
+
+.nice_metabox.closed .body {
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+}
