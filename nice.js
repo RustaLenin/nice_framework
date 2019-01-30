@@ -7,6 +7,8 @@ import { insertSvgSprite } from './components/nice_svg/nice_svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/nice_vars/nice_vars.js';
 import { switchTabs } from './components/nice_tabs/nice_tabs.js'
 import { toggleMetaBox } from './components/nice_metabox/nice_metabox.js';
+import { modal, handleModal, showModal, collapseModal, closeModal, defaultTemplate } from './components/nice_modals/nice_modals.js';
+import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/nice_loader/nice_loader.js';
 
 class Nice {
 
@@ -20,7 +22,9 @@ class Nice {
                 'settings': true,
                 'css_vars': true,
                 'tabs':     true,
-                'metabox':  true
+                'metabox':  true,
+                'modals':   true,
+                'loader':   true
             };
         }
 
@@ -70,6 +74,24 @@ class Nice {
 
         if ( modules['metabox'] ) {
             this.toggleMetaBox = toggleMetaBox;
+        }
+
+        if ( modules['modals'] ) {
+            this.modal = modal;
+            this.handleModal = handleModal;
+            this.showModal = showModal;
+            this.collapseModal = collapseModal;
+            this.closeModal = closeModal;
+            this.modalTemplates = {};
+            this.modalTemplates['default'] = defaultTemplate;
+        }
+
+        if ( modules['loader'] ) {
+            this.addLoader = addLoader;
+            this.runLoader = runLoader;
+            this.addAndRunLoader = addAndRunLoader;
+            this.stopLoader = stopLoader;
+            this.removeLoader = removeLoader;
         }
 
     }
