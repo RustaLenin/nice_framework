@@ -92,7 +92,7 @@ export function notFoundTemplate() {
             --field_font_color: #000000;
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
-            --field_validate_success: #2aa3e6;
+            --field_validate_success: #1AC119;
         
             /** Buttons **/
             --accent_button_color: #2aa3e6;

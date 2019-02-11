@@ -17,7 +17,7 @@ export function niceField( field ) {
     if ( !field['label'] )            { field['label']            = 'Really nice field'; }
     if ( !field['error_message'] )    { field['error_message']    = 'Enter valid data'; }
 
-    return  ejs.render( Nice.field.templates.field['field_type'], { 'field': field } )
+    return  ejs.render( Nice.field.templates[field['field_type']](), { 'field': field } )
 
 }
 
