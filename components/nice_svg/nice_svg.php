@@ -28,7 +28,7 @@ Class NiceSvg {
 
         if ( !$icon )                     { $icon                     = array(); }
 
-        if ( !$icon['key'] )              { $icon['key']              = 'cog'; }
+        if ( !$icon['id'] )               { $icon['id']               = 'cog'; }
         if ( !$icon['size'] )             { $icon['size']             = 'medium'; }
         if ( !$icon['click_able'] )       { $icon['click_able']       = false; }
         if ( !$icon['sprite'] )           { $icon['sprite']           = NiceSprite;}
