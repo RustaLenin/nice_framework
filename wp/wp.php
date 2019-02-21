@@ -1,7 +1,8 @@
 <?php
 
-define( 'NICE_ADM', dirname( __FILE__ ) . '/admin/'                  );
-define( 'NICE_COR', dirname( __FILE__ ) . '/core/'                   );
+define( 'NICE_ADM', NICE_WP . '/admin/'                  );
+define( 'NICE_COR', NICE_WP . '/core/'                   );
+define( 'WP_ABS',   NICE_WP . '/abstract/'               );
 
 /**
  * Dependencies
@@ -16,6 +17,8 @@ require_once( ABSPATH . 'wp-admin/includes/file.php'     );
 require_once( ABSPATH . 'wp-admin/includes/media.php'    );
 require_once( ABSPATH . 'wp-admin/includes/template.php' );
 
+/** Abstractions **/
+require_once( WP_ABS . 'custom_post.php' );
 
 /**Pages **/
 require_once( NICE_ADM . 'menu.php');

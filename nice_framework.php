@@ -29,7 +29,8 @@ Copyright 2018 IT Forge LTD ( email: dev@it-forge.tech )
 
 define( 'NICE_DIR', dirname( __FILE__ )                              );
 define( 'NICE_COM', dirname( __FILE__ ) . '/components/'             );
-define( 'NICE_ASS', dirname( __FILE__ ) . '/assets/'                 );
+define( 'NICE_WP', dirname( __FILE__  ) . '/wp/'                     );
+
 
 /** Components **/
 require_once( NICE_COM . 'load.php');

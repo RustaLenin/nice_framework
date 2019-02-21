@@ -35,6 +35,7 @@ export function regularField() {
                             data-validation="<%- field['validation']; %>"
                             data-placeholder="<%- field['placeholder']; %>"
                             data-required="<%- field['required']; %>"
+                            onpaste="Nice.field.pastePlain(e);"
                     ><%- field['value']; %></span>
                     <% if ( field['icon'] ) { %>
                         <span class="nice_svg <%- field['icon_class']; %> <%- field['size']; %>">
@@ -111,4 +112,30 @@ export function mediaField() {
                 <% } %>
             
             </div>`;
+}
+
+export function clearEditable() {
+    jQuery('*[contenteditable]').on('paste',function(e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        pastePlain(e);
+    });
+}
+
+export function clearEditableInArea( area ) {
+
+    let fileds = jQuery(area).find('[contenteditable]');
+    fileds.on('paste',function(e) {
+        e.stopImmediatePropagation();
+        e.preventDefault();
+        pastePlain(e);
+    });
+
+}
+
+export function pastePlain( e ) {
+    let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    if(typeof plain_text!=='undefined'){
+        document.execCommand('insertText', false, plain_text);
+    }
 }
