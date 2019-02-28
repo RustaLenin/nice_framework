@@ -3,17 +3,24 @@
 import { niceField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, switchSettingsTab, toggleSettingBlock } from './components/settings/settings.js';
-import { insertSvgSprite } from './components/svg/svg.js';
+import { insertSvgSprite, niceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
-import { modal, handleModal, showModal, collapseModal, closeModal, defaultTemplate } from './components/modals/modals.js';
+import { modal, showModal, collapseModal, closeModal, defaultTemplate, insertModalArea } from './components/modals/modals.js';
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
 import { validationTypes, delayFieldValidation, fieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin } from './components/validation/validation.js';
 
 class Nice {
 
     constructor() {
+
+        /** Inserts **/
+        this.insert = {};
+        this.insert.modalArea = insertModalArea;
+        this.insert.svgSprite = insertSvgSprite;
+        this.insert.notifyArea = insertNotifyArea;
+        this.insert.cssVars = insertCssVars;
 
         /** Fields **/
         this.field = niceField;
@@ -27,13 +34,14 @@ class Nice {
 
         /** Notifications **/
         this.notify = niceNotify;
-        this.insertNotifyArea = insertNotifyArea;
 
         /**Svg Sprite & svg elements **/
-        this.insertSvgSprite = insertSvgSprite;
+        this.svg = niceSvg;
+        this.svg.regular = regularSVGTemplate;
+        this.svg.map = map;
+
 
         /** Css Templates & vars **/
-        this.insertCssVars = insertCssVars;
         this.replaceCssVars = replaceCssVars;
         this.CSSTemplates = {};
         this.CSSTemplates.default = defaultTempalte;
@@ -56,10 +64,9 @@ class Nice {
 
         /** Modals **/
         this.modal = modal;
-        this.handleModal = handleModal;
         this.showModal = showModal;
-        this.collapseModal = collapseModal;
-        this.closeModal = closeModal;
+        this.modal.collapse = collapseModal;
+        this.modal.close = closeModal;
         this.modalTemplates = {};
         this.modalTemplates['default'] = defaultTemplate;
 
@@ -92,7 +99,7 @@ class Nice {
 }
 
 jQuery(document).ready(function () {
-   window.Nice = new Nice();
+    window.Nice = new Nice();
     console.log('Nice framework loaded and ready');
     console.log( window.Nice );
 });
