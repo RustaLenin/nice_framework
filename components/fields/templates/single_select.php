@@ -4,7 +4,7 @@
 
     <span class="label"><?php echo $field['label']; ?></span>
 
-    <div class="area" onclick="Nice.fields.selectors.toggleSelector(this)">
+    <div class="area NiceFieldArea" onclick="Nice.fields.selectors.toggleSelector(this)">
         <span
             class="input <?php echo $field['field_class']; ?>  <?php if ( $field['icon'] ) { echo 'with_icon';}?>"
             contenteditable="false"

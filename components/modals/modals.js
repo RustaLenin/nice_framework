@@ -9,7 +9,7 @@ export function modal( template, props ) {
     } else { Data = props['modal'] }
 
     console.log( Data );
-    if ( !template || typeof template == 'undefined' ) { template = Nice.modalTemplates['default']; }
+    if ( !template || typeof template == 'undefined' ) { template = Nice.modalTemplates['example']; }
     let html = ejs.render( template, Data );
     jQuery( props['area'] ).html( html );
     showModal( props['area'] );
@@ -41,7 +41,7 @@ export function closeModal() {
     }, 400 );
 }
 
-export const defaultTemplate = `
+export const exampleTemplate = `
 <div class="nice_modal Modal">
 
     <div class="header">
@@ -69,28 +69,28 @@ export const defaultTemplate = `
 </div>
 `;
 
-export const modalForm = `
+export const defaultTemplate = `
 <div class="nice_modal Modal">
 
     <div class="header">
-        <span class="title"><%- modalTitle %></span>
+        <span class="title"><%- modal_title_text%></span>
 
         <div class="control">
-            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'minus', 'class': 'CloseModal', 'onclick': 'Nice.modal.collapse()'}) %>
-            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'close', 'class': 'CloseModal close_button', 'onclick': 'Nice.modal.close();'}) %>
+            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'minus', 'onclick': 'Nice.modal.collapse();'}) %>
+            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'close', 'class': 'close_button', 'onclick': 'Nice.modal.close();'}) %>
         </div>
 
     </div>
 
     <div class="body">
 
-        Here is some modal content
+        <%- modal_form %>
 
     </div>
 
     <div class="footer">
 
-        <div class="nice_submit">Submit Modal</div>
+        <div class="nice_submit" onclick="<%- submit_modal_form %>"><%- modal_submit_text%></div>
 
     </div>
 
