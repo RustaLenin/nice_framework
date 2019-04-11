@@ -95,3 +95,62 @@
 .nice_modal .close_button svg:hover {
     fill: var( --bad_button );
 }
+
+/** Modal Tabs **/
+
+.nice_modal .modal_tab_divider {
+    width: 2px;
+    height: 100%;
+    background-color: var( --divider_color );
+}
+
+.nice_modal .tabs_nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nice_modal .tabs_nav .nice_svg {
+    margin-right: 12px;
+}
+
+.nice_modal .tabs_nav .tab_name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: var( --second_font_color );
+    opacity: 0.8;
+    transition: var( --regular_transition );
+    cursor: pointer;
+}
+
+.nice_modal .tabs_nav .tab_name.current {
+    color: var( --accent_font_color );
+    opacity: 1;
+    border-bottom: 2px solid;
+}
+
+.nice_modal .tabs_nav .tab_name.current svg {
+    fill: var( --icon_hover_color );
+}
+
+.nice_modal .tabs_content {
+    display: flex;
+    flex-direction: column;
+    padding: 16px 0;
+}
+
+.nice_modal .tab {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    transition: var( --regular_transition );
+    overflow: hidden;
+}
+
+.nice_modal .tab.current {
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}

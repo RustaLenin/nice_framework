@@ -2,7 +2,7 @@ export function switchTabs( current, Tabs ) {
 
     let Tab = jQuery(current);
 
-    let TabName = Tab.attr('data-tab');                                     // Get name of tab on which we will switch
+    let TabName = Tab.attr('data-tab');                                           // Get name of tab on which we will switch
     if ( !TabName ) {
         return                                                                    // If no name in data attribute - stop working
     }
