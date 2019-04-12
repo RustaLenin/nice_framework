@@ -10,7 +10,7 @@ import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
 import { validationTypes, delayFieldValidation, fieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin } from './components/validation/validation.js';
-import { renderForm } from './components/form/form.js';
+import { renderForm, collectData, collectValidData } from './components/form/form.js';
 
 class Nice {
 
@@ -35,6 +35,8 @@ class Nice {
 
         /** Form **/
         this.form = renderForm;
+        this.form.collectData = collectData;
+        this.form.collectValiddata = collectValidData;
 
         /** Notifications **/
         this.notify = niceNotify;

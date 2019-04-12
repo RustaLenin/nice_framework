@@ -6,10 +6,11 @@ export function insertNotifyArea() {
 
 export function niceNotify( notify ) {
 
-    var area = '.NotifyArea';
+    let area = '.NotifyArea';
 
     if ( typeof notify === 'undefined' ) { notify = {}; }
-    if ( typeof notify['type'] === 'undefined' ) { notify['type'] = 'info'; }
+    if ( typeof notify['type'] === 'undefined' && notify['result'] === 'undefined' ) { notify['type'] = 'info'; }
+    if ( typeof notify['type'] === 'undefined' && notify['result'] ) { notify['type'] = notify['result']; }
     if ( typeof notify['title'] === 'undefined' ) { notify['title'] = 'Notification'; }
     if ( typeof notify['message'] === 'undefined' ) { notify['message'] = 'Something happens ¯\\_(ツ)_/¯'; }
 
@@ -26,9 +27,9 @@ export function niceNotify( notify ) {
 export function renderNotify( notify) {
     return `
     <div class="notify Notify ${notify.type}">
-        <span class="nice_svg large"><svg><use href="#notify_${notify.type}"></use></svg></span>
+        <span class="nice_svg large">${Nice.svg({'id': 'notify_' + notify.type})}</span>
         <div class="body">
-            <span class="title">${notify.title}</span>
+            <span class="title">${notify.type}</span>
             <span class="message">${notify.message}</span>
         </div>
     </div>

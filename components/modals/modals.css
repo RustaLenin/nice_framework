@@ -147,6 +147,7 @@
     height: 0;
     transition: var( --regular_transition );
     overflow: hidden;
+    padding: 4px;
 }
 
 .nice_modal .tab.current {

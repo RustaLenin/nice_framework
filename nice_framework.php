@@ -9,7 +9,7 @@ Author: IT Forge
 Text Domain: nice_framework
 Domain Path: /languages
 Author URI: https://it-forge.tech/
-Copyright 2018 IT Forge LTD ( email: dev@it-forge.tech )
+Copyright 2019 IT Forge LTD ( email: dev@it-forge.tech )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,6 +31,8 @@ define( 'NICE_DIR', dirname( __FILE__ )                              );
 define( 'NICE_COM', dirname( __FILE__ ) . '/components/'             );
 define( 'NICE_WP', dirname( __FILE__  ) . '/wp/'                     );
 
+/** Self Using **/
+require_once( NICE_DIR . '/sugar/response.php');
 
 /** Components **/
 require_once( NICE_COM . 'load.php');
