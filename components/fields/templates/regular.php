@@ -4,16 +4,16 @@
 
     <span class="label"><?php echo $field['label']; ?></span>
     <div class="area">
-                <span
-                    class="input <?php echo $field['field_class']; ?>  <?php if ( $field['icon'] ) { echo 'with_icon';}?>"
-                    contenteditable="true"
-                    spellcheck="<?php echo $field['spellcheck']; ?>"
-                    data-type="<?php echo $field['type']; ?>"
-                    data-name="<?php echo $field['name']; ?>"
-                    data-validation="<?php echo $field['validation']; ?>"
-                    data-placeholder="<?php echo $field['placeholder']; ?>"
-                    data-required="<?php echo $field['required']; ?>"
-                ><?php echo $field['value']; ?></span>
+            <span
+                class="input <?php echo $field['field_class']; ?>  <?php if ( $field['icon'] ) { echo 'with_icon';}?>"
+                contenteditable="true"
+                spellcheck="<?php echo $field['spellcheck']; ?>"
+                data-type="<?php echo $field['type']; ?>"
+                data-name="<?php echo $field['name']; ?>"
+                data-validation="<?php echo $field['validation']; ?>"
+                data-placeholder="<?php echo $field['placeholder']; ?>"
+                data-required="<?php echo $field['required']; ?>"
+            ><?php echo $field['value']; ?></span>
         <?php if ( $field['icon'] ) { ?>
             <span class="nice_svg <?php echo $field['icon_class']; ?> <?php echo $field['size']; ?>">
                 <svg><use href="#<?php echo $field['icon']; ?>"></use></svg>

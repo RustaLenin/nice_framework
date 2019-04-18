@@ -11,6 +11,7 @@ import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTe
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
 import { validationTypes, delayFieldValidation, fieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData } from './components/form/form.js';
+import { toggleSelector, chooseThis } from './components/fields/selectors.js';
 
 class Nice {
 
@@ -32,6 +33,8 @@ class Nice {
         this.field.clearEditable = clearEditable;
         this.field.clearEditableInArea = clearEditableInArea;
         this.field.pastePlain = pastePlain;
+        this.field.toggleSelector = toggleSelector;
+        this.field.chooseThis = chooseThis;
 
         /** Form **/
         this.form = renderForm;

@@ -2,9 +2,11 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
+    margin-right: 16px;
     font-family: var( --regular_font_family );
     flex-shrink: 0;
     align-items: flex-start;
+    justify-content: center;
 }
 
 .nice_field.large {
@@ -27,6 +29,10 @@
     min-height: 50px;
 }
 
+.nice_field.no_min_width {
+    min-width: 0;
+}
+
 .nice_field:last-of-type {
     margin-bottom: 0;
 }
@@ -44,6 +50,15 @@
     flex-wrap: wrap;
 }
 
+.nice_field.no_min_width .area {
+    min-width: 0;
+}
+
+.nice_field .head_wrapper {
+    width: 100%;
+    cursor: pointer;
+}
+
 .nice_field .input {
     display: inline-flex;
     color: var( --field_font_color );
@@ -55,12 +70,12 @@
     padding: 12px 48px 12px 24px;
     overflow-x: hidden;
     word-break: break-word;
+    min-width: 100%;
 }
 
 .nice_field.large .input {
-    min-width: 320px;
     font-size: 22px;
-    padding: 14px 52px 14px 32px;
+    padding: 14px 70px 14px 32px;
 }
 
 .nice_field.large input.input {
@@ -68,9 +83,8 @@
 }
 
 .nice_field.medium .input {
-    min-width: 270px;
     font-size: 20px;
-    padding: 12px 48px 12px 24px;
+    padding: 12px 60px 12px 24px;
 }
 
 .nice_field.medium input.input {
@@ -78,9 +92,8 @@
 }
 
 .nice_field.small .input {
-    min-width: 220px;
     font-size: 16px;
-    padding: 10px 40px 10px 20px;
+    padding: 10px 50px 10px 20px;
 }
 
 .nice_field.small input.input {
@@ -88,9 +101,8 @@
 }
 
 .nice_field.tiny .input {
-    min-width: 170px;
     font-size: 14px;
-    padding: 8px 32px 6px 16px;
+    padding: 8px 40px 6px 16px;
 }
 
 .nice_field.tiny input.input {
@@ -172,21 +184,21 @@
     left: 4px;
 }
 
-.nice_field .nice_svg {
+.nice_field .field_icon {
+    display: flex;
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.nice_field .nice_svg.click_able:hover svg {
+.nice_field .field_icon.click_able:hover svg {
     fill: var( --icon_hover_color );
 }
 
-.nice_field .nice_svg:hover svg {
+.nice_field .field_icon:hover svg {
     fill: var( --icon_color );
 }
-
 
 .nice_field .input:focus {
     border-color: var( --field_focus_color );
@@ -249,4 +261,112 @@
     width: 24px;
     height: 24px;
     fill: var( --field_validate_success );
+}
+
+/** Selection arrow for drop down **/
+
+.nice_field .selector_arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 16px;
+    cursor: pointer;
+}
+
+.nice_field .area.open .selector_arrow svg {
+    transform: rotate(180deg);
+}
+
+/** Selection List for drop down **/
+
+.nice_field .selections_list {
+    position: absolute;
+    top: calc( 100% + 4px );
+    opacity: 0;
+    height: 0;
+    width: 100%;
+    visibility: hidden;
+    transition: var( --regular_transition );
+    background-color: var( --content_background );
+    /*border: var( --divider_color );*/
+    cursor: pointer;
+    max-height: 35vh;
+    overflow-y: auto;
+}
+
+.nice_field .area.open .selections_list {
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+}
+
+.nice_field .selection_list__element {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var( --divider_color );
+    padding: 8px;
+    transition: var( --regular_transition );
+}
+
+.nice_field .selection_list__element:last-of-type {
+    border-bottom: none;
+}
+
+.nice_field .selection_list__element.checked {
+    background-color: #0000bb11;
+}
+
+.nice_field .selection_list__element:hover {
+    background-color: #00000022;
+}
+
+.nice_field .selection_list__element.checked:hover {
+    background-color: #0000bb66;
+}
+
+.nice_field .selection_list__element_icon,
+.nice_field .selection_list__element_check {
+    display: flex;
+    flex-shrink: 0;
+}
+
+.nice_field .selection_list__element_check {
+    position: absolute;
+    right: 8px;
+    border: 3px solid var( --divider_color );
+    padding: 1px;
+    opacity: 0.5;
+    transition: var( --regular_transition );
+    border-radius: 4px;
+}
+
+.nice_field .selection_list__element_check svg {
+    fill: transparent;
+}
+
+.nice_field .selection_list__element:hover .selection_list__element_check {
+    opacity: 1;
+    border-color: var( --icon_color );
+}
+
+.nice_field .selection_list__element:hover .selection_list__element_check svg {
+    fill: var( --icon_color );
+    opacity: 1;
+}
+
+.nice_field .selection_list__element.checked .selection_list__element_check {
+    opacity: 1;
+}
+
+.nice_field .selection_list__element.checked .selection_list__element_check svg {
+    fill: var( --success );
+}
+
+.nice_field .selection_list__element.checked:hover .selection_list__element_check {
+    border-color: #00000044;
+}
+
+.nice_field .selections_list.single .selection_list__element_check {
+    border-radius: 50%;
 }

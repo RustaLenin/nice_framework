@@ -33,12 +33,10 @@ Class NiceSvg {
         if ( !$icon['click_able'] )       { $icon['click_able']       = false; }
         if ( !$icon['sprite'] )           { $icon['sprite']           = NiceSprite;}
 
-        extract( $icon );
         ob_start();
-
         include('templates/regular.php');
-
         $html = ob_get_clean();
+
         return $html;
 
     }

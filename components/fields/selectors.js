@@ -1,26 +1,43 @@
-function toggleSelector( element = null, event = null ) {
-    if ( element && event ) {
-        if ( element === event.target ) {
-            if ( jQuery(element).hasClass('NiceFieldArea') ) {
-                jQuery(element).toggleClass('open');
-            }
-        }
-    } else {
-
-    }
-
+export function toggleSelector( element = null ) {
+    let area = jQuery(element).parents('.NiceFieldArea');
+    area.toggleClass('open');
 }
 
-function chooseThis( elem ) {
-    let value = jQuery(this);
-    let title = jQuery(this);
-    let area  = jQuery(this).parents('.NiceFieldArea');
-    let input = area.find('.input');
+export function chooseThis( elem = null ) {
 
-    if ( input.is( 'input' ) ) {
-        input.val( value );
+    /** Get values and html from clicked list element **/
+    let value = jQuery(elem).attr('data-value');
+    let title = jQuery(elem).find('.selection_list__element_text').html();
+    let icon = jQuery(elem).find('.selection_list__element_icon').html();
+
+    /** Find parent html elements: area & input itself **/
+    let area  = jQuery(elem).parents('.NiceFieldArea');
+    let input = area.find('.input');
+    let select_type = input.attr('data-select_type');
+
+    if ( select_type === 'single' ) {
+
+        /** Remove checked from all element except clicked **/
+        area.find('.selection_list__element').removeClass('checked');
+        jQuery(elem).addClass('checked');
+
+        /** Insert value and html **/
+        if ( input.is( 'input' ) ) {
+            input.val( value );
+        } else {
+            input.html( title );
+            input.attr('data-value', value );
+        }
+        area.find('.FieldIcon').html(icon);
+        area.removeClass('open');
+
     } else {
-        input.html( title );
-        input.attr('data-value', value );
+        jQuery(elem).toggleClass('checked');
+    }
+
+    /** Run callback **/
+    let callback = input.attr('data-callback');
+    if( input.attr('data-callback' ) ) {
+        eval( callback );
     }
 }
