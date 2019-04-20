@@ -28,10 +28,11 @@ Class NiceSvg {
 
         if ( !$icon )                     { $icon                     = array(); }
 
-        if ( !$icon['id'] )               { $icon['id']               = 'cog'; }
-        if ( !$icon['size'] )             { $icon['size']             = 'medium'; }
-        if ( !$icon['click_able'] )       { $icon['click_able']       = false; }
-        if ( !$icon['sprite'] )           { $icon['sprite']           = NiceSprite;}
+        if ( !isset ( $icon['id'] ) )               { $icon['id']               = 'cog'; }
+        if ( !isset ( $icon['size'] ) )             { $icon['size']             = 'medium'; }
+        if ( !isset ( $icon['click_able'] ) )       { $icon['click_able']       = false; }
+        if ( !isset ( $icon['sprite'] ) )           { $icon['sprite']           = NiceSprite;}
+        if ( !isset ( $icon['rotate'] ) )           { $icon['rotate']           = false;}
 
         ob_start();
         include('templates/regular.php');

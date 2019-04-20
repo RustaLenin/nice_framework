@@ -2,11 +2,18 @@
 
 <div class="menu_item MenuTab <?php if ( $current ) { echo 'current'; } ?>"
      data-tab="<?php echo $slug; ?>"
-     onclick="SwitchSettingsTab(this)">
+     onclick="Nice.switchTabs( this, {
+        'container': '.SettingsContainer',
+        'cont': '.TabsContent',
+        'nav': '.MenuTab'
+     })">
 
-    <span class="nice_svg medium">
-        <svg><use href="#<?php echo $icon; ?>"></use></svg>
-    </span>
+
+    <?php echo nice_svg([
+        'size' => 'medium',
+        'id'   => $icon
+    ]); ?>
+
     <span class="item_name">
          <?php echo $title; ?>
     </span>

@@ -9,20 +9,41 @@
 
         <div class="settings_buttons">
 
-            <div class="nice_button regular small ExpandAllTabsBlocks" onclick="ExpandAllTabsBlocks(this)">
-                <span class="nice_svg tiny"><svg><use href="#double_arrow_down"></use></svg></span>
-                <span class="text">Expand All</span>
-            </div>
+            <?php
 
-            <div class="nice_button regular small CollapseAllTabsBloocks" onclick="CollapseAllTabsBlocks(this)">
-                <span class="nice_svg tiny"><svg><use href="#double_arrow_down"></use></svg></span>
-                <span class="text">Collapse All</span>
-            </div>
+            echo nice_button([
+                'size'    => 'small',
+                'text'    => 'Expand All',
+                'icon'    => [
+                    'id'   => 'double_arrow_down',
+                    'size' => 'small',
+                ],
+                'onclick' => 'Nice.settings.expandAllTabsBlocks(this)'
+            ]);
 
-            <div class="submit_button accent small UpdateSettings">
-                <span class="nice_svg small"><svg><use href="#check"></use></svg></span>
-                <span class="text">Save Settings</span>
-            </div>
+            echo nice_button([
+                'size'    => 'small',
+                'text'    => 'Collapse All',
+                'icon'    => [
+                    'id'     => 'double_arrow_down',
+                    'size'   => 'small',
+                    'rotate' => true
+                ],
+                'onclick' => 'Nice.settings.collapseAllTabsBlocks(this)'
+            ]);
+
+            echo nice_button([
+                'type'    => 'submit',
+                'size'    => 'small',
+                'text'    => 'Save Settings',
+                'icon'    => [
+                    'id' => 'check',
+                    'size' => 'small'
+                ],
+                'onclick' => 'Nice.settings.updateSettings(this)'
+            ]);
+
+            ?>
 
         </div>
 
@@ -39,10 +60,11 @@
                 } ?>
             </div>
 
-            <div class="menu_toggle" onclick="ToggleCollapseSettingsMenu(this)">
-                <span class="nice_svg medium">
-                    <svg><use href="#arrow_down"></use></svg>
-                </span>
+            <div class="menu_toggle" onclick="Nice.settings.toggleCollapseSettingsMenu(this)">
+                <?php echo nice_svg([
+                    'id' => 'arrow_down',
+                    'size' => 'medium'
+                ]); ?>
                 <span class="text">Collapse</span>
             </div>
 

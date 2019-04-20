@@ -1,8 +1,10 @@
 'use strict';
 
+console.log('Nice initializing...');
+
 import { niceField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
-import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, switchSettingsTab, toggleSettingBlock } from './components/settings/settings.js';
+import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { insertSvgSprite, niceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
@@ -12,10 +14,13 @@ import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from '
 import { validationTypes, delayFieldValidation, fieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
+import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
 
 class Nice {
 
     constructor() {
+
+        console.log('Nice Construction started...');
 
         /** Inserts **/
         this.insert = {};
@@ -62,8 +67,8 @@ class Nice {
         this.settings.toggleCollapseSettingsMenu = toggleCollapseSettingsMenu;
         this.settings.collapseAllTabsBlocks = collapseAllTabsBlocks;
         this.settings.expandAllTabsBlocks = expandAllTabsBlocks;
-        this.settings.switchSettingsTab = switchSettingsTab;
         this.settings.toggleSettingBlock = toggleSettingBlock;
+        this.settings.updateSettings = updateSettings;
 
         /** Tabs **/
         this.switchTabs = switchTabs;
@@ -104,6 +109,13 @@ class Nice {
         this.validation.isUrl = isUrl;
         this.validation.isValidEmail = isValidEmail;
         this.validation.isValidLogin = isValidLogin;
+
+        /** Pickers **/
+        this.pickers = {};
+        this.pickers.handle = handlePickers;
+        this.pickers.handleData = handleDatePicker;
+
+        console.log('Nice Construction ended...');
 
     }
 }

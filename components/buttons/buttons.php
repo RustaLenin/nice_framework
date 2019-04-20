@@ -14,15 +14,15 @@ Class NiceButton {
 
         if ( !$button ) { $button = array(); }
 
-        if ( !$button['type'] )  { $button['type']  = 'regular'; }
-        if ( !$button['size'] )  { $button['size']  = 'medium'; }
-        if ( !$button['class'] ) { $button['class'] = ''; }
-        if ( !$button['icon'] )  { $button['icon']  = false; }
-        if ( !$button['text'] )  { $button['text']  = 'Another one nice button'; }
+        if ( !isset( $button['type'] ) )      { $button['type']      = 'regular'; }
+        if ( !isset( $button['size'] ) )      { $button['size']      = 'medium'; }
+        if ( !isset( $button['class'] ) )     { $button['class']     = ''; }
+        if ( !isset( $button['icon'] ) )      { $button['icon']      = false; }
+        if ( !isset( $button['text'] ) )      { $button['text']      = 'Another one nice button'; }
+        if ( !isset( $button['onclick'] ) )   { $button['onclick']   = ''; }
 
-        extract($button);
         ob_start();
-        include('templates/' . $button['type'] . '.php' );
+        include('templates/regular.php' );
         $html = ob_get_clean();
 
         return $html;

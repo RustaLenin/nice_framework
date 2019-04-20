@@ -2,16 +2,25 @@
 
 <div class="setting_block SettingBlock <?php if ( $settings['blocks'][$block_name]['collapsed'] == true ) { echo 'collapsed'; } ?>">
 
-    <div class="header SettingBlockTitle" onclick="ToggleSettingBlock(this)">
+    <div class="header SettingBlockTitle" onclick="Nice.settings.toggleSettingBlock(this)">
 
         <span class="meta">
-            <?php if ( $settings['blocks'][$block_name]['icon'] ) { ?>
-                <span class="block_icon nice_svg medium"><svg><use href="#<?php echo $settings['blocks'][$block_name]['icon']; ?>"></use></svg></span>
-            <?php } ?>
+            <?php if ( $settings['blocks'][$block_name]['icon'] ) {
+                echo nice_svg([
+                    'id' => $settings['blocks'][$block_name]['icon'],
+                    'size' => 'medium',
+                    'class' => 'block_icon'
+                ]);
+            } ?>
             <span class="title"> <?php echo $settings['blocks'][$block_name]['title']; ?> </span>
         </span>
 
-        <span class="toggle_block_icon nice_svg medium"><svg><use href="#arrow_down"></use></svg></span>
+        <?php echo nice_svg([
+            'id' => 'arrow_down',
+            'size' => 'medium',
+            'class' => 'toggle_block_icon'
+        ]); ?>
+
     </div>
 
     <div class="content SettingBlockContainer">

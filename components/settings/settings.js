@@ -1,30 +1,5 @@
-'use strict';
-
-console.log('nice_settings.js loaded...');
-
 export function toggleCollapseSettingsMenu( elem ) {
     jQuery(elem).parent('.SettingsNavigation').toggleClass('collapsed');
-}
-
-export function switchSettingsTab( elem ) {
-
-    let Tab = jQuery(elem);
-
-    let TabName = Tab.attr('data-tab');                                     // Get name of tab on which we will switch
-    if ( !TabName ) {
-        return                                                                    // If no name in data attribute - stop working
-    }
-
-    let TabArea = Tab.parents('.SettingsContainer');                              // Get area of tab on which we will switch
-    if ( !TabArea ) {
-        TabArea = document                                                        // If no such area, try to find elements in document
-    }
-
-    TabArea.find('.TabsContent').removeClass('current');                          // Remove active class from all tabs content wrappers
-    TabArea.find('.MenuTab').removeClass('current');                              // Remove active class from all tabs buttons
-    Tab.addClass('current');                                                      // Add active class to clicked tab
-    TabArea.find( '.TabsContent' + '[data-tab='+TabName+']').addClass('current'); // Add active class to needed tab
-
 }
 
 export function toggleSettingBlock( elem ) {
@@ -52,4 +27,13 @@ export function collapseAllTabsBlocks( elem ) {
 
     SettingsArea.find('.SettingBlock').addClass('collapsed');
 
+}
+
+export function updateSettings( elem ) {
+
+    let settingsBlock = jQuery(elem).parents('.SettingsContainer');
+    let data = Nice.form.collectData( '.input', settingsBlock);
+    console.log( data );
+
+    /** ToDo Complete saving data  **/
 }
