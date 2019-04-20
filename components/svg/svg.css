@@ -46,3 +46,7 @@
     width: 38px;
     height: 38px;
 }
+
+.nice_svg.rotate {
+    transform: rotate(180deg);
+}

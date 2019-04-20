@@ -1,5 +1,3 @@
-console.log('nice svg loaded...');
-
 import { Sprite } from './sprite/sprite.js';
 import { SvgMap } from './sprite/map.js';
 

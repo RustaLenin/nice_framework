@@ -1,115 +1,24 @@
-/** Submit Button **/
-
-.nice_submit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var( --regular_font_family );
-    background-color: var( --accent_second_button_color );
-    color: var( --font_reverce_accent_color );
-    font-size: 16px;
-    padding: 8px 20px;
-    border-radius: 4px;
-    opacity: var( --opacity_notfocus);
-    transition: 0.4s;
-    cursor: pointer;
-    width: fit-content;
-}
-
-.nice_submit.tiny {
-    font-size: 12px;
-    padding: 2px 8px;
-}
-
-.nice_submit.tiny .nice_svg {
-    margin-right: 4px;
-}
-
-.nice_submit.small {
-    font-size: 14px;
-    padding: 4px 12px;
-}
-
-.nice_submit.small .nice_svg {
-    margin-right: 6px;
-}
-
-.nice_submit.medium {
-    font-size: 16px;
-    padding: 6px 16px;
-}
-
-.nice_submit.medium .nice_svg {
-    margin-right: 8px;
-}
-
-.nice_submit.large {
-    font-size: 16px;
-    padding: 8px 20px;
-}
-
-.nice_submit.large .nice_svg {
-    margin-right: 10px;
-}
-
-.nice_submit.huge {
-    font-size: 18px;
-    padding: 12px 24px;
-}
-
-.nice_submit.huge .nice_svg {
-    margin-right: 12px;
-}
-
-.nice_submit .nice_svg svg {
-    fill: var( --icon_reverce_accent_color );
-}
-
-.nice_submit:hover .nice_svg svg {
-    fill: var( --icon_reverce_accent_color );
-    opacity: 1;
-}
-
-.nice_submit.accent {
-    background-color: var( --accent_button_color );
-}
-
-.nice_submit.w100 {
-    width: 100%;
-    text-align: center;
-}
-
-.nice_submit.unactive {
-    background-color: var( --sub_bacground );
-}
-
-.nice_submit:hover {
-    opacity: 1;
-}
-
-.nice_submit.disabled {
-    background-color: var( --disabled_button_color );
-}
-
 /** Nice Button **/
 
 .nice_button {
     display: flex;
     align-items: center;
-    border: 1px solid var( --accent_button_color );
     border-radius: 4px;
     padding: 8px 20px;
-    color: var( --accent_button_color );
     font-size: 16px;
+    color: var( --accent_button_color );
+    border: 1px solid var( --accent_button_color );
     background-color: var( --content_background );
     transition: var( --regular_transition );
     cursor: pointer;
     width: fit-content;
+    opacity: 0.8;
 }
 
 .nice_button:hover {
     color: var( --font_reverce_accent_color );
     background-color: var( --accent_button_color );
+    opacity: 1;
 }
 
 .nice_button.regular {
@@ -132,6 +41,30 @@
 .nice_button.accent:hover {
     color: var( --font_reverce_accent_color );
     background-color: var( --accent_second_button_color );
+}
+
+.nice_button:hover .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+.nice_button:hover .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+.nice_button.submit .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+}
+
+.nice_button.submit:hover .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+.nice_button.submit:hover .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
 }
 
 .nice_button.tiny {
@@ -177,4 +110,43 @@
 
 .nice_button.huge .nice_svg {
     margin-right: 12px;
+}
+
+/** Submit Button **/
+
+.nice_button.submit {
+    font-family: var( --regular_font_family );
+    border: 1px solid var( --accent_second_button_color );
+    background-color: var( --accent_second_button_color );
+    color: var( --font_reverce_accent_color );
+}
+
+.nice_button.submit .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+}
+
+.nice_button.submit:hover .nice_svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+.nice_button.submit.accent {
+    background-color: var( --accent_button_color );
+}
+
+.nice_button.submit.w100 {
+    width: 100%;
+    text-align: center;
+}
+
+.nice_button.submit.unactive {
+    background-color: var( --sub_bacground );
+}
+
+.nice_button.submit:hover {
+    opacity: 1;
+}
+
+.nice_button.submit.disabled {
+    background-color: var( --disabled_button_color );
 }

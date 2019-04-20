@@ -1,16 +1,22 @@
 <?php ?>
 
 <span class="nice_button
-    <?php if( $class ) { echo $class; }
-    echo ' ' . $size; ?>
-" <?php if( $onclick ) { echo 'onclick="'. $onclick .'(this)"'; }?>>
-    <?php if ( $icon ) {
-        echo nice_svg(array(
-            'key' => $icon,
-            'size' => $size,
-        ));
+    <?php
+
+    /** Class name for styles **/
+    echo ' ' . $button['type'];
+
+    /** Special class for personal customization **/
+    if( $button['class'] ) { echo ' ' . $button['class']; }
+
+    /** Size of the button **/
+    echo ' ' . $button['size']; ?>"
+
+    <?php if( $button['onclick'] ) { echo 'onclick="'. $button['onclick'] .'"'; }?>>
+
+    <?php if ( $button['icon'] ) {
+        echo nice_svg($button['icon']);
     }
-    echo $text;
+    echo $button['text'];
     ?>
 </span>
-

@@ -21,7 +21,7 @@ Class NICE_SETTINGS {
         if ( !$settings['title'] )  { $settings['title']  = 'Unnamed settings page' ;}
         if ( !$settings['tabs'] )   { $settings['tabs']   = array(); }
         if ( !$settings['blocks'] ) { $settings['blocks'] = array(); }
-        if ( !$settings['fields'] ) { $settings['fields'] = array();}
+        if ( !$settings['fields'] ) { $settings['fields'] = array(); }
 
         ob_start();
         include('templates/index.php');

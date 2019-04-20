@@ -1,5 +1,3 @@
-console.log('nice templates loaded...');
-
 export function defaultTempalte() {
    return `
     <style id="CSSVars">
@@ -122,7 +120,7 @@ export function notFoundTemplate() {
             --icon_color: #9E9E9E;
             --icon_hover_color: #58c5c7;
             --accent_icon_color: #9d56a2;
-            --accent_hover_icon_color: #FF6600;
+            --accent_hover_icon_color: #9d56a2;
             --icon_reverce_accent_color: #ffffff;
         
             /** Opacity **/

@@ -47,8 +47,12 @@ Class NICE_FRAMEWORK {
 
         if ( !$url_to ) { $url_to = $_SERVER['SERVER_NAME']; }
 
-        ?>
+        /** Including styles in document **/ ?>
+        <link rel="stylesheet" href="<?php echo $url_to; ?>nice_framework/dependency/air-datepicker/dist/css/datepicker.css">
         <link rel="stylesheet" href="<?php echo $url_to; ?>nice_framework/nice.css">
+
+        <?php /** And after them the scripts **/ ?>
+        <script type="text/javascript" src="<?php echo $url_to; ?>nice_framework/dependency/air-datepicker/dist/js/datepicker.js"></script>
         <script type="module" src="<?php echo $url_to; ?>nice_framework/nice.js"></script>
         <?php
     }
@@ -56,7 +60,18 @@ Class NICE_FRAMEWORK {
     public static function wp_enqueue_all() {
 
         if ( class_exists('WP_Query') ) {
-            wp_enqueue_style('nice_framework', plugin_dir_url( __FILE__ ) . 'nice.css' ); ?>
+
+            /** Including styles in document **/
+            wp_enqueue_style('air-datepicker', plugin_dir_url( __FILE__ ) . 'dependency/air-datepicker/dist/css/datepicker.css' );
+            wp_enqueue_style('nice_framework', plugin_dir_url( __FILE__ ) . 'nice.css' );
+
+            /** And after them the scripts **/
+            wp_enqueue_script('air-datepicker', plugin_dir_url( __FILE__ ) . 'dependency/air-datepicker/dist/js/datepicker.js');
+
+            /** WP have no native module type including. So we use simple script tag **/
+
+            ?>
+
             <script type="module" src="<?php echo plugin_dir_url( __FILE__) . 'nice.js';?>"></script>
             <?php
         }

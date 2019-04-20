@@ -1,5 +1,3 @@
-console.log('nice notifications loaded...');
-
 export function insertNotifyArea() {
     jQuery(document.body).prepend('<div class="notify_area NotifyArea"></div>');
 }
