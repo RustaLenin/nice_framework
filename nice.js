@@ -15,6 +15,8 @@ import { validationTypes, delayFieldValidation, fieldValidation, HandleFieldsVal
 import { renderForm, collectData, collectValidData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
 import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
+import { update_jQuery } from './jquery/plugins.js';
+import { colorMethods } from './components/logic_patterns/color_methods.js';
 
 class Nice {
 
@@ -114,6 +116,11 @@ class Nice {
         this.pickers = {};
         this.pickers.handle = handlePickers;
         this.pickers.handleData = handleDatePicker;
+
+        /** colorMethods **/
+        this.colorMethods = colorMethods;
+
+        update_jQuery();
 
         console.log('Nice Construction ended...');
 

@@ -30,7 +30,7 @@
         if ( $tab_content['callback'] ) {
             if ( function_exists( $tab_content['callback'] ) ) { ?>
                 <div class="custom_content">
-                    <?php $tab_content['callback'](); ?>
+                    <?php echo $tab_content['callback']( $tab_content['callback_args'] ); ?>
                 </div>
                 <?php
             }

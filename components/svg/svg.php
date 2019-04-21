@@ -26,6 +26,8 @@ Class NiceSvg {
 
     public static function render( $icon ) {
 
+        /** ToDo Check if string **/
+
         if ( !$icon )                     { $icon                     = array(); }
 
         if ( !isset ( $icon['id'] ) )               { $icon['id']               = 'cog'; }

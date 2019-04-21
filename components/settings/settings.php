@@ -19,9 +19,9 @@ Class NICE_SETTINGS {
         }
 
         if ( !$settings['title'] )  { $settings['title']  = 'Unnamed settings page' ;}
-        if ( !$settings['tabs'] )   { $settings['tabs']   = array(); }
-        if ( !$settings['blocks'] ) { $settings['blocks'] = array(); }
-        if ( !$settings['fields'] ) { $settings['fields'] = array(); }
+        if ( !$settings['tabs'] )   { $settings['tabs']   = []; }
+        if ( !$settings['blocks'] ) { $settings['blocks'] = []; }
+        if ( !$settings['fields'] ) { $settings['fields'] = []; }
 
         ob_start();
         include('templates/index.php');
@@ -33,15 +33,15 @@ Class NICE_SETTINGS {
 
     public static function nav_element( $tab ) {
 
-        if ( !$tab ) { $tab = array(); }
+        if ( !$tab ) { $tab = []; }
 
         if ( !$tab['slug'] )       { $tab['slug']        = uniqid(); }
         if ( !$tab['title'] )      { $tab['title']       = 'Another one tab'; }
         if ( !$tab['icon'] )       { $tab['icon']        = false; }
         if ( !$tab['current'] )    { $tab['current']     = false; }
         if ( !$tab['capability'] ) { $tab['capability']  = 8; }
-        if ( !$tab['blocks'] )     { $tab['blocks']      = array(); }
-        if ( !$tab['fields'] )     { $tab['fields']      = array(); }
+        if ( !$tab['blocks'] )     { $tab['blocks']      = []; }
+        if ( !$tab['fields'] )     { $tab['fields']      = []; }
 
         extract( $tab );
 

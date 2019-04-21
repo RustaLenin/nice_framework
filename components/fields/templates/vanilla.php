@@ -7,6 +7,7 @@
     <?php } ?>
 
     <div class="area">
+
         <input
             class="input <?php echo $field['field_class']; ?>  <?php if ( $field['icon'] ) { echo 'with_icon';}?>"
             spellcheck="<?php echo $field['spellcheck']; ?>"
@@ -16,10 +17,6 @@
             placeholder="<?php echo $field['placeholder']; ?>"
             data-required="<?php echo $field['required']; ?>"
             value="<?php echo $field['value']; ?>"
-
-            <?php if ($field['data_type'] === 'date' ) { ?>
-                onload="jQuery(this).datepicker();"
-            <?php } ?>
         >
 
         <?php if ( $field['icon'] ) { ?>

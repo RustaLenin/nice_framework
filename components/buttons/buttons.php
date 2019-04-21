@@ -10,6 +10,8 @@ Class NiceButton {
 
     public static function render( $button = null ) {
 
+        /** ToDo Check if string **/
+
         $html = null;
 
         if ( !$button ) { $button = array(); }
