@@ -7,6 +7,8 @@ export const colorMethods = {
     'decompositionRgba': decompositionRgba,
     'compositeRgba': compositeRgba,
     'compositeHsv': compositeHsv,
+    'decompositionCmyk': decompositionCmyk,
+    'compositeCmyk': compositeCmyk,
 
     // Rgb Methods
     'hexToRgb': hexToRgb,
@@ -14,6 +16,7 @@ export const colorMethods = {
     'decToRgb': decToRgb,
     'rgbaToRgb': rgbaToRgb,
     'hsvToRgb': hsvToRgb,
+    'cmykToRgb': cmykToRgb,
 
     // Rgba methods
     'rgbToRgba': rgbToRgba,
@@ -21,6 +24,7 @@ export const colorMethods = {
     'decToRgba': decToRgba,
     'binToRgba': binToRgba,
     'hsvToRgba': hsvToRgba,
+    'cmykToRgba': cmykToRgba,
 
     // Hex methods
     'rgbToHex': rgbToHex,
@@ -28,6 +32,7 @@ export const colorMethods = {
     'decToHex': decToHex,
     'binToHex': binToHex,
     'hsvToHex': hsvToHex,
+    'cmykToHex': cmykToHex,
 
     // Dec Methods
     'hexToDec': hexToDec,
@@ -35,6 +40,7 @@ export const colorMethods = {
     'rgbToDec': rgbToDec,
     'rgbaToDec': rgbaToDec,
     'hsvToDec': hsvToDec,
+    'cmykToDec': cmykToDec,
 
     // Bin Methods
     'decToBin': decToBin,
@@ -42,6 +48,7 @@ export const colorMethods = {
     'rgbToBin': rgbToBin,
     'rgbaToBin': rgbaToBin,
     'hsvToBin': hsvToBin,
+    'cmykToBin': cmykToBin,
 
     // Hsv methods
     'rgbToHsv': rgbToHsv,
@@ -49,6 +56,15 @@ export const colorMethods = {
     'hexToHsv': hexToHsv,
     'binToHsv': binToHsv,
     'decToHsv': decToHsv,
+    'cmykToHsv': cmykToHsv,
+
+    // Cmyk methods
+    'rgbToCmyk': rgbToCmyk,
+    'rgbaToCmyk': rgbaToCmyk,
+    'hsvToCmyk': hsvToCmyk,
+    'hexToCmyk': hexToCmyk,
+    'decToCmyk': decToCmyk,
+    'binToCmyk': binToCmyk,
 
     //test
     'test': test
@@ -152,6 +168,40 @@ function compositeRgba( rgbaObj ) {
 function compositeHsv( hsvObj ) {
     if ( typeof hsvObj === 'string' ) { return hsvObj; }
     return 'hsv( ' + hsvObj.h + ', ' + hsvObj.s + ', ' + hsvObj.v + ' )';
+}
+
+/**
+ * Transform color string rgba to object
+ * @param cmykStr { string | object } - like 'cmyk( 0, 50, 84, 0 )'
+ * @returns { { c: number, m: number, y: number, k: number } | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ */
+function decompositionCmyk( cmykStr ) {
+
+    if( typeof cmykStr === 'object' ) {
+        return cmykStr;
+    }
+
+    let cmykRegex = /^rgba\(\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*,\s*(-?\d+)(%?)\s*\)$/;
+
+    let raw = cmykRegex.exec(cmykStr);
+
+    return {
+        c: rgbNumStrToDec( raw[1] ),
+        m: rgbNumStrToDec( raw[3] ),
+        y: rgbNumStrToDec( raw[5] ),
+        k: rgbNumStrToDec( raw[7] ),
+    };
+
+}
+
+/**
+ * Transform CmykObj to CmykStr
+ * @param CmykObj { { c: number, m: number, y: number, k: number } | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @returns { string } - like 'cmyk( 0, 50, 84, 0 )'
+ */
+function compositeCmyk( CmykObj ) {
+    if ( typeof CmykObj === 'string' ) { return CmykObj; }
+    return 'cmyk( ' + CmykObj.c + ', ' + CmykObj.m + ', ' + CmykObj.y + ', ' + CmykObj.k + ' )';
 }
 
 /** RGB Methods **/
@@ -293,13 +343,45 @@ function hsvToRgb( hsv, type = 'object' ) {
     return rgb;
 }
 
+/**
+ * Transform Cmyk object or string into rgb object or string
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @param type {string} - 'string' or 'object'
+ * @return { {r: number, g: number, b: number } | string } - like { r: 255, g: 127, b: 42 }
+ */
+function cmykToRgb( cmyk, type = 'object' ) {
+
+    if ( typeof cmyk === 'string' ) {
+        cmyk = decompositionCmyk( cmyk );
+    }
+
+    let
+        rgb = {},
+        c = cmyk.c / 100,
+        m = cmyk.m / 100,
+        y = cmyk.y / 100,
+        k = cmyk.k / 100
+    ;
+
+    rgb.r = Math.round( ( 1 - Math.min( 1, c * ( 1 - k ) + k ) ) * 255 );
+    rgb.g = Math.round( ( 1 - Math.min( 1, m * ( 1 - k ) + k ) ) * 255 );
+    rgb.b = Math.round( ( 1 - Math.min( 1, y * ( 1 - k ) + k ) ) * 255 );
+
+    if ( type === 'string' ) {
+        rgb = compositeRgb( rgb );
+    }
+
+    return rgb;
+
+}
+
 /** RGBA Methods **/
 
 /**
  * Transform rgb object or string into rgba string or object
  * @param rgb { string | {r: number, g: number, b: number } } - string like 'rgb( 255, 127, 42 )' or object { r: 255, g: 127, b: 42 }
  * @param a {number} - alpha channel adding to the rgb, 255 for default
- * @param type {string} - string or object
+ * @param type {string} - 'string' or 'object'
  * @returns { string | {r: number, g: number, b: number, a: number } } - string like 'rgba( 255, 127, 42, 255 )' or object { r: 255, g: 127, b: 42, a: 255 }
  */
 function rgbToRgba( rgb, a = 255, type = 'object') {
@@ -375,6 +457,17 @@ function binToRgba( bin, type = 'object') {
     return rgba;
 }
 
+/**
+ * Transform cmyk object or string to rgba object or string. Throw rgb.
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @param a {number} - alpha channel adding to the rgb, 255 for default
+ * @param type {string} - string or object
+ * @returns { {r: number, g: number, b: number, a: number} | string } - like {r: 255, g: 127, b: 42, a: 255}
+ */
+function cmykToRgba( cmyk, a = 255, type = 'object') {
+    return rgbToRgba( cmykToRgb( cmyk ), a, type );
+}
+
 /** Hex Methods **/
 
 /**
@@ -430,6 +523,15 @@ function hsvToHex( hsv) {
     return rgbToHex( hsvToRgb( hsv) );
 }
 
+/**
+ * Transform cmyk object or string into hex string. Throw rgb.
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @returns {string} - like 'ff7f2aff'
+ */
+function cmykToHex( cmyk ) {
+    return rgbToHex( cmykToRgb( cmyk ) );
+}
+
 /** Dec Methods **/
 
 /**
@@ -483,6 +585,15 @@ function hsvToDec( hsv ) {
     return rgbToDec( hsvToRgb( hsv ) );
 }
 
+/**
+ * Transform cmyk object or string into decimal number. Throw rgb.
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @returns {number} - like 4286524159
+ */
+function cmykToDec( cmyk ) {
+    return rgbToDec( cmykToRgb( cmyk) );
+}
+
 /** Bin Methods **/
 
 /**
@@ -534,6 +645,15 @@ function rgbaToBin( rgba ) {
  */
 function hsvToBin( hsv ) {
     return rgbToBin( hsvToRgb( hsv ) );
+}
+
+/**
+ * Transform cmyk object or string to binary string. Throw rgb.
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @returns {string} - like '111111110111111100101010'
+ */
+function cmykToBin( cmyk ) {
+    return rgbToBin( cmykToRgb( cmyk ) );
 }
 
 /** HSV Methods **/
@@ -634,6 +754,100 @@ function decToHsv( dec ) {
     return rgbToHsv( decToRgb( dec ) );
 }
 
+/**
+ * Transform cmyk object or string to hsv object. Throw rgb.
+ * @param cmyk { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 }
+ * @returns { {h: number, s: number, v: number} } - like {h: 23.943661971830988, s: 0.8352941176470589, v: 1}
+ */
+function cmykToHsv( cmyk ) {
+    return rgbToHsv( cmykToRgb( cmyk ) );
+}
+
+/** Cmyk methods **/
+
+/**
+ * Transform rgb object or string to cmyk object or string.
+ * @param rgb { {r: number, g: number, b: number } | string } - like { r: 255, g: 127, b: 42 }
+ * @param type { string } - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function rgbToCmyk( rgb, type = 'object' ) {
+
+    if ( typeof rgb === 'string' ) {
+        rgb = decompositionRgb( rgb );
+    }
+
+    let
+        cmyk = {},
+        r = rgb.r / 255,
+        g = rgb.g / 255,
+        b = rgb.b / 255
+    ;
+
+    cmyk.k = Math.min( 1 - r, 1 - g, 1 - b );
+    cmyk.k = cmyk.k * 100;
+
+    cmyk.c = ( ( 1 - r - cmyk.k ) / ( 1 - cmyk.k ) ) * 100;
+    cmyk.m = ( ( 1 - g - cmyk.k ) / ( 1 - cmyk.k ) ) * 100;
+    cmyk.y = ( ( 1 - b - cmyk.k ) / ( 1 - cmyk.k ) ) * 100;
+
+    if ( type === 'string' ) {
+        cmyk = compositeCmyk( cmyk );
+    }
+
+    return cmyk;
+}
+
+/**
+ * Transform rgba object or string to cmyk object or string. Throw rgb.
+ * @param rgba { {r: number, g: number, b: number, a: number} | string } - like { r: 255, g: 127, b: 42, a: 255 }
+ * @param type {string} - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function rgbaToCmyk( rgba, type = 'object' ) {
+    return rgbToCmyk( rgbaToRgb( rgba ), type );
+}
+
+/**
+ * Transform hsv object to cmyk object or string. Throw rgb.
+ * @param hsv { {h: number, s: number, v: number} } - like {h: 23.943661971830988, s: 0.8352941176470589, v: 1}
+ * @param type { string } - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function hsvToCmyk( hsv, type = 'object' ) {
+    return rgbToCmyk( hsvToRgb( hsv ), type );
+}
+
+/**
+ * Transform hex string to cmyk object or string. Throw rgb.
+ * @param hex {string} - like 'ff7f2a'
+ * @param type { string } - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function hexToCmyk( hex, type = 'object' ) {
+    return rgbToCmyk( hexToRgb( hex ), type );
+}
+
+/**
+ * Transform decimal number to cmyk object or string. Throw rgb.
+ * @param dec {number} - like 16744234
+ * @param type { string } - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function decToCmyk( dec, type = 'object' ) {
+    return rgbToCmyk( decToRgb( dec ), type );
+}
+
+/**
+ * Transform binary string to cmyk object or string. Throw rgb.
+ * @param bin {string} - like '111111110111111100101010'
+ * @param type { string } - 'string' or 'object'
+ * @returns { {c: number, m: number, y: number, k: number} | string } - like { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0}
+ */
+function binToCmyk( bin, type = 'object' ) {
+    return rgbToCmyk( binToRgb( bin ), type );
+}
+
 /** Tests **/
 
 function test() {
@@ -647,7 +861,9 @@ function test() {
         alphaDec = 4286524159,
         bin      = '111111110111111100101010',
         alphaBin = '11111111011111110010101011111111',
-        hsv      = {h: 23.943661971830988, s: 0.8352941176470589, v: 1}
+        hsv      = {h: 23.943661971830988, s: 0.8352941176470589, v: 1},
+        // cmykObj  = { c: 0, m: 50.19607843137255, y: 83.52941176470588, k: 0 },
+        cmykStr  = 'cmyk( 0, 50.19607843137255, 83.52941176470588, 0 )'
     ;
 
     return {
@@ -699,6 +915,13 @@ function test() {
         'hexToHsv':           compositeHsv( hexToHsv( hex ) )       === compositeHsv( hsv ),
         'decToHsv':           compositeHsv( decToHsv( dec ) )       === compositeHsv( hsv ),
         'binToHsv':           compositeHsv( binToHsv( bin ) )       === compositeHsv( hsv ),
+
+        // Cmyk methods
+        'rgbToCmyk':          rgbToCmyk( rgbStr, 'string' )         === cmykStr,
+        'rgbaToCmyk':         rgbaToCmyk( rgbaStr, 'string' )       === cmykStr,
+        'hexToCmyk':          hexToCmyk( hex, 'string' )            === cmykStr,
+        'decToCmyk':          decToCmyk( dec, 'string' )            === cmykStr,
+        'binToCmyk':          binToCmyk( bin, 'string' )            === cmykStr
     }
 
 }
