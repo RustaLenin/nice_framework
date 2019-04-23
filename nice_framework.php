@@ -58,6 +58,7 @@ Class NICE_FRAMEWORK {
 
         <?php /** And after them the scripts **/ ?>
         <script type="text/javascript" src="<?php echo $url_to; ?>nice_framework/dependency/air-datepicker/dist/js/datepicker.js"></script>
+        <script type="text/javascript" src="<?php echo $url_to; ?>nice_framework/dependency/js-cookie/src/js.cookie.js"></script>
         <script type="module" src="<?php echo $url_to; ?>nice_framework/nice.js"></script>
         <?php
     }
@@ -72,6 +73,7 @@ Class NICE_FRAMEWORK {
 
             /** And after them the scripts **/
             wp_enqueue_script('air-datepicker', plugin_dir_url( __FILE__ ) . 'dependency/air-datepicker/dist/js/datepicker.js');
+            wp_enqueue_script('js-cookie', plugin_dir_url( __FILE__ ) . 'dependency/js-cookie/src/js.cookie.js');
 
             /** WP have no native module type including. So we use simple script tag **/
 
