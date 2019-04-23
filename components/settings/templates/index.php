@@ -13,7 +13,7 @@
 
             echo nice_button([
                 'size'    => 'small',
-                'text'    => 'Expand All',
+                'text'    => _t('Expand All'),
                 'icon'    => [
                     'id'   => 'double_arrow_down',
                     'size' => 'small',
@@ -23,7 +23,7 @@
 
             echo nice_button([
                 'size'    => 'small',
-                'text'    => 'Collapse All',
+                'text'    => _t('Collapse All'),
                 'icon'    => [
                     'id'     => 'double_arrow_down',
                     'size'   => 'small',
@@ -35,7 +35,7 @@
             echo nice_button([
                 'type'    => 'submit',
                 'size'    => 'small',
-                'text'    => 'Save Settings',
+                'text'    => _t('Save Settings'),
                 'icon'    => [
                     'id' => 'check',
                     'size' => 'small'
@@ -65,7 +65,7 @@
                     'id' => 'arrow_down',
                     'size' => 'medium'
                 ]); ?>
-                <span class="text">Collapse</span>
+                <span class="text"><?php et('Collapse'); ?></span>
             </div>
 
         </div>

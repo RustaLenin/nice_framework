@@ -2,14 +2,16 @@
 
 Class NiceResponse {
 
-    static $answer = [
-        'result'  => 'error',
-        'message' => 'Nothing happens ¯\_(ツ)_/¯',
-        'source'  => __METHOD__
-    ];
-
     public static function update_answer( $answer, $new_data ) {
         return array_merge( $answer, $new_data );
+    }
+
+    public static function default_answer() {
+        return [
+            'result'  => _t('error'),
+            'message' => _t('Nothing happens') . ' ¯\_(ツ)_/¯',
+            'source'  => __METHOD__
+        ];
     }
 
 }

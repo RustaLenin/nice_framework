@@ -24,9 +24,9 @@ Class NICE_FIELDS {
         if ( !isset( $field['spellcheck'] ) )       { $field['spellcheck']       = false; }
         if ( !isset( $field['name'] ) )             { $field['name']             = ''; }
         if ( !isset( $field['validation'] ) )       { $field['validation']       = false; }
-        if ( !isset( $field['placeholder'] ) )      { $field['placeholder']      = 'Type some text'; }
-        if ( !isset( $field['label'] ) )            { $field['label']            = 'Really nice field'; }
-        if ( !isset( $field['error_message'] ) )    { $field['error_message']    = 'Enter valid data'; }
+        if ( !isset( $field['placeholder'] ) )      { $field['placeholder']      = _t('Type some text'); }
+        if ( !isset( $field['label'] ) )            { $field['label']            = _t('Really nice field'); }
+        if ( !isset( $field['error_message'] ) )    { $field['error_message']    = _t('Enter valid data'); }
         if ( !isset( $field['show_label'] ) )       { $field['show_label']       = true; }
         if ( !isset( $field['no_min_width'] ) )     { $field['no_min_width']     = false; }
 

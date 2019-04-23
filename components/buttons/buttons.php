@@ -20,7 +20,7 @@ Class NiceButton {
         if ( !isset( $button['size'] ) )      { $button['size']      = 'medium'; }
         if ( !isset( $button['class'] ) )     { $button['class']     = ''; }
         if ( !isset( $button['icon'] ) )      { $button['icon']      = false; }
-        if ( !isset( $button['text'] ) )      { $button['text']      = 'Another one nice button'; }
+        if ( !isset( $button['text'] ) )      { $button['text']      = _t('Another one nice button'); }
         if ( !isset( $button['onclick'] ) )   { $button['onclick']   = ''; }
 
         ob_start();

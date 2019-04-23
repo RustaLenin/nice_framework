@@ -11,14 +11,14 @@ Class NICE_SETTINGS {
     public static function render ( $settings ) {
 
         if ( !$settings ) {
-            return 'No model received for settings page';
+            return _t('No model received for settings page');
         }
 
         if ( !$settings['slug'] ) {
-            return 'No unique settings slug received';
+            return _t('No unique settings slug received');
         }
 
-        if ( !$settings['title'] )  { $settings['title']  = 'Unnamed settings page' ;}
+        if ( !$settings['title'] )  { $settings['title']  = _t('Unnamed settings page') ;}
         if ( !$settings['tabs'] )   { $settings['tabs']   = []; }
         if ( !$settings['blocks'] ) { $settings['blocks'] = []; }
         if ( !$settings['fields'] ) { $settings['fields'] = []; }
@@ -36,7 +36,7 @@ Class NICE_SETTINGS {
         if ( !$tab ) { $tab = []; }
 
         if ( !$tab['slug'] )       { $tab['slug']        = uniqid(); }
-        if ( !$tab['title'] )      { $tab['title']       = 'Another one tab'; }
+        if ( !$tab['title'] )      { $tab['title']       = _t('Another one tab'); }
         if ( !$tab['icon'] )       { $tab['icon']        = false; }
         if ( !$tab['current'] )    { $tab['current']     = false; }
         if ( !$tab['capability'] ) { $tab['capability']  = 8; }

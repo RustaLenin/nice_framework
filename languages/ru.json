@@ -1,0 +1,19 @@
+{
+  "Nothing happens": "Ничего не произошло",
+  "error":           "ошибка",
+  "success":         "успех",
+  "info":            "уведомление",
+  "warning":         "предупреждение",
+  "Another one nice button": "Ещё одна славная кнопка",
+  "Type some text": "Введите какой нибудь текст",
+  "Really nice field": "Действительно славное поле",
+  "Enter valid data": "Введите корректные данные",
+  "Unnamed settings page": "Безымянная страница настроек",
+  "Collapse": "Сернуть",
+  "Expand All": "Развернуть все",
+  "Collapse All": "Свернуть все",
+  "Save Settings": "Сохранить настройки",
+  "No model received for settings page": "Не получена модель для страницы настроек",
+  "No unique settings slug received": "Не получено уникальное идентификационное имя настроек",
+  "Another one tab": "Ещё одна вкладка"
+}

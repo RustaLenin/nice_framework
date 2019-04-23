@@ -1,0 +1,19 @@
+{
+  "Nothing happens": "Nothing happens",
+  "error":           "error",
+  "success":         "success",
+  "info":            "info",
+  "warning":         "warning",
+  "Another one nice button": "Another one nice button",
+  "Type some text": "Type some text",
+  "Really nice field": "Really nice field",
+  "Enter valid data": "Enter valid data",
+  "Unnamed settings page": "Unnamed settings page",
+  "Collapse": "Collapse",
+  "Expand All": "Expand All",
+  "Collapse All": "Collapse All",
+  "Save Settings": "Save Settings",
+  "No model received for settings page": "No model received for settings page",
+  "No unique settings slug received": "No unique settings slug received",
+  "Another one tab": "Another one tab"
+}
