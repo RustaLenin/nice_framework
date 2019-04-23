@@ -36,7 +36,7 @@
         <div class="selections_list SelectionsList <?php echo $field['select_type']; ?>">
 
             <?php
-            foreach( $field['selections'] as $selector ) { ?>
+            foreach( $field['selections'] as $key => $selector ) { ?>
 
                 <div
                     class="selection_list__element <?php if ( $field['value'] === $selector['value'] ) {echo ' checked'; }?>"

@@ -2,8 +2,8 @@
 
 Class NiceTranslate {
 
-    public static function defineLanguage( $lang = 'en' ) {
-        $translate =  json_decode( file_get_contents( NICE_DIR . '/languages/' . $lang . '.json' ), 'ARRAY_A ' );
+    public static function defineLanguage( $local = 'en' ) {
+        $translate =  json_decode( file_get_contents( NICE_DIR . '/languages/' . $local . '.json' ), 'ARRAY_A ' );
         define ( 'NICE_LANG', $translate );
     }
 
@@ -18,13 +18,13 @@ Class NiceTranslate {
 }
 
 if ( !function_exists('et') ) {
-    function et($key){
-        NiceTranslate::et($key);
+    function et( $key, $lang = NICE_LANG ){
+        NiceTranslate::et( $key, $lang );
     }
 }
 
 if ( !function_exists('_t') ) {
-    function _t($key){
-        return NiceTranslate::_t($key);
+    function _t( $key, $lang = NICE_LANG ){
+        return NiceTranslate::_t( $key, $lang);
     }
 }

@@ -22,6 +22,39 @@ export function renderForm( model = null, values = null ) {
     return formHtml;
 }
 
+export function getFieldValue( selector = '.input' ) {
+
+    let
+        value = null,
+        field_cont = jQuery(selector),
+        field_input = field_cont.find('.input')
+    ;
+
+    if ( field_input.is('input') || field_input.is("textarea") ) {
+        value = field_input.val();
+    }
+
+    else {
+
+        let data_type = field_input.attr('data-type');
+
+        if (
+            data_type === 'select' ||
+            data_type === 'checkbox' ||
+            data_type === 'bool'
+        ) {
+            value  = field_input.attr('data-value');
+        }
+
+        else if ( data_type === 'text' ) {
+            value  = field_input.html();
+        }
+
+    }
+
+    return value;
+}
+
 /**
  * Prepare data from all elements with special class selector
  * @param {string} selector - fields css selector
