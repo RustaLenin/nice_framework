@@ -60,7 +60,7 @@ Class NICE_FRAMEWORK {
         <script type="text/javascript" src="<?php echo $url_to; ?>nice_framework/dependency/air-datepicker/dist/js/datepicker.js"></script>
         <script type="text/javascript" src="<?php echo $url_to; ?>nice_framework/dependency/js-cookie/src/js.cookie.js"></script>
         <script type="module" src="<?php echo $url_to; ?>nice_framework/nice.js"></script>
-        <?php
+        <?php echo NiceTranslate::getTranslateToJS();
     }
 
     public static function wp_enqueue_all() {
@@ -81,6 +81,7 @@ Class NICE_FRAMEWORK {
 
             <script type="module" src="<?php echo plugin_dir_url( __FILE__) . 'nice.js';?>"></script>
             <?php
+            echo NiceTranslate::getTranslateToJS();
         }
 
     }

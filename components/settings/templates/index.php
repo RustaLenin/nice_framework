@@ -65,7 +65,7 @@
                     'id' => 'arrow_down',
                     'size' => 'medium'
                 ]); ?>
-                <span class="text"><?php et('Collapse'); ?></span>
+                <span class="text"><?php echo _t('Collapse'); ?></span>
             </div>
 
         </div>

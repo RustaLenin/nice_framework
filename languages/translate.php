@@ -7,20 +7,21 @@ Class NiceTranslate {
         define ( 'NICE_LANG', $translate );
     }
 
-    public static function et( $key, $lang = NICE_LANG ) {
-        echo $lang[$key];
-    }
-
     public static function _t( $key, $lang = NICE_LANG ) {
         return $lang[$key];
     }
 
-}
-
-if ( !function_exists('et') ) {
-    function et( $key, $lang = NICE_LANG ){
-        NiceTranslate::et( $key, $lang );
+    public static function getTranslateToJS() {
+        ob_start(); ?>
+        <script type="text/javascript">
+            /* <![CDATA[ */
+            window.NiceTranslate = jQuery.parseJSON(`<?php echo json_encode( NICE_LANG ); ?>`);
+            /* ]]> */
+        </script>
+        <?php
+        return ob_get_clean();
     }
+
 }
 
 if ( !function_exists('_t') ) {
