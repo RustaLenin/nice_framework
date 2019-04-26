@@ -293,6 +293,7 @@
     cursor: pointer;
     max-height: 35vh;
     overflow-y: auto;
+    z-index: 2;
 }
 
 .nice_field .area.open .selections_list {
