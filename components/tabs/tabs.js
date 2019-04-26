@@ -16,5 +16,7 @@ export function switchTabs( current, Tabs ) {
     TabArea.find(Tabs.nav).removeClass('current');                                // Remove active class from all tabs buttons
     Tab.addClass('current');                                                      // Add active class to clicked tab
     TabArea.find( Tabs.cont + '[data-tab='+TabName+']').addClass('current');      // Add active class to needed tab
-
+    if (Tabs.callback){
+        Tabs.callback();
+    }
 }
