@@ -139,3 +139,32 @@ export function pastePlain( e ) {
         document.execCommand('insertText', false, plain_text);
     }
 }
+
+export function searchList( elem ) {
+
+    let
+        field = jQuery(elem),
+        container = field.parents('.NiceField'),
+        list = container.find('.selection_list__element'),
+        text = field.html()
+    ;
+
+    if ( text === '' ) {
+        list.removeClass('hidden');
+    }
+
+    jQuery.each( list, function () {
+       let
+           list_elem = jQuery(this),
+           list_text = list_elem.find('.selection_list__element_text').html()
+        ;
+       if ( list_text.search( new RegExp( text, "i") ) !== -1 ) {
+           list_elem.removeClass('hidden');
+       } else {
+           list_elem.addClass('hidden');
+       }
+    });
+
+
+
+}

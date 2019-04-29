@@ -47,6 +47,7 @@ Class NICE_FIELDS {
             if ( !isset( $field['open'] ) )           { $field['open']           = false; }
             if ( !isset( $field['checkboxes'] ) )     { $field['checkboxes']     = true; }
             if ( !isset( $field['content'] ) )        { $field['content']        = ''; }
+            if ( !isset( $field['editable'] ) )       { $field['editable']       = false; }
             if ( !isset( $field['callback'] ) )       { $field['callback']       = ''; }
 
             if ( $field['select_type'] === 'single' ) {
@@ -78,7 +79,7 @@ Class NICE_FIELDS {
 
             } else {
 
-                if ( $field['no_min_width'] )     { $field['no_min_width']     = false; }
+                if ( $field['no_min_width'] )        { $field['no_min_width']     = false; }
 
             }
 

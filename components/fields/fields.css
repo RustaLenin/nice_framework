@@ -308,6 +308,9 @@
     border-bottom: 1px solid var( --divider_color );
     padding: 8px;
     transition: var( --regular_transition );
+    visibility: visible;
+    opacity: 1;
+    height: auto;
 }
 
 .nice_field .selection_list__element:last-of-type {
@@ -324,6 +327,13 @@
 
 .nice_field .selection_list__element.checked:hover {
     background-color: #0000bb66;
+}
+
+.nice_field .selection_list__element.hidden {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    padding: 0;
 }
 
 .nice_field .selection_list__element_icon,

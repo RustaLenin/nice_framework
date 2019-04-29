@@ -2,7 +2,7 @@
 
 console.log('Nice initializing...');
 
-import { niceField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain } from './components/fields/fields.js';
+import { niceField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { insertSvgSprite, niceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
@@ -42,6 +42,7 @@ class Nice {
         this.field.pastePlain = pastePlain;
         this.field.toggleSelector = toggleSelector;
         this.field.chooseThis = chooseThis;
+        this.field.searchList = searchList;
 
         /** Form **/
         this.form = renderForm;

@@ -12,7 +12,7 @@
         <div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
             <span
                 class="input <?php echo $field['field_class']; ?>  <?php if ( $field['icon'] ) { echo 'with_icon';}?>"
-                contenteditable="false"
+                <?php if ( $field['editable'] ) { echo 'contenteditable="true"'; } else { echo 'contenteditable="false"'; } ?>
                 spellcheck="<?php echo $field['spellcheck']; ?>"
                 data-type="select"
                 data-name="<?php echo $field['name']; ?>"
@@ -22,6 +22,8 @@
                 data-required="<?php echo $field['required']; ?>"
                 data-callback="<?php echo $field['callback']; ?>"
                 data-select_type="<?php echo $field['select_type']; ?>"
+                <?php if ( $field['editable'] ) { ?> oninput="Nice.field.searchList(this)" <?php } ?>
+
             ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
             <span class="selector_arrow SelectorArrow">
