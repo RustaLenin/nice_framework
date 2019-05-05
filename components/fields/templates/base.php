@@ -5,6 +5,7 @@
     echo ' ' . $field['class'];
     echo ' ' . $field['size'];
     echo ' ' . $field['border_type'];
+    echo ' ' . $field['label_type'];
     if ( $field['no_min_width'] ){ echo ' no_min_width'; }
     if ( $field['align_center'] ){ echo ' align_center'; }
     if ( $field['icon'] )        { echo ' with_icon';    }

@@ -31,6 +31,7 @@ Class NICE_FIELDS {
         if ( !isset( $field['no_min_width'] ) )     { $field['no_min_width']     = false; }
         if ( !isset( $field['align_center'] ) )     { $field['align_center']     = false; }
         if ( !isset( $field['border_type'] ) )      { $field['border_type']      = 'regular_border'; }
+        if ( !isset( $field['label_type'] ) )       { $field['label_type']       = 'above_border'; }
 
 
         /** Default values for simple fields **/

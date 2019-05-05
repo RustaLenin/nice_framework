@@ -107,7 +107,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'label'         => 'How much it cost',
                     'error_message' => 'Only numerals',
                     'is_basic'      => false,
-                    'no_min_width'     => true,
+                    'no_min_width'  => true,
+                    'label_type'    => 'over_border'
                 ],
                 'deadline' => [
                     'name'          => 'deadline',

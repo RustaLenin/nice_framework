@@ -271,6 +271,37 @@
     fill: var( --icon_color );
 }
 
+/** Special labels **/
+
+.nice_field.over_border .label {
+    position: absolute;
+    top: 5px;
+    z-index: 10;
+    background: var(--content_background);
+    padding: 0 2px;
+    left: 18px;
+}
+
+.nice_field.over_border.large .label {
+    top: 7px;
+    left: 24px;
+}
+
+.nice_field.over_border.medium .label {
+    top: 5px;
+    left: 18px;
+}
+
+.nice_field.over_border.small .label {
+    top: 3px;
+    left: 12px;
+}
+
+.nice_field.over_border.tiny .label {
+    top: 0;
+    left: 8px;
+}
+
 /** Validating **/
 
 .nice_field .error_message,
