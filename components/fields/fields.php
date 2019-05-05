@@ -29,6 +29,8 @@ Class NICE_FIELDS {
         if ( !isset( $field['error_message'] ) )    { $field['error_message']    = _t('Enter valid data'); }
         if ( !isset( $field['show_label'] ) )       { $field['show_label']       = true; }
         if ( !isset( $field['no_min_width'] ) )     { $field['no_min_width']     = false; }
+        if ( !isset( $field['align_center'] ) )     { $field['align_center']     = false; }
+        if ( !isset( $field['border_type'] ) )      { $field['border_type']      = 'regular_border'; }
 
 
         /** Default values for simple fields **/
@@ -88,7 +90,7 @@ Class NICE_FIELDS {
 
         /** Buffer template render into string **/
         ob_start();
-        include('templates/' . $field['field_type'] . '.php');
+        include('templates/base.php');
         $html = ob_get_clean();
 
         /** Return result **/

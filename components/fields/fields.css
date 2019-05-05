@@ -1,4 +1,5 @@
 .nice_field {
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 16px;
@@ -33,6 +34,11 @@
     min-width: 0;
 }
 
+.nice_field.align_center .input {
+    text-align: center;
+    justify-content: center;
+}
+
 .nice_field:last-of-type {
     margin-bottom: 0;
 }
@@ -62,7 +68,6 @@
 .nice_field .input {
     display: inline-flex;
     color: var( --field_font_color );
-    border: 1px solid var( --field_border );
     background-color: var( --field_background );
     outline: none;
     transition: 0.4s;
@@ -73,59 +78,125 @@
     min-width: 100%;
 }
 
+.nice_field.regular_border .input {
+    border: 1px solid var( --field_border );
+}
+
+.nice_field.regular_border .input:focus {
+    border-color: var( --field_focus_color );
+    box-shadow: 0 0 4px 2px var( --field_focus_color );
+}
+
+.nice_field.only_bottom_border .input {
+    border-bottom: 1px solid var( --field_border );
+    border-radius: 0;
+}
+
+.nice_field.only_bottom_border .input:focus {
+    border-bottom: 1px solid var( --field_focus_color );
+}
+
+/** Large **/
+
 .nice_field.large .input {
     font-size: 22px;
-    padding: 14px 70px 14px 32px;
+    padding: 14px 70px 14px 24px;
+}
+
+.nice_field.only_bottom_border.large .input {
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .nice_field.large input.input {
     width: 320px;
 }
 
+.nice_field.large .label {
+    font-size: 14px;
+    padding-left: 24px;
+}
+
+/** Medium **/
+
 .nice_field.medium .input {
     font-size: 20px;
-    padding: 12px 60px 12px 24px;
+    padding: 12px 60px 12px 18px;
+}
+
+.nice_field.only_bottom_border.medium .input {
+    padding-top: 4px;
+    padding-bottom: 4px;
 }
 
 .nice_field.medium input.input {
     width: 270px;
 }
 
+.nice_field.medium .label {
+    font-size: 12px;
+    padding-left: 18px;
+}
+
+/** Small **/
+
 .nice_field.small .input {
     font-size: 16px;
-    padding: 10px 50px 10px 20px;
+    padding: 10px 50px 10px 12px;
+}
+
+.nice_field.only_bottom_border.small .input {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 .nice_field.small input.input {
     width: 220px;
 }
 
+.nice_field.small .label {
+    font-size: 11px;
+    padding-left: 12px;
+}
+
+/** Tiny **/
+
 .nice_field.tiny .input {
     font-size: 14px;
-    padding: 8px 40px 6px 16px;
+    padding: 8px 40px 6px 8px;
+}
+
+.nice_field.only_bottom_border.tiny .input {
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .nice_field.tiny input.input {
     width: 170px;
 }
 
+.nice_field.tiny .label {
+    font-size: 10px;
+    padding-left: 8px;
+}
+
 .nice_field .input.hidetext {
     font-family: text-security-disc, sans-serif;
 }
 
-.nice_field.large .input.with_icon {
+.nice_field.large.with_icon .input {
     padding-left: 62px;
 }
 
-.nice_field.medium .input.with_icon {
+.nice_field.medium.with_icon .input {
     padding-left: 56px;
 }
 
-.nice_field.small .input.with_icon {
+.nice_field.small.with_icon .input {
     padding-left: 50px;
 }
 
-.nice_field.tiny .input.with_icon {
+.nice_field.tiny.with_icon .input {
     padding-left: 44px;
 }
 
@@ -180,7 +251,7 @@
     content: '*';
     position: absolute;
     color: var( --sub_font_color );
-    top: 0;
+    top: 4px;
     left: 4px;
 }
 
@@ -198,11 +269,6 @@
 
 .nice_field .field_icon:hover svg {
     fill: var( --icon_color );
-}
-
-.nice_field .input:focus {
-    border-color: var( --field_focus_color );
-    box-shadow: 0 0 4px 2px var( --field_focus_color );
 }
 
 /** Validating **/

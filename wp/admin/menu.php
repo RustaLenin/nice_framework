@@ -13,7 +13,7 @@ class NICE_FRAMEWORK_MENU {
             'Nice FrameWork',
             8,
             'nice_framework.php',
-            array ( 'NICE_FRAMEWORK_SETUP_PAGE', 'construct' ),
+            [ 'NICE_FRAMEWORK_SETUP_PAGE', 'construct' ],
             'dashicons-palmtree',
             47, 5 );
 
@@ -22,15 +22,14 @@ class NICE_FRAMEWORK_MENU {
         );
 
         foreach ( $suffixes as $suffix ) {
-            add_action( 'admin_print_footer_scripts-' . $suffix, array( 'nice_framework', 'wp_enqueue_all') );
+            add_action( 'admin_print_footer_scripts-' . $suffix, [ 'nice_framework', 'wp_enqueue_all' ] );
         }
 
-//        /** Settings page **/
-//        add_action( 'admin_print_footer_scripts-' . $settings_suffix, array( 'THEME_SETTINGS_PAGE', 'js') );
-//        add_action( 'admin_print_footer_scripts-' . $settings_suffix, array( 'THEME_SETTINGS_PAGE', 'css') );
+        /** Settings page **/
+        add_action( 'admin_print_footer_scripts-' . $settings_suffix, [ 'NICE_FRAMEWORK_SETUP_PAGE', 'js' ] );
 
     }
 
 }
 
-add_action( 'admin_menu', array ( 'NICE_FRAMEWORK_MENU', 'construct' ) );
+add_action( 'admin_menu', [ 'NICE_FRAMEWORK_MENU', 'construct' ] );
