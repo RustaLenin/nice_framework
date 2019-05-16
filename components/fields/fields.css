@@ -10,6 +10,10 @@
     justify-content: center;
 }
 
+.nice_field * {
+    box-sizing: border-box;
+}
+
 .nice_field.large {
     min-width: 320px;
     min-height: 80px;
@@ -390,7 +394,7 @@
     cursor: pointer;
     max-height: 35vh;
     overflow-y: auto;
-    z-index: 2;
+    z-index: 12;
 }
 
 .nice_field .area.open .selections_list {

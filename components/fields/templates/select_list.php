@@ -14,6 +14,7 @@
         data-required="<?php echo $field['required']; ?>"
         data-callback="<?php echo $field['callback']; ?>"
         data-select_type="<?php echo $field['select_type']; ?>"
+        data-data_format="<?php echo $field['data_format']; ?>"
         <?php if ( $field['editable'] ) { ?> oninput="Nice.field.searchList(this)" <?php } ?>
 
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
@@ -38,6 +39,7 @@
             class="selection_list__element <?php if ( $field['value'] === $selector['value'] ) {echo ' checked'; }?>"
             onclick="Nice.field.chooseThis(this)"
             data-value="<?php echo $selector['value']; ?>"
+            <?php if ( $selector['name'] ) { ?> data-name="<?php echo $selector['name']; ?>" <?php } ?>
             <?php if ( $selector['color'] ) { echo 'style="border-left:3px solid ' . $selector['color'] . '"';} ?>
         >
             <span class="selection_list__element_icon">
@@ -46,9 +48,7 @@
                 } ?>
             </span>
 
-            <span class="selection_list__element_text">
-                <?php echo $selector['text']; ?>
-            </span>
+            <span class="selection_list__element_text"><?php echo $selector['text']; ?></span>
 
             <?php if ( $field['checkboxes'] ) { ?>
                 <span class="selection_list__element_check">

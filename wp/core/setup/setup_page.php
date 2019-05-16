@@ -15,7 +15,7 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'current'    => true,
                     'capability' => 8,
                     'blocks'     => [],
-                    'fields'     => [ 'post_title', 'cost', 'deadline', 'url', 'icon',  'currency' ],
+                    'fields'     => [ 'currency', 'post_title', 'cost', 'deadline', 'url', 'icon' ],
                 ],
                 'templates' => [
                     'slug'       => 'templates',
@@ -153,18 +153,20 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'name'          => 'currency',
                     'data_type'     => 'select',
                     'field_type'    => 'select_list',
-                    'select_type'   => 'single',
+                    'select_type'   => 'multiple',
                     'required'      => false,
                     'checkboxes'    => true,
                     'validation'    => false,
                     'label'         => 'Choose currency',
                     'show_label'    => false,
-                    'size'          => 'tiny',
+                    'size'          => 'medium',
                     'value'         => '',
                     'content'       => '',
                     'icon'          => '',
+                    'data_format'   => 'map',
                     'selections'       => [
                         'RUB' => [
+                            'name'       => 'currency_1',
                             'value'      => 'RUB',
                             'text'       => 'Rubles',
                             'default'    => true,
@@ -173,6 +175,7 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                             'color'      => false
                         ],
                         'USD' => [
+                            'name'       => 'currency_2',
                             'value'      => 'USD',
                             'text'       => 'Dollars',
                             'default'    => true,
@@ -181,6 +184,7 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                             'color'      => false
                         ],
                         'EUR' => [
+                            'name'       => 'currency_3',
                             'value'      => 'EUR',
                             'text'       => 'Euro',
                             'default'    => true,

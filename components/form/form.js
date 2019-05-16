@@ -111,12 +111,69 @@ export function collectData( selector = '.input', formSelector = document ) {
             data_type = field.attr('data-type');
 
             if (                                                                                                         // This types store value in data attribute
-                data_type === 'select' ||
                 data_type === 'checkbox' ||
                 data_type === 'bool'
             ) {
                 data_name = field.attr('data-name');                                                                     // Take key from field data-name attribute
                 data_value  = field.attr('data-value');                                                                  // Take val from field data-value attribute
+            }
+
+            if ( data_type === 'select' ) {
+
+                let select_type = field.attr('data-select_type');
+
+                if ( select_type === 'single' ) {
+                    data_name = field.attr('data-name');                                                                     // Take key from field data-name attribute
+                    data_value  = field.attr('data-value');
+                } else if ( select_type === 'multiple' ) {
+
+                    data_name = field.attr('data-name');
+                    let field_cont = field.parents('.nice_field');
+                    let list_elements = field_cont.find('.selection_list__element');
+                    let data_format = field.attr('data-data_format');
+
+                    if ( data_format === 'array' ) {
+                        data_value = [];
+                        list_elements.each(function() {
+                            if ( jQuery(this).hasClass('checked') ) {
+                                data_value.push( jQuery(this).attr('data-value') );
+                            }
+                        });
+                    }
+
+                    else if ( data_format === 'object' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+                            if ( jQuery(this).hasClass('checked') ) {
+                                data_value[jQuery(this).attr('data-name')] = jQuery(this).attr('data-value')
+                            }
+                        });
+                    }
+
+                    else if ( data_format === 'binary_map' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+                            data_value[jQuery(this).attr('data-value')] = jQuery(this).hasClass('checked');
+                        });
+                    }
+
+                    else if ( data_format === 'map' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+
+                            data_value[jQuery(this).attr('data-name')] = {
+                                'name': jQuery(this).attr('data-name'),
+                                'text': jQuery(this).find('.selection_list__element_text').html(),
+                                'icon': jQuery(this).find('.selection_list__element_icon').html(),
+                                'value': jQuery(this).attr('data-value'),
+                            };
+
+                            data_value[jQuery(this).attr('data-name')]['checked'] = jQuery(this).hasClass('checked');
+
+                        });
+                    }
+
+                }
             }
 
             else if ( data_type === 'text' ) {                                                                           // This type store data in the html

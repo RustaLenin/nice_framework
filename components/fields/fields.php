@@ -47,6 +47,7 @@ Class NICE_FIELDS {
             $field['type'] = 'select';
 
             if ( !isset( $field['select_type'] ) )    { $field['select_type']    = 'single'; }
+            if ( !isset( $field['data_format'] ) )    { $field['data_format']    = 'array'; }
             if ( !isset( $field['open'] ) )           { $field['open']           = false; }
             if ( !isset( $field['checkboxes'] ) )     { $field['checkboxes']     = true; }
             if ( !isset( $field['content'] ) )        { $field['content']        = ''; }
