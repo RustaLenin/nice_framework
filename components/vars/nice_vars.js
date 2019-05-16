@@ -71,20 +71,20 @@ export function notFoundTemplate() {
     <style id="CSSVars">
         :root {
             /** BackGrounds **/
-            --main_background: #F7F3F2;
+            --main_background: #ffffff;
             --content_background: #ffffff;
-            --accent_background: #58c5c7;
+            --accent_background: #ededed;
             --second_accent_background: #9d56a2;
             --sub_bacground: #EAEAEA;
             --accent_sub_background: #BCBCBC;
         
             /** Borders and Dividers **/
-            --divider_color: #D1CFCF;
-            --accent_border_color: #58c5c7;
+            --divider_color: #E1E1E1;
+            --accent_border_color: #9d56a2;
             --accent_hover_border_color: #9d56a2;
         
             /** Fields **/
-            --field_border: #C4C4C4;
+            --field_border: #9d56a2;
             --field_background: #ffffff;
             --field_placeholder: #B9B9B9;
             --field_font_color: #000000;
@@ -93,7 +93,7 @@ export function notFoundTemplate() {
             --field_validate_success: #1AC119;
         
             /** Buttons **/
-            --accent_button_color: #58c5c7;
+            --accent_button_color: #9d56a2;
             --accent_second_button_color: #9d56a2;
             --button_submit_color: #ffffff;
             --disabled_button_color: #888888;
@@ -107,20 +107,20 @@ export function notFoundTemplate() {
         
             /** Font **/
             --regular_font_family:'manrope', sans-serif;
-            --regular_font_color: #212121;
-            --second_font_color: #4D4D4D;
-            --accent_font_color: #58c5c7;
-            --sub_font_color: #B1B1B1;
-            --support_font_color: #8C8C8C;
-            --accent_hover_font_color: #9d56a2;
+            --regular_font_color: #828282;
+            --second_font_color: #000000;
+            --accent_font_color: #ffffff;
+            --sub_font_color: #333333;
+            --support_font_color: #9D56A2;
+            --accent_hover_font_color: #58c5c7;
             --font_reverce_accent_color: #ffffff;
         
             /** Icons **/
             --unactive_icon_color: #D1CFCF;
-            --icon_color: #9E9E9E;
-            --icon_hover_color: #58c5c7;
-            --accent_icon_color: #9d56a2;
-            --accent_hover_icon_color: #9d56a2;
+            --icon_color: #9D56A2;
+            --icon_hover_color: #9d56a2;
+            --accent_icon_color: #58c5c7;
+            --accent_hover_icon_color: #58c5c7;
             --icon_reverce_accent_color: #ffffff;
         
             /** Opacity **/

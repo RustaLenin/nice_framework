@@ -53,7 +53,7 @@ export function regularField() {
             </div>`;
 }
 
-export function vanillaField() {
+    export function vanillaField() {
     return `<div class="nice_field NiceField <%- field['class']; %> <%- field['size']; %>">
 
                 <span class="label"><%- field['label']; %></span>
