@@ -150,16 +150,45 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'is_basic'      => false
                 ],
                 'currency' => [
-                    'name'      => 'currency',
-                    'data_type'     => 'currency',
+                    'name'          => 'currency',
+                    'data_type'     => 'select',
+                    'field_type'    => 'select_list',
+                    'select_type'   => 'single',
                     'required'      => false,
-                    'in_form'       => true,
-                    'field_type'    => 'regular',
-                    'validation'    => 'isCurrency',
-                    'placeholder'   => 'USD',
-                    'label'         => 'Currency',
-                    'error_message' => 'Enter a valid currency',
-                    'is_basic'      => false
+                    'checkboxes'    => true,
+                    'validation'    => false,
+                    'label'         => 'Choose currency',
+                    'show_label'    => false,
+                    'size'          => 'tiny',
+                    'value'         => '',
+                    'content'       => '',
+                    'icon'          => '',
+                    'selections'       => [
+                        'RUB' => [
+                            'value'      => 'RUB',
+                            'text'       => 'Rubles',
+                            'default'    => true,
+                            'permission' => 'all',
+                            'icon'       => 'ruble',
+                            'color'      => false
+                        ],
+                        'USD' => [
+                            'value'      => 'USD',
+                            'text'       => 'Dollars',
+                            'default'    => true,
+                            'permission' => 'all',
+                            'icon'       => 'dollar',
+                            'color'      => false
+                        ],
+                        'EUR' => [
+                            'value'      => 'EUR',
+                            'text'       => 'Euro',
+                            'default'    => true,
+                            'permission' => 'all',
+                            'icon'       => 'euro',
+                            'color'      => false
+                        ]
+                    ]
                 ],
             ]
         ];
