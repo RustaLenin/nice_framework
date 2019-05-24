@@ -48,7 +48,7 @@ export const exampleTemplate = `
         <span class="title">Here is some title</span>
 
         <div class="control">
-            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'minus', 'onclick': 'Nice.modal.collapse();'}) %>
+        <nice-svg svg-id="minus" svg-size="small" svg-pointer="true" svg-click="Nice.modal.collapse();"></nice-svg>
             <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'close', 'class': 'close_button', 'onclick': 'Nice.modal.close();'}) %>
         </div>
 
@@ -76,7 +76,7 @@ export const defaultTemplate = `
         <span class="title"><%- modal_title_text%></span>
 
         <div class="control">
-            <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'minus', 'onclick': 'Nice.modal.collapse();'}) %>
+        <nice-svg svg-id="minus" svg-size="small" svg-pointer="true" svg-click="Nice.modal.collapse();"></nice-svg>
             <%- Nice.svg({'size': 'small', 'click_able': true, 'id': 'close', 'class': 'close_button', 'onclick': 'Nice.modal.close();'}) %>
         </div>
 

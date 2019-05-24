@@ -20,42 +20,49 @@
 }
 
 .nice_modal {
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
     position: relative;
-    align-items: stretch;
+    min-width: 460px;
     max-width: 90vw;
     max-height: 90vh;
     background-color: #ffffff;
-    border-radius: 6px;
     overflow: hidden;
+    border: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
 }
 
 .nice_modal .header {
     position: relative;
-    height: 50px;
+    height: 68px;
     background-color: var( --content_background );
     border-bottom: 1px solid var( --divider_color );
-    padding: 9px 90px 9px 32px; /** That's for Absolute positioned control buttons **/
-    font-size: 24px;
     font-weight: 600;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .nice_modal .header .title {
-    color: var( --accent_font_color );
-    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 0.05em;
+    color: var(--sub_font_color);
 }
 
 .nice_modal .header .control {
-    position: absolute;
     display: flex;
-    top: 8px;
-    right: 8px;
+    align-items: center;
 }
 
 .nice_modal .header .control .nice_svg {
     margin-right: 16px;
+    border: 2px solid #E0E0E0;
+    padding: 2px;
+    border-radius: 50%;
 }
 
 .nice_modal .header .control .nice_svg:last-of-type {
@@ -67,11 +74,12 @@
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 16px 32px;
+    padding: 42px 25px 16px;
     overflow-y: auto;
     min-height: 30vh;
     min-width: 400px;
     max-width: 740px;
+    max-height: 60vh;
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
 }
@@ -83,18 +91,14 @@
 .nice_modal .footer {
     display: flex;
     align-items: center;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-    padding: 8px 16px 8px 32px; /** That's for submit button **/
+    justify-content:flex-end;
+    padding: 15px 25px;
     background-color: var( --content_background );
     flex-shrink: 0;
 }
 
 /** Special **/
 
-.nice_modal .close_button svg:hover {
-    fill: var( --bad_button );
-}
 
 /** Modal Tabs **/
 
