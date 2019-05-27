@@ -20,11 +20,14 @@
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
     <span class="selector_arrow SelectorArrow">
-        <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => $field['size'] ] ) ;?>
+        <nice-svg svg-id="arrow_down" svg-size="<?php echo $field['size']; ?>"></nice-svg>
     </span>
 
     <span class="field_icon FieldIcon">
-        <?php if ( $field['icon'] ) { echo nice_svg([ 'class' => $field['icon_class'], 'size' => $field['size'], 'id' => $field['icon'] ]); } ?>
+        <?php if ( $field['icon'] ) {
+            ?>
+            <nice-svg svg-id="<?php echo $field['icon']; ?>" svg-class="<?php echo $field['icon_class']; ?>" svg-size="<?php echo $field['size']; ?>"></nice-svg>
+        <?php }?>
     </span>
 
 </div>

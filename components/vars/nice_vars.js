@@ -117,8 +117,8 @@ export function notFoundTemplate() {
         
             /** Icons **/
             --unactive_icon_color: #D1CFCF;
-            --icon_color: #9D56A2;
-            --icon_hover_color: #9d56a2;
+            --icon_color: #BDBDBD;
+            --icon_hover_color: #9D56A2;
             --accent_icon_color: #58c5c7;
             --accent_hover_icon_color: #58c5c7;
             --icon_reverce_accent_color: #ffffff;

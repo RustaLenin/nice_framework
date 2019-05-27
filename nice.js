@@ -2,10 +2,10 @@
 
 console.log('Nice initializing...');
 
-import { niceField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
+import { niceField, baseField, selectField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
-import { insertSvgSprite, niceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
+import { insertSvgSprite, niceSvg, NiceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
@@ -34,6 +34,8 @@ class Nice {
         /** Fields **/
         this.field = niceField;
         this.field.templates = {};
+        this.field.templates.base = baseField;
+        this.field.templates.select_list = selectField;
         this.field.templates.regular = regularField;
         this.field.templates.vanilla = vanillaField;
         this.field.templates.media = mediaField;
@@ -131,6 +133,7 @@ class Nice {
 
 jQuery(document).ready(function () {
     window.Nice = new Nice();
+    customElements.define('nice-svg', NiceSvg);
     console.log('Nice framework loaded and ready');
     console.log( window.Nice );
 });

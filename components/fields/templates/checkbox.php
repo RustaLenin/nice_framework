@@ -7,5 +7,6 @@
     data-value="<?php if ( $field['checked'] ) { echo 'true'; } ?>"
     data-required="<?php echo $field['require']; ?>"
 >
-    <span class="nice_svg <?php echo $field['size']; ?>"><svg><use href="check"></use></svg></span>
+
+    <nice-svg svg-id="check" svg-size="<?php echo $field['size']; ?>"></nice-svg>
 </div>

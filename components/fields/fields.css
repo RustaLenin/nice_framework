@@ -83,12 +83,12 @@
 }
 
 .nice_field.regular_border .input {
-    border: 1px solid var( --field_border );
+    border: 0.5px solid var( --field_border );
 }
 
 .nice_field.regular_border .input:focus {
     border-color: var( --field_focus_color );
-    box-shadow: 0 0 4px 2px var( --field_focus_color );
+    box-shadow: 0 0 4px var( --field_focus_color );
 }
 
 .nice_field.only_bottom_border .input {
