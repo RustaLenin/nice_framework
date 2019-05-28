@@ -17,7 +17,7 @@
 <?php if ( $field['icon'] ) { ?>
     <span class="field_icon FieldIcon">
         <?php echo nice_svg([
-            'class' => 'field_icon ' . $field['icon_class'],
+            'class' => 'field_icon',
             'size' => $field['size'],
             'id' => $field['icon']
         ]); ?>

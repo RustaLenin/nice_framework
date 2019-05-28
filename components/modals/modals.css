@@ -58,14 +58,14 @@
     align-items: center;
 }
 
-.nice_modal .header .control .nice_svg {
+.nice_modal .header .control nice-svg {
     margin-right: 16px;
     border: 2px solid #E0E0E0;
     padding: 2px;
     border-radius: 50%;
 }
 
-.nice_modal .header .control .nice_svg:last-of-type {
+.nice_modal .header .control nice-svg:last-of-type {
     margin-right: 0;
 }
 
@@ -114,7 +114,7 @@
     width: 100%;
 }
 
-.nice_modal .tabs_nav .nice_svg {
+.nice_modal .tabs_nav nice-svg {
     margin-right: 12px;
 }
 

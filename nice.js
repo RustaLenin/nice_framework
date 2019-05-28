@@ -5,7 +5,8 @@ console.log('Nice initializing...');
 import { niceField, baseField, selectField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
-import { insertSvgSprite, niceSvg, NiceSvg, regularSVGTemplate, map } from './components/svg/svg.js';
+import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
+import { SvgMap } from './components/svg/map.js';
 import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
@@ -27,7 +28,6 @@ class Nice {
         /** Inserts **/
         this.insert = {};
         this.insert.modalArea = insertModalArea;
-        this.insert.svgSprite = insertSvgSprite;
         this.insert.notifyArea = insertNotifyArea;
         this.insert.cssVars = insertCssVars;
 
@@ -58,8 +58,7 @@ class Nice {
         /**Svg Sprite & svg elements **/
         this.svg = niceSvg;
         this.svg.regular = regularSVGTemplate;
-        this.svg.map = map;
-
+        this.svg.map = SvgMap;
 
         /** Css Templates & vars **/
         this.replaceCssVars = replaceCssVars;

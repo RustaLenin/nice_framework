@@ -1,21 +1,5 @@
 <?php
 
-$svg_dir = dirname( __FILE__ ) . '/icons';
-$files = scandir( $svg_dir );
-$sprite = array();
-
-foreach ( $files as $file ) {
-
-    if ( !is_dir( $svg_dir. '/' . $file ) ) {
-        if ( file_exists( $svg_dir. '/' . $file ) ) {
-            $sprite[ substr( $file, 0, -4 ) ] = file_get_contents( $svg_dir. '/' . $file );
-        }
-    }
-
-}
-
-define( 'NiceSprite', $sprite );
-
 if ( !function_exists( 'nice_svg' ) ) {
     function nice_svg( $icon ) {
         return NiceSvg::render( $icon );
@@ -26,21 +10,34 @@ Class NiceSvg {
 
     public static function render( $icon ) {
 
-        /** ToDo Check if string **/
+        if ( !isset( $icon ) )                      { $icon                     = []; }
 
-        if ( !$icon )                     { $icon                     = array(); }
+        if ( is_string( $icon ) ) {
+            $id = $icon;
+            $icon = [
+                'id' => $id
+            ];
+        }
 
         if ( !isset ( $icon['id'] ) )               { $icon['id']               = 'cog'; }
+        if ( !isset ( $icon['class'] ) )            { $icon['class']            = ''; }
         if ( !isset ( $icon['size'] ) )             { $icon['size']             = 'medium'; }
+        if ( !isset ( $icon['onclick'] ) )          { $icon['onclick']          = ''; }
         if ( !isset ( $icon['click_able'] ) )       { $icon['click_able']       = false; }
-        if ( !isset ( $icon['sprite'] ) )           { $icon['sprite']           = NiceSprite;}
         if ( !isset ( $icon['rotate'] ) )           { $icon['rotate']           = false;}
 
-        ob_start();
-        include('templates/regular.php');
-        $html = ob_get_clean();
+        ob_start(); ?>
 
-        return $html;
+        <nice-svg
+            svg-id="<?php echo $icon['id']; ?>"
+            svg-class="<?php echo $icon['class']; ?>"
+            svg-size="<?php echo $icon['size']; ?>"
+            onclick="<?php echo $icon['onclick']; ?>"
+            svg-pointer="<?php echo $icon['click_able']; ?>"
+            svg-rotate="<?php echo $icon['rotate']; ?>">
+        </nice-svg>
+
+        <?php return ob_get_clean();
 
     }
 

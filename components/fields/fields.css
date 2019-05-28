@@ -71,6 +71,7 @@
 
 .nice_field .input {
     display: inline-flex;
+    flex-direction: column;
     color: var( --field_font_color );
     background-color: var( --field_background );
     outline: none;

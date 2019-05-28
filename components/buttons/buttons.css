@@ -43,26 +43,26 @@
     background-color: var( --accent_second_button_color );
 }
 
-.nice_button:hover .nice_svg svg {
+.nice_button:hover nice-svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
 
-.nice_button:hover .nice_svg svg {
+.nice_button:hover nice-svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
 
-.nice_button.submit .nice_svg svg {
+.nice_button.submit nice-svg svg {
     fill: var( --icon_reverce_accent_color );
 }
 
-.nice_button.submit:hover .nice_svg svg {
+.nice_button.submit:hover nice-svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
 
-.nice_button.submit:hover .nice_svg svg {
+.nice_button.submit:hover nice-svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }
@@ -72,7 +72,7 @@
     padding: 2px 8px;
 }
 
-.nice_button.tiny .nice_svg {
+.nice_button.tiny nice-svg {
     margin-right: 4px;
 }
 
@@ -81,7 +81,7 @@
     padding: 4px 12px;
 }
 
-.nice_button.small .nice_svg {
+.nice_button.small nice-svg {
     margin-right: 6px;
 }
 
@@ -90,7 +90,7 @@
     padding: 6px 16px;
 }
 
-.nice_button.medium .nice_svg {
+.nice_button.medium nice-svg {
     margin-right: 8px;
 }
 
@@ -99,7 +99,7 @@
     padding: 8px 20px;
 }
 
-.nice_button.large .nice_svg {
+.nice_button.large nice-svg {
     margin-right: 10px;
 }
 
@@ -108,7 +108,7 @@
     padding: 12px 24px;
 }
 
-.nice_button.huge .nice_svg {
+.nice_button.huge nice-svg {
     margin-right: 12px;
 }
 
@@ -121,11 +121,11 @@
     color: var( --font_reverce_accent_color );
 }
 
-.nice_button.submit .nice_svg svg {
+.nice_button.submit nice-svg svg {
     fill: var( --icon_reverce_accent_color );
 }
 
-.nice_button.submit:hover .nice_svg svg {
+.nice_button.submit:hover nice-svg svg {
     fill: var( --icon_reverce_accent_color );
     opacity: 1;
 }

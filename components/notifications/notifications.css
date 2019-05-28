@@ -29,11 +29,11 @@
     opacity: 1;
 }
 
-.notify .nice_svg {
+.notify nice-svg {
     margin-right: 8px;
 }
 
-.notify .nice_svg svg{
+.notify nice-svg svg{
     opacity: 1;
 }
 

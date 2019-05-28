@@ -1,52 +1,61 @@
-.nice_svg {
+nice-svg {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
     line-height: 0;
+    transition: 1s;
+    opacity: 1;
+    visibility: visible;
 }
 
-.nice_svg svg {
+nice-svg svg {
     transition: var( --regular_transition );
     opacity: var( --opacity_blured );
     fill: var( --icon_color );
 }
 
-.nice_svg:hover svg {
+nice-svg:hover svg {
     fill: var( --icon_hover_color );
     opacity: 1;
 }
 
-.nice_svg.micro svg {
+nice-svg.micro svg {
     width: 12px;
     height: 12px;
 }
 
-.nice_svg.tiny svg {
+nice-svg.tiny svg {
     width: 20px;
     height: 20px;
 }
 
-.nice_svg.small svg {
+nice-svg.small svg {
     width: 24px;
     height: 24px;
 }
 
-.nice_svg.medium svg {
+nice-svg.medium svg {
     width: 28px;
     height: 28px;
 }
 
-.nice_svg.large svg {
+nice-svg.large svg {
     width: 32px;
     height: 32px;
 }
 
-.nice_svg.huge svg {
+nice-svg.huge svg {
     width: 38px;
     height: 38px;
 }
 
-.nice_svg.rotate {
+nice-svg.rotate {
     transform: rotate(180deg);
+}
+
+nice-svg.hidden {
+    transition: opacity 1s 0.0s, visibility 0.0s 1s;
+    opacity: 0;
+    visibility: hidden;
 }
