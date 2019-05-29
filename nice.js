@@ -1,6 +1,7 @@
 'use strict';
 
 console.log('Nice initializing...');
+let initial_time = new Date();
 
 import { niceField, baseField, selectField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
@@ -125,14 +126,15 @@ class Nice {
 
         update_jQuery();
 
-        console.log('Nice Construction ended...');
-
+        let end_time = new Date();
+        let res_time = end_time - initial_time;
+        console.log('Nice Construction ended in ' + res_time + 'ms');
     }
 }
 
 jQuery(document).ready(function () {
     window.Nice = new Nice();
     customElements.define('nice-svg', NiceSvg);
-    console.log('Nice framework loaded and ready');
+    console.log('Document ready and Nice added in it');
     console.log( window.Nice );
 });

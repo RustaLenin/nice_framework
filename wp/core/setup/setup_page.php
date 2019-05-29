@@ -172,7 +172,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                             'default'    => true,
                             'permission' => 'all',
                             'icon'       => 'ruble',
-                            'color'      => false
+                            'color'      => false,
+                            'block'      => true,
                         ],
                         'USD' => [
                             'name'       => 'currency_2',
@@ -181,7 +182,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                             'default'    => true,
                             'permission' => 'all',
                             'icon'       => 'dollar',
-                            'color'      => false
+                            'color'      => false,
+                            'block'      => false
                         ],
                         'EUR' => [
                             'name'       => 'currency_3',
@@ -190,7 +192,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                             'default'    => true,
                             'permission' => 'all',
                             'icon'       => 'euro',
-                            'color'      => false
+                            'color'      => false,
+                            'block'      => false
                         ]
                     ]
                 ],

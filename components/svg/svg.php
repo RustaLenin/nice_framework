@@ -19,6 +19,10 @@ Class NiceSvg {
             ];
         }
 
+        else if ( is_bool( $icon ) ) {
+            return '';
+        }
+
         if ( !isset ( $icon['id'] ) )               { $icon['id']               = 'cog'; }
         if ( !isset ( $icon['class'] ) )            { $icon['class']            = ''; }
         if ( !isset ( $icon['size'] ) )             { $icon['size']             = 'medium'; }

@@ -184,14 +184,15 @@ export function vanillaField() {
 }
 
 export function selectField() {
-    return `<div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
+    return `
+<div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
 
     <span
             class="input <%- field['field_class'] %>"
             <% if (field['editable']) {
-                contenteditable="true"
+                contenteditable = "true"
             } else {
-               contenteditable="false"
+                contenteditable = "false"
             } %>
             spellcheck="<%- field['spellcheck'] %>"
             data-type="select"
@@ -203,27 +204,25 @@ export function selectField() {
             data-callback="<%- field['callback'] %>"
             data-select_type="<%- field['select_type'] %>"
             data-data_format="<%- field['data_format'] %>"
-            <% if ( field['editable'] ) { %>
+    <% if ( field['editable'] ) { %>
             oninput="Nice.field.searchList(this)"
             <% } %>
 
     >
-      <% if ( field['content'] ) { %>
-           <%- field['content'] %>
-            <% }  else if(field['label']) {%>
-           <%- field['label'] %>
-         <%  } %>
+        <% if ( field['content'] ) { %>
+            <%- field['content'] %>
+        <% }  else if(field['label']) { %>
+            <%- field['label'] %>
+        <% } %>
     </span>
 
     <span class="selector_arrow SelectorArrow">
-             <nice-svg svg-id="arrow_down" svg-class="arrow_down" svg-size="<%- field['size']; %>"></nice-svg> 
+        <%- Nice.svg({'id': 'arrow_down', 'size': 'micro'}); %>
     </span>
- <% if ( field['icon'] ) { %>
- <span class="field_icon FieldIcon">
-             <nice-svg svg-id="<%- field['icon']; %>" svg-class="<%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
+
+    <span class="field_icon FieldIcon">
+        <%- Nice.svg(field['icon']); %>
     </span>
-         <%  } %>
-    
 
 </div>
 
@@ -231,40 +230,36 @@ export function selectField() {
 
     <% jQuery.each(field['selections'], function (i, element) { %>
 
-    <div
-            class="selection_list__element <% if (field['value'] === element['value']) {
-                ' checked'
-            } %>"
-            onclick="Nice.field.chooseThis(this)"
-            data-value="<%- element['value'] %>"
-            <% if ( element['name'] ) { %>
-            data-name="<%- element['name'] %>"
-            <% } %>
-            <% if ( element['color'] ) { %>
-            style="border-left:3px solid <% element['color'] %> "
-            <% } %>
-    >
-            <span class="selection_list__element_icon">
-                <% if ( element['icon'] ) { %>
-                    <nice-svg svg-id="<%- element['icon'] %>" svg-size="<%- field['size']; %>" style="margin: 0 8px 0 0;"></nice-svg>
+        <div
+                class="selection_list__element <% if (field['value'] === element['value']) {
+                    ' checked'
+                } %>"
+                onclick="Nice.field.chooseThis(this)"
+                data-value="<%- element['value'] %>"
+        <% if ( element['name'] ) { %>
+                data-name="<%- element['name'] %>"
                 <% } %>
+        <% if ( element['color'] ) { %>
+                style="border-left:3px solid <% element['color'] %> "
+                <% } %>
+        >
+            <span class="selection_list__element_icon">
+                <%- Nice.svg(element['icon']); %>
             </span>
 
-        <span class="selection_list__element_text"><%- element['text'] %></span>
+            <span class="selection_list__element_text"><%- element['text'] %></span>
 
-        <% if ( field['checkboxes'] ) { %>
-        <span class="selection_list__element_check">
-          <nice-svg svg-id="check" svg-size="<%- field['size']; %>" style="margin: 0 8px 0 0;"></nice-svg> 
-        </span>
-        <% } %>
+            <% if ( field['checkboxes'] ) { %>
+                <span class="selection_list__element_check">
+                    <%- Nice.svg( { 'id': 'check', 'size': field['size'] } ); %>
+                </span>
+            <% } %>
 
-    </div>
+        </div>
 
     <% }); %>
 
 </div>
-
-
 `;
 }
 

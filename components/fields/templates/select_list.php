@@ -20,14 +20,11 @@
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
     <span class="selector_arrow SelectorArrow">
-        <nice-svg svg-id="arrow_down" svg-size="<?php echo $field['size']; ?>"></nice-svg>
+        <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro' ] ); ?>
     </span>
 
     <span class="field_icon FieldIcon">
-        <?php if ( $field['icon'] ) {
-            ?>
-            <nice-svg svg-id="<?php echo $field['icon']; ?>" svg-class="<?php echo $field['icon_class']; ?>" svg-size="<?php echo $field['size']; ?>"></nice-svg>
-        <?php }?>
+        <?php echo nice_svg( $field['icon'] ); ?>
     </span>
 
 </div>
@@ -46,9 +43,7 @@
             <?php if ( $selector['color'] ) { echo 'style="border-left:3px solid ' . $selector['color'] . '"';} ?>
         >
             <span class="selection_list__element_icon">
-                <?php if ( $selector['icon'] ) {
-                    echo nice_svg([ 'size' => $field['size'], 'id' => $selector['icon'], 'margin' => '0 8px 0 0' ]);
-                } ?>
+                <?php echo nice_svg( $selector['icon'] );?>
             </span>
 
             <span class="selection_list__element_text"><?php echo $selector['text']; ?></span>

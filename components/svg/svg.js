@@ -7,7 +7,7 @@ export class NiceSvg extends HTMLElement {
     static observedAttributes = [ 'svg-id', 'svg-class', 'svg-size', 'svg-pointer', 'svg-rotate' ];
 
     /** What sizes are supported for element **/
-    possibleSizes = [ 'micro', 'tiny', 'small', 'medium', 'large', 'huge' ];
+    possibleSizes = [ 'ultra_small', 'micro', 'tiny', 'small', 'medium', 'large', 'huge' ];
 
     /** List of methods to update element based on attr names **/
     updateAttrMethods = {
@@ -152,6 +152,16 @@ export class NiceSvg extends HTMLElement {
  * @returns {string} - HTML element nice-svg
  */
 export function niceSvg( icon = {} ) {
+
+    if ( typeof icon === 'string' ) {
+        icon = {
+            'id': icon
+        }
+    }
+
+    else if ( typeof icon === 'boolean' ) {
+        return '';
+    }
 
     if (!icon['id']) {
         icon['id'] = 'cog';
