@@ -37,13 +37,13 @@ export function niceField(field) {
         field['validation'] = false
     }
     if (!(field['placeholder'])) {
-        field['placeholder'] = 'Type some text'
+        field['placeholder'] = Nice._t('Type some text')
     }
     if (!(field['label'])) {
-        field['label'] = 'Really nice field'
+        field['label'] = Nice._t('Really nice field')
     }
     if (!(field['error_message'])) {
-        field['error_message'] = 'Enter valid data'
+        field['error_message'] = Nice._t('Enter valid data')
     }
     if (!(field['show_label'])) {
         field['show_label'] = true

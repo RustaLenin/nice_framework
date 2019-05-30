@@ -45,7 +45,7 @@ export const exampleTemplate = `
 <div class="nice_modal Modal">
 
     <div class="header">
-        <span class="title">Here is some title</span>
+        <span class="title"><%- Nice._t('Here is some title'); %></span>
 
         <div class="control">
         <nice-svg svg-id="minus" svg-size="small" svg-pointer="true" svg-click="Nice.modal.collapse();"></nice-svg>
@@ -56,13 +56,13 @@ export const exampleTemplate = `
 
     <div class="body">
 
-        Here is some modal content
+        <%- Nice._t('Here is some modal content'); %>
 
     </div>
 
     <div class="footer">
 
-        <div class="nice_submit">Submit Modal</div>
+        <div class="nice_submit"><%- Nice._t('Submit Modal'); %></div>
 
     </div>
 

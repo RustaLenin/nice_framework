@@ -193,7 +193,7 @@ export function niceSvg( icon = {} ) {
 export function regularSVGTemplate( icon ) {
     return `
     <nice-svg
-        svg_id="${ icon['id'] }"
+        svg-id="${ icon['id'] }"
         svg-class="${ icon['class'] }"
         svg-size="${ icon['size'] }"
         onclick="${ icon['onclick'] }"

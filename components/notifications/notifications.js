@@ -2,15 +2,21 @@ export function insertNotifyArea() {
     jQuery(document.body).prepend('<div class="notify_area NotifyArea"></div>');
 }
 
-export function niceNotify( notify ) {
+export function niceNotify( notify = {} ) {
 
     let area = '.NotifyArea';
 
-    if ( typeof notify === 'undefined' ) { notify = {}; }
-    if ( typeof notify['type'] === 'undefined' && notify['result'] === 'undefined' ) { notify['type'] = 'info'; }
-    if ( typeof notify['type'] === 'undefined' && notify['result'] ) { notify['type'] = notify['result']; }
-    if ( typeof notify['title'] === 'undefined' ) { notify['title'] = 'Notification'; }
-    if ( typeof notify['message'] === 'undefined' ) { notify['message'] = 'Something happens ¯\\_(ツ)_/¯'; }
+    if (  typeof notify['type'] === 'undefined' ) {
+        if( typeof notify['result'] !== 'undefined' ) {
+            notify['type'] = notify['result']
+        } else {
+            notify['type'] = 'info';
+        }
+
+    }
+
+    if ( typeof notify['title'] === 'undefined' ) { notify['title'] = Nice._t('Notification'); }
+    if ( typeof notify['message'] === 'undefined' ) { notify['message'] = Nice._t('Something happens') + ' ¯\\_(ツ)_/¯'; }
 
     jQuery(area).prepend( renderNotify( notify ) );
     jQuery(area).find('.Notify:first-of-type').addClass('show').delay(3500).animate({
@@ -25,9 +31,9 @@ export function niceNotify( notify ) {
 export function renderNotify( notify) {
     return `
     <div class="notify Notify ${notify.type}">
-        <span class="nice_svg large">${Nice.svg({'id': 'notify_' + notify.type})}</span>
+        ${Nice.svg({'id': 'notify_' + notify.type, 'size': 'large'})}
         <div class="body">
-            <span class="title">${notify.type}</span>
+            <span class="title">${notify.title}</span>
             <span class="message">${notify.message}</span>
         </div>
     </div>

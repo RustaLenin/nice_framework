@@ -19,10 +19,15 @@ import { toggleSelector, chooseThis } from './components/fields/selectors.js';
 import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
 import { update_jQuery } from './jquery/plugins.js';
 import { colorMethods } from './components/logic_patterns/color_methods.js';
+import { _t, switchLocale } from './languages/translate.js';
+import { en } from './languages/js/en.js';
+import { ru } from './languages/js/ru.js';
 
 class Nice {
 
-    constructor() {
+    constructor( args = {
+        'locale': 'en'
+    }) {
 
         console.log('Nice Construction started...');
 
@@ -124,17 +129,23 @@ class Nice {
         /** colorMethods **/
         this.colorMethods = colorMethods;
 
+        /** Local's **/
+        this._t = _t;
+        this.locals = {};
+        this.locals.en = en;
+        this.locals.ru = ru;
+        this.currentLocale = eval(args['locale']);
+        this.switchLocale = switchLocale;
+
         update_jQuery();
 
         let end_time = new Date();
         let res_time = end_time - initial_time;
-        console.log('Nice Construction ended in ' + res_time + 'ms');
+        console.log( _t('Nice Construction ended in ') + res_time + 'ms' );
     }
 }
 
-jQuery(document).ready(function () {
-    window.Nice = new Nice();
-    customElements.define('nice-svg', NiceSvg);
-    console.log('Document ready and Nice added in it');
-    console.log( window.Nice );
-});
+window.Nice = new Nice();
+customElements.define('nice-svg', NiceSvg);
+console.log( _t('Nice added in document') );
+console.log( window.Nice );
