@@ -1,5 +1,4 @@
 export function niceField(field) {
-
     if (!field) {
         field = {}
     }
@@ -45,7 +44,7 @@ export function niceField(field) {
     if (!(field['error_message'])) {
         field['error_message'] = Nice._t('Enter valid data')
     }
-    if (!(field['show_label'])) {
+    if (field['show_label'] === "" || !(field['show_label'])) {
         field['show_label'] = true
     }
     if (!(field['no_min_width'])) {
@@ -90,6 +89,9 @@ export function niceField(field) {
         if (!(field['callback'])) {
             field['callback'] = '';
         }
+        if (typeof field['icon'] === 'undefined') {
+            field['icon'] = false
+        }
 
         if (field['select_type'] === 'single') {
 
@@ -132,7 +134,7 @@ export function niceField(field) {
 
 export function baseField() {
     return `<div class="nice_field NiceField <%- field['class']; %> <%- field['size']; %> <%- field['border_type']; %> <%- field['label_type']; %>  <% if ( field['no_min_width'] ) { %>no_min_width<% } %> <% if ( field['align_center'] ) { %>align_center<% } %> <% if ( field['icon'] ) { %>with_icon<% } %>">
-                <span class="label"><%- field['label']; %></span>
+               <% if ( field['show_label'] ){ %><span class="label"><%- field['label']; %></span>  <% } %>
                 <div class="area NiceFieldArea">
                 <%-  ejs.render( Nice.field.templates[field['field_type']](), { 'field': field }) %>
                 </div>
@@ -156,8 +158,8 @@ export function regularField() {
                     <% if ( field['icon'] ) { %>
                     <nice-svg svg-id="<%- field['icon']; %>" svg-class=" <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
                     <% } if ( field['validation'] != 'false' ) { %>
-                        <span class="success_icon"><svg><use href="#check"></use></svg></span>
-                        <span class="error_icon"><svg><use href="#close"></use></svg></span>
+                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
+                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
                     <% } %>`;
 }
 
@@ -177,8 +179,8 @@ export function vanillaField() {
                       <nice-svg svg-id="<%- field['icon']; %>" svg-class="<%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
                    </span>
                     <% } if ( field['validation'] !== 'false' ) { %>
-                        <span class="success_icon"><svg><use href="#check"></use></svg></span>
-                        <span class="error_icon"><svg><use href="#close"></use></svg></span>
+                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
+                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
                     <% } %>
         `;
 }
@@ -207,6 +209,11 @@ export function selectField() {
     <% if ( field['editable'] ) { %>
             oninput="Nice.field.searchList(this)"
             <% } %>
+              <% if (field['editable']) { %>
+                contenteditable="true"
+           <% } else { %>
+               contenteditable="false"
+          <% } %>
 
     >
         <% if ( field['content'] ) { %>
@@ -219,11 +226,11 @@ export function selectField() {
     <span class="selector_arrow SelectorArrow">
         <%- Nice.svg({'id': 'arrow_down', 'size': 'micro'}); %>
     </span>
-
+    <% if(field['icon']) { %>
     <span class="field_icon FieldIcon">
         <%- Nice.svg(field['icon']); %>
     </span>
-
+    <% } %>
 </div>
 
 <div class="selections_list SelectionsList <%- field['select_type'] %>">
@@ -276,8 +283,8 @@ export function mediaField() {
                     ><%- field['value']; %></span>
                     <nice-svg svg-id="add_image" svg-class="media_icon click_able MediaFieldButton <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
                     <% if ( field['validation'] != 'false' ) { %>
-                        <span class="success_icon"><svg><use href="#check"></use></svg></span>
-                        <span class="error_icon"><svg><use href="#close"></use></svg></span>
+                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
+                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
                     <% } %>
         `;
 }

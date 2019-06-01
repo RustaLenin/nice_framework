@@ -53,6 +53,7 @@ Class NICE_FIELDS {
             if ( !isset( $field['content'] ) )        { $field['content']        = ''; }
             if ( !isset( $field['editable'] ) )       { $field['editable']       = false; }
             if ( !isset( $field['callback'] ) )       { $field['callback']       = ''; }
+            if ( !isset( $field['icon'] ) )           { $field['icon']           = false; }
 
             if ( $field['select_type'] === 'single' ) {
 

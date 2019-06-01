@@ -162,6 +162,9 @@ export function niceSvg( icon = {} ) {
     else if ( typeof icon === 'boolean' ) {
         return '';
     }
+    else if ( typeof icon === 'undefined' ) {
+        return '';
+    }
 
     if (!icon['id']) {
         icon['id'] = 'cog';

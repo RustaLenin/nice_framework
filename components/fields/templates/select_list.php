@@ -22,21 +22,22 @@
     <span class="selector_arrow SelectorArrow">
         <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro' ] ); ?>
     </span>
-
+    <?php if ($field['icon']) { ?>
     <span class="field_icon FieldIcon">
         <?php echo nice_svg( $field['icon'] ); ?>
     </span>
-
+    <?php } ?>
 </div>
 
 <div class="selections_list SelectionsList <?php echo $field['select_type']; ?>">
 
     <?php
-
     foreach( $field['selections'] as $key => $selector ) { ?>
 
         <div
-            class="selection_list__element <?php if ( $field['value'] === $selector['value'] ) {echo ' checked'; }?>"
+            class="selection_list__element
+            <?php if ( $field['select_type'] === 'single' ) { if ( $field['value'] === $selector['value'] ) { echo ' checked'; } }
+            else if ( $field['select_type'] === 'multiple' ) { if ( $selector['checked'] ) { echo ' checked'; } }?>"
             onclick="Nice.field.chooseThis(this)"
             data-value="<?php echo $selector['value']; ?>"
             <?php if ( $selector['name'] ) { ?> data-name="<?php echo $selector['name']; ?>" <?php } ?>
