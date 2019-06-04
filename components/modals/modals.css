@@ -58,7 +58,7 @@
 .nice_modal .header .control nice-svg {
     margin-right: 16px;
     border: 2px solid #E0E0E0;
-    padding: 2px;
+    padding: 5px;
     border-radius: 50%;
 }
 
@@ -71,7 +71,7 @@
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    padding: 42px 25px 16px;
+    padding: 16px 25px 16px;
     overflow-y: auto;
     min-height: 30vh;
     min-width: 400px;

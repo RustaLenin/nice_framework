@@ -318,7 +318,6 @@
 
 .nice_field.error .input {
     border-color: var( --field_validate_error );
-    box-shadow: 0 0 4px 2px var( --field_validate_error );
 }
 
 .nice_field.error .error_message {
@@ -346,7 +345,6 @@
 
 .nice_field.success .input {
     border-color: var( --field_validate_success );
-    box-shadow: 0 0 4px 2px var( --field_validate_success );
 }
 
 .nice_field.success .success_icon svg {
