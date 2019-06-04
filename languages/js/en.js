@@ -6,7 +6,7 @@ export const en = {
     'No such locale yet, need a translation': 'No such locale yet, need a translation',
     'Nice current locale switched to ': 'Nice current locale switched to ',
 
-    //Buttons
+    // Buttons
     'Another one nice button': 'Another one nice button',
 
     // Fields
@@ -19,7 +19,10 @@ export const en = {
     'Here is some modal content': 'Here is some modal content',
     'Submit Modal': 'Submit Modal',
 
-    //Notifications
+    // Notifications
     'Notification': 'Notification',
     'Something happens': 'Something happens',
+
+    // MediaPicker
+    'Choose Image': 'Choose Image'
 };

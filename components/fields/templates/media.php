@@ -11,18 +11,15 @@
         data-required="<?php echo $field['required']; ?>"
     ><?php echo $field['value']; ?></span>
 
-    <span class="field_icon FieldIcon">
-        <?php
+    <?php
         echo nice_svg([
-            'class' => 'media_icon MediaFieldButton',
-            'size' => $field['size'],
             'id' => 'add_image',
+            'class' => ['media_icon', 'MediaFieldButton', 'field_icon', 'FieldIcon'],
+            'size' => $field['size'],
             'click_able' => true,
+            'onclick' => 'Nice.pickers.media( this, event );'
         ]);
-        ?>
-    </span>
 
-<?php if ( $field['validation'] != 'false' ) { ?>
-    <span class="success_icon"><svg><use href="#check"></use></svg></span>
-    <span class="error_icon"><svg><use href="#close"></use></svg></span>
-<?php } ?>
+if ( $field['validation'] ) {
+    include('validate_icons.php');
+} ?>

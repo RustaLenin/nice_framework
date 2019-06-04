@@ -30,6 +30,15 @@ Class NiceSvg {
         if ( !isset ( $icon['click_able'] ) )       { $icon['click_able']       = false; }
         if ( !isset ( $icon['rotate'] ) )           { $icon['rotate']           = false;}
 
+        if ( is_array( $icon['class'] ) ) {
+            $temp_string = '';
+            foreach ( $icon['class'] as $key => $value ) {
+                $temp_string .= $value . ',';
+            }
+            $temp_string = mb_substr( $temp_string, 0, -1 );
+            $icon['class'] = $temp_string;
+        }
+
         ob_start(); ?>
 
         <nice-svg

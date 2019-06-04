@@ -1,3 +1,5 @@
+import { baseField } from './fields_templates.js';
+
 export function niceField(field) {
     if (!field) {
         field = {}
@@ -130,179 +132,9 @@ export function niceField(field) {
         }
 
     }
-    return ejs.render(baseField(), {'field': field})
 
-}
+    return baseField( field );
 
-export function baseField() {
-    return `<div class="nice_field NiceField <%- field['class']; %> <%- field['size']; %> <%- field['border_type']; %> <%- field['label_type']; %>  <% if ( field['no_min_width'] ) { %>no_min_width<% } %> <% if ( field['align_center'] ) { %>align_center<% } %> <% if ( field['icon'] ) { %>with_icon<% } %>">
-               <% if ( field['show_label'] ){ %><span class="label"><%- field['label']; %></span>  <% } %>
-                <div class="area NiceFieldArea">
-                <%-  ejs.render( Nice.field.templates[field['field_type']](), { 'field': field }) %>
-                </div>
-                <% if ( field['validation'] !== 'false' ) { %>
-                <span class="error_message"><%- field['error_message']; %></span>
-                <% } %>
-            </div>`;
-}
-
-export function regularField() {
-    return `
-    <span  class="input <%- field['field_class']; %>"
-        contenteditable="true"
-        spellcheck="<%- field['spellcheck']; %>"
-        data-type="<%- field['type']; %>"
-        data-name="<%- field['name']; %>"
-        data-validation="<%- field['validation']; %>"
-        data-placeholder="<%- field['placeholder']; %>"
-        data-required="<%- field['required']; %>"
-        onpaste="Nice.field.pastePlain(e);"
-        <% if ( field['validation'] ) { %>
-            oninput="Nice.field.delayValidate(this)"
-            onfocus="Nice.field.delayValidate(this)"
-            onfocusout="Nice.field.validate(this)"
-        <% } %>
-                    ><%- field['value']; %></span>
-                    <% if ( field['icon'] ) { %>
-                    <nice-svg svg-id="<%- field['icon']; %>" svg-class=" <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
-                    <% } if ( field['validation'] != 'false' ) { %>
-                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
-                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
-                    <% } %>`;
-}
-
-export function vanillaField() {
-    return `<input
-                            class="input <%- field['field_class']; %>  <% if ( field['icon'] ) { %>with_icon<% } %>"
-                            spellcheck="<%- field['spellcheck']; %>"
-                            type="<%- field['type']; %>"
-                            name="<%- field['name']; %>"
-                            data-validation="<%- field['validation']; %>"
-                            placeholder="<%- field['placeholder']; %>"
-                            data-required="<%- field['required']; %>"
-                            value="<%- field['value']; %>"
-                    >
-                    <% if ( field['icon'] ) { %>
-                  <span class="field_icon FieldIcon">
-                      <nice-svg svg-id="<%- field['icon']; %>" svg-class="<%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
-                   </span>
-                    <% } if ( field['validation'] !== 'false' ) { %>
-                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
-                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
-                    <% } %>
-        `;
-}
-
-export function selectField() {
-    return `
-<div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
-
-    <span
-            class="input <%- field['field_class'] %>"
-            <% if (field['editable']) {
-                contenteditable = "true"
-            } else {
-                contenteditable = "false"
-            } %>
-            spellcheck="<%- field['spellcheck'] %>"
-            data-type="select"
-            data-name="<%- field['name'] %>"
-            data-value="<%- field['value'] %>"
-            data-validation="<%- field['validation'] %>"
-            data-placeholder="<%- field['placeholder'] %>"
-            data-required="<%- field['required'] %>"
-            data-callback="<%- field['callback'] %>"
-            data-select_type="<%- field['select_type'] %>"
-            data-data_format="<%- field['data_format'] %>"
-    <% if ( field['editable'] ) { %>
-            oninput="Nice.field.searchList(this)"
-            <% } %>
-              <% if (field['editable']) { %>
-                contenteditable="true"
-           <% } else { %>
-               contenteditable="false"
-          <% } %>
-
-    >
-        <% if ( field['content'] ) { %>
-            <%- field['content'] %>
-        <% }  else if(field['label']) { %>
-            <%- field['label'] %>
-        <% } %>
-    </span>
-
-    <span class="selector_arrow SelectorArrow">
-        <%- Nice.svg({'id': 'arrow_down', 'size': 'micro'}); %>
-    </span>
-    <% if(field['icon']) { %>
-    <span class="field_icon FieldIcon">
-        <%- Nice.svg(field['icon']); %>
-    </span>
-    <% } %>
-</div>
-
-<div class="selections_list SelectionsList <%- field['select_type'] %>">
-
-    <% jQuery.each(field['selections'], function (i, element) { %>
-
-        <div
-                class="selection_list__element 
-            <% if ( field['select_type'] === 'single' ) {  %>
-           <% if ( field['value'] === element['value'] ) { %>
-           checked
-           <% } %>
-           <% } %>
-            <% if ( field['select_type'] === 'multiple' ) {  %>
-           <% if ( element['checked'] ) { %>
-           checked
-           <% } %>
-           <% } %>"
-                onclick="Nice.field.chooseThis(this)"
-                data-value="<%- element['value'] %>"
-        <% if ( element['name'] ) { %>
-                data-name="<%- element['name'] %>"
-                <% } %>
-        <% if ( element['color'] ) { %>
-                style="border-left:3px solid <% element['color'] %> "
-                <% } %>
-        >
-            <span class="selection_list__element_icon">
-                <%- Nice.svg(element['icon']); %>
-            </span>
-
-            <span class="selection_list__element_text"><%- element['text'] %></span>
-
-            <% if ( field['checkboxes'] ) { %>
-                <span class="selection_list__element_check">
-                    <%- Nice.svg( { 'id': 'check', 'size': field['size'] } ); %>
-                </span>
-            <% } %>
-
-        </div>
-
-    <% }); %>
-
-</div>
-`;
-}
-
-export function mediaField() {
-    return `<span
-                            class="input MediaField <%- field['field_class']; %> with_icon"
-                            contenteditable="true"
-                            spellcheck="<%- field['spellcheck']; %>"
-                            data-type="<%- field['type']; %>"
-                            data-name="<%- field['name']; %>"
-                            data-validation="<%- field['validation']; %>"
-                            data-placeholder="<%- field['placeholder']; %>"
-                            data-required="<%- field['required']; %>"
-                    ><%- field['value']; %></span>
-                    <nice-svg svg-id="add_image" svg-class="media_icon click_able MediaFieldButton <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
-                    <% if ( field['validation'] != 'false' ) { %>
-                        <span class="success_icon"><nice-svg svg-id="check"></nice-svg></span>
-                        <span class="error_icon"><nice-svg svg-id="close"></nice-svg></span>
-                    <% } %>
-        `;
 }
 
 export function clearEditable() {
@@ -356,5 +188,38 @@ export function searchList(elem) {
         }
     });
 
+
+}
+
+export function WPMediaForFields( icon, e ) {
+
+    e.preventDefault();
+
+    let
+        container = icon.closest('.NiceField'),
+        input = container.querySelector('.input')
+    ;
+
+    let media_frame = wp.media({
+        title: Nice._t('Choose Image'),
+        multiple : false,
+        library : {
+            type : 'image',
+        }
+    });
+
+    console.log( media_frame );
+
+    media_frame.on( 'close', function() {
+        let selection =  media_frame.state().get('selection');
+        selection.each( function( attachment ) {
+            input.innerHTML = attachment['attributes']['url'];
+            if ( input.getAttribute('data-validation') ) {
+                Nice.field.validate( input );
+            }
+        });
+    });
+
+    media_frame.open();
 
 }

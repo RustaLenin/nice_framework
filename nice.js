@@ -3,8 +3,11 @@
 console.log('Nice initializing...');
 let initial_time = new Date();
 
+/** PolyFill and JS boost **/
+import { forEach } from './sugar/js.js';
+
 /** Nice **/
-import { niceField, baseField, selectField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
+import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
@@ -44,11 +47,6 @@ class Nice {
         /** Fields **/
         this.field = niceField;
         this.field.templates = {};
-        this.field.templates.base = baseField;
-        this.field.templates.select_list = selectField;
-        this.field.templates.regular = regularField;
-        this.field.templates.vanilla = vanillaField;
-        this.field.templates.media = mediaField;
         this.field.clearEditable = clearEditable;
         this.field.clearEditableInArea = clearEditableInArea;
         this.field.pastePlain = pastePlain;
@@ -129,6 +127,7 @@ class Nice {
         this.pickers = {};
         this.pickers.handle = handlePickers;
         this.pickers.handleData = handleDatePicker;
+        this.pickers.media = WPMediaForFields;
 
         /** colorMethods **/
         this.colorMethods = colorMethods;
@@ -149,6 +148,7 @@ class Nice {
     }
 }
 
+forEach();
 window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;

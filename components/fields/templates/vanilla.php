@@ -21,7 +21,6 @@
     </span>
 <?php }
 
-if ( $field['validation'] != 'false' ) { ?>
-    <span class="success_icon"><svg><use href="#check"></use></svg></span>
-    <span class="error_icon"><svg><use href="#close"></use></svg></span>
-<?php } ?>
+if ( $field['validation'] ) {
+    include('validate_icons.php');
+} ?>

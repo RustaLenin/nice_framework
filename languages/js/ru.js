@@ -6,7 +6,7 @@ export const ru = {
     'No such locale yet, need a translation': 'Ещё нет такой локали, требуется перевод',
     'Nice current locale switched to ': 'Nice локаль изменена на ',
 
-    //Buttons
+    // Buttons
     'Another one nice button': 'Ещё одна nice кнопка',
 
     // Fields
@@ -19,7 +19,10 @@ export const ru = {
     'Here is some modal content': 'Контент для модального окна',
     'Submit Modal': 'Отправить данные',
 
-    //Notifications
+    // Notifications
     'Notification': 'Уведомление',
     'Something happens': 'Что-то случилось',
+
+    // MediaPicker
+    'Choose Image': 'Выберите картинку'
 };

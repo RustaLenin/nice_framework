@@ -4,7 +4,7 @@
 export class NiceSvg extends HTMLElement {
 
     /** Which attributes will fire changed event **/
-    static observedAttributes = [ 'svg-id', 'svg-class', 'svg-size', 'svg-pointer', 'svg-rotate' ];
+    static observedAttributes = [ 'svg-id', 'svg-size', 'svg-pointer', 'svg-rotate' ];
 
     /** What sizes are supported for element **/
     possibleSizes = [ 'ultra_small', 'micro', 'tiny', 'small', 'medium', 'large', 'huge' ];
@@ -12,7 +12,6 @@ export class NiceSvg extends HTMLElement {
     /** List of methods to update element based on attr names **/
     updateAttrMethods = {
         'svg-id': this.updateIcon,
-        'svg-class': this.updateClass,
         'svg-size': this.updateSize,
         'svg-pointer': this.updatePointer,
         'svg-rotate': this.updateRotate,
@@ -42,10 +41,15 @@ export class NiceSvg extends HTMLElement {
         }
 
         /** Construct element based on the properties **/
-        self.className = `${svg_size}`;
+        self.classList.add( svg_size );
 
         if ( svg_class ) {
-            self.classList.add( svg_class );
+            let classes = svg_class.split(',');
+            classes.forEach( function ( val ) {
+                if ( val ) {
+                    self.classList.add( val );
+                }
+            });
         }
 
         if ( svg_pointer === 'true' ) {
@@ -76,21 +80,6 @@ export class NiceSvg extends HTMLElement {
             setTimeout( function () {
                 self.innerHTML = ``;
             }, 400 );
-        }
-    }
-
-    /**
-     * Function what update nice-svg element custom class
-     * @param oldClass {string} - Old custom class we need to remove
-     * @param newClass {string} - New class we need to set up
-     * @param self {object} - instance of nice-svg element we are updating
-     */
-    updateClass( oldClass, newClass, self) {
-        if ( oldClass ) {
-            self.classList.remove(oldClass);
-        }
-        if ( newClass ) {
-            self.classList.add(newClass);
         }
     }
 
@@ -169,10 +158,21 @@ export function niceSvg( icon = {} ) {
     if (!icon['id']) {
         icon['id'] = 'cog';
     }
+
     if (!icon['class']) {
         icon['class'] = '';
     }
-    if (!icon['size']) {
+
+    if ( typeof icon['class'] === 'object' ) {
+        let temp_string;
+        icon['class'].forEach( function ( key, value ) {
+            temp_string += value + ',';
+        });
+        temp_string.slice(0, -1);
+        icon['class'] = temp_string;
+    }
+
+    if ( typeof icon['size'] === 'undefined' || !icon['size'] ) {
         icon['size'] = 'medium';
     }
     if (!icon['click_able']) {

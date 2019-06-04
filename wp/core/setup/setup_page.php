@@ -4,6 +4,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
 
     public static function construct() {
 
+        wp_enqueue_media();
+
         $model = [
             'slug'  => 'nice_framework_setup',
             'title' => 'Nice FrameWork Setup',

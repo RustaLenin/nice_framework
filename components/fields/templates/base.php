@@ -9,6 +9,7 @@
     if ( $field['no_min_width'] ){ echo ' no_min_width'; }
     if ( $field['align_center'] ){ echo ' align_center'; }
     if ( $field['icon'] )        { echo ' with_icon';    }
+    else if ( $field['field_type'] === 'media' ) { echo ' with_icon'; }
     ?>
 ">
 

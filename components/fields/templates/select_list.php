@@ -19,13 +19,12 @@
 
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
-    <span class="selector_arrow SelectorArrow">
-        <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro' ] ); ?>
-    </span>
+    <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro', 'class' => ['selector_arrow', 'SelectorArrow'] ] ); ?>
+
     <?php if ($field['icon']) { ?>
-    <span class="field_icon FieldIcon">
-        <?php echo nice_svg( $field['icon'] ); ?>
-    </span>
+        <span class="field_icon FieldIcon">
+            <?php echo nice_svg( $field['icon'] ); ?>
+        </span>
     <?php } ?>
 </div>
 

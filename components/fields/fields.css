@@ -51,6 +51,7 @@
     font-size: 16px;
     color: var( --support_font_color );
     margin-bottom: 2px;
+    padding-left: 12px;
 }
 
 .nice_field .area {
@@ -72,6 +73,7 @@
 .nice_field .input {
     display: inline-flex;
     flex-direction: column;
+    justify-content: center;
     color: var( --field_font_color );
     background-color: var( --field_background );
     outline: none;
@@ -119,7 +121,6 @@
 
 .nice_field.large .label {
     font-size: 14px;
-    padding-left: 24px;
 }
 
 /** Medium **/
@@ -141,7 +142,6 @@
 
 .nice_field.medium .label {
     font-size: 12px;
-    padding-left: 18px;
 }
 
 /** Small **/
@@ -162,7 +162,6 @@
 
 .nice_field.small .label {
     font-size: 11px;
-    padding-left: 12px;
 }
 
 /** Tiny **/
@@ -183,7 +182,6 @@
 
 .nice_field.tiny .label {
     font-size: 10px;
-    padding-left: 8px;
 }
 
 .nice_field .input.hidetext {
@@ -285,17 +283,17 @@
     z-index: 10;
     background: var(--content_background);
     padding: 0 2px;
-    left: 18px;
+    left: 12px;
 }
 
 .nice_field.over_border.large .label {
     top: 7px;
-    left: 24px;
+    left: 12px;
 }
 
 .nice_field.over_border.medium .label {
     top: 5px;
-    left: 18px;
+    left: 12px;
 }
 
 .nice_field.over_border.small .label {
@@ -305,7 +303,7 @@
 
 .nice_field.over_border.tiny .label {
     top: 0;
-    left: 8px;
+    left: 12px;
 }
 
 /** Validating **/
@@ -362,7 +360,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: 16px;
+    right: 12px;
     cursor: pointer;
 }
 
