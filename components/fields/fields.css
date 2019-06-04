@@ -327,15 +327,15 @@
     padding-top: 6px;
 }
 
+.nice_field.success .success_icon,
 .nice_field.error .error_icon {
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 24px;
-    height: 24px;
 }
 
 .nice_field.error .error_icon svg {
@@ -347,17 +347,6 @@
 .nice_field.success .input {
     border-color: var( --field_validate_success );
     box-shadow: 0 0 4px 2px var( --field_validate_success );
-}
-
-.nice_field.success .success_icon {
-    position: absolute;
-    right: 12px;
-    top: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 24px;
-    height: 24px;
 }
 
 .nice_field.success .success_icon svg {

@@ -11,6 +11,11 @@
     data-validation="<?php echo $field['validation']; ?>"
     data-placeholder="<?php echo $field['placeholder']; ?>"
     data-required="<?php if ( $field['required'] ) { echo 'true'; } ?>"
+    <?php if ( $field['validation'] ) { ?>
+        oninput="Nice.field.delayValidate(this)"
+        onfocus="Nice.field.delayValidate(this)"
+        onfocusout="Nice.field.validate(this)"
+    <?php } ?>
 
 ><?php echo $field['value']; ?></span>
 

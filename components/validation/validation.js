@@ -1,6 +1,6 @@
 import { debounce } from '../logic_patterns/logic.js'
 
-export const delayFieldValidation = debounce( fieldValidation, 1200 );
+export const delayFieldValidation = debounce( fieldValidation, 2400 );
 
 export const validationTypes = {
     'email':    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -99,36 +99,69 @@ export function isNotEmpty( val ) {
 
 }
 
-export function fieldValidation( Validate ) {
-    console.log('test')
+export function fieldValidation( input ) {
 
-    let container = Validate.field.parents('.NiceField');
-    container.removeClass('error success');
+    let container = input.closest('.NiceField');
+
+    container.classList.remove('success', 'error');
+
+    let validation = input.getAttribute('data-validation');
 
     let value;
-    if ( Validate.field.is( 'input') ) {
-        value = Validate.field.val();
+    if ( dom.isInput( input ) ) {
+        value = input.value;
     } else {
-        value = Validate.field.html();
+        value = input.innerHTML;
     }
 
-    let fn = Nice.validation[Validate['type']];
+    let fn = Nice.validation[validation];
 
-    if ( typeof  fn !== 'function' ) {
-        console.log('No such validation function');
+    if ( typeof fn !== 'function' ) {
+        container.classList.add('error');
+        container.closest('.error_message').innerHTML = Nice._t('Unknown validation method');
     } else {
 
-        let ValidateResult = fn( value );
-
-        if ( ValidateResult ) {
-            container.addClass('success');
+        if ( fn( value ) ) {
+            container.classList.add('success');
         } else {
-            container.addClass('error');
+            container.classList.add('error');
         }
 
     }
 
 }
+
+// Old version of function writed in jQuery with object props
+// export function fieldValidation( Validate ) {
+//     console.log('test');
+//
+//     let container = Validate.field.parents('.NiceField');
+//     container.removeClass('error success');
+//
+//     let value;
+//     if ( Validate.field.is( 'input') ) {
+//         value = Validate.field.val();
+//     } else {
+//         value = Validate.field.html();
+//     }
+//
+//     let fn = Nice.validation[Validate['type']];
+//
+//     if ( typeof  fn !== 'function' ) {
+//         console.log('No such validation function');
+//     } else {
+//
+//         let ValidateResult = fn( value );
+//
+//         if ( ValidateResult ) {
+//             container.addClass('success');
+//         } else {
+//             container.addClass('error');
+//         }
+//
+//     }
+//
+// }
 
 export function HandleFieldsValidate( selector ) {
 

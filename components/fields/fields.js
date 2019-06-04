@@ -147,20 +147,21 @@ export function baseField() {
 }
 
 export function regularField() {
-    return `     <span  class="input <%- field['field_class']; %>"
-                            contenteditable="true"
-                            spellcheck="<%- field['spellcheck']; %>"
-                            data-type="<%- field['type']; %>"
-                            data-name="<%- field['name']; %>"
-                            data-validation="<%- field['validation']; %>"
-                            data-placeholder="<%- field['placeholder']; %>"
-                            data-required="<%- field['required']; %>"
-                            onpaste="Nice.field.pastePlain(e);"
-                           <% if ( field['validation'] ) { %>
-                            oninput=" fieldValidation(<%- field['validation']; %>) "
-                            onfocus="fieldValidation(<%- field['validation']; %>)"
-                            onchangefocus="fieldValidation(<%- field['validation']; %>)"
-<% } %>
+    return `
+    <span  class="input <%- field['field_class']; %>"
+        contenteditable="true"
+        spellcheck="<%- field['spellcheck']; %>"
+        data-type="<%- field['type']; %>"
+        data-name="<%- field['name']; %>"
+        data-validation="<%- field['validation']; %>"
+        data-placeholder="<%- field['placeholder']; %>"
+        data-required="<%- field['required']; %>"
+        onpaste="Nice.field.pastePlain(e);"
+        <% if ( field['validation'] ) { %>
+            oninput="Nice.field.delayValidate(this)"
+            onfocus="Nice.field.delayValidate(this)"
+            onfocusout="Nice.field.validate(this)"
+        <% } %>
                     ><%- field['value']; %></span>
                     <% if ( field['icon'] ) { %>
                     <nice-svg svg-id="<%- field['icon']; %>" svg-class=" <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 

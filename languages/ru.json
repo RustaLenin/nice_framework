@@ -15,5 +15,6 @@
   "Save Settings": "Сохранить настройки",
   "No model received for settings page": "Не получена модель для страницы настроек",
   "No unique settings slug received": "Не получено уникальное идентификационное имя настроек",
-  "Another one tab": "Ещё одна вкладка"
+  "Another one tab": "Ещё одна вкладка",
+  "Unknown validation method": "Неизвестный метод валидации"
 }

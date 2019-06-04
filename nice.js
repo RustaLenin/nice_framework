@@ -3,6 +3,7 @@
 console.log('Nice initializing...');
 let initial_time = new Date();
 
+/** Nice **/
 import { niceField, baseField, selectField, regularField, vanillaField, mediaField, clearEditable, clearEditableInArea, pastePlain, searchList } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
@@ -22,6 +23,9 @@ import { colorMethods } from './components/logic_patterns/color_methods.js';
 import { _t, switchLocale } from './languages/translate.js';
 import { en } from './languages/js/en.js';
 import { ru } from './languages/js/ru.js';
+
+/** dom-api **/
+import {isInput} from './sugar/dom-api.js';
 
 class Nice {
 
@@ -51,6 +55,24 @@ class Nice {
         this.field.toggleSelector = toggleSelector;
         this.field.chooseThis = chooseThis;
         this.field.searchList = searchList;
+        this.field.validate = fieldValidation;
+        this.field.delayValidate = delayFieldValidation;
+
+        /** Validation **/
+        this.validation = {};
+        this.validation.types = validationTypes;
+        this.validation.HandleFieldsValidate = HandleFieldsValidate;
+        this.validation.RunFieldsValidate = RunFieldsValidate;
+        this.validation.isCurrency = isCurrency;
+        this.validation.isDate = isDate;
+        this.validation.isHex = isHex;
+        this.validation.isImgUrl = isImgUrl;
+        this.validation.isInt = isInt;
+        this.validation.isNotEmpty = isNotEmpty;
+        this.validation.isPhone = isPhone;
+        this.validation.isUrl = isUrl;
+        this.validation.isValidEmail = isValidEmail;
+        this.validation.isValidLogin = isValidLogin;
 
         /** Form **/
         this.form = renderForm;
@@ -103,24 +125,6 @@ class Nice {
         this.stopLoader = stopLoader;
         this.removeLoader = removeLoader;
 
-        /** Validation **/
-        this.validation = {};
-        this.validation.types = validationTypes;
-        this.validation.fieldValidation = fieldValidation;
-        this.validation.delayFieldValidation = delayFieldValidation;
-        this.validation.HandleFieldsValidate = HandleFieldsValidate;
-        this.validation.RunFieldsValidate = RunFieldsValidate;
-        this.validation.isCurrency = isCurrency;
-        this.validation.isDate = isDate;
-        this.validation.isHex = isHex;
-        this.validation.isImgUrl = isImgUrl;
-        this.validation.isInt = isInt;
-        this.validation.isNotEmpty = isNotEmpty;
-        this.validation.isPhone = isPhone;
-        this.validation.isUrl = isUrl;
-        this.validation.isValidEmail = isValidEmail;
-        this.validation.isValidLogin = isValidLogin;
-
         /** Pickers **/
         this.pickers = {};
         this.pickers.handle = handlePickers;
@@ -146,6 +150,8 @@ class Nice {
 }
 
 window.Nice = new Nice();
+window.dom = {};
+window.dom.isInput = isInput;
 customElements.define('nice-svg', NiceSvg);
 console.log( _t('Nice added in document') );
 console.log( window.Nice );
