@@ -127,6 +127,7 @@
 .nice_field.medium .input {
     font-size: 20px;
     padding: 12px 60px 12px 18px;
+    min-height: 55px;
 }
 
 .nice_field.only_bottom_border.medium .input {

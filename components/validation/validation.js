@@ -100,6 +100,7 @@ export function isNotEmpty( val ) {
 }
 
 export function fieldValidation( Validate ) {
+    console.log('test')
 
     let container = Validate.field.parents('.NiceField');
     container.removeClass('error success');

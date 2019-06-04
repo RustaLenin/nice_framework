@@ -35,6 +35,8 @@ export function niceField(field) {
     if (!(field['validation'])) {
         field['validation'] = false
     }
+
+
     if (!(field['placeholder'])) {
         field['placeholder'] = Nice._t('Type some text')
     }
@@ -154,6 +156,11 @@ export function regularField() {
                             data-placeholder="<%- field['placeholder']; %>"
                             data-required="<%- field['required']; %>"
                             onpaste="Nice.field.pastePlain(e);"
+                           <% if ( field['validation'] ) { %>
+                            oninput=" fieldValidation(<%- field['validation']; %>) "
+                            onfocus="fieldValidation(<%- field['validation']; %>)"
+                            onchangefocus="fieldValidation(<%- field['validation']; %>)"
+<% } %>
                     ><%- field['value']; %></span>
                     <% if ( field['icon'] ) { %>
                     <nice-svg svg-id="<%- field['icon']; %>" svg-class=" <%- field['icon_class']; %>" svg-size="<%- field['size']; %>"></nice-svg> 
@@ -238,9 +245,17 @@ export function selectField() {
     <% jQuery.each(field['selections'], function (i, element) { %>
 
         <div
-                class="selection_list__element <% if (field['value'] === element['value']) {
-                    ' checked'
-                } %>"
+                class="selection_list__element 
+            <% if ( field['select_type'] === 'single' ) {  %>
+           <% if ( field['value'] === element['value'] ) { %>
+           checked
+           <% } %>
+           <% } %>
+            <% if ( field['select_type'] === 'multiple' ) {  %>
+           <% if ( element['checked'] ) { %>
+           checked
+           <% } %>
+           <% } %>"
                 onclick="Nice.field.chooseThis(this)"
                 data-value="<%- element['value'] %>"
         <% if ( element['name'] ) { %>
