@@ -164,8 +164,10 @@ export function niceSvg( icon = {} ) {
     }
 
     if ( typeof icon['class'] === 'object' ) {
+        console.log(icon['class']);
         let temp_string = '';
-        icon['class'].forEach( function ( key, value ) {
+        icon['class'].forEach( function ( value ) {
+            console.log(     value );
             temp_string = temp_string +  value + ',';
         });
         temp_string.slice(0, -1);

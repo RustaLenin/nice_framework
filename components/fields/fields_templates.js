@@ -79,7 +79,7 @@ export function mediaField( field ) {
         
         ${ Nice.svg({
             'id': 'add_image',
-            'class': ['media_icon', 'MediaFieldButton', 'field_icon', 'FieldIcon' ],
+            'class': ['field_icon', 'FieldIcon' ],
             'size': field['size'],
             'onclick': 'Nice.pickers.media( this, event );',
             'click_able': true,
@@ -270,6 +270,8 @@ export function fieldClass( field ) {
     }
 
     if ( field['icon'] ) {
+        classString += 'with_icon ';
+    } else if ( field['field_type'] === 'media' ) {
         classString += 'with_icon ';
     }
 
