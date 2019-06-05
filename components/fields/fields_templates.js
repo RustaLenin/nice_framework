@@ -8,7 +8,8 @@ export const fields_templates = {
 export function baseField( field ) {
     return `
         <div 
-            class="nice_field NiceField ${field['class']} ${field['size']} ${field['border_type']} ${field['label_type']} ${fieldClass(field)}">
+            class="nice_field NiceField ${field['class']} ${field['size']} ${field['border_type']} ${field['label_type']} ${fieldClass(field)}
+            ">
             
                ${ fieldLabel( field ) }
                 
@@ -78,8 +79,10 @@ export function mediaField( field ) {
         
         ${ Nice.svg({
             'id': 'add_image',
-            'class': ['media_icon', 'click_able', 'MediaFieldButton', field['icon_class'] ],
-            'size': field['size']
+            'class': ['media_icon', 'MediaFieldButton', 'field_icon', 'FieldIcon' ],
+            'size': field['size'],
+            'onclick': 'Nice.pickers.media( this, event );',
+            'click_able': true,
         }) }
 
         ${ validateIcons( field['validation'] ) }

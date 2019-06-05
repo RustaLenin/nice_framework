@@ -164,9 +164,9 @@ export function niceSvg( icon = {} ) {
     }
 
     if ( typeof icon['class'] === 'object' ) {
-        let temp_string;
+        let temp_string = '';
         icon['class'].forEach( function ( key, value ) {
-            temp_string += value + ',';
+            temp_string = temp_string +  value + ',';
         });
         temp_string.slice(0, -1);
         icon['class'] = temp_string;
