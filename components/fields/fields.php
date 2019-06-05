@@ -16,23 +16,37 @@ Class NICE_FIELDS {
         if ( !isset( $field['value'] ) )            { $field['value']            = ''; }
         if ( !isset( $field['type'] ) )             { $field['type']             = 'text'; }
         if ( !isset( $field['size'] ) )             { $field['size']             = 'medium'; }
+
         if ( !isset( $field['class'] ) )            { $field['class']            = ''; }
+        if ( !isset( $field['inline'] ) )           { $field['inline']           = false; }
         if ( !isset( $field['required'] ) )         { $field['required']         = false; }
         if ( !isset( $field['field_class'] ) )      { $field['field_class']      = ''; }
         if ( !isset( $field['field_type'] ) )       { $field['field_type']       = 'regular'; }
-        if ( !isset( $field['icon_class'] ) )       { $field['icon_class']       = ''; }
         if ( !isset( $field['spellcheck'] ) )       { $field['spellcheck']       = false; }
         if ( !isset( $field['name'] ) )             { $field['name']             = ''; }
         if ( !isset( $field['validation'] ) )       { $field['validation']       = false; }
         if ( !isset( $field['placeholder'] ) )      { $field['placeholder']      = _t('Type some text'); }
         if ( !isset( $field['label'] ) )            { $field['label']            = _t('Really nice field'); }
         if ( !isset( $field['error_message'] ) )    { $field['error_message']    = _t('Enter valid data'); }
+        if ( !isset( $field['success_message'] ) )  { $field['success_message']  = false; }
+        if ( !isset( $field['comment_message'] ) )  { $field['comment_message']  = false; }
+
         if ( !isset( $field['show_label'] ) )       { $field['show_label']       = true; }
         if ( !isset( $field['no_min_width'] ) )     { $field['no_min_width']     = false; }
         if ( !isset( $field['align_center'] ) )     { $field['align_center']     = false; }
         if ( !isset( $field['border_type'] ) )      { $field['border_type']      = 'regular_border'; }
         if ( !isset( $field['label_type'] ) )       { $field['label_type']       = 'above_border'; }
 
+        if ( !isset( $field['icon'] ) || $field['icon'] === '' ) { $field['icon'] = false; }
+
+        if ( is_string( $field['icon'] ) ) {
+            $iconID = $field['icon'];
+            unset( $field['icon'] );
+            $field['icon'] = [
+                'id' => $iconID,
+                'class' => 'field_icon'
+            ];
+        }
 
         /** Default values for simple fields **/
         if( $field['field_type'] === 'regular' || $field['field_type'] === 'vanilla' ) {

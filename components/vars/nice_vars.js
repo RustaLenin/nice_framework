@@ -23,6 +23,7 @@ export function defaultTempalte() {
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
             --field_validate_success: #009C4F;
+            --field_comment: #666666; 
     
             /** Buttons **/
             --accent_button_color: #009C4F;
@@ -91,6 +92,7 @@ export function notFoundTemplate() {
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
             --field_validate_success: #1AC119;
+            --field_comment: #666666; 
         
             /** Buttons **/
             --accent_button_color: #9d56a2;
@@ -159,6 +161,7 @@ export function binomoTempalte() {
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
             --field_validate_success: #009C4F;
+            --field_comment: #666666; 
     
             /** Buttons **/
             --accent_button_color: #009C4F;

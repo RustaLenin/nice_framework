@@ -17,7 +17,7 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'current'    => true,
                     'capability' => 8,
                     'blocks'     => [],
-                    'fields'     => [ 'currency', 'post_title', 'cost', 'deadline', 'url', 'icon' ],
+                    'fields'     => [ 'currency', 'post_title', 'description', 'cost', 'deadline', 'url', 'icon' ],
                 ],
                 'templates' => [
                     'slug'       => 'templates',
@@ -101,16 +101,18 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                 'cost' => [
                     'name'          => 'cost',
                     'data_type'     => 'int',
-                    'required'      => false,
+                    'required'      => true,
                     'in_form'       => true,
                     'field_type'    => 'regular',
                     'validation'    => 'isInt',
                     'placeholder'   => '100500',
                     'label'         => 'How much it cost',
                     'error_message' => 'Only numerals',
+                    'success_message' => 'Ok!',
+                    'comment_message' => 'Enter valid cost',
                     'is_basic'      => false,
                     'no_min_width'  => true,
-                    'label_type'    => 'over_border'
+                    'label_type'    => 'over_border',
                 ],
                 'deadline' => [
                     'name'          => 'deadline',
@@ -124,7 +126,9 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'placeholder'   => '10.12.1993',
                     'label'         => 'Date deadline',
                     'error_message' => 'Need valid data',
-                    'is_basic'      => false
+                    'is_basic'      => false,
+                    'success_message' => 'Ok!',
+                    'comment_message' => 'Enter valid data please'
                 ],
                 'url' => [
                     'name'          => 'url',
@@ -138,6 +142,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'label'         => 'Service url',
                     'error_message' => 'Need valid url',
                     'is_basic'      => false,
+                    'success_message' => 'Ok!',
+                    'comment_message' => 'Enter valid url please'
                 ],
                 'icon' => [
                     'name'          => 'icon',
@@ -150,6 +156,19 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
                     'label'         => 'Icon image',
                     'error_message' => 'Need a valid icon',
                     'is_basic'      => false
+                ],
+                'description' => [
+                    'name'          => 'description',
+                    'data_type'     => 'text',
+                    'required'      => false,
+                    'in_form'       => true,
+                    'field_type'    => 'textarea',
+                    'icon'          => 'article',
+                    'validation'    => false,
+                    'placeholder'   => 'Some text about you',
+                    'label'         => 'Description',
+                    'error_message' => 'WTF',
+                    'is_basic'      => false,
                 ],
                 'currency' => [
                     'name'          => 'currency',

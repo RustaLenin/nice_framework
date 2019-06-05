@@ -16,6 +16,9 @@ export function niceField(field) {
     if (!(field['class'])) {
         field['class'] = ''
     }
+    if (!(field['inline'])) {
+        field['inline'] = false
+    }
     if (!(field['required'])) {
         field['required'] = false
     }
@@ -157,10 +160,12 @@ export function clearEditableInArea(area) {
 }
 
 export function pastePlain(e) {
+    e.preventDefault();
     let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
     if (typeof plain_text !== 'undefined') {
         document.execCommand('insertText', false, plain_text);
     }
+    return false;
 }
 
 export function searchList(elem) {

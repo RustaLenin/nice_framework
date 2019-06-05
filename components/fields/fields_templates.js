@@ -1,8 +1,9 @@
 export const fields_templates = {
-  'regular': regularField,
-  'vanilla': vanillaField,
-  'select_list': selectField,
-  'media': mediaField,
+    'regular': regularField,
+    'vanilla': vanillaField,
+    'select_list': selectField,
+    'media': mediaField,
+    'textarea': textArea,
 };
 
 export function baseField( field ) {
@@ -34,7 +35,7 @@ export function regularField( field ) {
         data-validation="${ field['validation'] }"
         data-placeholder="${ field['placeholder'] }"
         data-required="${ field['required'] }"
-        onpaste="Nice.field.pastePlain(e);"
+        onpaste="Nice.field.pastePlain(event);"
         ${ validateHandlers( field ) }
     >${ field['value'] }</span>
                     
@@ -64,6 +65,21 @@ export function vanillaField( field ) {
     `;
 }
 
+export function textArea( field ) {
+    return `
+        <span 
+            class="input ${ field['field_class'] }"
+            contenteditable="true"
+            spellcheck="${ field['spellcheck'] }"
+            data-type="text"
+            data-name="${ field['name'] }"
+            data-placeholder="${ field['placeholder'] }"
+            data-required="${ field['required'] }"
+            onpaste="Nice.field.pastePlain(event);"
+        >${ field['value'] }</span>
+    `;
+}
+
 export function mediaField( field ) {
     return `
         <span
@@ -75,6 +91,7 @@ export function mediaField( field ) {
             data-validation="${ field['validation'] }"
             data-placeholder="${ field['placeholder'] }"
             data-required="${ field['required'] }"
+            onpaste="Nice.field.pastePlain(event);"
         >${ field['value'] }</span>
         
         ${ Nice.svg({
@@ -107,7 +124,7 @@ export function selectField( field ) {
                     data-callback="${ field['callback'] }"
                     data-select_type="${ field['select_type'] }"
                     data-data_format="${ field['data_format'] }"
-                    ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true"` : `contenteditable="false"` }
+                    ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }
             </span>
             
@@ -249,17 +266,23 @@ export function fieldIcon( field ) {
 export function validateHandlers( field ) {
     if ( field['validation'] ) {
         return `
-        oninput="Nice.field.delayValidate(this)"
-        onfocus="Nice.field.delayValidate(this)"
-        onfocusout="Nice.field.validate(this)"`;
+        oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
+        onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
+        onfocusout="Nice.field.validate(this)"
+        onpaste="Nice.field.pastePlain(event); Nice.field.validate(this);"
+        `;
     } else {
-        return '';
+        return 'onpaste="Nice.field.pastePlain(event);"';
     }
 }
 
 export function fieldClass( field ) {
 
     let classString = '';
+
+    if ( field['inline'] ) {
+        classString += 'inline ';
+    }
 
     if ( field['no_min_width'] ) {
         classString += 'no_min_width ';
@@ -269,7 +292,7 @@ export function fieldClass( field ) {
         classString += 'align_center ';
     }
 
-    if ( field['icon'] ) {
+    if ( field['icon'] && field['field_type'] !== 'textarea' ) {
         classString += 'with_icon ';
     } else if ( field['field_type'] === 'media' ) {
         classString += 'with_icon ';

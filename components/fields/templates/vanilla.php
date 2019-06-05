@@ -9,17 +9,18 @@
     placeholder="<?php echo $field['placeholder']; ?>"
     data-required="<?php echo $field['required']; ?>"
     value="<?php echo $field['value']; ?>"
+    <?php if ( $field['validation'] ) { ?>
+        oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
+        onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
+        onfocusout="Nice.field.validate(this)"
+        onpaste="Nice.field.validate(this)"
+    <?php } ?>
+    <?php if ($field['data_type'] === 'date' ) { ?>
+        onchange="Nice.field.validate(this)"
+    <?php } ?>
 >
 
-<?php if ( $field['icon'] ) { ?>
-    <span class="field_icon FieldIcon">
-        <?php echo nice_svg([
-            'class' => 'field_icon',
-            'size' => $field['size'],
-            'id' => $field['icon']
-        ]); ?>
-    </span>
-<?php }
+<?php echo nice_svg( $field['icon']);
 
 if ( $field['validation'] ) {
     include('validate_icons.php');

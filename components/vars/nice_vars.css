@@ -20,6 +20,7 @@
     --field_focus_color: #3784DC;
     --field_validate_error: #E00000;
     --field_validate_success: #009C4F;
+    --field_comment: #666666;
 
     /** Buttons **/
     --accent_button_color: #009C4F;

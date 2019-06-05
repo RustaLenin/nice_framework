@@ -6,9 +6,10 @@
     echo ' ' . $field['size'];
     echo ' ' . $field['border_type'];
     echo ' ' . $field['label_type'];
+    if ( $field['inline'] ){ echo ' inline'; }
     if ( $field['no_min_width'] ){ echo ' no_min_width'; }
     if ( $field['align_center'] ){ echo ' align_center'; }
-    if ( $field['icon'] )        { echo ' with_icon';    }
+    if ( $field['icon'] && $field['field_type'] !== 'textarea' ) { echo ' with_icon';    }
     else if ( $field['field_type'] === 'media' ) { echo ' with_icon'; }
     if ( $field['textarea'] ) { echo ' textarea';}
     ?>
@@ -34,6 +35,8 @@
 
     <?php if ( $field['validation'] ) { ?>
         <span class="error_message"><?php echo $field['error_message']; ?></span>
+        <?php if (  $field['success_message'] ) { ?> <span class="success_message"><?php echo $field['success_message']; ?></span><?php } ?>
     <?php } ?>
+    <?php if (  $field['comment_message'] ) { ?> <span class="comment_message"><?php echo $field['comment_message']; ?></span><?php } ?>
 
 </div>

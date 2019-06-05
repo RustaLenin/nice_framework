@@ -4,7 +4,6 @@
 
     <span
         class="input <?php echo $field['field_class']; ?>"
-        <?php if ( $field['editable'] ) { echo 'contenteditable="true"'; } else { echo 'contenteditable="false"'; } ?>
         spellcheck="<?php echo $field['spellcheck']; ?>"
         data-type="select"
         data-name="<?php echo $field['name']; ?>"
@@ -15,17 +14,20 @@
         data-callback="<?php echo $field['callback']; ?>"
         data-select_type="<?php echo $field['select_type']; ?>"
         data-data_format="<?php echo $field['data_format']; ?>"
-        <?php if ( $field['editable'] ) { ?> oninput="Nice.field.searchList(this)" <?php } ?>
+
+        <?php if ( $field['editable'] ) { ?>
+            contenteditable="true"
+            oninput="Nice.field.searchList(this)"
+            onpaste="Nice.field.pastePlain(event);"
+        <?php } else { ?>
+            contenteditable="false"
+        <?php } ?>
 
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
     <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro', 'class' => ['selector_arrow', 'SelectorArrow'] ] ); ?>
 
-    <?php if ($field['icon']) { ?>
-        <span class="field_icon FieldIcon">
-            <?php echo nice_svg( $field['icon'] ); ?>
-        </span>
-    <?php } ?>
+    <?php echo nice_svg( $field['icon'] ); ?>
 </div>
 
 <div class="selections_list SelectionsList <?php echo $field['select_type']; ?>">
