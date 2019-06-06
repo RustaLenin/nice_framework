@@ -22,6 +22,7 @@ export const en = {
     // Notifications
     'Notification': 'Notification',
     'Something happens': 'Something happens',
+    'This element is blocked': 'This element is blocked',
 
     // MediaPicker
     'Choose Image': 'Choose Image'

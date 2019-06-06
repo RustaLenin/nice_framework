@@ -38,7 +38,8 @@
         <div
             class="selection_list__element
             <?php if ( $field['select_type'] === 'single' ) { if ( $field['value'] === $selector['value'] ) { echo ' checked'; } }
-            else if ( $field['select_type'] === 'multiple' ) { if ( $selector['checked'] ) { echo ' checked'; } }?>"
+            else if ( $field['select_type'] === 'multiple' ) { if ( $selector['checked'] ) { echo ' checked'; } }
+            if ( $selector['blocked'] ) { echo ' blocked'; }?>"
             onclick="Nice.field.chooseThis(this)"
             data-value="<?php echo $selector['value']; ?>"
             <?php if ( $selector['name'] ) { ?> data-name="<?php echo $selector['name']; ?>" <?php } ?>

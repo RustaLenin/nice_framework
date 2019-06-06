@@ -22,6 +22,51 @@
     --field_validate_success: #009C4F;
     --field_comment: #666666;
 
+    /** Select Fields **/
+    --field_select_divider: #BDBDBD;
+
+    --field_select_background: #ffffff;
+    --field_select_background_hover: #D5E6FB;
+    --field_select_background_remove: #D5E6FB88;
+    --field_select_background_checked: #2F80ED;
+    --field_select_background_blocked: #E0E0E088;
+    --field_select_background_blocked_hover: #E0E0E0;
+
+    --field_select_icon: #4F4F4F;
+    --field_select_icon_hover: #2F80ED;
+    --field_select_icon_remove: #2F80ED88;
+    --field_select_icon_checked: #ffffff;
+    --field_select_icon_blocked: #BDBDBD;
+    --field_select_icon_blocked_hover: #4F4F4F;
+
+    --field_select_text: #4F4F4F;
+    --field_select_text_hover: #2F80ED;
+    --field_select_text_remove: #2F80ED88;
+    --field_select_text_checked: #ffffff;
+    --field_select_text_blocked: #BDBDBD;
+    --field_select_text_blocked_hover: #4F4F4F;
+
+    --field_select_box_background: transparent;
+    --field_select_box_background_hover: transparent;
+    --field_select_box_background_remove: #BDBDBD;
+    --field_select_box_background_checked: #27AE60;
+    --field_select_box_background_blocked: transparent;
+    --field_select_box_background_blocked_hover: transparent;
+
+    --field_select_box_border: #BDBDBD;
+    --field_select_box_border_hover: #BDBDBD;
+    --field_select_box_border_remove: #BDBDBD;
+    --field_select_box_border_checked: #ffffff;
+    --field_select_box_border_blocked: #EB575788;
+    --field_select_box_border_blocked_hover: #EB5757;
+
+    --field_select_box_icon: transparent;
+    --field_select_box_icon_hover: #BDBDBD;
+    --field_select_box_icon_checked: #ffffff;
+    --field_select_box_icon_remove: #ffffff;
+    --field_select_box_icon_blocked: #EB575788;
+    --field_select_box_icon_blocked_hover: #EB5757;
+
     /** Buttons **/
     --accent_button_color: #009C4F;
     --accent_second_button_color: #FF6600;

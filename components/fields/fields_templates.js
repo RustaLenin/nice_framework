@@ -186,6 +186,9 @@ export function selectElementClass( field, element ) {
             string += ' checked';
         }
     }
+    if ( element['blocked'] ) {
+        string += ' blocked';
+    }
 
     return string;
 }

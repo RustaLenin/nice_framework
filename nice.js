@@ -12,7 +12,7 @@ import { niceNotify, insertNotifyArea } from './components/notifications/notific
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
 import { SvgMap } from './components/svg/map.js';
-import { notFoundTemplate, binomoTempalte, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
+import { notFoundTemplate, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
@@ -90,7 +90,6 @@ class Nice {
         this.replaceCssVars = replaceCssVars;
         this.CSSTemplates = {};
         this.CSSTemplates.default = defaultTempalte;
-        this.CSSTemplates.binomo = binomoTempalte();
         this.CSSTemplates.notFound = notFoundTemplate();
 
         /** Settings **/
