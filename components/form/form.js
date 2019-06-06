@@ -281,3 +281,129 @@ export function collectValidData( selector = '.input', formSelector = document )
     });
     return data;
 }
+
+export function collectFlatData( selector = '.input', formSelector = document ) {
+
+    let data = []; // Prepare empty array for data
+    let data_value, data_type, field;
+
+    jQuery(formSelector).find( selector ).each(function() {                                                              // Start iterating all fields
+
+        field = jQuery(this);
+
+        /** This part for getting values and store it in object for vanilla inputs**/
+        if ( field.is('input') ) {
+
+            data_type = field.attr('type');
+
+            if (                                                                                                         // Certainly we need to add more types here later
+                data_type === 'text'   ||
+                data_type === 'email'  ||
+                data_type === 'number' ||
+                data_type === 'tel'    ||
+                data_type === 'url'    ||
+                data_type === 'password'
+            ) {
+                data_value  = field.val();                                                                               // Take val from input
+            } else if (
+                data_type === 'checkbox' ||
+                data_type === 'radio'
+            ) {
+                if ( field.is(':checked') ) {                                                                            // Take value only if checked
+                    data_value  = field.val();                                                                           // Take val from input
+                }
+            }
+
+        }
+
+        /** This part is for textarea **/
+        else if ( field.is("textarea") ) {
+            data_value  = field.val();                                                                                   // Take value from textarea
+
+        }
+
+        /** This part is for NiceFields based on contenteditable="true" elements with data attributes **/
+        else {
+
+            data_type = field.attr('data-type');
+
+            if (                                                                                                         // This types store value in data attribute
+                data_type === 'checkbox' ||
+                data_type === 'bool'
+            ) {
+                data_value  = field.attr('data-value');                                                                  // Take val from field data-value attribute
+            }
+
+            if ( data_type === 'select' ) {
+
+                let select_type = field.attr('data-select_type');
+
+                if ( select_type === 'single' ) {
+                    data_value  = field.attr('data-value');
+                } else if ( select_type === 'multiple' ) {
+
+                    let field_cont = field.parents('.nice_field');
+                    let list_elements = field_cont.find('.selection_list__element');
+                    let data_format = field.attr('data-data_format');
+
+                    if ( data_format === 'array' ) {
+                        data_value = [];
+                        list_elements.each(function() {
+                            if ( jQuery(this).hasClass('checked') ) {
+                                data_value.push( jQuery(this).attr('data-value') );
+                            }
+                        });
+                    }
+
+                    else if ( data_format === 'object' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+                            if ( jQuery(this).hasClass('checked') ) {
+                                data_value[jQuery(this).attr('data-name')] = jQuery(this).attr('data-value')
+                            }
+                        });
+                    }
+
+                    else if ( data_format === 'binary_map' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+                            data_value[jQuery(this).attr('data-value')] = jQuery(this).hasClass('checked');
+                        });
+                    }
+
+                    else if ( data_format === 'map' ) {
+                        data_value = {};
+                        list_elements.each(function() {
+
+                            data_value[jQuery(this).attr('data-name')] = {
+                                'name': jQuery(this).attr('data-name'),
+                                'text': jQuery(this).find('.selection_list__element_text').html(),
+                                'icon': jQuery(this).find('.selection_list__element_icon').html(),
+                                'value': jQuery(this).attr('data-value'),
+                            };
+
+                            data_value[jQuery(this).attr('data-name')]['checked'] = jQuery(this).hasClass('checked');
+
+                        });
+                    }
+
+                }
+            }
+
+            else if ( data_type === 'text' ) {                                                                           // This type store data in the html
+                data_value  = field.html();
+            }
+
+            else if ( data_type === 'single_check') {                                                                    // This type data must be taken only if checked
+                if ( field.hasClass('checked') ) {
+                    data_value  = field.attr('data-value');
+                }
+            }
+        }
+
+        /** At this moment we have key => value pair, what we store in object **/
+        data.push(data_value);
+
+    });
+    return data;
+}
