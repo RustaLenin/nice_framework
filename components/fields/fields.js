@@ -1,4 +1,5 @@
 import { baseField } from './fields_templates.js';
+import { debounce } from '../logic_patterns/logic.js';
 
 export function niceField( field = {} ) {
 
@@ -245,13 +246,12 @@ export function WPMediaForFields( icon, e ) {
         }
     });
 
-    console.log( media_frame );
-
     media_frame.on( 'close', function() {
         let selection =  media_frame.state().get('selection');
         selection.each( function( attachment ) {
             input.innerHTML = attachment['attributes']['url'];
             if ( input.getAttribute('data-validation') ) {
+                Nice.field.updateMediaField( input );
                 Nice.field.validate( input );
             }
         });
@@ -259,4 +259,36 @@ export function WPMediaForFields( icon, e ) {
 
     media_frame.open();
 
+}
+
+export function updateMediaField( elem ) {
+
+    let preview_box = elem.parentNode.querySelector('.preview_box');
+    let preview_box_icon = preview_box.querySelector('.preview_box__icon');
+
+    if ( preview_box.classList.contains('preview') ) {
+        preview_box.classList.remove('preview');
+    }
+
+    preview_box_icon.setAttribute('svg-id', 'loader');
+    preview_box_icon.classList.add('spin');
+
+    delayMediaImagePreview(elem);
+}
+
+export const delayMediaImagePreview = debounce( mediaImagePreview, 1200 );
+
+export function mediaImagePreview( elem ) {
+
+    let preview_box = elem.parentNode.querySelector('.preview_box');
+    let preview_box_icon = preview_box.querySelector('.preview_box__icon');
+
+    Nice.get( elem.textContent ).then( function ( responce ) {
+        preview_box_icon.classList.remove('spin');
+        preview_box_icon.setAttribute('svg-id', 'blind');
+        if ( responce.status === 200 ) {
+            preview_box.querySelector('.preview_img').setAttribute( 'src', elem.textContent );
+            preview_box.classList.add('preview');
+        }
+    });
 }

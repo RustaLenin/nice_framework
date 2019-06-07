@@ -4,10 +4,10 @@ console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
-import { forEach } from './sugar/js.js';
+import { forEach, get } from './sugar/js.js';
 
 /** Nice **/
-import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields } from './components/fields/fields.js';
+import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
@@ -38,6 +38,9 @@ class Nice {
 
         console.log('Nice Construction started...');
 
+        /** JS wrappers **/
+        this.get = get;
+
         /** Inserts **/
         this.insert = {};
         this.insert.modalArea = insertModalArea;
@@ -55,6 +58,7 @@ class Nice {
         this.field.searchList = searchList;
         this.field.validate = fieldValidation;
         this.field.delayValidate = delayFieldValidation;
+        this.field.updateMediaField = updateMediaField;
 
         /** Validation **/
         this.validation = {};

@@ -518,9 +518,6 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.tiny .selection_list__element_check { width: 16px; height: 16px; }
 .nice_field.tiny .selection_list__element_check svg { width: 12px; height: 12px; }
 
-
-
-
 .nice_field .input.textarea {
     justify-content: flex-start;
     overflow: hidden;
@@ -530,3 +527,68 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
     font-size: 14px;
     transition: 0s;
 }
+
+.nice_field .preview_box {
+    position: absolute;
+    top: 0;
+    display: flex;
+    border: 1px solid var(--field_border);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.nice_field .preview_box .hack {
+    height: 100%;
+    width: auto;
+}
+
+.nice_field .preview_box .preview_img {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY( -50% );
+    width: 100%;
+    height: auto;
+    transition: var( --regular_transition );
+}
+
+.nice_field .preview_box .preview_box__icon {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    width: 60%;
+    height: 60%;
+    visibility: visible;
+    opacity: 1;
+}
+
+.nice_field .preview_box.preview .preview_img {
+    opacity: 1;
+    visibility: visible;
+}
+
+.nice_field .preview_box.preview .preview_box__icon {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nice_field .preview_box .preview_box__icon svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    fill: var( --field_font_color );
+}
+
+.nice_field .preview_box:hover svg {
+    opacity: 1;
+    fill: var( --field_validate_error );
+}
+
+.nice_field.large .preview_box { right: -66px; width: 58px; height: 58px; }
+.nice_field.medium .preview_box { right: -58px; width: 48px; height: 48px; }
+.nice_field.small .preview_box { right: -55px; width: 45px; height: 45px; }
+.nice_field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }

@@ -52,7 +52,7 @@ export class NiceSvg extends HTMLElement {
             });
         }
 
-        if ( svg_pointer === 'true' ) {
+        if ( svg_pointer ) {
             self.classList.add('click_able');
         }
 
