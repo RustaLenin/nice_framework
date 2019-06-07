@@ -107,7 +107,6 @@ export function niceField( field = {} ) {
             let default_select_content = '';
             let default_select_icon = '';
             jQuery.each(field['selections'], function (i, element) {
-                console.log(element);
                 if (element['default']) {
                     default_select_value = element['value'];
                     default_select_content = element['text'];

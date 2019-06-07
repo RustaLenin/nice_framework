@@ -107,7 +107,6 @@ export function mediaField( field ) {
 }
 
 export function selectField( field ) {
-    console.log( field );
     return `
         <div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
         
