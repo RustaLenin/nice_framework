@@ -15,9 +15,12 @@ export function chooseThis( elem = null ) {
         let value = elem.getAttribute('data-value');
         let title = elem.querySelector('.selection_list__element_text').textContent;
 
-        let icon = elem.querySelector('.selection_list__element_icon').querySelector('nice-svg').cloneNode();
-        if ( icon ) {
-            icon.classList.add('field_icon');
+        let icon = false;
+        if ( elem.querySelector('.selection_list__element_icon').querySelector('nice-svg') ) {
+            icon = elem.querySelector('.selection_list__element_icon').querySelector('nice-svg').cloneNode();
+            if ( icon ) {
+                icon.classList.add('field_icon');
+            }
         }
 
         let checked = elem.classList.contains('checked');
