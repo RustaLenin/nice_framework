@@ -1,16 +1,14 @@
 <?php
 
 if ( !function_exists( 'nice_svg' ) ) {
-    function nice_svg( $icon ) {
-        return NiceSvg::render( $icon );
+    function nice_svg( $icon, $class = '' ) {
+        return NiceSvg::render( $icon, $class );
     }
 }
 
 Class NiceSvg {
 
-    public static function render( $icon ) {
-
-        if ( !isset( $icon ) )                      { $icon                     = []; }
+    public static function render( $icon = [] ) {
 
         if ( is_string( $icon ) ) {
             $id = $icon;

@@ -34,7 +34,6 @@ define( 'NICE_WP', dirname( __FILE__  ) . '/wp/'                     );
 /** Self Using **/
 
 require_once( NICE_DIR . '/languages/translate.php');
-NiceTranslate::defineLanguage('en');
 
 require_once( NICE_DIR . '/sugar/response.php');
 

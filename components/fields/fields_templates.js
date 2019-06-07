@@ -124,6 +124,7 @@ export function selectField( field ) {
                     data-callback="${ field['callback'] }"
                     data-select_type="${ field['select_type'] }"
                     data-data_format="${ field['data_format'] }"
+                    data-can_be_empty="${ field['data_format'] ? `true` : `false` }"
                     ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }
             </span>
@@ -245,19 +246,13 @@ export function validateIcons( field ) {
 export function fieldIcon( field ) {
     if ( field['icon'] ) {
         if ( typeof field['icon'] === 'object' ) {
-            return `
-            <span class="field_icon FieldIcon">
-                ${ Nice.svg( field['icon'] ) }
-            </span>`;
+            return  Nice.svg( field['icon'] );
         } else if (  typeof field['icon'] === 'string' ) {
-            return `
-                <span class="field_icon FieldIcon">
-                    ${ Nice.svg({
+            return Nice.svg({
                         'id': field['icon'],
                         'class': field['icon_class'],
                         'size': field['size']
-                    }) }
-                </span>`;
+                    });
         } else {
             return ``;
         }

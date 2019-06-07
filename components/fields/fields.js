@@ -1,9 +1,7 @@
 import { baseField } from './fields_templates.js';
 
-export function niceField(field) {
-    if (!field) {
-        field = {}
-    }
+export function niceField( field = {} ) {
+
     if (!(field['value'])) {
         field['value'] = ''
     }
@@ -66,6 +64,7 @@ export function niceField(field) {
     if (!(field['label_type'])) {
         field['label_type'] = 'above_border'
     }
+
     /** Default values for simple fields **/
     if (field['field_type'] === 'regular' || field['field_type'] === 'vanilla') {
         if (field['default_value'] && !field['value']) {
@@ -100,6 +99,8 @@ export function niceField(field) {
             field['icon'] = false
         }
 
+        if ( !field['can_be_empty'] )   { field['can_be_empty']   = true; }
+
         if (field['select_type'] === 'single') {
 
             let default_select_value = '';
@@ -132,8 +133,38 @@ export function niceField(field) {
                 field['no_min_width'] = false;
             }
 
+            let content = '';
+            let check_count = -1;
+
+            field['selections'].forEach ( function ( selection ) {
+                if ( selection['checked'] ) {
+                    check_count++;
+                    if ( check_count === 0 ) {
+                        content = selection['text'];
+                        if ( selection['icon'] ) {
+                            field['icon'] = selection['icon'];
+                        }
+                    }
+                }
+            });
+
+            if ( content !== '' ) {
+                content += Nice._t(' and + ') + check_count;
+            } else {
+                content = Nice._t( 'Nothing selected');
+            }
+            field['content'] = content;
+
         }
 
+    }
+
+    if ( typeof field['icon'] === 'string' ) {
+        let iconID = field['icon'];
+        field['icon'] = {
+            'id': iconID,
+            'class': 'field_icon',
+        };
     }
 
     return baseField( field );

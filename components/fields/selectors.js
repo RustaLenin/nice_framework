@@ -1,6 +1,8 @@
+import { svgNode } from '../svg/svg.js';
+
 export function toggleSelector( element = null ) {
-    let area = jQuery(element).parents('.NiceFieldArea');
-    area.toggleClass('open');
+    let area = element.closest('.NiceFieldArea');
+    area.classList.toggle('open');
 }
 
 export function chooseThis( elem = null ) {
@@ -10,39 +12,125 @@ export function chooseThis( elem = null ) {
         return false;
     } else {
         /** Get values and html from clicked list element **/
-        let value = jQuery(elem).attr('data-value');
-        let title = jQuery(elem).find('.selection_list__element_text').html();
-        let icon = jQuery(elem).find('.selection_list__element_icon').html();
+        let value = elem.getAttribute('data-value');
+        let title = elem.querySelector('.selection_list__element_text').textContent;
+
+        let icon = elem.querySelector('.selection_list__element_icon').querySelector('nice-svg').cloneNode();
+        if ( icon ) {
+            icon.classList.add('field_icon');
+        }
+
+        let checked = elem.classList.contains('checked');
 
         /** Find parent html elements: area & input itself **/
-        let area  = jQuery(elem).parents('.NiceFieldArea');
-        let input = area.find('.input');
-        let select_type = input.attr('data-select_type');
+        let area  = elem.closest('.NiceFieldArea');
+        let input = area.querySelector('.input');
+        let select_type = input.getAttribute('data-select_type');
 
         if ( select_type === 'single' ) {
 
             /** Remove checked from all element except clicked **/
-            area.find('.selection_list__element').removeClass('checked');
-            jQuery(elem).addClass('checked');
+            let list_elems = area.querySelectorAll('.selection_list__element');
+            list_elems.forEach( function ( l_elem ) {
+                l_elem.classList.remove('checked');
+            });
+            if ( !checked ) {
+                elem.classList.add('checked');
+            }
+
 
             /** Insert value and html **/
-            if ( input.is( 'input' ) ) {
-                input.val( value );
+            if ( !checked ) {
+                input.textContent =  title;
+                input.setAttribute('data-value', value );
+                if ( icon ) {
+                    if ( area.querySelector('.field_icon') ) {
+                        area.querySelector('.field_icon').replaceWith(icon);
+                    } else {
+                        area.prepend(icon);
+                    }
+                    if ( !elem.closest('.nice_field').classList.contains('with_icon') ) {
+                        elem.closest('.nice_field').classList.add('with_icon');
+                    }
+                }
             } else {
-                input.html( title );
-                input.attr('data-value', value );
+
+                if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
+                    input.textContent = Nice._t('Nothing selected');
+                    input.setAttribute('data-value', '' );
+                    if ( area.querySelector('nice-svg') ) {
+                        area.querySelector('.field_icon').remove();
+                        let new_icon = svgNode({'id': 'notify_warning', 'class': 'field_icon'});
+                        new_icon.classList.add('field_icon');
+                        area.prepend( new_icon );
+                        if ( !elem.closest('.nice_field').classList.contains('with_icon') ) {
+                            elem.closest('.nice_field').classList.add('with_icon');
+                        }
+                    }
+                } else {
+                    Nice.notify({'type': 'warning', 'message': Nice._t('All ready selected') });
+                }
+
             }
-            area.find('.FieldIcon').html(icon);
-            area.removeClass('open');
+
+            area.classList.remove('open');
 
         } else {
-            jQuery(elem).toggleClass('checked');
+            elem.classList.toggle('checked');
+            let new_field_content = '';
+            let count = countChecked( elem );
+            if ( elem.classList.contains('checked') ) {
+                new_field_content= elem.querySelector('.selection_list__element_text').textContent;
+                if ( count > 1 ) {
+                    count -= 1;
+                    new_field_content += ' and + ' + count;
+                }
+            } else {
+                new_field_content = getTextOfFirstCheckedElem( elem );
+                if ( count > 1 ) {
+                    count -= 1;
+                    new_field_content += ' and + ' + count;
+                }
+            }
+            input.textContent = new_field_content;
+
         }
 
         /** Run callback **/
-        let callback = input.attr('data-callback');
-        if( input.attr('data-callback' ) ) {
+        let callback = input.getAttribute('data-callback');
+        if ( callback ) {
             eval( callback );
         }
     }
+}
+
+export function countChecked( elem ) {
+    let list_cont = elem.closest('.SelectionsList ');
+    let list_elements =  list_cont.querySelectorAll('.selection_list__element');
+    let count = 0;
+    list_elements.forEach( function ( list_elem ) {
+        if ( list_elem.classList.contains('checked') ) {
+            count++;
+        }
+    });
+    return count;
+}
+
+export function getTextOfFirstCheckedElem( elem ) {
+    let list_cont = elem.closest('.SelectionsList ');
+    let list_elements =  list_cont.querySelectorAll('.selection_list__element');
+    let checked_text = '';
+    let count = 0;
+    list_elements.forEach( function ( list_elem ) {
+       if ( list_elem.classList.contains('checked') ) {
+           count++;
+           if ( count === 1 ) {
+               checked_text = list_elem.querySelector('.selection_list__element_text').textContent;
+           }
+       }
+    });
+    if ( checked_text === '' ) {
+        checked_text = 'Nothing selected';
+    }
+    return checked_text;
 }

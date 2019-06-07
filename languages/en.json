@@ -16,5 +16,7 @@
   "No model received for settings page": "No model received for settings page",
   "No unique settings slug received": "No unique settings slug received",
   "Another one tab": "Another one tab",
-  "Unknown validation method": "Unknown validation method"
+  "Unknown validation method": "Unknown validation method",
+  " and + ": " and + ",
+  "Nothing selected": "Nothing selected"
 }

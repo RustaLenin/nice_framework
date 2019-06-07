@@ -13,6 +13,9 @@ export const ru = {
     'Type some text': 'Введите текст',
     'Really nice field': 'Действительно милое поле',
     'Enter valid data': 'Введите корректные данные',
+    'Nothing selected': 'Ничего не выбрано',
+    ' and + ': ' и ещё + ',
+    'All ready selected': 'Уже выбрано',
 
     // Modals
     'Here is some title': 'Какой-то заголовок',

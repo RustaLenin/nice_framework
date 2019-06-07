@@ -164,10 +164,8 @@ export function niceSvg( icon = {} ) {
     }
 
     if ( typeof icon['class'] === 'object' ) {
-        console.log(icon['class']);
         let temp_string = '';
         icon['class'].forEach( function ( value ) {
-            console.log(     value );
             temp_string = temp_string +  value + ',';
         });
         temp_string.slice(0, -1);
@@ -206,4 +204,8 @@ export function regularSVGTemplate( icon ) {
         svg-rotate="${ icon['rotate'] }">
     </nice-svg>
 `;
+}
+
+export function svgNode( icon ) {
+    return new DOMParser().parseFromString(niceSvg(icon), 'text/html').querySelector('nice-svg');
 }

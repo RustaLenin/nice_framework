@@ -13,6 +13,9 @@ export const en = {
     'Type some text': 'Type some text',
     'Really nice field': 'Really nice field',
     'Enter valid data': 'Enter valid data',
+    'Nothing selected': 'Nothing selected',
+    ' and + ': ' and + ',
+    'All ready selected': 'All ready selected',
 
     // Modals
     'Here is some title': 'Here is some title',

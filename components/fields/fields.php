@@ -39,15 +39,6 @@ Class NICE_FIELDS {
 
         if ( !isset( $field['icon'] ) || $field['icon'] === '' ) { $field['icon'] = false; }
 
-        if ( is_string( $field['icon'] ) ) {
-            $iconID = $field['icon'];
-            unset( $field['icon'] );
-            $field['icon'] = [
-                'id' => $iconID,
-                'class' => 'field_icon'
-            ];
-        }
-
         /** Default values for simple fields **/
         if( $field['field_type'] === 'regular' || $field['field_type'] === 'vanilla' ) {
             if ( $field['default_value'] && !$field['value'] ) {
@@ -68,6 +59,7 @@ Class NICE_FIELDS {
             if ( !isset( $field['editable'] ) )       { $field['editable']       = false; }
             if ( !isset( $field['callback'] ) )       { $field['callback']       = ''; }
             if ( !isset( $field['icon'] ) )           { $field['icon']           = false; }
+            if ( !isset( $field['can_be_empty'] ) )   { $field['can_be_empty']   = true; }
 
             if ( $field['select_type'] === 'single' ) {
 
@@ -100,10 +92,37 @@ Class NICE_FIELDS {
 
                 if ( $field['no_min_width'] )        { $field['no_min_width']     = false; }
 
+                $content = '';
+                $check_count = -1;
+                foreach ( $field['selections'] as $selection ) {
+                    if ( $selection['checked'] ) {
+                        $check_count ++;
+                        if ( $check_count === 0 ) {
+                            $content = $selection['text'];
+                            if ( $selection['icon'] ) {
+                                $field['icon'] = $selection['icon'];
+                            }
+                        }
+                    }
+                }
+                if ( $content != '' ) {
+                    $content .= _t(' and + ') .$check_count;
+                } else {
+                    $content = _t( 'Nothing selected');
+                }
+                $field['content'] = $content;
             }
 
         }
 
+        if ( is_string( $field['icon'] ) ) {
+            $iconID = $field['icon'];
+            unset( $field['icon'] );
+            $field['icon'] = [
+                'id' => $iconID,
+                'class' => 'field_icon'
+            ];
+        }
 
         /** Buffer template render into string **/
         ob_start();

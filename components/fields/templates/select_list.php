@@ -14,6 +14,7 @@
         data-callback="<?php echo $field['callback']; ?>"
         data-select_type="<?php echo $field['select_type']; ?>"
         data-data_format="<?php echo $field['data_format']; ?>"
+        data-can_be_empty="<?php if ( $field['can_be_empty'] ) { echo 'true'; } else { echo 'false'; } ?>"
 
         <?php if ( $field['editable'] ) { ?>
             contenteditable="true"
@@ -25,9 +26,11 @@
 
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
-    <?php echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro', 'class' => ['selector_arrow', 'SelectorArrow'] ] ); ?>
+    <?php
+    echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro', 'class' => ['selector_arrow', 'SelectorArrow'] ] );
+    echo nice_svg( $field['icon'] );
+    ?>
 
-    <?php echo nice_svg( $field['icon'] ); ?>
 </div>
 
 <div class="selections_list SelectionsList <?php echo $field['select_type']; ?>">
