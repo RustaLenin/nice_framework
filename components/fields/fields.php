@@ -113,7 +113,7 @@ Class NICE_FIELDS {
                 $field['content'] = $content;
             }
 
-        } else if ( $field['select_type'] === 'vanilla') {
+        } else if ( $field['field_type'] === 'vanilla') {
             $field['autocomplete'] = 'off';
         }
 
