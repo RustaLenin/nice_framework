@@ -156,6 +156,8 @@ export function niceField( field = {} ) {
 
         }
 
+    } else if ( field['select_type'] === 'vanilla') {
+        field['autocomplete'] = 'off';
     }
 
     if ( typeof field['icon'] === 'string' ) {

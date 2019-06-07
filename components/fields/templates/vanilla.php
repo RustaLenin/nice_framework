@@ -8,6 +8,7 @@
     data-validation="<?php echo $field['validation']; ?>"
     placeholder="<?php echo $field['placeholder']; ?>"
     data-required="<?php echo $field['required']; ?>"
+    autocomplete="<?php echo $field['autocomplete']; ?>"
     value="<?php echo $field['value']; ?>"
     <?php if ( $field['validation'] ) { ?>
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"

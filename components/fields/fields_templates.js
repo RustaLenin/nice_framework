@@ -56,6 +56,7 @@ export function vanillaField( field ) {
         data-validation="${ field['validation'] }"
         placeholder="${ field['placeholder'] }"
         data-required="${ field['required'] }"
+        autocomplete="${ field['autocomplete'] }"
         value="${ field['value'] }"
     >
     
@@ -68,7 +69,7 @@ export function vanillaField( field ) {
 export function textArea( field ) {
     return `
         <span 
-            class="input ${ field['field_class'] }"
+            class="input textarea ${ field['field_class'] }"
             contenteditable="true"
             spellcheck="${ field['spellcheck'] }"
             data-type="text"

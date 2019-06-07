@@ -113,6 +113,8 @@ Class NICE_FIELDS {
                 $field['content'] = $content;
             }
 
+        } else if ( $field['select_type'] === 'vanilla') {
+            $field['autocomplete'] = 'off';
         }
 
         if ( is_string( $field['icon'] ) ) {
