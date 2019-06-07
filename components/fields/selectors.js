@@ -130,7 +130,7 @@ export function getTextOfFirstCheckedElem( elem ) {
        }
     });
     if ( checked_text === '' ) {
-        checked_text = 'Nothing selected';
+        checked_text = Nice._t('Nothing selected');
     }
     return checked_text;
 }
