@@ -3,6 +3,8 @@ export class lightBox extends HTMLElement {
     constructor() {
         super();
 
+        this.setAttribute('onclick', 'lightbox.closeSelf(event)');
+
         this.innerHTML = `
             <nice-svg svg-id="close" svg-class="close_lightbox" svg-pointer="true" svg-size="medium" onclick="lightbox.close();"></nice-svg>
             <img class="preview_image" src="">`
@@ -13,7 +15,7 @@ export class lightBox extends HTMLElement {
     }
 
     disconnectedCallback() {
-        delete  window.lightbox;
+        delete window.lightbox;
     }
 
     open(){
@@ -26,6 +28,12 @@ export class lightBox extends HTMLElement {
             this.classList.remove('open');
         }
         return '';
+    }
+
+    closeSelf( e ) {
+        if ( e.target === this ) {
+            this.close();
+        }
     }
 
     clear(){

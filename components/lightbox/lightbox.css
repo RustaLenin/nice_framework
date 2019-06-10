@@ -14,6 +14,7 @@ nice-lightbox {
     visibility: hidden;
     transition: var( --regular_transition );
     z-index: 9999;
+    cursor: pointer;
 }
 
 nice-lightbox.open {
@@ -24,6 +25,7 @@ nice-lightbox.open {
 nice-lightbox .preview_image {
     max-width: 90vw;
     max-height: 90vh;
+    cursor: default;
 }
 
 nice-lightbox .close_lightbox {
