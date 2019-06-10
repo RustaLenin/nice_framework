@@ -99,10 +99,18 @@ export function collectData( selector = '.input', formSelector = document ) {
         }
 
         /** This part is for textarea **/
-        else if ( field.is("textarea") ) {
-            data_name = field.attr('name');                                                                              // Take key from textarea name attribute
-            data_value  = field.val();                                                                                   // Take value from textarea
+        else if ( field.is('textarea') ) {
 
+            if ( field.parents('nice-wp_editor').length > 0 ) {
+                let wp_editor = field.parents('nice-wp_editor')[0];
+                console.log( wp_editor );
+                data_name = wp_editor.getName();
+                data_value = wp_editor.getValue();
+            } else {
+                data_name = field.attr('name');                                                                              // Take key from textarea name attribute
+                data_value  = field.val();
+            }
+                                                                                              // Take value from textarea
         }
 
         /** This part is for NiceFields based on contenteditable="true" elements with data attributes **/
@@ -243,9 +251,15 @@ export function collectValidData( selector = '.input', formSelector = document )
 
             /** This part is for textarea **/
             else if ( field.is("textarea") ) {
-                data_name = field.attr('name');                                                                          // Take key from textarea name attribute
-                data_value  = field.val();                                                                               // Take value from textarea
-
+                if ( field.parents('nice-wp_editor').length > 0 ) {
+                    let wp_editor = field.parents('nice-wp_editor')[0];
+                    console.log( wp_editor );
+                    data_name = wp_editor.getName();
+                    data_value = wp_editor.getValue();
+                } else {
+                    data_name = field.attr('name');                                                                              // Take key from textarea name attribute
+                    data_value  = field.val();
+                }
             }
 
             /** This part is for NiceFields based on contenteditable="true" elements with data attributes **/

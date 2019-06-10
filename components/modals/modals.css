@@ -74,8 +74,8 @@
     padding: 16px 25px 16px;
     overflow-y: auto;
     min-height: 30vh;
-    min-width: 400px;
-    max-width: 740px;
+    min-width: 33vw;
+    max-width: 80vw;
     max-height: 60vh;
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );

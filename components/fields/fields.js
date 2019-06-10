@@ -1,5 +1,6 @@
 import { baseField } from './fields_templates.js';
 import { debounce } from '../logic_patterns/logic.js';
+import { wpEditor } from './fields_templates.js';
 
 export function niceField( field = {} ) {
 
@@ -169,7 +170,11 @@ export function niceField( field = {} ) {
         };
     }
 
-    return baseField( field );
+    if ( field['field_type'] !== 'wp_editor' ) {
+        return baseField( field );
+    } else {
+        return wpEditor( field );
+    }
 
 }
 

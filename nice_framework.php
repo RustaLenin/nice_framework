@@ -66,6 +66,8 @@ Class NICE_FRAMEWORK {
 
         if ( class_exists('WP_Query') ) {
 
+            wp_enqueue_editor();
+
             /** Including styles in document **/
             wp_enqueue_style('air-datepicker', plugin_dir_url( __FILE__ ) . 'dependency/air-datepicker/dist/css/datepicker.css' );
             wp_enqueue_style('nice_framework', plugin_dir_url( __FILE__ ) . 'nice.css' );

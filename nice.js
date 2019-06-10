@@ -4,13 +4,14 @@ console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
-import { forEach, get } from './sugar/js.js';
+import { forEach, get, uniqID } from './sugar/js.js';
 
 /** Nice **/
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
+import { NiceWPEditor } from './components/fields/wp_editor.js';
 import { SvgMap } from './components/svg/map.js';
 import { notFoundTemplate, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
@@ -156,6 +157,8 @@ forEach();
 window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;
+window.uniqID = uniqID;
 customElements.define('nice-svg', NiceSvg);
+customElements.define('nice-wp_editor', NiceWPEditor);
 console.log( _t('Nice added in document') );
 console.log( window.Nice );

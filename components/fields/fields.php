@@ -128,7 +128,13 @@ Class NICE_FIELDS {
 
         /** Buffer template render into string **/
         ob_start();
-        include('templates/base.php');
+
+        if ( $field['field_type'] != 'wp_editor' ) {
+            include('templates/base.php');
+        } else {
+            include('templates/wp_editor.php');
+        }
+
         $html = ob_get_clean();
 
         /** Return result **/

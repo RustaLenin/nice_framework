@@ -280,6 +280,7 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
         ];
 
         echo nice_settings( $model );
+
     }
 
     public static function js() {?>

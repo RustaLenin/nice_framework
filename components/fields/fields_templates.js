@@ -81,6 +81,16 @@ export function textArea( field ) {
     `;
 }
 
+export function wpEditor( field ) {
+    return `
+        <nice-wp_editor
+            editor-id="${ field['id'] ? field['id'] : '' }"
+            name="${ field['name'] ? field['name'] : '' }"
+        >${ field['value'] ? field['value'] : '' }
+        </nice-wp_editor>
+    `;
+}
+
 export function mediaField( field ) {
     return `
         <span class="preview_box ${field['value'] ? `preview` : `` }">

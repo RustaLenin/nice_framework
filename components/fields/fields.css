@@ -592,3 +592,16 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.medium .preview_box { right: -58px; width: 48px; height: 48px; }
 .nice_field.small .preview_box { right: -55px; width: 45px; height: 45px; }
 .nice_field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
+
+nice-wp_editor textarea {
+    min-width: 60vw;
+}
+
+nice-wp_editor > div {
+    width: 640px;
+}
+
+.wp_editor_textarea {
+    width: 100% !important;
+    margin-bottom: 16px;
+}
