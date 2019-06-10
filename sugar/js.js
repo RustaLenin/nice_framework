@@ -33,7 +33,7 @@ export function get( url ) {
                 resolve( request );                                                                                     // Resolve the promise with the response text
             }
             else {                                                                                                      // Otherwise reject with the status text
-                resolve(  request );                                                                             // which will hopefully be a meaningful error
+                resolve(  request );                                                                                    // which will hopefully be a meaningful error
             }
         };
 
