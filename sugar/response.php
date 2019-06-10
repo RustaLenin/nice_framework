@@ -8,7 +8,7 @@ Class NiceResponse {
 
     public static function default_answer() {
         return [
-            'result'  => _t('error'),
+            'result'  => 'error',
             'message' => _t('Nothing happens') . ' ¯\_(ツ)_/¯',
             'source'  => __METHOD__
         ];
