@@ -98,6 +98,11 @@
     --accent_hover_icon_color: #FF6600;
     --icon_reverce_accent_color: #ffffff;
 
+    /** LightBox **/
+    --lightbox_background: #000000cc;
+    --close_lightbox_icon: #ffffff;
+    --close_lightbox_icon_hover: #ffffff;
+
     /** Opacity **/
     --opacity_notfocus: 0.75;
     --opacity_blured: 0.6;

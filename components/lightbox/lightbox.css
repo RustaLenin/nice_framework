@@ -1,0 +1,42 @@
+nice-lightbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right:0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var( --lightbox_background );
+    opacity: 0;
+    visibility: hidden;
+    transition: var( --regular_transition );
+    z-index: 9999;
+}
+
+nice-lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+nice-lightbox .preview_image {
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+nice-lightbox .close_lightbox {
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
+}
+
+nice-lightbox .close_lightbox svg {
+    fill: var( --close_lightbox_icon );
+}
+
+nice-lightbox .close_lightbox:hover svg {
+    opacity: 1;
+    fill: var( --close_lightbox_icon_hover );
+}

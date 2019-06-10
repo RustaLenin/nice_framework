@@ -100,6 +100,11 @@ export function defaultTempalte() {
             --accent_icon_color: #009C4F;
             --accent_hover_icon_color: #FF6600;
             --icon_reverce_accent_color: #ffffff;
+            
+            /** LightBox **/
+            --lightbox_background: #000000cc;
+            --close_lightbox_icon: #ffffff;
+            --close_lightbox_icon_hover: #ffffff;
     
             /** Opacity **/
             --opacity_notfocus: 0.75;
@@ -214,6 +219,11 @@ export function notFoundTemplate() {
             --accent_icon_color: #58c5c7;
             --accent_hover_icon_color: #58c5c7;
             --icon_reverce_accent_color: #ffffff;
+            
+            /** LightBox **/
+            --lightbox_background: #000000cc;
+            --close_lightbox_icon: #ffffff;
+            --close_lightbox_icon_hover: #ffffff;
         
             /** Opacity **/
             --opacity_notfocus: 0.75;

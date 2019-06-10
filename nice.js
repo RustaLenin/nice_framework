@@ -13,6 +13,7 @@ import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks,
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
 import { NiceWPEditor } from './components/fields/wp_editor.js';
 import { SvgMap } from './components/svg/map.js';
+import { addLightBox, lightBox } from './components/lightbox/lightbox.js';
 import { notFoundTemplate, defaultTempalte, insertCssVars, replaceCssVars } from './components/vars/nice_vars.js';
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
@@ -158,7 +159,9 @@ window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;
 window.uniqID = uniqID;
-customElements.define('nice-svg', NiceSvg);
-customElements.define('nice-wp_editor', NiceWPEditor);
+customElements.define('nice-svg', NiceSvg );
+customElements.define('nice-wp_editor', NiceWPEditor );
+customElements.define('nice-lightbox', lightBox );
+addLightBox();
 console.log( _t('Nice added in document') );
 console.log( window.Nice );
