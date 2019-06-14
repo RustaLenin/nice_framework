@@ -27,6 +27,7 @@ class NICE_FRAMEWORK_MENU {
 
         /** Settings page **/
         add_action( 'admin_print_footer_scripts-' . $settings_suffix, [ 'NICE_FRAMEWORK_SETUP_PAGE', 'js' ] );
+        add_action( 'admin_print_footer_scripts-' . $settings_suffix, [ 'NICE_FRAMEWORK_SETUP_PAGE', 'css' ] );
 
     }
 

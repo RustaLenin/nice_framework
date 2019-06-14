@@ -108,6 +108,7 @@ export function niceField( field = {} ) {
             let default_select_value = '';
             let default_select_content = '';
             let default_select_icon = '';
+
             jQuery.each(field['selections'], function (i, element) {
                 if (element['default']) {
                     default_select_value = element['value'];
@@ -137,7 +138,7 @@ export function niceField( field = {} ) {
             let content = '';
             let check_count = -1;
 
-            field['selections'].forEach ( function ( selection ) {
+            field['selections'].forEach ( function ( name, selection ) {
                 if ( selection['checked'] ) {
                     check_count++;
                     if ( check_count === 0 ) {

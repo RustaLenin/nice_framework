@@ -288,4 +288,8 @@ Class NICE_FRAMEWORK_SETUP_PAGE {
         <?php
     }
 
+    public static function css() {
+        wp_enqueue_style('nice_wp_settings', plugin_dir_url(__FILE__) . 'setup_page_style.css' );
+    }
+
 }
