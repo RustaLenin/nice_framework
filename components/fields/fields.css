@@ -17,9 +17,6 @@
     justify-content: center;
 }
 
-.nice_field:last-of-type {
-    margin: 18px 18px 18px 0;
-}
 
 .nice_field .label {
     position: absolute;

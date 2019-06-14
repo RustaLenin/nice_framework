@@ -1,55 +1,56 @@
-import { debounce } from '../logic_patterns/logic.js'
+import {debounce} from '../logic_patterns/logic.js'
 
-export const delayFieldValidation = debounce( fieldValidation, 2400 );
+export const delayFieldValidation = debounce(fieldValidation, 2400);
 
 export const validationTypes = {
-    'email':    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    'login':    /^[-a-zA-Z0-9]+$/,
+    'email': /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+    'login': /^[-a-zA-Z0-9]+$/,
+    'latin': /^[-a-zA-Z]+$/,
     'currency': /^[A-Z]{3,6}$/,
-    'int':      /^[0-9]*$/,
+    'int': /^[0-9]*$/,
     'ddmmyyyy': /^([0-3][0-9])[\.\-\\\/]([0-1][0-9])[\.\-\\\/]([0-9]{2,4})$/,
     'mmddyyyy': /^([0-1][0-9])[\.\-\\\/]([0-3][0-9])[\.\-\\\/]([0-9]{2,4})$/,
-    'hex':      /^(#)[0-9a-fA-F]{6,8}$/,
-    'url':      /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
-    'img_url':  /^(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))$/,
-    'phone':    /^[-0-9()+]*$/
+    'hex': /^(#)[0-9a-fA-F]{6,8}$/,
+    'url': /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
+    'img_url': /^(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))$/,
+    'phone': /^[-0-9()+]*$/
 };
 
-export function isCurrency( val ) {
-    return Nice.validation.types['currency'].test( val );
+export function isCurrency(val) {
+    return Nice.validation.types['currency'].test(val);
 }
 
-export function isImgUrl( val ) {
-    return Nice.validation.types['img_url'].test( val );
+export function isImgUrl(val) {
+    return Nice.validation.types['img_url'].test(val);
 }
 
-export function isUrl( val ) {
-    return Nice.validation.types['url'].test( val );
+export function isUrl(val) {
+    return Nice.validation.types['url'].test(val);
 }
 
-export function isHex( val ) {
-    return Nice.validation.types['hex'].test( val );
+export function isHex(val) {
+    return Nice.validation.types['hex'].test(val);
 }
 
-export function isDate( val ) {
+export function isDate(val) {
 
-    let isDmy = Nice.validation.types['ddmmyyyy'].test( val );
-    let isMdy = Nice.validation.types['mmddyyyy'].test( val );
+    let isDmy = Nice.validation.types['ddmmyyyy'].test(val);
+    let isMdy = Nice.validation.types['mmddyyyy'].test(val);
 
-    if ( isDmy || isMdy ) {
+    if (isDmy || isMdy) {
 
-        let first_part = parseInt( val.substring( 0, 2 ) );
-        let second_part = parseInt( val.substring( 3, 5 ) );
+        let first_part = parseInt(val.substring(0, 2));
+        let second_part = parseInt(val.substring(3, 5));
 
 
-        if ( isDmy ) {
+        if (isDmy) {
 
-            return ( first_part < 32 && second_part < 13 )
+            return (first_part < 32 && second_part < 13)
 
         }
 
-        if ( isMdy ) {
-            return ( first_part < 13 && second_part < 32 )
+        if (isMdy) {
+            return (first_part < 13 && second_part < 32)
         }
 
 
@@ -58,40 +59,50 @@ export function isDate( val ) {
     }
 }
 
-export function isInt( val ) {
-    if ( val.length > 0 ) {
-        return Nice.validation.types['int'].test( val );
+export function isInt(val) {
+    if (val.length > 0) {
+        return Nice.validation.types['int'].test(val);
     } else {
         return false
     }
 
 }
 
-export function isPhone( val ) {
-    if ( val.length > 0 ) {
-        return Nice.validation.types['phone'].test( val );
+export function isPhone(val) {
+    if (val.length > 0) {
+        return Nice.validation.types['phone'].test(val);
     } else {
         return false
     }
 }
 
-export function isValidEmail( val ) {
-    return Nice.validation.types['email'].test( val );
+export function isValidEmail(val) {
+    return Nice.validation.types['email'].test(val);
 }
 
-export function isValidLogin( val ) {
+export function isValidLogin(val) {
 
-    if ( val.length > 1 ) {
-        return Nice.validation.types['login'].test( val );
+    if (val.length > 1) {
+        return Nice.validation.types['login'].test(val);
     } else {
         return false;
     }
 
 }
 
-export function isNotEmpty( val ) {
+export function isValidLatin(val) {
 
-    if ( typeof val === 'undefined' ) {
+    if (val.length > 1) {
+        return Nice.validation.types['latin'].test(val);
+    } else {
+        return false;
+    }
+
+}
+
+export function isNotEmpty(val) {
+
+    if (typeof val === 'undefined') {
         return false
     } else {
         return val.length > 1;
@@ -99,36 +110,69 @@ export function isNotEmpty( val ) {
 
 }
 
-export function fieldValidation( input ) {
+export function fieldValidation(input) {
 
     let container = input.closest('.NiceField');
-
     container.classList.remove('success', 'error');
 
     let validation = input.getAttribute('data-validation');
 
-    let value;
-    if ( dom.isInput( input ) ) {
-        value = input.value;
-    } else {
-        value = input.innerHTML;
-    }
-
-    let fn = Nice.validation[validation];
-
-    if ( typeof fn !== 'function' ) {
-        container.classList.add('error');
-        container.closest('.error_message').innerHTML = Nice._t('Unknown validation method');
-    } else {
-
-        if ( fn( value ) ) {
-            container.classList.add('success');
+    if (validation) {
+        let value;
+        if (dom.isInput(input)) {
+            value = input.value;
         } else {
-            container.classList.add('error');
+            value = input.innerHTML;
         }
 
+        let fn = Nice.validation[validation];
+
+        if (typeof fn !== 'function') {
+            container.classList.add('error');
+            if (container.closest('.error_message')) {
+                container.closest('.error_message').innerText = Nice._t('Unknown validation method');
+            }
+        } else {
+
+            if (fn(value)) {
+                container.classList.add('success');
+            } else {
+                container.classList.add('error');
+            }
+
+        }
     }
 
+
+}
+
+export function loopFieldValidation(elem) {
+
+    let el = document.querySelector(elem);
+    let list = el.querySelectorAll('.input');
+    list.forEach(
+        function (currentValue) {
+            fieldValidation(currentValue)
+        }
+    );
+}
+
+export function isValidForm(elem) {
+
+    let el = document.querySelector(elem);
+    let list = el.querySelectorAll('.NiceField');
+    let check = true;
+    list.forEach(
+        function (currentValue) {
+            check = currentValue.classList.contains('error');
+            if(check){
+                check = false;
+            }  else if(!check){
+                check = true;
+            }
+        }
+    );
+    return check;
 }
 
 // Old version of function writed in jQuery with object props
@@ -163,18 +207,18 @@ export function fieldValidation( input ) {
 //
 // }
 
-export function HandleFieldsValidate( selector ) {
+export function HandleFieldsValidate(selector) {
 
-    let inputs = jQuery( selector ).find('.input');
+    let inputs = jQuery(selector).find('.input');
 
-    inputs.each( function () {
+    inputs.each(function () {
 
-        let ThisField = jQuery( this );
-        let ValidType = ThisField .attr('data-validation');
+        let ThisField = jQuery(this);
+        let ValidType = ThisField.attr('data-validation');
 
-        if ( ValidType && ValidType !== 'false' ) {
+        if (ValidType && ValidType !== 'false') {
 
-            ThisField.on( 'input', function () {
+            ThisField.on('input', function () {
                 ThisField.parents('.NiceField').removeClass('error');
                 delayValidateField({
                     'field': ThisField,
@@ -182,7 +226,7 @@ export function HandleFieldsValidate( selector ) {
                 });
             });
 
-            ThisField.on( 'change', function () {
+            ThisField.on('change', function () {
                 ThisField.parents('.NiceField').removeClass('error');
                 delayValidateField({
                     'field': ThisField,
@@ -190,38 +234,38 @@ export function HandleFieldsValidate( selector ) {
                 });
             });
 
-            ThisField.on( 'DOMSubtreeModified', function () {
+            ThisField.on('DOMSubtreeModified', function () {
                 delayValidateField({
                     'field': ThisField,
                     'type': ValidType
                 });
             });
 
-            ThisField.on( 'focusin', function () {
+            ThisField.on('focusin', function () {
                 delayValidateField({
                     'field': ThisField,
                     'type': ValidType
                 });
             });
 
-            ThisField.on( 'focusout', function () {
+            ThisField.on('focusout', function () {
                 vField({
                     'field': ThisField,
                     'type': ValidType
                 });
-                setTimeout( function () {
+                setTimeout(function () {
                     ThisField.parents('.NiceField').removeClass('error');
-                }, 1000 )
+                }, 1000)
             });
 
-            ThisField.on( 'paste', function () {
+            ThisField.on('paste', function () {
                 vField({
                     'field': ThisField,
                     'type': ValidType
                 });
-                setTimeout( function () {
+                setTimeout(function () {
                     ThisField.parents('.NiceField').removeClass('error');
-                }, 1000 )
+                }, 1000)
             });
 
         }
@@ -229,16 +273,16 @@ export function HandleFieldsValidate( selector ) {
 
 }
 
-export function RunFieldsValidate( selector ) {
+export function RunFieldsValidate(selector) {
 
-    let input = jQuery( selector ).find('.input');
+    let input = jQuery(selector).find('.input');
 
-    input.each( function () {
+    input.each(function () {
 
-        let ThisField = jQuery( this );
-        let ValidType = ThisField .attr('data-validation');
+        let ThisField = jQuery(this);
+        let ValidType = ThisField.attr('data-validation');
 
-        if ( ValidType && ValidType !== 'false' ) {
+        if (ValidType && ValidType !== 'false') {
 
             vField({
                 'field': ThisField,

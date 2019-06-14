@@ -76,7 +76,7 @@
     min-height: 30vh;
     min-width: 33vw;
     max-width: 80vw;
-    max-height: 60vh;
+    max-height: 50vh;
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
 }
