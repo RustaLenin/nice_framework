@@ -151,7 +151,9 @@ export function niceField( field = {} ) {
             });
 
             if ( content !== '' ) {
-                content += Nice._t(' and + ') + check_count;
+                if ( check_count  > 0 ) {
+                    content += Nice._t(' and + ') + check_count;
+                }
             } else {
                 content = Nice._t( 'Nothing selected');
             }
