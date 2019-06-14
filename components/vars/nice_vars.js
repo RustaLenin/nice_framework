@@ -122,7 +122,7 @@ export function notFoundTemplate() {
     <style id="CSSVars">
         :root {
             /** BackGrounds **/
-            --main_background: #ffffff;
+            --main_background: #f1f1f1;
             --content_background: #ffffff;
             --accent_background: #ededed;
             --second_accent_background: #9d56a2;
