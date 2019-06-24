@@ -5,7 +5,7 @@ export const delayFieldValidation = debounce(fieldValidation, 2400);
 export const validationTypes = {
     'email': /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     'login': /^[-a-zA-Z0-9]+$/,
-    'latin': /^[-a-zA-Z]+$/,
+    'latin': /^[a-zA-Z0-9 ]+$/,
     'currency': /^[A-Z]{3,6}$/,
     'int': /^[0-9]*$/,
     'ddmmyyyy': /^([0-3][0-9])[\.\-\\\/]([0-1][0-9])[\.\-\\\/]([0-9]{2,4})$/,
@@ -114,7 +114,6 @@ export function fieldValidation(input) {
 
     let container = input.closest('.NiceField');
     container.classList.remove('success', 'error');
-
     let validation = input.getAttribute('data-validation');
 
     if (validation) {
@@ -150,11 +149,16 @@ export function loopFieldValidation(elem) {
 
     let el = document.querySelector(elem);
     let list = el.querySelectorAll('.input');
-    list.forEach(
-        function (currentValue) {
-            fieldValidation(currentValue)
-        }
-    );
+        list.forEach(
+            function (currentValue) {
+                let validation = currentValue.getAttribute('data-validation');
+                if(validation && validation !== 'false'){
+                    fieldValidation(currentValue)
+                }
+            }
+        );
+
+
 }
 
 export function isValidForm(elem) {
@@ -164,11 +168,9 @@ export function isValidForm(elem) {
     let check = true;
     list.forEach(
         function (currentValue) {
-            check = currentValue.classList.contains('error');
-            if(check){
+            let check_el = currentValue.classList.contains('error');
+            if(check_el){
                 check = false;
-            }  else if(!check){
-                check = true;
             }
         }
     );
