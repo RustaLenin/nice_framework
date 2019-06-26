@@ -1,3 +1,6 @@
 [submodule "dependency/air-datepicker"]
 	path = dependency/air-datepicker
 	url = https://github.com/t1m0n/air-datepicker.git
+[submodule "dependency/js-cookie"]
+	path = dependency/js-cookie
+	url = https://github.com/js-cookie/js-cookie.git
