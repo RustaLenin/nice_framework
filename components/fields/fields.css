@@ -17,10 +17,6 @@
     justify-content: center;
 }
 
-.nice_field:last-of-type {
-    margin-bottom: 18px;
-}
-
 .nice_field .label {
     position: absolute;
     top: -18px;
@@ -209,7 +205,7 @@ If you not show any label, you not need margin-top
 **/
 
 .nice_field.no_label {
-    margin-top: 0 !important;
+    margin-top: 0;
 }
 
 /** No comment and validation **/
@@ -260,15 +256,14 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 /** Validating **/
 
 .nice_field.error {
-    display: flex !important;
-    border-left: none !important;
-    box-shadow: none !important;
-    margin: 18px 18px 36px 0 !important;
-    padding: 0 !important;
+    display: flex;
+    border-left: none;
+    box-shadow: none;
+    padding: 0;
 }
 
 .nice_field.error.inline {
-    display: inline-flex !important;
+    display: inline-flex;
 }
 
 .nice_field .comment_message {
@@ -616,6 +611,10 @@ nice-wp_editor > div {
 }
 
 .wp_editor_textarea {
-    width: 100% !important;
+    width: 100%;
     margin-bottom: 16px;
+}
+
+.nice_field:last-of-type {
+    margin-bottom: 18px;
 }
