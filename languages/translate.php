@@ -25,8 +25,10 @@ Class NiceTranslate {
 }
 
 if ( !function_exists('_t') ) {
-    function _t( $key, $lang = NICE_LANG ){
+    function _t( $key, $lang = false ){
+        if ( !$lang ) {
+            return $key;
+        }
         return NiceTranslate::_t( $key, $lang);
     }
 }
-
