@@ -17,6 +17,9 @@
     justify-content: center;
 }
 
+.nice_field:last-of-type {
+    margin-bottom: 18px;
+}
 
 .nice_field .label {
     position: absolute;
@@ -212,7 +215,7 @@ If you not show any label, you not need margin-top
 /** No comment and validation **/
 
 .nice_field.no_comment {
-    margin-bottom: 16px;
+    margin-bottom: 18px;
 }
 
 .nice_field.no_comment:last-of-type {
