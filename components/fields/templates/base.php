@@ -9,6 +9,8 @@
     if ( $field['inline'] ){ echo ' inline'; }
     if ( $field['no_min_width'] ){ echo ' no_min_width'; }
     if ( $field['align_center'] ){ echo ' align_center'; }
+    if ( !$field['show_label'] ) { echo ' no_label'; }
+    if ( !$field['validation'] && !$field['comment_message'] ) { echo ' no_comment';}
     if ( $field['icon'] && $field['field_type'] !== 'textarea' ) { echo ' with_icon';    }
     else if ( $field['field_type'] === 'media' ) { echo ' with_icon'; }
     if ( $field['textarea'] ) { echo ' textarea';}

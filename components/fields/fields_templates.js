@@ -320,6 +320,14 @@ export function fieldClass( field ) {
         classString += 'align_center ';
     }
 
+    if ( !field['show_label'] ) {
+        classString += 'no_label ';
+    }
+
+    if ( !field['validation'] && !field['comment_message'] ) {
+        classString += ' no_comment';
+    }
+
     if ( field['icon'] && field['field_type'] !== 'textarea' ) {
         classString += 'with_icon ';
     } else if ( field['field_type'] === 'media' ) {

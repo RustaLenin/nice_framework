@@ -114,17 +114,6 @@ Or typical search form with one inline field + button
     display: inline-flex;
 }
 
-/** No_min_width
-If you need as minimum width as possible, for dropdown list in a header for example
-Use property inline
-This way Field width = paddings + field content
-**/
-
-.nice_field.no_min_width,
-.nice_field.no_min_width .area {
-    min-width: 0;
-}
-
 /** Align Center
 Yeah, some times people need text in the field to be in the center
 A don't know why, but if they need it, they get it.
@@ -201,6 +190,34 @@ Here is styles for
 .nice_field.tiny .input[contenteditable=true]:empty:before { font-size: 14px; }
 .nice_field.tiny .input::placeholder { font-size: 14px; }
 
+/** No_min_width
+If you need as minimum width as possible, for dropdown list in a header for example
+Use property inline
+This way Field width = paddings + field content
+**/
+
+.nice_field.no_min_width,
+.nice_field.no_min_width .area {
+    min-width: 0;
+}
+
+/** no_label
+If you not show any label, you not need margin-top
+**/
+
+.nice_field.no_label {
+    margin-top: 0 !important;
+}
+
+/** No comment and validation **/
+
+.nice_field.no_comment {
+    margin-bottom: 16px;
+}
+
+.nice_field.no_comment:last-of-type {
+    margin-bottom: 0;
+}
 /** Border types
 Nice_Fields have two (2) border types
 Regular border - All 4 border's included (top, right, bottom, down). This is default.
