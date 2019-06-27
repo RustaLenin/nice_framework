@@ -22,6 +22,25 @@ export function forEach() {
     }
 }
 
+export function ajaxPost( data = {}, url, header = 'application/x-www-form-urlencoded' ) {
+    return new Promise( function( resolve, reject ) {
+
+        let request = new XMLHttpRequest();
+        request.open( 'POST', url, true );
+        request.setRequestHeader( 'Content-Type', header );
+
+        request.onload = function() {                                                                                   // This is called even on 404 etc
+            resolve(  request );
+        };
+
+        request.onerror = function() {                                                                                  // Handle network errors
+            resolve( request );
+        };
+
+        request.send( data );                                                                                                 // Make the request
+    });
+}
+
 export function get( url ) {
     return new Promise( function( resolve, reject ) {
 
@@ -29,12 +48,7 @@ export function get( url ) {
         request.open('GET', url );
 
         request.onload = function() {                                                                                   // This is called even on 404 etc
-            if ( request.status === 200 ) {                                                                             // so check the status
-                resolve( request );                                                                                     // Resolve the promise with the response text
-            }
-            else {                                                                                                      // Otherwise reject with the status text
-                resolve(  request );                                                                                    // which will hopefully be a meaningful error
-            }
+            resolve(  request );
         };
 
         request.onerror = function() {                                                                                  // Handle network errors

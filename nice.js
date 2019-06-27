@@ -4,7 +4,8 @@ console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
-import { forEach, get, uniqID } from './sugar/js.js';
+import { forEach, get, ajaxPost, uniqID } from './sugar/js.js';
+window.ajaxPost = ajaxPost;
 
 /** Nice **/
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
