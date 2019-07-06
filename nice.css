@@ -1,6 +1,7 @@
 @import 'components/buttons/buttons.css';
 @import 'components/metabox/metabox.css';
 @import 'components/fields/fields.css';
+@import 'components/fields/component.css';
 @import 'components/notifications/notifications.css';
 @import 'components/settings/settings.css';
 @import 'components/svg/svg.css';

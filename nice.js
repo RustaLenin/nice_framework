@@ -4,9 +4,11 @@ console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
-import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive } from './sugar/js.js';
+import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson } from './sugar/js.js';
 
 /** Nice **/
+import { niceInput } from './components/fields/input.js';
+import { niceFieldComponent } from './components/fields/component.js';
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
@@ -166,10 +168,13 @@ window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;
 window.uniqID = uniqID;
+window.isJson = isJson;
 customElements.define('nice-svg', NiceSvg );
 customElements.define('nice-wp_editor', NiceWPEditor );
 customElements.define('nice-lightbox', lightBox );
 customElements.define('nice-chooser', chooser );
+customElements.define('nice-field', niceFieldComponent );
+customElements.define('nice-input', niceInput );
 addLightBox();
 console.log( _t('Nice added in document') );
 console.log( window.Nice );

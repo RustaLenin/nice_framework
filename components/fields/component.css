@@ -1,0 +1,609 @@
+/** All Nice Fields and it's elements needs box-sizing type border-box **/
+
+nice-field * {
+    box-sizing: border-box;
+}
+
+/**Basic styles **/
+
+nice-field {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 18px 18px 0;
+    font-family: var( --regular_font_family );
+    flex-shrink: 0;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+nice-field .label {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    font-size: 12px;
+    color: var( --support_font_color );
+}
+
+nice-field .area {
+    display: inline-flex;
+    position: relative;
+    min-width: 270px;
+    flex-wrap: wrap;
+}
+
+nice-field .head_wrapper {
+    width: 100%;
+    cursor: pointer;
+}
+
+nice-field .input {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var( --field_font_color );
+    background-color: var( --field_background );
+    outline: none;
+    transition: 0.4s;
+    border-radius: 6px;
+    padding: 12px 48px 12px 24px;
+    overflow-x: hidden;
+    word-break: break-word;
+    min-width: 100%;
+    line-height: 1.33;
+}
+
+nice-field .input.hidetext {
+    font-family: text-security-disc, sans-serif;
+}
+
+nice-field .input[contenteditable=true]:empty:before {
+    content: attr(placeholder);
+    display: block;
+    color: var( --field_placeholder );
+    cursor: text;
+    font-weight: normal;
+}
+
+nice-field .input::placeholder {
+    font-size: 16px;
+    color: var( --field_placeholder );
+    font-weight: normal;
+    cursor: text;
+}
+
+nice-field .input[data-required=true]:after {
+    content: '*';
+    position: absolute;
+    color: #666;
+    top: 1px;
+    right: 5px;
+    font-size: 22px;
+}
+
+nice-field .field_icon {
+    display: flex;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nice-field .field_icon.click_able:hover svg {
+    fill: var( --icon_hover_color );
+}
+
+nice-field .field_icon:hover svg {
+    fill: var( --icon_color );
+}
+
+nice-field.over_border .input {
+    justify-content: flex-end;
+}
+
+/** Modifications **/
+
+/** Inline
+Nice field have props called inline.
+It's add an inline class, which make container to be inline
+It can be used for 2 or more field's come together in one form
+Or typical search form with one inline field + button
+**/
+nice-field.inline{
+    display: inline-flex;
+}
+
+/** Align Center
+Yeah, some times people need text in the field to be in the center
+A don't know why, but if they need it, they get it.
+**/
+
+nice-field.align_center .input {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+/** Special labels
+Nice_Fields have two (2) label types
+Above border - default
+Over border - optional
+Here is styles for
+**/
+
+nice-field.over_border .label {
+    position: absolute;
+    top: -8px;
+    z-index: 10;
+    background: var(--content_background);
+    padding: 0 2px;
+    left: 12px;
+}
+
+/** Sizes **/
+/** Large **/
+nice-field.large { min-width: 320px; }
+nice-field.large input.input { width: 320px; }
+nice-field.large .input {
+    font-size: 22px;
+    padding: 14px 40px 14px 12px;
+}
+nice-field.large .field_icon { width: 28px; height: 28px; }
+nice-field.large.with_icon .input { padding-left: 48px; }
+nice-field.large .input[contenteditable=true]:empty:before { font-size: 22px; }
+nice-field.large .input::placeholder { font-size: 22px; }
+
+/** Medium **/
+nice-field.medium { min-width: 270px; }
+nice-field.medium input.input { width: 270px; }
+nice-field.medium .input {
+    font-size: 20px;
+    padding: 12px 40px 12px 12px;
+}
+nice-field.medium .field_icon { width: 24px; height: 24px; }
+nice-field.medium.with_icon .input { padding-left: 42px; }
+nice-field.medium .input[contenteditable=true]:empty:before { font-size: 18px; }
+nice-field.medium .input::placeholder { font-size: 18px; }
+
+/** Small **/
+nice-field.small { min-width: 220px; }
+nice-field.small input.input { width: 220px; }
+nice-field.small .input {
+    font-size: 16px;
+    padding: 11.5px 50px 11.5px 12px;
+}
+nice-field.small .field_icon { width: 20px; height: 20px; }
+nice-field.small.with_icon .input { padding-left: 38px; }
+nice-field.small .input[contenteditable=true]:empty:before { font-size: 16px; }
+nice-field.small .input::placeholder { font-size: 16px; }
+
+/** Tiny **/
+nice-field.tiny { min-width: 170px; }
+nice-field.tiny input.input { width: 170px; }
+nice-field.tiny .input {
+    font-size: 14px;
+    padding: 8px 40px 6px 8px;
+}
+nice-field.tiny .field_icon { width: 16px; height: 16px; }
+nice-field.tiny.with_icon .input { padding-left: 32px; }
+nice-field.tiny .input[contenteditable=true]:empty:before { font-size: 14px; }
+nice-field.tiny .input::placeholder { font-size: 14px; }
+
+/** No_min_width
+If you need as minimum width as possible, for dropdown list in a header for example
+Use property inline
+This way Field width = paddings + field content
+**/
+
+nice-field.no_min_width,
+nice-field.no_min_width .area {
+    min-width: 0;
+}
+
+/** no_label
+If you not show any label, you not need margin-top
+**/
+
+nice-field.no_label {
+    padding-top: 0;
+}
+
+/** No comment and validation **/
+
+nice-field.no_comment {
+    padding-bottom: 18px;
+}
+
+nice-field.no_comment:last-of-type {
+    padding-bottom: 0;
+}
+/** Border types
+Nice_Fields have two (2) border types
+Regular border - All 4 border's included (top, right, bottom, down). This is default.
+Only Bottom - So, here is only one, bottom border. This is optional, mostly used in dark themes.
+**/
+
+nice-field.regular_border .input {
+    border: 0.5px solid var( --field_border );
+}
+
+nice-field.regular_border .input:focus {
+    border-color: var( --field_focus_color );
+    box-shadow: 0 0 4px var( --field_focus_color );
+}
+
+nice-field.only_bottom_border .label {
+    top: -14px;
+}
+
+nice-field.only_bottom_border .input {
+    border-bottom: 1px solid var( --field_border );
+    border-radius: 0;
+    min-height: 40px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+nice-field.only_bottom_border .input[data-required=true]:after {
+    top: -15px;
+    right: 0;
+}
+
+nice-field.only_bottom_border .input:focus {
+    border-bottom: 1px solid var( --field_focus_color );
+}
+
+/** Validating **/
+
+nice-field .comment_message {
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    color: var(--field_comment);
+    font-size: 12px;
+    visibility: visible;
+    opacity: 1;
+    transition: var( --regular_transition );
+}
+
+nice-field .error_message,
+nice-field .error_icon,
+nice-field .success_icon,
+nice-field .success_message {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: var( --regular_transition );
+}
+
+nice-field.error .comment_message,
+nice-field.success .comment_message {
+    visibility: hidden;
+    opacity: 0;
+}
+
+nice-field.error .input {
+    border-color: var( --field_validate_error );
+}
+
+nice-field.success .input {
+    border-color: var( --field_validate_success );
+}
+
+nice-field.error .error_message,
+nice-field.success .success_message {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+nice-field.error .error_message {
+    color: var( --field_validate_error );
+}
+
+nice-field.success .success_message {
+    color: var( --field_validate_success );
+}
+
+
+nice-field .error_message,
+nice-field .success_message,
+nice-field .info_message{
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    font-size: 12px;
+}
+
+nice-field .success_icon,
+nice-field .error_icon {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+nice-field.success .success_icon,
+nice-field.error .error_icon {
+    align-items: center;
+    visibility: visible;
+    opacity: 1;
+}
+
+nice-field.error .error_icon svg {
+    width: 14px;
+    height: 14px;
+    fill: var( --field_validate_error );
+    opacity: 1;
+}
+
+nice-field.success .success_icon svg {
+    width: 14px;
+    height: 14px;
+    fill: var( --field_validate_success );
+    opacity: 1;
+}
+
+
+
+/** Selection arrow for drop down **/
+
+nice-field .selector_arrow {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 12px;
+    cursor: pointer;
+}
+
+nice-field .area.open .selector_arrow svg {
+    transform: rotate(180deg);
+}
+
+/** Selection List for drop down **/
+
+nice-field .selections_list {
+    position: absolute;
+    top: calc( 100% + 2px );
+    opacity: 0;
+    height: 0;
+    width: 100%;
+    visibility: hidden;
+    transition: var( --regular_transition );
+    background-color: var( --field_select_background);
+    /*border: var( --divider_color );*/
+    cursor: pointer;
+    max-height: 35vh;
+    overflow-y: auto;
+    z-index: 12;
+}
+
+nice-field .area.open .selections_list {
+    opacity: 1;
+    height: auto;
+    visibility: visible;
+}
+
+nice-field .selection_list__element {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var( --field_select_divider );
+    padding: 8px;
+    transition: var( --regular_transition );
+    visibility: visible;
+    opacity: 1;
+    height: auto;
+}
+
+nice-field .selection_list__element:last-of-type {
+    border-bottom: none;
+}
+
+nice-field .selection_list__element_icon,
+nice-field .selection_list__element_check {
+    display: flex;
+    flex-shrink: 0;
+}
+
+nice-field .selection_list__element_icon svg {
+    margin-right: 8px;
+}
+
+/** CheckBox in the select line **/
+
+nice-field .selection_list__element_check {
+    position: absolute;
+    right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+    padding: 1px;
+    transition: var( --regular_transition );
+    border-radius: 4px;
+}
+
+nice-field .selections_list.single .selection_list__element_check {
+    border-radius: 50%;
+}
+
+/** States **/
+
+/** Hidden **/
+nice-field .selection_list__element.hidden {visibility: hidden; opacity: 0; height: 0; padding: 0;}
+
+/** Regular **/
+nice-field .selection_list__element { background-color: var( --field_select_background ); }
+nice-field .selection_list__element .selection_list__element_icon svg { fill: var( --field_select_icon ); opacity: 1;}
+nice-field .selection_list__element .selection_list__element_text { color: var(--field_select_text ); }
+nice-field .selection_list__element .selection_list__element_check { border-color: var( --field_select_box_border ); background-color: var( --field_select_box_background );}
+nice-field .selection_list__element .selection_list__element_check svg { fill: var( --field_select_box_icon ); opacity: 1;}
+
+/** Hover **/
+nice-field .selection_list__element:hover { background-color: var( --field_select_background_hover ); }
+nice-field .selection_list__element:hover .selection_list__element_icon svg { fill: var( --field_select_icon_hover );}
+nice-field .selection_list__element:hover .selection_list__element_text { color: var(--field_select_text_hover ); }
+nice-field .selection_list__element:hover .selection_list__element_check { border-color: var( --field_select_box_border_hover ); background-color: var( --field_select_box_background_hover );}
+nice-field .selection_list__element:hover .selection_list__element_check svg { fill: var( --field_select_box_icon_hover );}
+
+/** Checked **/
+nice-field .selection_list__element.checked { background-color: var( --field_select_background_checked ); }
+nice-field .selection_list__element.checked .selection_list__element_icon svg { fill: var( --field_select_icon_checked );}
+nice-field .selection_list__element.checked .selection_list__element_text { color: var(--field_select_text_checked ); }
+nice-field .selection_list__element.checked .selection_list__element_check { border-color: var( --field_select_box_border_checked ); background-color: var( --field_select_box_background_checked );}
+nice-field .selection_list__element.checked .selection_list__element_check svg { fill: var( --field_select_box_icon_checked );}
+
+/** Remove ( Checked + Hover ) **/
+nice-field .selection_list__element.checked:hover { background-color: var( --field_select_background_remove ); }
+nice-field .selection_list__element.checked:hover .selection_list__element_icon svg { fill: var( --field_select_icon_remove );}
+nice-field .selection_list__element.checked:hover .selection_list__element_text { color: var(--field_select_text_remove ); }
+nice-field .selection_list__element.checked:hover .selection_list__element_check { border-color: var( --field_select_box_border_remove ); background-color: var( --field_select_box_background_remove );}
+nice-field .selection_list__element.checked:hover .selection_list__element_check svg { fill: var( --field_select_box_icon_remove );}
+
+/** Blocked **/
+nice-field .selection_list__element.blocked { background-color: var( --field_select_background_blocked ); }
+nice-field .selection_list__element.blocked .selection_list__element_icon svg { fill: var( --field_select_icon_blocked  );}
+nice-field .selection_list__element.blocked .selection_list__element_text { color: var(--field_select_text_blocked ); }
+nice-field .selection_list__element.blocked .selection_list__element_check { border-color: var( --field_select_box_border_blocked ); background-color: var( --field_select_box_background_blocked );}
+nice-field .selection_list__element.blocked .selection_list__element_check svg { fill: var( --field_select_box_icon );}
+
+/** Blocked + Hover **/
+
+nice-field .selection_list__element.blocked:hover { background-color: var( --field_select_background_blocked_hover ); }
+nice-field .selection_list__element.blocked:hover .selection_list__element_icon svg { fill: var( --field_select_icon_blocked_hover );}
+nice-field .selection_list__element.blocked:hover .selection_list__element_text { color: var(--field_select_text_blocked_hover ); }
+nice-field .selection_list__element.blocked:hover .selection_list__element_check { border-color: var( --field_select_box_border_blocked_hover ); background-color: var( --field_select_box_background_blocked_hover );}
+nice-field .selection_list__element.blocked:hover .selection_list__element_check svg { fill: var( --field_select_box_icon );}
+
+/** Blocked + Checked **/
+nice-field .selection_list__element.blocked.checked .selection_list__element_check svg { fill: var( --field_select_box_icon_blocked );}
+
+/** Blocked + Checked + Hover **/
+nice-field .selection_list__element.blocked.checked:hover .selection_list__element_check svg { fill: var( --field_select_box_icon_blocked_hover     );}
+
+/** Sizes **/
+
+/** Large **/
+nice-field.large .selections_list { max-height: 60vh; }
+nice-field.large .selection_list__element { padding: 14.5px 43px 14.5px 14.5px ; }
+nice-field.large .selection_list__element_text { font-size: 22px; }
+nice-field.large .selections_list .selection_list__element_icon svg { width: 28px; height: 28px;}
+nice-field.large .selection_list__element_check { width: 28px; height: 28px; }
+nice-field.large .selection_list__element_check svg { width: 18px; height: 18px; }
+
+/** Medium **/
+nice-field.medium .selections_list { max-height: 50vh; }
+nice-field.medium .selection_list__element { padding: 11px 35px 11px 11px; }
+nice-field.medium .selection_list__element_text { font-size: 20px; }
+nice-field.medium .selections_list .selection_list__element_icon svg { width: 24px; height: 24px;}
+nice-field.medium .selection_list__element_check { width: 24px; height: 24px; }
+nice-field.medium .selection_list__element_check svg { width: 16px; height: 16px; }
+
+/**Small **/
+nice-field.small .selections_list { max-height: 40vh; }
+nice-field.small .selection_list__element { padding: 8px 28px 8px 8px; }
+nice-field.small .selection_list__element_text { font-size: 16px; }
+nice-field.small .selections_list .selection_list__element_icon svg { width: 20px; height: 20px;}
+nice-field.small .selection_list__element_check { width: 20px; height: 20px; }
+nice-field.small .selection_list__element_check svg { width: 14px; height: 14px; }
+
+
+/** Tiny **/
+nice-field.tiny .selections_list { max-height: 35vh; }
+nice-field.tiny .selection_list__element { padding: 4px 20px 4px 4px; }
+nice-field.tiny .selection_list__element_text { font-size: 14px; }
+nice-field.tiny .selections_list .selection_list__element_icon svg { width: 16px; height: 16px;}
+nice-field.tiny .selection_list__element_check { width: 16px; height: 16px; }
+nice-field.tiny .selection_list__element_check svg { width: 12px; height: 12px; }
+
+nice-field .input.textarea {
+    justify-content: flex-start;
+    overflow: hidden;
+    resize: vertical;
+    min-height: 120px;
+    padding: 12px;
+    font-size: 14px;
+    transition: 0s;
+}
+
+nice-field .preview_box {
+    position: absolute;
+    top: 0;
+    display: flex;
+    border: 1px solid var(--field_border);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+nice-field .preview_box .hack {
+    height: 100%;
+    width: auto;
+}
+
+nice-field .preview_box .preview_img {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY( -50% );
+    width: 100%;
+    height: auto;
+    transition: var( --regular_transition );
+}
+
+nice-field .preview_box .preview_box__icon {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    width: 60%;
+    height: 60%;
+    visibility: visible;
+    opacity: 1;
+}
+
+nice-field .preview_box.preview .preview_img {
+    opacity: 1;
+    visibility: visible;
+}
+
+nice-field .preview_box.preview .preview_box__icon {
+    opacity: 0;
+    visibility: hidden;
+}
+
+nice-field .preview_box .preview_box__icon svg {
+    width: 100%;
+    height: 100%;
+    opacity: 0.6;
+    fill: var( --field_font_color );
+}
+
+nice-field .preview_box:hover svg {
+    opacity: 1;
+    fill: var( --field_validate_error );
+}
+
+nice-field.large .preview_box { right: -66px; width: 58px; height: 58px; }
+nice-field.medium .preview_box { right: -58px; width: 48px; height: 48px; }
+nice-field.small .preview_box { right: -55px; width: 45px; height: 45px; }
+nice-field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
+
+
+nice-wp_editor > div {
+    width: 640px;
+}
+
+.wp_editor_textarea {
+    width: 100%;
+    margin-bottom: 16px;
+}
+
+nice-field:last-of-type {
+    padding-bottom: 18px;
+}

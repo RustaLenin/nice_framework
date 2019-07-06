@@ -124,3 +124,12 @@ export function objectToUrlParamsRecursive( obj, url_params = false, namespace =
     return urlParams;
 
 }
+
+export function isJson( str ) {
+    try {
+        JSON.parse(str);
+    } catch (e) {
+        return false;
+    }
+    return true;
+}

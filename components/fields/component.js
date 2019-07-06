@@ -1,55 +1,55 @@
 import { wpEditor } from './fields_templates.js';
-import { validateHandlers, fieldIcon, validateIcons } from './static.js';
+import { base, regular, validateHandlers, fieldIcon, validateIcons, previewBox, validateMediaHandlers } from './static.js';
 
 /** Working on fields like web components
  * In progress
  **/
 
-export class niceField extends HTMLElement {
+export class niceFieldComponent extends HTMLElement {
 
     defaultModel = {
         /** Core **/
-        'name': 'name',
-        'field_type': 'regular',
-        'data_type': 'text',
-        'required': false,
-        'field_class': '',
-        'value': '',
-        'spellcheck': false,
-        'validation': false,
+        'name':           'name',
+        'field_type':     'regular',                        // regular | textarea | wp_media | wp_editor | select_list
+        'data_type':      'text',                           // text
+        'required':       false,                            // true || false
+        'field_class':    '',                               // any string
+        'value':          '',                               // data
+        'spellcheck':     false,                            // true || false
+        'validation':     false,                            // false || func_name
 
         /** Required styling **/
-        'size': 'medium',
-        'border_type': 'regular_border',
-        'label_type': 'above_border',
+        'size':           'medium',                         // tiny | small | medium | large
+        'border_type':    'regular_border',                 // regular_border || bottom_border
+        'label_type':     'above_border',                   // above_border || over_border
 
         /** Optional styling **/
-        'class': '',
-        'hide_label': false,
-        'inline': false,
-        'no_min_width': false,
-        'align_center': false,
+        'class': '',                                        // string
+        'hide_label':      false,                           // false || true
+        'inline':          false,                           // false || true
+        'no_min_width':    false,                           // false || true
+        'align_center':    false,                           // false || true
 
         /** Text **/
-        'label': Nice._t('Really nice field'),
-        'placeholder': Nice._t('Type some text'),
-        'error_message': Nice._t('Enter valid data'),
-        'comment_message': '',
-        'success_message': '',
+        'label':           Nice._t('Really nice field'),    // text
+        'placeholder':     Nice._t('Type some text'),       // text
+        'error_message':   Nice._t('Enter valid data'),     // text
+        'comment_message': '',                              // text
+        'success_message': '',                              // text
 
         /** Icon **/
-        'icon': false,
-        'icon_class': '',
-
+        'icon':            false,                           // false | icon - object | icon_id - string
+        'icon_class':      '',                              // string
 
     };
 
     currentModel = {};
 
     constructor() {
-        super();
+        super();                                            // Make it first, cause we need access to this props and methods
 
-        let data = eval( this.getAttribute('data') );
+        let dataString = this.getAttribute('data');
+        let data =  isJson( dataString ) ? JSON.parse( dataString ) : eval( dataString );
         let listen = this.getAttribute('listen');
 
         this.initModel( data );
@@ -62,9 +62,12 @@ export class niceField extends HTMLElement {
         }
     }
 
-    initModel( data ){
+    initModel( data = {} ){
         let newModel = {};
         Object.assign( newModel, this.defaultModel, data );
+
+        if ( !newModel.validation ) { newModel.isValid = true }
+
         this.currentModel = newModel;
         this.updateElem();
     }
@@ -122,57 +125,19 @@ export class niceField extends HTMLElement {
         let field = this.currentModel;
 
         if ( field['field_type'] !== 'wp_editor' ) {
-            return this.base( field );
+            return base( field );
         } else {
             return wpEditor( field );
         }
 
     }
 
-    base( field ) {
-        let buffer = ``;
-        buffer += `<span class="label">${ field['label'] }</span>`;
-        buffer += `<div class="area NiceFieldArea">`;
-
-        if ( field['field_type'] === 'regular' ) {
-            buffer += this.regular();
-        }
-
-        buffer += `</div>`;
-        if ( field['validation'] !== 'false' ) {
-            buffer += `<span class="error_message">${ field['error_message'] }</span>`;
-            if ( field['success_message'] ) {
-                buffer += `<span class="success_message">${ field['success_message'] }</span>`;
-            }
-        }
-        return buffer;
-    }
-
-    regular() {
-        let field = this.currentModel;
-
-        return `
-        <span 
-            class="input ${ field['field_class'] }"
-            contenteditable="true"
-            spellcheck="${ field['spellcheck'] }"
-            data-type="${ field['type'] }"
-            data-name="${ field['name'] }"
-            data-validation="${ field['validation'] }"
-            data-placeholder="${ field['placeholder'] }"
-            data-required="${ field['required'] }"
-            onpaste="Nice.field.pastePlain(event);"
-            ${ validateHandlers( field ) }
-        >${ field['value'] }</span>
-                    
-                    
-        ${ fieldIcon( field ) }
-    
-        ${ validateIcons( field['validation'] ) }
-    `;
-    }
-
-
+    updateValue() { this.currentModel.value = this.querySelector('.input').innerHTML }
+    getValue() {  return this.currentModel.value; }
+    isRequired() { return this.currentModel.required; }
+    getIconData() { return this.currentModel.icon; }
+    getIconElem() { return this.querySelector('.FieldIcon'); }
+    isValid() { return this.currentModel.isValid }
 
 }
 
