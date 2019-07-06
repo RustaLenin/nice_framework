@@ -1,0 +1,80 @@
+nice-chooser {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+}
+
+nice-chooser .chooser_title {
+    display: inline-flex;
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+
+nice-chooser .chooser:last-of-type {
+    margin-right: 0;
+}
+
+nice-chooser .chooser_content {
+    display: flex;
+}
+
+nice-chooser .list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin-right: 16px;
+    border-radius: 4px;
+}
+
+nice-chooser .list_element {
+    min-width: 160px;
+    position: relative;
+    cursor: pointer;
+    padding: 8px;
+    border-bottom: 1px solid #ccc;
+    transition: 0.4s;
+}
+
+nice-chooser .list .list_element:last-of-type {
+    margin-bottom: 0;
+    border-bottom: 0;
+}
+
+nice-chooser .list .list_element:hover {
+    background-color: var( --field_select_background_hover );
+}
+
+nice-chooser .list .list_element.current {
+    color: var(--field_select_text_checked );
+    background: var( --field_select_background_checked );
+}
+
+nice-chooser .list .list_element.current:hover {
+    color: var(--field_select_text_remove );
+    background-color: var( --field_select_background_remove );
+}
+
+nice-chooser .list .list_element.current:before {
+    display: block;
+    content: '';
+    position: absolute;
+    right: -18px;
+    top: 50%;
+    transform: translateY( -50% );
+    border: 9px solid transparent;
+    transition: 0.4s;
+    border-left: 9px solid var( --field_select_background_checked );
+}
+
+nice-chooser .list .list_element.current:hover:before {
+    border-left: 9px solid var( --field_select_background_remove );
+}
+
+nice-chooser .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

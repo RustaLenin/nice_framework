@@ -202,7 +202,7 @@ export function clearEditableInArea(area) {
 
 export function pastePlain(e) {
     e.preventDefault();
-    let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    let plain_text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
     if (typeof plain_text !== 'undefined') {
         document.execCommand('insertText', false, plain_text);
     }
