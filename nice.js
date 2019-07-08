@@ -4,7 +4,7 @@ console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
-import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson } from './sugar/js.js';
+import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson, fadeAndDelete } from './sugar/js.js';
 
 /** Nice **/
 import { niceInput } from './components/fields/input.js';
@@ -169,6 +169,7 @@ window.dom = {};
 window.dom.isInput = isInput;
 window.uniqID = uniqID;
 window.isJson = isJson;
+window.fadeAndDelete = fadeAndDelete;
 customElements.define('nice-svg', NiceSvg );
 customElements.define('nice-wp_editor', NiceWPEditor );
 customElements.define('nice-lightbox', lightBox );

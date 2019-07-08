@@ -106,7 +106,9 @@ Class NICE_FIELDS {
                     }
                 }
                 if ( $content != '' ) {
-                    $content .= _t(' and + ') .$check_count;
+                    if ( $check_count  > 0 ) {
+                        $content .= _t(' and + ') . $check_count;
+                    }
                 } else {
                     $content = _t( 'Nothing selected');
                 }

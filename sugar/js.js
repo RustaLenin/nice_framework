@@ -133,3 +133,11 @@ export function isJson( str ) {
     }
     return true;
 }
+
+export function fadeAndDelete( elem ) {
+    elem.style = 'transition: 0.4s !important; visibility: hidden; opacity: 0;';
+    setTimeout( function () {
+        elem.remove();
+    }, 400);
+
+}
