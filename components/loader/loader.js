@@ -1,9 +1,10 @@
 export function addLoader( element) {
-    element.prepend('<div class="overlay show"><div class="loader Loader"></div></div>');
+    element.prepend('<div class="overlay"><div class="loader Loader"></div></div>');
 }
 
 export function runLoader( element) {
     element.find('.Loader').addClass('go');
+    element.find('.overlay').addClass('show');
 }
 
 export function addAndRunLoader( element ) {
@@ -12,6 +13,7 @@ export function addAndRunLoader( element ) {
 
 export function stopLoader( element ) {
     element.find('.Loader').removeClass('go');
+    element.find('.overlay').removeClass('show');
 }
 
 export function removeLoader( element ) {
