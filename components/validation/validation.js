@@ -110,12 +110,22 @@ export function isValidTitle(val) {
 
 }
 
-export function isNotEmpty(val) {
+    export function isNotEmpty(val) {
 
     if (typeof val === 'undefined') {
         return false
     } else {
         return val.length > 1;
+    }
+
+}
+
+
+export function maxCount(val, elem ) {
+    let count =parseInt( elem.getAttribute('data-valid_count'), 10);
+    let value = parseInt(val, 10);
+    if(value <= count){
+        return true;
     }
 
 }
@@ -146,7 +156,7 @@ export function fieldValidation(input) {
                 }
             } else {
 
-                if (fn(value)) {
+                if (fn(value, input)) {
                     container.classList.add('success');
                 } else {
                     container.classList.add('error');

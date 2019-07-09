@@ -22,7 +22,7 @@ import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
-import { validationTypes, delayFieldValidation, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
+import { validationTypes, delayFieldValidation, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
 import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
@@ -86,6 +86,7 @@ class Nice {
         this.validation.isValidLatin = isValidLatin;
         this.validation.isValidTitle = isValidTitle;
         this.validation.isValidForm = isValidForm;
+        this.validation.maxCount = maxCount;
 
         /** Form **/
         this.form = renderForm;

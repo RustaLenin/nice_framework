@@ -34,6 +34,7 @@ export function regularField( field ) {
         data-name="${ field['name'] }"
         data-validation="${ field['validation'] }"
         data-placeholder="${ field['placeholder'] }"
+        data-valid_count="${ field['valid_count'] ? field['valid_count'] : '' }"
         data-required="${ field['required'] }"
         onpaste="Nice.field.pastePlain(event);"
         ${ validateHandlers( field ) }
