@@ -10,7 +10,7 @@ Class NiceResponse {
         return [
             'result'  => 'error',
             'message' => _t('Nothing happens') . ' ¯\_(ツ)_/¯',
-            'source'  => __METHOD__
+            'source'  => []
         ];
     }
 
