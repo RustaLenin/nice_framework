@@ -134,25 +134,27 @@ export function fieldValidation(input) {
             value = input.innerHTML;
         }
 
-        let fn = Nice.validation[validation];
+        if ( value === '' ) {
 
-        if (typeof fn !== 'function') {
-            container.classList.add('error');
-            if (container.closest('.error_message')) {
-                container.closest('.error_message').innerText = Nice._t('Unknown validation method');
-            }
         } else {
+            let fn = Nice.validation[validation];
 
-            if (fn(value)) {
-                container.classList.add('success');
-            } else {
+            if (typeof fn !== 'function') {
                 container.classList.add('error');
-            }
+                if (container.closest('.error_message')) {
+                    container.closest('.error_message').innerText = Nice._t('Unknown validation method');
+                }
+            } else {
 
+                if (fn(value)) {
+                    container.classList.add('success');
+                } else {
+                    container.classList.add('error');
+                }
+
+            }
         }
     }
-
-
 }
 
 export function loopFieldValidation(elem) {
