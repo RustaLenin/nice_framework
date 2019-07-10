@@ -54,11 +54,14 @@
 
             <span class="selection_list__element_text"><?php echo $selector['text']; ?></span>
 
-            <?php if ( $field['checkboxes'] ) { ?>
-                <span class="selection_list__element_check">
-                    <?php echo nice_svg([ 'size' => $field['size'], 'id' => 'check' ]); ?>
-                </span>
-            <?php } ?>
+            <?php if ( $field['checkboxes'] ) {
+                    if( !$selector['hide_checkbox'] ) { ?>
+                        <span class="selection_list__element_check">
+                        <?php echo nice_svg([ 'size' => $field['size'], 'id' => 'check' ]); ?>
+                        </span>
+                        <?php
+                    }
+                } ?>
 
         </div>
 
