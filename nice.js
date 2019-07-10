@@ -21,6 +21,11 @@ import { notFoundTemplate, defaultTempalte, insertCssVars, replaceCssVars } from
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
+
+import { modalsList, addModalList } from './components/modals/list.js'
+import { modalArea, addModalArea } from './components/modals/area.js';
+import { NiceModal, newModal, toggleModal, removeModal } from './components/modals/modal.js';
+
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
 import { validationTypes, delayFieldValidation, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
@@ -170,12 +175,20 @@ window.dom.isInput = isInput;
 window.uniqID = uniqID;
 window.isJson = isJson;
 window.fadeAndDelete = fadeAndDelete;
+window.newModal = newModal;
+window.toggleModal = toggleModal;
+window.removeModal = removeModal;
 customElements.define('nice-svg', NiceSvg );
 customElements.define('nice-wp_editor', NiceWPEditor );
 customElements.define('nice-lightbox', lightBox );
 customElements.define('nice-chooser', chooser );
 customElements.define('nice-field', niceFieldComponent );
 customElements.define('nice-input', niceInput );
+customElements.define('nice-modal_area', modalArea );
+customElements.define('nice-modal_list', modalsList );
+customElements.define('nice-modal', NiceModal );
 addLightBox();
+addModalArea();
+addModalList();
 console.log( _t('Nice added in document') );
 console.log( window.Nice );
