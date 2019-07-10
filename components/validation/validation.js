@@ -1,6 +1,7 @@
 import {debounce} from '../logic_patterns/logic.js'
 
 export const delayFieldValidation = debounce(fieldValidation, 2400);
+export const delayFieldRequired = debounce(fieldRequired, 2400);
 
 export const validationTypes = {
     'email': /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
@@ -100,6 +101,7 @@ export function isValidLatin(val) {
     }
 
 }
+
 export function isValidTitle(val) {
 
     if (val.length > 1) {
@@ -120,11 +122,22 @@ export function isNotEmpty(val) {
 
 }
 
+
+export function maxCount(val, elem) {
+    let count = parseInt(elem.getAttribute('data-valid_count'), 10);
+    let value = parseInt(val, 10);
+    if (value <= count) {
+        return true;
+    }
+
+}
+
 export function fieldValidation(input) {
 
     let container = input.closest('.NiceField');
     container.classList.remove('success', 'error');
     let validation = input.getAttribute('data-validation');
+    let error_text = input.getAttribute('data-error-text');
 
     if (validation) {
         let value;
@@ -134,7 +147,7 @@ export function fieldValidation(input) {
             value = input.innerHTML;
         }
 
-        if ( value === '' ) {
+        if (value === '') {
 
         } else {
             let fn = Nice.validation[validation];
@@ -146,10 +159,13 @@ export function fieldValidation(input) {
                 }
             } else {
 
-                if (fn(value)) {
+                if (fn(value, input)) {
                     container.classList.add('success');
                 } else {
                     container.classList.add('error');
+                    if (container.querySelector('.error_message')) {
+                        container.querySelector('.error_message').innerText = error_text;
+                    }
                 }
 
             }
@@ -157,18 +173,69 @@ export function fieldValidation(input) {
     }
 }
 
+export function fieldRequired(input) {
+
+    let container = input.closest('.NiceField');
+    container.classList.remove('success', 'error');
+    let required = input.getAttribute('data-required');
+    let type = input.getAttribute('data-type');
+    if(required){
+
+        let value;
+        if (dom.isInput(input)) {
+            value = input.value;
+        } else {
+            value = input.innerHTML;
+        }
+        if (type === 'select' ) {
+            let nothing = input.getAttribute('data-nothing');
+            if (nothing === 'true' ) {
+                console.log(value);
+                container.classList.add('error');
+                if (container.querySelector('.error_message')) {
+                    container.querySelector('.error_message').innerText = 'Выберите элемент';
+                }
+            }
+        }
+
+        if (value === '') {
+            container.classList.add('error');
+            if (container.querySelector('.error_message')) {
+                container.querySelector('.error_message').innerText = 'Введите данные';
+            }
+        }
+    }
+
+}
+
 export function loopFieldValidation(elem) {
 
     let el = document.querySelector(elem);
     let list = el.querySelectorAll('.input');
-        list.forEach(
-            function (currentValue) {
-                let validation = currentValue.getAttribute('data-validation');
-                if(validation && validation !== 'false'){
-                    fieldValidation(currentValue)
-                }
+    list.forEach(
+        function (currentValue) {
+            let validation = currentValue.getAttribute('data-validation');
+            if (validation && validation !== 'false') {
+                fieldValidation(currentValue)
             }
-        );
+        }
+    );
+
+
+}
+
+export function loopFieldRequired(elem) {
+
+    let el = document.querySelector(elem);
+    let list = el.querySelectorAll('.input');
+    list.forEach(
+        function (currentValue) {
+            let validation = currentValue.getAttribute('data-required');
+            if (validation === 'true') {
+                fieldRequired(currentValue)
+            }
+        }
+    );
 
 
 }
@@ -181,7 +248,7 @@ export function isValidForm(elem) {
     list.forEach(
         function (currentValue) {
             let check_el = currentValue.classList.contains('error');
-            if(check_el){
+            if (check_el) {
                 check = false;
             }
         }

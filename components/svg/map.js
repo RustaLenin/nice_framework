@@ -130,6 +130,7 @@ export const SvgMap = {
     'check': `<svg id="check" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21 15">
     <path class="a" d="M2.545,4.091,0,6.7,8.1,15,21,2.786,18.281,0,7.926,9.605Z"/>
 </svg>`,
+
     'city': `<svg id="city" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60.207 60.206">
 	<path d="M51.751,23.435V5.474h-7.106v25.975h-4.083V19.958H30.103v-7.862h-9.197v18.442h-2.282v-5.742H7.902v-7.862H0v7.862v5.742
 		v24.195h16.371h2.253h2.282h7.561h1.636h5.268h5.191h19.645V38.826v-7.377v-8.015H51.751z M4.843,26.899H2.239v-6.183h2.604V26.899
@@ -741,6 +742,12 @@ export const SvgMap = {
         s18.146-8.125,18.146-18.146v-295.41c0-10.322,8.397-18.719,18.719-18.719H306c10.021,0,18.146-8.122,18.146-18.146
         C324.146,62.624,316.021,54.499,306,54.499z"/>
 </svg>`,
+    'success-icon': `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<circle style="fill:#25AE88;" cx="25" cy="25" r="25"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="
+	38,15 22,33 12,25 "/>
+</svg>`,
 
     /** T **/
     'trash': `<svg width="17" height="21" viewBox="0 0 17 21" >
@@ -850,6 +857,13 @@ export const SvgMap = {
         C925.1,476.813,918.2,465.614,908,459.513z M700.5,634.313c-31.3,0-56.8-25.4-56.8-56.801c0-31.299,25.399-56.799,56.8-56.799
         c31.3,0,56.8,25.4,56.8,56.799C757.3,608.913,731.9,634.313,700.5,634.313z"/>
 </svg>`,
+    'warning-icon': `<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<circle style="fill:#EFCE4A;" cx="25" cy="25" r="25"/>
+<line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="25" y1="10" x2="25" y2="32"/>
+<line style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" x1="25" y1="37" x2="25" y2="39"/>
+</svg>
+`,
 
 
     /** X **/

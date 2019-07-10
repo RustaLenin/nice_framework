@@ -31,9 +31,11 @@ export function regularField( field ) {
         contenteditable="true"
         spellcheck="${ field['spellcheck'] }"
         data-type="${ field['type'] }"
+        data-error-text="${ field['error_message'] }"
         data-name="${ field['name'] }"
         data-validation="${ field['validation'] }"
         data-placeholder="${ field['placeholder'] }"
+        data-valid_count="${ field['valid_count'] ? field['valid_count'] : '' }"
         data-required="${ field['required'] }"
         onpaste="Nice.field.pastePlain(event);"
         ${ validateHandlers( field ) }
@@ -54,6 +56,7 @@ export function vanillaField( field ) {
         type="${ field['type'] }"
         name="${ field['name'] }"
         data-validation="${ field['validation'] }"
+        data-error-text="${ field['error_message'] }"
         placeholder="${ field['placeholder'] }"
         data-required="${ field['required'] }"
         autocomplete="${ field['autocomplete'] }"
@@ -140,8 +143,10 @@ export function selectField( field ) {
                     data-required="${ field['required'] }"
                     data-callback="${ field['callback'] }"
                     data-select_type="${ field['select_type'] }"
+                     ${ field['value'] ? '' :  'data-nothing="true"'}
                     data-data_format="${ field['data_format'] }"
                     data-can_be_empty="${ field['data_format'] ? `true` : `false` }"
+                           ${ validateSelectHandlers( field ) }
                     ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }
             </span>
@@ -225,10 +230,13 @@ export function selectElementColor( element ) {
 
 export function selectElementChecks( field ) {
     if ( field['checkboxes'] ) {
-        return `
+        if (!field['hide_checkbox']) {
+            return `
             <span class="selection_list__element_check">
-                ${ Nice.svg( { 'id': 'check', 'size': field['size'] } ) }
+                ${ Nice.svg({'id': 'check', 'size': field['size']}) }
             </span>`
+    } else{
+        return '';
     }
 }
 
@@ -302,6 +310,12 @@ export function validateMediaHandlers( field ) {
     } else {
         return 'onpaste="Nice.field.pastePlain(event); Nice.field.updateMediaField(this);"';
     }
+}
+
+export function validateSelectHandlers( field ) {
+    return `
+        onclick="this.closest('.nice_field').classList.remove('error', 'success');"
+        `;
 }
 
 export function fieldClass( field ) {
