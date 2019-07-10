@@ -28,6 +28,7 @@ export function chooseThis( elem = null ) {
         /** Find parent html elements: area & input itself **/
         let area  = elem.closest('.NiceFieldArea');
         let input = area.querySelector('.input');
+        input.setAttribute('data-nothing', 'false' );
         let select_type = input.getAttribute('data-select_type');
 
         if ( select_type === 'single' ) {
@@ -60,6 +61,7 @@ export function chooseThis( elem = null ) {
 
                 if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
                     input.textContent = Nice._t('Nothing selected');
+                    input.setAttribute('data-nothing', 'true' );
                     input.setAttribute('data-value', '' );
                     if ( area.querySelector('nice-svg') ) {
                         area.querySelector('.field_icon').remove();
@@ -93,6 +95,8 @@ export function chooseThis( elem = null ) {
                 if ( count > 1 ) {
                     count -= 1;
                     new_field_content += Nice._t(' and + ') + count;
+                } else if( count === 0){
+                    input.setAttribute('data-nothing', 'true' );
                 }
             }
             input.textContent = new_field_content;

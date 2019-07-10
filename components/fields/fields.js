@@ -85,7 +85,7 @@ export function niceField( field = {} ) {
         if (!(field['open'])) {
             field['open'] = false;
         }
-        if (!(field['checkboxes'])) {
+        if (field['checkboxes'] === '') {
             field['checkboxes'] = true;
         }
         if (!(field['content'])) {
