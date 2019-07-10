@@ -230,10 +230,9 @@ export function selectElementColor( element ) {
 
 export function selectElementChecks( field ) {
     if ( field['checkboxes'] ) {
-        if (!field['hide_checkbox']) {
-            return `
+        return `
             <span class="selection_list__element_check">
-                ${ Nice.svg({'id': 'check', 'size': field['size']}) }
+                ${ Nice.svg( { 'id': 'check', 'size': field['size'] } ) }
             </span>`
     } else{
         return '';
