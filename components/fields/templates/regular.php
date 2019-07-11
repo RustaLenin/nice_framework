@@ -4,7 +4,7 @@
     class="input
     <?php echo $field['field_class']; ?>"
 
-    contenteditable="true"
+    contenteditable="<?php echo $field['editable'] ? 'true': 'false'; ?>"
     spellcheck="<?php echo $field['spellcheck']; ?>"
     data-type="<?php echo $field['type']; ?>"
     data-name="<?php echo $field['name']; ?>"

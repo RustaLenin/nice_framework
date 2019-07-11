@@ -57,7 +57,7 @@
     font-family: text-security-disc, sans-serif;
 }
 
-.nice_field .input[contenteditable=true]:empty:before {
+.nice_field .input:empty:before {
     content: attr(data-placeholder);
     display: block;
     color: var( --field_placeholder );
@@ -432,9 +432,6 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 
 /** States **/
 
-/** Hidden **/
-.nice_field .selection_list__element.hidden {visibility: hidden; opacity: 0; height: 0; padding: 0;}
-
 /** Regular **/
 .nice_field .selection_list__element { background-color: var( --field_select_background ); }
 .nice_field .selection_list__element .selection_list__element_icon svg { fill: var( --field_select_icon ); opacity: 1;}
@@ -518,6 +515,9 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.tiny .selections_list .selection_list__element_icon svg { width: 16px; height: 16px;}
 .nice_field.tiny .selection_list__element_check { width: 16px; height: 16px; }
 .nice_field.tiny .selection_list__element_check svg { width: 12px; height: 12px; }
+
+/** Hidden **/
+.nice_field .selection_list__element.hidden {visibility: hidden; opacity: 0; height: 0; padding: 0; border-bottom: 0;}
 
 .nice_field .input.textarea {
     justify-content: flex-start;

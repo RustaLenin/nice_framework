@@ -28,7 +28,7 @@ export function regularField( field ) {
     return `
     <span 
         class="input ${ field['field_class'] }"
-        contenteditable="true"
+        contenteditable="${ field['editable'] ? 'true' : 'false'}"
         spellcheck="${ field['spellcheck'] }"
         data-type="${ field['type'] }"
         data-error-text="${ field['error_message'] }"
@@ -189,7 +189,7 @@ export function selectElement( field, element ) {
                 ${ Nice.svg( element['icon'] ) }
             </span>
             
-            <span class="selection_list__element_text">${ element['text'] }</span>
+            <span class="selection_list__element_text">${ element['text'] ? element['text'] : 'Something' }</span>
             
             ${selectElementChecks(field) }
             

@@ -40,8 +40,9 @@ export function niceField( field = {} ) {
     if (!(field['validation'])) {
         field['validation'] = false
     }
-
-
+    if ( typeof field['editable'] === 'undefined' ) {
+        field['editable'] = true
+    }
     if (!(field['placeholder'])) {
         field['placeholder'] = Nice._t('Type some text')
     }
