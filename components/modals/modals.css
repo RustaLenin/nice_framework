@@ -337,11 +337,10 @@ nice-modal_list {
     min-width: 240px;
     bottom: 16px;
     background-color: var( --content_background );
-    padding: 4px 8px;
 }
 
 nice-modal_list .collapsed_modal {
-    padding: 8px;
+    padding: 8px 12px;
     border-bottom: 1px solid var( --divider_color );
     display: flex;
     justify-content: space-between;
