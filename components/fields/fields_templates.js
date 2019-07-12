@@ -143,7 +143,8 @@ export function selectField( field ) {
                     data-required="${ field['required'] }"
                     data-callback="${ field['callback'] }"
                     data-select_type="${ field['select_type'] }"
-                     ${ field['value'] ? '' :  'data-nothing="true"'}
+                    data-nothing="${ field['data-nothing'] }"
+                     
                     data-data_format="${ field['data_format'] }"
                     data-can_be_empty="${ field['data_format'] ? `true` : `false` }"
                            ${ validateSelectHandlers( field ) }
