@@ -236,6 +236,15 @@ export const SvgMap = {
               transform="translate(0 0)"/>
     </g>
 </svg>`,
+    'cancel': `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<circle style="fill:#D75A4A;" cx="25" cy="25" r="25"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
+	"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
+	"/>
+</svg>
+`,
     'code': `<svg id="code" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="94.504px" height="94.504px" viewBox="0 0 94.504 94.504">
     <path d="M93.918,45.833L69.799,21.714c-0.75-0.75-2.077-0.75-2.827,0l-5.229,5.229c-0.781,0.781-0.781,2.047,0,2.828
         l17.477,17.475L61.744,64.724c-0.781,0.781-0.781,2.047,0,2.828l5.229,5.229c0.375,0.375,0.884,0.587,1.414,0.587

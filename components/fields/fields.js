@@ -147,6 +147,8 @@ export function niceField( field = {} ) {
                         if ( selection['icon'] ) {
                             field['icon'] = selection['icon'];
                         }
+                    } else if(check_count > 0 ) {
+                        field['data-nothing'] = false;
                     }
                 }
             });
