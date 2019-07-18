@@ -150,3 +150,154 @@
 .nice_button.submit.disabled {
     background-color: var( --disabled_button_color );
 }
+
+nice-button {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    padding: 8px 20px;
+    font-size: 16px;
+    color: var( --accent_button_color );
+    border: 1px solid var( --accent_button_color );
+    background-color: var( --content_background );
+    transition: var( --regular_transition );
+    cursor: pointer;
+    width: fit-content;
+    opacity: 0.8;
+}
+
+nice-button:hover {
+    color: var( --font_reverce_accent_color );
+    background-color: var( --accent_button_color );
+    opacity: 1;
+}
+
+nice-button.regular {
+    border: 1px solid var( --divider_color );
+    color: var( --second_font_color );
+    background-color: var( --content_background );
+}
+
+nice-button.regular:hover {
+    color: var( --font_reverce_accent_color );
+    background-color: var( --second_font_color );
+}
+
+nice-button.accent {
+    border: 1px solid var( --accent_second_button_color );
+    color: var( --accent_second_button_color );
+    background-color: var( --content_background );
+}
+
+nice-button.accent:hover {
+    color: var( --font_reverce_accent_color );
+    background-color: var( --accent_second_button_color );
+}
+
+nice-button:hover nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+nice-button:hover nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+nice-button.submit nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+}
+
+nice-button.submit:hover nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+nice-button.submit:hover nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+nice-button.tiny {
+    font-size: 12px;
+    padding: 2px 8px;
+}
+
+nice-button.tiny nice-svg {
+    margin-right: 4px;
+}
+
+nice-button.small {
+    font-size: 14px;
+    padding: 4px 12px;
+}
+
+nice-button.small nice-svg {
+    margin-right: 6px;
+}
+
+nice-button.medium {
+    font-size: 16px;
+    padding: 6px 16px;
+}
+
+nice-button.medium nice-svg {
+    margin-right: 8px;
+}
+
+nice-button.large {
+    font-size: 16px;
+    padding: 8px 20px;
+}
+
+nice-button.large nice-svg {
+    margin-right: 10px;
+}
+
+nice-button.huge {
+    font-size: 18px;
+    padding: 12px 24px;
+}
+
+nice-button.huge nice-svg {
+    margin-right: 12px;
+}
+
+/** Submit Button **/
+
+nice-button.submit {
+    font-family: var( --regular_font_family );
+    border: 1px solid var( --accent_second_button_color );
+    background-color: var( --accent_second_button_color );
+    color: var( --font_reverce_accent_color );
+}
+
+nice-button.submit nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+}
+
+nice-button.submit:hover nice-svg svg {
+    fill: var( --icon_reverce_accent_color );
+    opacity: 1;
+}
+
+nice-button.submit.accent {
+    background-color: var( --accent_button_color );
+}
+
+nice-button.submit.w100 {
+    width: 100%;
+    text-align: center;
+}
+
+nice-button.submit.unactive {
+    background-color: var( --sub_bacground );
+}
+
+nice-button.submit:hover {
+    opacity: 1;
+}
+
+nice-button.submit.disabled {
+    background-color: var( --disabled_button_color );
+}

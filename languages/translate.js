@@ -3,10 +3,19 @@ import { ru } from './js/ru.js';
 
 export function _t( key, locale ) {
     if ( typeof Nice === 'undefined' ) {
-        return en[key];
+        if ( en[key] ) {
+            return en[key];
+        } else {
+            return key;
+        }
     }
     else {
-        return Nice.currentLocale[key];
+        if ( Nice.currentLocale[key] ) {
+            return Nice.currentLocale[key];
+        } else {
+            return key;
+        }
+
     }
 }
 

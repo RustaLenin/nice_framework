@@ -7,6 +7,7 @@ let initial_time = new Date();
 import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson, fadeAndDelete } from './sugar/js.js';
 
 /** Nice **/
+import { NiceButton } from './components/buttons/button.js';
 import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
@@ -186,6 +187,7 @@ customElements.define('nice-wp_editor',  NiceWPEditor );
 customElements.define('nice-lightbox',   lightBox );
 customElements.define('nice-chooser',    chooser );
 customElements.define('nice-field',      niceFieldComponent );
+customElements.define('nice-button',     NiceButton );
 customElements.define('nice-input',      niceInput );
 customElements.define('nice-modal_area', modalArea );
 customElements.define('nice-modal_list', modalsList );

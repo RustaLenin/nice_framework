@@ -1,21 +1,82 @@
-export function niceButton( button ) {
+import { isJson } from '../../sugar/js.js';
 
-    if ( !button ) { button = array(); }
+export function defaultModel() {
+    return {
+        'text': 'Nice button',
+        'type': 'regular',
+        'icon': false,
+        'size': 'medium',
+        'onclick': ''
+    };
+}
 
-    if ( !button['type'] )  { button['type']  = 'regular'; }
-    if ( !button['size'] )  { button['size']  = 'medium'; }
-    if ( !button['class'] ) { button['class'] = ''; }
-    if ( !button['icon'] )  { button['icon']  = false; }
-    if ( !button['text'] )  { button['text']  = Nice._t('Another one nice button'); }
+export class NiceButton extends HTMLElement {
 
-    return  ejs.render( Nice.buttons.templates.button['type'], { 'button': button } )
+    defaultModel = defaultModel;
+
+    currentModel = {};
+
+    constructor(){
+        super();
+        this.init();
+        this.updateClass();
+        this.innerHTML = this.render();
+    }
+
+    init() {
+
+        let newModel = {};
+
+        let dataString = this.getAttribute('data');
+        let data =  isJson( dataString ) ? JSON.parse( dataString ) : eval( dataString );
+
+        if ( data ) {
+            Object.assign( newModel, this.defaultModel(), data );
+            this.currentModel = newModel;
+        } else {
+            let defaultModel = this.defaultModel();
+            newModel.size = this.getAttribute('size') ? this.getAttribute('size') : defaultModel.size;
+            newModel.type = this.getAttribute('type') ? this.getAttribute('type') : defaultModel.type;
+            newModel.text = this.getAttribute('text') ? this.getAttribute('text') : defaultModel.text;
+            newModel.icon = this.getAttribute('icon') ? this.getAttribute('icon') : defaultModel.icon;
+            this.currentModel = newModel;
+        }
+
+        if ( this.currentModel.onclick ) {
+            this.setAttribute('onclick', this.currentModel.onclick);
+        }
+
+    }
+
+    render() {
+        let model = this.currentModel;
+        let buffer = ``;
+
+        if ( model.icon ) {
+            buffer += Nice.svg( model.icon );
+        }
+        buffer += `<span class="text">${model.text}</span>`;
+
+        return buffer;
+    }
+
+    updateClass() {
+        let model = this.currentModel;
+        this.classList.add( model.size );
+        this.classList.add( model.type )
+    }
 
 }
 
-export function regularButton() {
-    return ``;
-}
+export function niceButton( data ) {
 
-export function submitButton() {
-    return ``;
+    let button = Object.assign( defaultModel(), data );
+
+    return `<nice-button
+        size="${button.size}"
+        type="${button.type}"
+        text="${button.text}"
+        icon="${button.icon}"
+        onclick="${button.onclick}"
+    ></nice-button>`;
 }

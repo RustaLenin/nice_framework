@@ -99,31 +99,31 @@ export function uniqID( pr = '', en = false ) {
     return 'id' + result;
 }
 
-export function objectToUrlParamsRecursive( obj, url_params = false, namespace = false ) {
+    export function objectToUrlParamsRecursive( obj, url_params = false, namespace = false ) {
 
-    let urlParams = url_params ? url_params : '';
-    let DataKey;
+        let urlParams = url_params ? url_params : '';
+        let DataKey;
 
-    obj.forEach( function ( key, val ) {
+        obj.forEach( function ( key, val ) {
 
-        DataKey = namespace ? namespace + '[' + key + ']' : key;
+            DataKey = namespace ? namespace + '[' + key + ']' : key;
 
-        if( typeof val === 'object' && !( val instanceof File ) ) {
-            urlParams = objectToUrlParamsRecursive( val, urlParams, DataKey );
-        } else {
-            if ( urlParams === '' ) {
-                urlParams = urlParams + DataKey + '=' + val.toString();
+            if( typeof val === 'object' && !( val instanceof File ) ) {
+                urlParams = objectToUrlParamsRecursive( val, urlParams, DataKey );
             } else {
-                urlParams = urlParams + '&' + DataKey + '=' + val.toString();
+                if ( urlParams === '' ) {
+                    urlParams = urlParams + DataKey + '=' + val.toString();
+                } else {
+                    urlParams = urlParams + '&' + DataKey + '=' + val.toString();
+                }
+
             }
 
-        }
+        });
 
-    });
+        return urlParams;
 
-    return urlParams;
-
-}
+    }
 
 export function isJson( str ) {
     try {
