@@ -95,6 +95,7 @@ export function niceField( field = {} ) {
         if (!(field['editable'])) {
             field['editable'] = false;
         }
+
         if (!(field['callback'])) {
             field['callback'] = '';
         }
@@ -141,15 +142,17 @@ export function niceField( field = {} ) {
 
             field['selections'].forEach ( function ( name, selection ) {
                 if ( selection['checked'] ) {
+                    field['data-nothing'] = false;
                     check_count++;
                     if ( check_count === 0 ) {
                         content = selection['text'];
                         if ( selection['icon'] ) {
                             field['icon'] = selection['icon'];
                         }
-                    } else if(check_count > 0 ) {
-                        field['data-nothing'] = false;
                     }
+                }
+                else if( check_count < 0) {
+                    field['data-nothing'] = true;
                 }
             });
 

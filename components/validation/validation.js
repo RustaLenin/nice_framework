@@ -5,7 +5,7 @@ export const delayFieldRequired = debounce(fieldRequired, 2400);
 
 export const validationTypes = {
     'email': /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    'login': /^[-a-zA-Z0-9]+$/,
+    'login': /^[-a-zA-Z0-9 ]+$/,
     'latin': /^[a-zA-Z0-9 ]+$/,
     'title': /^[a-zA-Z0-9 \.\-\"\']+$/,
     'currency': /^[A-Z]{3,6}$/,
@@ -190,7 +190,6 @@ export function fieldRequired(input) {
         if (type === 'select' ) {
             let nothing = input.getAttribute('data-nothing');
             if (nothing === 'true' ) {
-                console.log(value);
                 container.classList.add('error');
                 if (container.querySelector('.error_message')) {
                     container.querySelector('.error_message').innerText = 'Выберите элемент';
