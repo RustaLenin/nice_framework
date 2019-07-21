@@ -3,28 +3,27 @@
  **/
 export class NiceSvg extends HTMLElement {
 
-    /** Which attributes will fire changed event **/
-    static observedAttributes = [ 'svg-id', 'svg-size', 'svg-pointer', 'svg-rotate' ];
 
-    /** What sizes are supported for element **/
-    possibleSizes = [ 'ultra_small', 'micro', 'tiny', 'small', 'medium', 'large', 'huge' ];
-
-    /** List of methods to update element based on attr names **/
-    updateAttrMethods = {
-        'svg-id': this.updateIcon,
-        'svg-size': this.updateSize,
-        'svg-pointer': this.updatePointer,
-        'svg-rotate': this.updateRotate,
-    };
-
-    /**
-     * Function used by browser while parse <nice-svg> element in document
-     **/
     constructor() {
         super();                                                                                                         // Magic started
 
         let self = this;
+        /** Which attributes will fire changed event **/
 
+        /** What sizes are supported for element **/
+       this.possibleSizes = [ 'ultra_small', 'micro', 'tiny', 'small', 'medium', 'large', 'huge' ];
+
+        /** List of methods to update element based on attr names **/
+        this.updateAttrMethods = {
+            'svg-id': this.updateIcon,
+            'svg-size': this.updateSize,
+            'svg-pointer': this.updatePointer,
+            'svg-rotate': this.updateRotate,
+        };
+
+        /**
+         * Function used by browser while parse <nice-svg> element in document
+         **/
         /** Get props from element **/
         let svg_id = self.getAttribute('svg-id');
         let svg_class = self.getAttribute('svg-class');

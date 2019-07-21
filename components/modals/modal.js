@@ -1,17 +1,18 @@
 export class NiceModal extends HTMLElement {
 
-    defaultModel = {
-        'title': 'Title',
-        'icon': false,
-        'submit_text': 'Submit',
-        'content': emptyContent,
-        'onsubmit': ''
-    };
-
-    currentModel = {};
 
     constructor( id, template ) {
         super();
+
+        this.defaultModel = {
+            'title': 'Title',
+            'icon': false,
+            'submit_text': 'Submit',
+            'content': emptyContent,
+            'onsubmit': ''
+        };
+
+        this.currentModel = {};
         this.setAttribute('id', id );
         this.setAttribute('template', template );
         this.initModel( id );

@@ -1,41 +1,42 @@
 export class chooser extends HTMLElement {
 
-    defaultModel = {
-        'title': 'Nice title',
-        'current_text': '',
-        // 'current_value': '',
-        'current_description': '',
-        'current_key': '',
-        'list': {
-            'elem_1': {
-                'icon': false,
-                'text': 'Choosed element',
-                'current': true,
-                'permission': 'all',
-                'description': '123'
-            },
-            'elem_2': {
-                'icon': false,
-                'text': 'Regular element',
-                'current': false,
-                'permission': 'all',
-                'description': '456'
-            },
-            'elem_3': {
-                'icon': 'cog',
-                'text': 'Element with icon',
-                'current': false,
-                'permission': 'all',
-                'description': '789'
-            }
-        }
-    };
-
-    currentModel = {};
 
     constructor() {
 
         super();
+        this.defaultModel = {
+            'title': 'Nice title',
+            'current_text': '',
+            // 'current_value': '',
+            'current_description': '',
+            'current_key': '',
+            'list': {
+                'elem_1': {
+                    'icon': false,
+                    'text': 'Choosed element',
+                    'current': true,
+                    'permission': 'all',
+                    'description': '123'
+                },
+                'elem_2': {
+                    'icon': false,
+                    'text': 'Regular element',
+                    'current': false,
+                    'permission': 'all',
+                    'description': '456'
+                },
+                'elem_3': {
+                    'icon': 'cog',
+                    'text': 'Element with icon',
+                    'current': false,
+                    'permission': 'all',
+                    'description': '789'
+                }
+            }
+        };
+
+        this.currentModel = {};
+
         let data = eval( this.getAttribute('data') );
         let listen = this.getAttribute('listen');
         this.updateElem( data );

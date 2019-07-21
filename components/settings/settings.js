@@ -3,39 +3,40 @@ import { niceButton } from '../buttons/button.js';
 
 export class NiceSettings extends HTMLElement {
 
-    defaultModel = {
-        'title': 'Nice Settings',
-        'button_expand': {
-            'text': Nice._t('Expand All'),
-            'icon': 'double_arrow_down',
-            'size': 'small',
-            'onclick': '',
-            'type': 'regular'
-        },
-        'button_collapse': {
-            'text': Nice._t('Collapse All'),
-            'icon': {
-                'id': 'double_arrow_down',
-                'rotate': true
-            },
-            'size': 'small',
-            'onclick': ''
-        },
-        'button_submit': {
-            'text': Nice._t('Save Settings'),
-            'icon': 'check',
-            'size': 'small',
-            'onclick': '',
-        },
-        'menu': {},
-        'blocks': {},
-        'fields': {}
-    };
 
-    currentModel = {};
 
     constructor() {
         super();
+        this.defaultModel = {
+            'title': 'Nice Settings',
+            'button_expand': {
+                'text': Nice._t('Expand All'),
+                'icon': 'double_arrow_down',
+                'size': 'small',
+                'onclick': '',
+                'type': 'regular'
+            },
+            'button_collapse': {
+                'text': Nice._t('Collapse All'),
+                'icon': {
+                    'id': 'double_arrow_down',
+                    'rotate': true
+                },
+                'size': 'small',
+                'onclick': ''
+            },
+            'button_submit': {
+                'text': Nice._t('Save Settings'),
+                'icon': 'check',
+                'size': 'small',
+                'onclick': '',
+            },
+            'menu': {},
+            'blocks': {},
+            'fields': {}
+        };
+
+        this.currentModel = {};
         this.init();
         this.innerHTML = this.render();
     }

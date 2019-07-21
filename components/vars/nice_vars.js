@@ -138,7 +138,7 @@ export function notFoundTemplate() {
             --field_border: #9d56a2;
             --field_background: #ffffff;
             --field_placeholder: #B9B9B9;
-            --field_font_color: #000000;
+            --field_font_color: #9D56A2;
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
             --field_validate_success: #1AC119;

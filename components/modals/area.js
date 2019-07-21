@@ -1,17 +1,18 @@
 export class modalArea extends HTMLElement {
 
-    currentModel = {
-        'show': false,
-        'modals': {
 
-        },
-        'templates': {
-            'test_modal': {},
-        }
-    };
 
     constructor() {
         super();
+        this.currentModel = {
+            'show': false,
+            'modals': {
+
+            },
+            'templates': {
+                'test_modal': {},
+            }
+        };
         this.initModel();
         let self = this;
         document.addEventListener( 'modals_updated', function () {

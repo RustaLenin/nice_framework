@@ -1,9 +1,10 @@
 export class modalsList extends HTMLElement {
 
-    currentModel = {};
+
 
     constructor() {
         super();
+        this.currentModel = {};
         this.initModel();
         let self = this;
         document.addEventListener( 'modals_updated', function () {

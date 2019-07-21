@@ -1,8 +1,8 @@
-import { baseField } from './fields_templates.js';
-import { debounce } from '../logic_patterns/logic.js';
-import { wpEditor } from './fields_templates.js';
+import {baseField} from './fields_templates.js';
+import {debounce} from '../logic_patterns/logic.js';
+import {wpEditor} from './fields_templates.js';
 
-export function niceField( field = {} ) {
+export function niceField(field = {}) {
 
     if (!(field['value'])) {
         field['value'] = ''
@@ -40,7 +40,7 @@ export function niceField( field = {} ) {
     if (!(field['validation'])) {
         field['validation'] = false
     }
-    if ( typeof field['editable'] === 'undefined' ) {
+    if (typeof field['editable'] === 'undefined') {
         field['editable'] = true
     }
     if (!(field['placeholder'])) {
@@ -103,14 +103,18 @@ export function niceField( field = {} ) {
             field['icon'] = false
         }
 
-        if ( !field['can_be_empty'] )   { field['can_be_empty']   = true; }
+        if (!field['can_be_empty']) {
+            field['can_be_empty'] = true;
+        }
 
         if (field['select_type'] === 'single') {
 
             let default_select_value = '';
             let default_select_content = '';
             let default_select_icon = '';
-
+            if (field['value']) {
+                field['data-nothing'] = false;
+            }
             jQuery.each(field['selections'], function (i, element) {
                 if (element['default']) {
                     default_select_value = element['value'];
@@ -140,38 +144,38 @@ export function niceField( field = {} ) {
             let content = '';
             let check_count = -1;
 
-            field['selections'].forEach ( function ( name, selection ) {
-                if ( selection['checked'] ) {
+            field['selections'].forEach(function (name, selection) {
+                if (selection['checked']) {
                     field['data-nothing'] = false;
                     check_count++;
-                    if ( check_count === 0 ) {
+                    if (check_count === 0) {
                         content = selection['text'];
-                        if ( selection['icon'] ) {
+                        if (selection['icon']) {
                             field['icon'] = selection['icon'];
                         }
                     }
                 }
-                else if( check_count < 0) {
+                else if (check_count < 0) {
                     field['data-nothing'] = true;
                 }
             });
 
-            if ( content !== '' ) {
-                if ( check_count  > 0 ) {
+            if (content !== '') {
+                if (check_count > 0) {
                     content += Nice._t(' and + ') + check_count;
                 }
             } else {
-                content = Nice._t( 'Nothing selected');
+                content = Nice._t('Nothing selected');
             }
             field['content'] = content;
 
         }
 
-    } else if ( field['field_type'] === 'vanilla') {
+    } else if (field['field_type'] === 'vanilla') {
         field['autocomplete'] = 'off';
     }
 
-    if ( typeof field['icon'] === 'string' ) {
+    if (typeof field['icon'] === 'string') {
         let iconID = field['icon'];
         field['icon'] = {
             'id': iconID,
@@ -179,10 +183,10 @@ export function niceField( field = {} ) {
         };
     }
 
-    if ( field['field_type'] !== 'wp_editor' ) {
-        return baseField( field );
+    if (field['field_type'] !== 'wp_editor') {
+        return baseField(field);
     } else {
-        return wpEditor( field );
+        return wpEditor(field);
     }
 
 }
@@ -208,7 +212,7 @@ export function clearEditableInArea(area) {
 
 export function pastePlain(e) {
     e.preventDefault();
-    let plain_text = ( e.originalEvent || e ).clipboardData.getData('text/plain');
+    let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
     if (typeof plain_text !== 'undefined') {
         document.execCommand('insertText', false, plain_text);
     }
@@ -243,7 +247,7 @@ export function searchList(elem) {
 
 }
 
-export function WPMediaForFields( icon, e ) {
+export function WPMediaForFields(icon, e) {
 
     e.preventDefault();
 
@@ -254,19 +258,19 @@ export function WPMediaForFields( icon, e ) {
 
     let media_frame = wp.media({
         title: Nice._t('Choose Image'),
-        multiple : false,
-        library : {
-            type : 'image',
+        multiple: false,
+        library: {
+            type: 'image',
         }
     });
 
-    media_frame.on( 'close', function() {
-        let selection =  media_frame.state().get('selection');
-        selection.each( function( attachment ) {
+    media_frame.on('close', function () {
+        let selection = media_frame.state().get('selection');
+        selection.each(function (attachment) {
             input.innerHTML = attachment['attributes']['url'];
-            if ( input.getAttribute('data-validation') ) {
-                Nice.field.updateMediaField( input );
-                Nice.field.validate( input );
+            if (input.getAttribute('data-validation')) {
+                Nice.field.updateMediaField(input);
+                Nice.field.validate(input);
             }
         });
     });
@@ -275,12 +279,12 @@ export function WPMediaForFields( icon, e ) {
 
 }
 
-export function updateMediaField( elem ) {
+export function updateMediaField(elem) {
 
     let preview_box = elem.parentNode.querySelector('.preview_box');
     let preview_box_icon = preview_box.querySelector('.preview_box__icon');
 
-    if ( preview_box.classList.contains('preview') ) {
+    if (preview_box.classList.contains('preview')) {
         preview_box.classList.remove('preview');
     }
 
@@ -290,18 +294,18 @@ export function updateMediaField( elem ) {
     delayMediaImagePreview(elem);
 }
 
-export const delayMediaImagePreview = debounce( mediaImagePreview, 1200 );
+export const delayMediaImagePreview = debounce(mediaImagePreview, 1200);
 
-export function mediaImagePreview( elem ) {
+export function mediaImagePreview(elem) {
 
     let preview_box = elem.parentNode.querySelector('.preview_box');
     let preview_box_icon = preview_box.querySelector('.preview_box__icon');
 
-    Nice.get( elem.textContent ).then( function ( responce ) {
+    Nice.get(elem.textContent).then(function (responce) {
         preview_box_icon.classList.remove('spin');
         preview_box_icon.setAttribute('svg-id', 'blind');
-        if ( responce.status === 200 ) {
-            preview_box.querySelector('.preview_img').setAttribute( 'src', elem.textContent );
+        if (responce.status === 200) {
+            preview_box.querySelector('.preview_img').setAttribute('src', elem.textContent);
             preview_box.classList.add('preview');
         }
     });
