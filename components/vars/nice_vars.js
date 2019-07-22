@@ -92,6 +92,7 @@ export function defaultTempalte() {
             --support_font_color: #8C8C8C;
             --accent_hover_font_color: #FF6600;
             --font_reverce_accent_color: #ffffff;
+            --font_title_color: #2F80ED;
     
             /** Icons **/
             --unactive_icon_color: #D1CFCF;
@@ -211,6 +212,7 @@ export function notFoundTemplate() {
             --support_font_color: #9D56A2;
             --accent_hover_font_color: #58c5c7;
             --font_reverce_accent_color: #ffffff;
+            --font_title_color: #9D56A2;
         
             /** Icons **/
             --unactive_icon_color: #D1CFCF;

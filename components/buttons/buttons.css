@@ -218,50 +218,22 @@ nice-button.submit:hover nice-svg svg {
     opacity: 1;
 }
 
-nice-button.tiny {
-    font-size: 12px;
-    padding: 2px 8px;
-}
-
-nice-button.tiny nice-svg {
-    margin-right: 4px;
-}
-
-nice-button.small {
-    font-size: 14px;
-    padding: 4px 12px;
-}
-
-nice-button.small nice-svg {
-    margin-right: 6px;
-}
-
-nice-button.medium {
-    font-size: 16px;
-    padding: 6px 16px;
-}
-
-nice-button.medium nice-svg {
-    margin-right: 8px;
-}
-
-nice-button.large {
-    font-size: 16px;
-    padding: 8px 20px;
-}
-
-nice-button.large nice-svg {
-    margin-right: 10px;
-}
-
-nice-button.huge {
-    font-size: 18px;
-    padding: 12px 24px;
-}
-
-nice-button.huge nice-svg {
-    margin-right: 12px;
-}
+/** Sizes **/
+/** Tiny **/
+nice-button.tiny { font-size: 12px; padding: 2px 8px; }
+nice-button.tiny nice-svg { width: 16px; height: 16px; margin-right: 4px; }
+/** Small **/
+nice-button.small { font-size: 14px; padding: 4px 12px; }
+nice-button.small nice-svg { width: 20px; height: 20px; margin-right: 6px; }
+/** Medium **/
+nice-button.medium { font-size: 16px; padding: 6px 16px; }
+nice-button.medium nice-svg { width: 24px; height: 24px; margin-right: 8px; }
+/** Large **/
+nice-button.large { font-size: 16px; padding: 8px 20px; }
+nice-button.large nice-svg { width: 28px; height: 28px; margin-right: 10px; }
+/** Huge **/
+nice-button.huge { font-size: 18px; padding: 12px 24px; }
+nice-button.huge nice-svg { width: 32px; height: 32px; margin-right: 12px; }
 
 /** Submit Button **/
 
@@ -300,4 +272,8 @@ nice-button.submit:hover {
 
 nice-button.submit.disabled {
     background-color: var( --disabled_button_color );
+}
+
+nice-button.icon_rotate nice-svg {
+    transform: rotate( 180deg );
 }
