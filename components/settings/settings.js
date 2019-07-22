@@ -77,7 +77,7 @@ export class NiceSettings extends HTMLElement {
             
             ${ niceButton( model.button_collapse ) } 
             
-            ${ niceButton( model.button_submit ) }         
+            ${ niceButton( model.button_submit ) }
 
         </div>
 

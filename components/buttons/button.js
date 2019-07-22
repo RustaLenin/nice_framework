@@ -12,15 +12,12 @@ export function defaultModel() {
 
 export class NiceButton extends HTMLElement {
 
-
-
-
     constructor(){
         super();
-        this.init();
-        this.updateClass();
         this.currentModel = {};
         this.defaultModel = defaultModel;
+        this.init();
+        this.updateClass();
         this.innerHTML = this.render();
     }
 
