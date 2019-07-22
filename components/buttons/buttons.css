@@ -12,6 +12,7 @@
     transition: var( --regular_transition );
     cursor: pointer;
     width: fit-content;
+    width: -moz-fit-content;
     opacity: 0.8;
 }
 

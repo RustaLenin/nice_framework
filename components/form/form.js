@@ -23,7 +23,6 @@ export function renderForm( model = null, values = null ) {
 }
 
 export function getFieldValue( selector = '.input' ) {
-
     let
         value = null,
         field_cont = jQuery(selector),
@@ -50,6 +49,7 @@ export function getFieldValue( selector = '.input' ) {
             value  = field_input.html();
         }
 
+        console.log(value);
     }
 
     return value;

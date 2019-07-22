@@ -1,5 +1,5 @@
 .modal_area {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
@@ -12,6 +12,7 @@
     background-color: #000000aa;
     z-index: 10;
     transition: var( --regular_transition );
+    overflow-y: scroll;
 }
 
 .modal_area.show {

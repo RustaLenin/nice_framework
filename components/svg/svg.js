@@ -82,6 +82,9 @@ export class NiceSvg extends HTMLElement {
         }
     }
 
+    static get observedAttributes() {
+        return [ 'svg-id', 'svg-size', 'svg-pointer', 'svg-rotate'];
+    }
     /**
      * Function what update nice-svg element size
      * @param oldSize {string} - Old element size we need to remove
