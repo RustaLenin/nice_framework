@@ -12,7 +12,7 @@
     background-color: #000000aa;
     z-index: 10;
     transition: var( --regular_transition );
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .modal_area.show {
@@ -34,6 +34,8 @@
     position: relative;
     height: 68px;
     background-color: var( --content_background );
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
     border-bottom: 1px solid var( --divider_color );
     font-weight: 600;
     padding: 0 25px;
@@ -372,4 +374,18 @@ nice-modal_list .collapsed_modal .controls {
 
 nice-modal_list .collapsed_modal .controls nice-svg {
     margin-right: 8px;
+}
+
+@media (max-width: 800px) {
+    .nice_modal{
+        width: 90%;
+        min-width: auto;
+    }
+    .nice_modal .header .title {
+        font-size: 16px;
+        line-height: 18px;
+    }
+    .nice_modal .body {
+        max-width: 100%;
+    }
 }
