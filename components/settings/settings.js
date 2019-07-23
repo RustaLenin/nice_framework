@@ -28,20 +28,67 @@ export class NiceSettings extends HTMLElement {
                 'onclick': '',
                 'type': 'submit',
             },
-            'menu': {
+            'sidebar_collapsed': false,
+            'tabs': {
                 'main_settings': {
                     'icon': 'cog',
                     'text': 'Main Settings',
-                    'id': 'main_settings',
+                    'blocks': ['address', 'mail_default'],
+                    'fields': [],
+                },
+                'mail_settings': {
+                    'icon': 'email',
+                    'text': 'Mails',
+                    'blocks': ['address'],
+                    'fields': [],
                 }
             },
-            'blocks': {},
-            'fields': {}
+            'blocks': {
+                'address': {
+                    'icon': false,
+                    'title': 'Address',
+                    'fields': ['commission']
+                },
+                'mail_default': {
+                    'icon': 'email',
+                    'title': 'Default mails settings',
+                    'fields': []
+                }
+            },
+            'fields': {
+                'commission': {
+                    'type': 'regular',
+                    'placeholder': '20',
+                    'label': 'Commission',
+                    'comment_message': 'In percents'
+                }
+            }
         };
 
         this.currentModel = {};
         this.init();
+        this.updateElem();
+    }
+
+    updateElem() {
         this.innerHTML = this.render();
+        this.checkCurrentTab();
+    }
+
+    checkCurrentTab() {
+        let model = this.currentModel;
+        let currentExist = false;
+        model.tabs.forEach( function ( name, tab ) {
+            if ( tab.current ) {
+                currentExist = true;
+            }
+        });
+        if ( !currentExist ) {
+            let firstTab = this.querySelector('.menu_element');
+            firstTab.classList.add('current');
+            this.currentModel.tabs[firstTab.getAttribute('data-id')].current = true;
+            this.querySelector('.settings_tab').classList.add('current');
+        }
     }
 
     render() {
@@ -89,29 +136,41 @@ export class NiceSettings extends HTMLElement {
 
     renderMenu() {
         let model = this.currentModel;
-        let buffer = `<div class="settings_body"><div class="settings_sidebar"><div class="settings_menu">`;
+        let buffer = `<div class="settings_body"><div class="settings_sidebar${ model.sidebar_collapsed ? ' collapsed': ''}"><div class="settings_menu">`;
 
-        model.menu.forEach( function ( key, element ) {
+        model.tabs.forEach( function ( name, tab ) {
             buffer +=
-                `<span data-id="${ element.id }" class="menu_element" onclick="settingsSwitchTab( this )">
-                    ${ element.icon ? Nice.svg( element.icon ) : '' }
-                    <span class="element_text">${ element.text }</span>
+                `<span data-id="${ name }" class="menu_element${ tab.current ? ' current' : ''}" onclick="Nice.settings.switchTab( this )">
+                    ${ tab.icon ? Nice.svg( tab.icon ) : '' }
+                    <span class="element_text">${ tab.text }</span>
                 </span>`;
         });
         buffer += `</div>`;
 
-        buffer += `<div class="settings_collapse" onclick="">${ Nice.svg({'id': 'arrow_left'}) }<span class="text">Collapse menu</span></div></div>`;
+        buffer += `<div class="menu_element" onclick="Nice.settings.collapseSidebar(this)">${ Nice.svg({'id': 'arrow_left'}) }<span class="element_text">Collapse menu</span></div></div>`;
         return buffer;
     }
 
     renderContent() {
         let model = this.currentModel;
-        return ``;
+        let buffer = `<div class="settings_content">`;
+
+        model.tabs.forEach(function (name, tab) {
+            buffer += `<div data-id="${name}" class="settings_tab${ tab.current ? ' current' : ''}">`;
+                tab.blocks.forEach( function ( block ) {
+                   buffer += `<nice-settings_block block-id="${block}"></nice-settings_block>`
+                });
+            buffer += `</div>`;
+        });
+
+        buffer += '</div></div>';
+        return buffer;
     }
 
 }
 
-export function settingsSwitchTab( elem ) {
+
+export function switchTab( elem ) {
 
     if ( !elem.classList.contains('current') ) {
         let id = elem.getAttribute('data-id');
@@ -121,12 +180,19 @@ export function settingsSwitchTab( elem ) {
             element.classList.remove('current');
         });
         elem.classList.add('current');
-        let content_element = nice_settings.querySelectorAll('.content_element');
+        let content_element = nice_settings.querySelectorAll('.settings_tab');
         content_element.forEach( function ( element ) {
             element.classList.remove('current');
         });
-        nice_settings.querySelector(`.content_element[data-id="${id}"]`).classList.add('current');
+        nice_settings.querySelector(`.settings_tab[data-id="${id}"]`).classList.add('current');
     }
+}
+
+export function collapseSidebar( elem ) {
+    let sidebar = elem.closest('.settings_sidebar');
+    sidebar.classList.toggle('collapsed');
+    let nice_settings = elem.closest('nice-settings');
+    nice_settings.currentModel.sidebar_collapsed = !nice_settings.currentModel.sidebar_collapsed;
 }
 
 

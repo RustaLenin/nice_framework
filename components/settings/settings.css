@@ -407,7 +407,7 @@ nice-settings .settings_menu {
     flex-direction: column;
 }
 
-nice-settings .settings_menu .menu_element {
+nice-settings .settings_sidebar .menu_element {
     display: flex;
     align-items: center;
     padding: 8px 12px;
@@ -419,54 +419,58 @@ nice-settings .settings_menu .menu_element {
     position: relative;
 }
 
-nice-settings .settings_menu .menu_element .element_text {
+nice-settings .settings_sidebar .menu_element:last-of-type {
+    border-bottom: none;
+}
+
+nice-settings .settings_sidebar .menu_element .element_text {
     transition: 0.4s;
     color: var( --field_select_text );
 }
 
-nice-settings .settings_menu .menu_element svg {
+nice-settings .settings_sidebar .menu_element svg {
     margin-right: 8px;
     fill: var( --field_select_icon );
 }
 
-nice-settings .settings_menu .menu_element:hover {
+nice-settings .settings_sidebar .menu_element:hover {
     background-color: var(  --field_select_background_hover );
 }
 
-nice-settings .settings_menu .menu_element:hover .element_text {
+nice-settings .settings_sidebar .menu_element:hover .element_text {
     color: var( --field_select_text_hover );
 }
 
-nice-settings .settings_menu .menu_element:hover svg {
+nice-settings .settings_sidebar .menu_element:hover svg {
     fill: var( --field_select_icon_hover );
 }
 
-nice-settings .settings_menu .menu_element.current {
+nice-settings .settings_sidebar .menu_element.current {
     background-color: var( --field_select_background_checked );
 }
 
-nice-settings .settings_menu .menu_element.current .element_text {
+nice-settings .settings_sidebar .menu_element.current .element_text {
     color: var( --field_select_text_checked );
 }
 
-nice-settings .settings_menu .menu_element.current svg {
+nice-settings .settings_sidebar .menu_element.current svg {
     fill: var( --field_select_icon_checked );
 }
 
-nice-settings .settings_menu .menu_element.current:hover {
+nice-settings .settings_sidebar .menu_element.current:hover {
     background-color: var( --field_select_background_remove );
 }
 
-nice-settings .settings_menu .menu_element.current:hover .element_text {
+nice-settings .settings_sidebar .menu_element.current:hover .element_text {
     color: var( --field_select_text_remove );
 }
 
-nice-settings .settings_menu .menu_element.current:hover svg {
+nice-settings .settings_sidebar .menu_element.current:hover svg {
     fill: var( --field_select_icon_remove );
 }
 
-nice-settings .settings_menu .menu_element.current:before,
-nice-settings .settings_menu .menu_element.current:after {
+nice-settings .settings_sidebar .menu_element.current:before,
+nice-settings .settings_sidebar .menu_element.current:after {
     content: '';
     display: block;
     position: absolute;
@@ -474,22 +478,89 @@ nice-settings .settings_menu .menu_element.current:after {
     transition: 0.4s;
 }
 
-nice-settings .settings_menu .menu_element.current:before {
+nice-settings .settings_sidebar .menu_element.current:before {
     border: 12px solid;
     top: 0;
     border-color: transparent transparent var( --field_select_background_checked ) var( --field_select_background_checked );
 }
 
-nice-settings .settings_menu .menu_element.current:after {
+nice-settings .settings_sidebar .menu_element.current:after {
     border: 12px solid;
     bottom: 0;
     border-color: var( --field_select_background_checked ) transparent transparent  var( --field_select_background_checked );
 }
 
-nice-settings .settings_menu .menu_element.current:hover:before {
+nice-settings .settings_sidebar .menu_element.current:hover:before {
     border-color: transparent transparent var( --field_select_background_remove ) var( --field_select_background_remove );
 }
 
-nice-settings .settings_menu .menu_element.current:hover:after {
+nice-settings .settings_sidebar .menu_element.current:hover:after {
     border-color: var( --field_select_background_remove ) transparent transparent  var( --field_select_background_remove );
+}
+
+/** Collapsed Sidebar **/
+
+nice-settings .settings_sidebar.collapsed .menu_element {
+    min-width: 60px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var( --divider_color );
+    opacity: 0;
+    visibility: hidden;
+    width: max-content;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:before,
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:before {
+    border: 10px solid;
+    border-color: transparent var( --divider_color);
+    border-left-width: 0;
+    left: -10px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:after {
+    border: 9px solid;
+    border-color: transparent var(--content_background);
+    border-left-width: 0;
+    left: -9px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element.current .element_text {
+    left: calc(100% + 34px);
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element:hover .element_text {
+    opacity: 1;
+    visibility: visible;
+}
+
+nice-settings .settings_content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+nice-settings .settings_tab {
+    display: none;
+    padding: 0 24px;
+    flex-direction: column;
+}
+
+nice-settings .settings_tab.current {
+    display: flex;
 }

@@ -40,7 +40,6 @@ export class NiceButton extends HTMLElement {
             newModel.icon = this.getAttribute('icon') ? this.getAttribute('icon') : defaultModel.icon;
             newModel.icon_rotate = this.getAttribute('icon_rotate') ? this.getAttribute('icon_rotate') : defaultModel.icon_rotate;
             this.currentModel = newModel;
-            console.log( this.currentModel );
         }
 
         if ( this.currentModel.onclick ) {
@@ -63,7 +62,6 @@ export class NiceButton extends HTMLElement {
 
     updateClass() {
         let model = this.currentModel;
-        console.log( model );
         this.classList.add( model.size );
         this.classList.add( model.type );
         if ( model.icon_rotate ) {
