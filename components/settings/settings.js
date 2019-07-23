@@ -29,40 +29,9 @@ export class NiceSettings extends HTMLElement {
                 'type': 'submit',
             },
             'sidebar_collapsed': false,
-            'tabs': {
-                'main_settings': {
-                    'icon': 'cog',
-                    'text': 'Main Settings',
-                    'blocks': ['address', 'mail_default'],
-                    'fields': [],
-                },
-                'mail_settings': {
-                    'icon': 'email',
-                    'text': 'Mails',
-                    'blocks': [],
-                    'fields': ['commission'],
-                }
-            },
-            'blocks': {
-                'address': {
-                    'icon': false,
-                    'title': 'Address',
-                    'fields': ['commission']
-                },
-                'mail_default': {
-                    'icon': 'email',
-                    'title': 'Default mails settings',
-                    'fields': []
-                }
-            },
-            'fields': {
-                'commission': {
-                    'type': 'regular',
-                    'placeholder': '20',
-                    'label': 'Commission',
-                    'comment_message': 'In percents'
-                }
-            }
+            'tabs': {},
+            'blocks': {},
+            'fields': {}
         };
 
         this.currentModel = {};
@@ -77,6 +46,7 @@ export class NiceSettings extends HTMLElement {
 
     checkCurrentTab() {
         let model = this.currentModel;
+        console.log( model );
         let currentExist = false;
         model.tabs.forEach( function ( name, tab ) {
             if ( tab.current ) {
@@ -103,13 +73,11 @@ export class NiceSettings extends HTMLElement {
     }
 
     init(){
-
         let dataString = this.getAttribute('data');
         let data =  isJson( dataString ) ? JSON.parse( dataString ) : eval( dataString );
         let newModel = {};
         Object.assign( newModel, this.defaultModel, data );
         this.currentModel = newModel;
-
     }
 
     renderHeader() {
