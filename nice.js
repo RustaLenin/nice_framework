@@ -14,7 +14,7 @@ import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, 
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 
 import { NiceSettings, switchTab, collapseSidebar, toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
-import { NiceSettings_Blocks } from './components/settings/blocks.js';
+import { NiceSettings_Blocks, toggleBlock, expandAll, collapseAll } from './components/settings/blocks.js';
 
 
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
@@ -130,6 +130,9 @@ class Nice {
         this.settings.expandAllTabsBlocks = expandAllTabsBlocks;
         this.settings.toggleSettingBlock = toggleSettingBlock;
         this.settings.updateSettings = updateSettings;
+        this.settings.toggleBlock = toggleBlock;
+        this.settings.expandAll = expandAll;
+        this.settings.collapseAll = collapseAll;
 
         /** Tabs **/
         this.switchTabs = switchTabs;

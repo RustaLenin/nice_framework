@@ -11,14 +11,14 @@ export class NiceSettings extends HTMLElement {
                 'text': Nice._t('Expand All'),
                 'icon': 'double_arrow_down',
                 'size': 'small',
-                'onclick': '',
+                'onclick': 'Nice.settings.expandAll(this)',
                 'type': 'regular'
             },
             'button_collapse': {
                 'text': Nice._t('Collapse All'),
                 'icon': 'double_arrow_down',
                 'size': 'small',
-                'onclick': '',
+                'onclick': 'Nice.settings.collapseAll(this)',
                 'icon_rotate': true,
             },
             'button_submit': {
@@ -39,8 +39,8 @@ export class NiceSettings extends HTMLElement {
                 'mail_settings': {
                     'icon': 'email',
                     'text': 'Mails',
-                    'blocks': ['address'],
-                    'fields': [],
+                    'blocks': [],
+                    'fields': ['commission'],
                 }
             },
             'blocks': {
@@ -153,13 +153,24 @@ export class NiceSettings extends HTMLElement {
 
     renderContent() {
         let model = this.currentModel;
+        let nice_settings = this.closest('nice-settings');
         let buffer = `<div class="settings_content">`;
 
         model.tabs.forEach(function (name, tab) {
             buffer += `<div data-id="${name}" class="settings_tab${ tab.current ? ' current' : ''}">`;
-                tab.blocks.forEach( function ( block ) {
-                   buffer += `<nice-settings_block block-id="${block}"></nice-settings_block>`
+
+            tab.blocks.forEach(function (block) {
+                buffer += `<nice-settings_block block-id="${block}"></nice-settings_block>`
+            });
+
+            if (tab.fields.length > 0) {
+                buffer += `<div class="custom_content">`;
+                tab.fields.forEach(function (field) {
+                    console.log(field);
+                    buffer += Nice.field(nice_settings.currentModel.fields[field]);
                 });
+                buffer += `</div>`;
+            }
             buffer += `</div>`;
         });
 
