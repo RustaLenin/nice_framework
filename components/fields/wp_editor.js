@@ -81,7 +81,7 @@ export function wpEditorDefaultArgs( lang ) {
                 ],
                 strikethrough: {inline: 'del'}
             },
-            relative_urls: true,
+            relative_urls: false,
             remove_script_host: true,
             convert_urls: true,
             browser_spellcheck: true,
