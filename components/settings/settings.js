@@ -46,7 +46,6 @@ export class NiceSettings extends HTMLElement {
 
     checkCurrentTab() {
         let model = this.currentModel;
-        console.log( model );
         let currentExist = false;
         model.tabs.forEach( function ( name, tab ) {
             if ( tab.current ) {
@@ -78,6 +77,8 @@ export class NiceSettings extends HTMLElement {
         let newModel = {};
         Object.assign( newModel, this.defaultModel, data );
         this.currentModel = newModel;
+        data = this.currentModel;
+        console.log( data );
     }
 
     renderHeader() {
@@ -115,7 +116,7 @@ export class NiceSettings extends HTMLElement {
         });
         buffer += `</div>`;
 
-        buffer += `<div class="menu_element" onclick="Nice.settings.collapseSidebar(this)">${ Nice.svg({'id': 'arrow_left'}) }<span class="element_text">Collapse menu</span></div></div>`;
+        buffer += `<div class="menu_element" onclick="Nice.settings.collapseSidebar(this)">${ Nice.svg({'id': 'arrow_left'}) }<span class="element_text">${Nice._t('Collapse menu')}</span></div></div>`;
         return buffer;
     }
 
