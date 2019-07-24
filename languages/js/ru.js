@@ -28,5 +28,11 @@ export const ru = {
     'This element is blocked': 'Этот элемент заблокирован',
 
     // MediaPicker
-    'Choose Image': 'Выберите картинку'
+    'Choose Image': 'Выберите картинку',
+
+    // Settings
+    'Expand All': 'Развернуть все',
+    'Collapse All': 'Свернуть все',
+    'Save Settings': 'Сохранить настройки'
+
 };
