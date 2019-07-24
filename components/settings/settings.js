@@ -78,7 +78,6 @@ export class NiceSettings extends HTMLElement {
         Object.assign( newModel, this.defaultModel, data );
         this.currentModel = newModel;
         data = this.currentModel;
-        console.log( data );
     }
 
     renderHeader() {
@@ -135,7 +134,6 @@ export class NiceSettings extends HTMLElement {
             if (tab.fields.length > 0) {
                 buffer += `<div class="custom_content">`;
                 tab.fields.forEach(function (field) {
-                    console.log(field);
                     buffer += Nice.field(nice_settings.currentModel.fields[field]);
                 });
                 buffer += `</div>`;
@@ -212,5 +210,4 @@ export function updateSettings( elem ) {
 
     let settingsBlock = jQuery(elem).parents('.SettingsContainer');
     let data = Nice.form.collectData( '.input', settingsBlock);
-    console.log( data );
 }
