@@ -261,13 +261,19 @@ export function WPMediaForFields(icon, e) {
         multiple: false,
         library: {
             type: 'image',
-        }
+        },
+        frame: 'post',
     });
 
     media_frame.on('close', function () {
         let selection = media_frame.state().get('selection');
         selection.each(function (attachment) {
-            input.innerHTML = attachment['attributes']['url'];
+            console.log( attachment );
+            let size = document.querySelector('.media-modal-content .size').value;
+            if ( typeof size === 'undefined') {
+                size = 'full';
+            }
+            input.innerHTML = attachment['attributes']['sizes'][size]['url'];
             if (input.getAttribute('data-validation')) {
                 Nice.field.updateMediaField(input);
                 Nice.field.validate(input);

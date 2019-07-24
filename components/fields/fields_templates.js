@@ -241,14 +241,21 @@ export function selectElementChecks( field ) {
 }
 
 
-export function validateText( field) {
+export function validateText( field ) {
+
+    let buffer = ``;
+
     if ( field['validation'] !== 'false' ) {
-        return `
-            <span class="error_message">${ field['error_message'] }</span>
-        `;
-    } else {
-        return ``;
+        buffer += `<span class="error_message">${ field['error_message'] }</span>`;
+        if ( field['success_message'] ) {
+            buffer += `<span class="success_message">${ field['error_message'] }</span>`;
+        }
     }
+    if ( field['comment_message'] ) {
+        buffer += `<span class="comment_message">${ field['comment_message'] }</span>`;
+    }
+
+    return buffer;
 }
 
 export function validateIcons( field ) {
