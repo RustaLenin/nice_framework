@@ -112,9 +112,6 @@ export function niceField(field = {}) {
             let default_select_value = '';
             let default_select_content = '';
             let default_select_icon = '';
-            if (field['value']) {
-                field['data-nothing'] = false;
-            }
             jQuery.each(field['selections'], function (i, element) {
                 if (element['default']) {
                     default_select_value = element['value'];
@@ -135,6 +132,10 @@ export function niceField(field = {}) {
                 field['icon'] = default_select_icon;
             }
 
+            field['data-nothing'] = true;
+            if (field['value']) {
+                field['data-nothing'] = false;
+            }
         } else {
 
             if (field['no_min_width']) {

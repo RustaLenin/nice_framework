@@ -217,6 +217,9 @@ If you not show any label, you not need margin-top
 .nice_field.no_comment:last-of-type {
     padding-bottom: 0;
 }
+.nice_modal .nice_field {
+    padding-bottom: 16px!important;
+}
 /** Border types
 Nice_Fields have two (2) border types
 Regular border - All 4 border's included (top, right, bottom, down). This is default.
@@ -594,6 +597,11 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.small .preview_box { right: -55px; width: 45px; height: 45px; }
 .nice_field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
 
+
+nice-wp_editor  {
+    display: flex;
+    padding-bottom: 16px;
+}
 
 nice-wp_editor > div {
     width: 640px;
