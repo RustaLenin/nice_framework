@@ -63,8 +63,10 @@ export function chooseThis( elem = null ) {
                     input.textContent = Nice._t('Nothing selected');
                     input.setAttribute('data-nothing', 'true' );
                     input.setAttribute('data-value', '' );
-                    if ( area.querySelector('nice-svg') ) {
-                        area.querySelector('.field_icon').remove();
+                    if ( area.querySelector('.FieldIcon') ) {
+                        if ( area.querySelector('.field_icon') ) {
+                            area.querySelector('.field_icon').remove();
+                        }
                         let new_icon = svgNode({'id': 'notify_warning', 'class': 'field_icon'});
                         new_icon.classList.add('field_icon');
                         area.prepend( new_icon );

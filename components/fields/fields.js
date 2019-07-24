@@ -1,72 +1,141 @@
-import {baseField} from './fields_templates.js';
-import {debounce} from '../logic_patterns/logic.js';
-import {wpEditor} from './fields_templates.js';
+import { baseField, wpEditor } from './fields_templates.js';
+import { debounce } from '../logic_patterns/logic.js';
 
-export function niceField(field = {}) {
+function defaultRegularField(){
+    return {
 
-    if (!(field['value'])) {
-        field['value'] = ''
+        /** Core **/
+        name:            '',                           // string
+        value:           '',                           // string
+        default_value:   false,                        // false || string
+        data_type:       'text',                       // string
+        field_type:      'regular',                    // string: regular, vanilla, select_list, media, wp_editor
+
+        /** Classes **/
+        class:           '',                           // string
+        field_class:     '',                           // string
+        icon_class:      '',                           // string
+
+        /** Form data **/
+        required:        false,                        // bool
+        validation:      false,                        // bool
+
+        /** Editable settings **/
+        spellcheck:      false,                        // bool
+        editable:        true,                         // bool
+
+        /** Text **/
+        placeholder:     Nice._t('Type some text'),    // string: text
+        label:           Nice._t('Really nice field'), // string: text
+        error_message:   Nice._t('Enter valid data'),  // string: text
+        success_message: Nice._t('Seems ok'),          // string: text
+        comment_message: '',                           // string: text
+
+        /** Styling **/
+        size:            'medium',                     // string: tiny, small, medium, large, huge
+        inline:          false,                        // bool
+        show_label:      true,                         // bool
+        no_min_width:    false,                        // no_min_width
+        align_center:    false,                        // align_center
+        border_type:     'regular_border',             // border_type
+        label_type:      'above_border',               // label_type
+        icon:            false,                        // false | string | object
+
+        /** Functionality **/
+        callback:        false,                        // false || function name
+
+    };
+}
+
+function defaultSelectList() {
+    return {
+        select_type:     'single',                     // string: single | multiple
+        open:            false,                        // bool
+        checkboxes:      false,                        // bool
+        content:         '',                           // string text
+        can_be_empty:    true,                         // bool
+    };
+}
+
+function defaultSelection() {
+    return {
+        name:            '',                           // string
+        value:           '',                           // string
+        text:            '',                           // string text
+        icon:            false,                        // false | string
+        checked:         false,                        // bool
+        default:         false,                        // bool
+        hide_checkbox:   false,                        // bool
     }
-    if (!(field['type'])) {
-        field['type'] = 'text'
-    }
-    if (!(field['size'])) {
-        field['size'] = 'medium'
-    }
-    if (!(field['class'])) {
-        field['class'] = ''
-    }
-    if (!(field['inline'])) {
-        field['inline'] = false
-    }
-    if (!(field['required'])) {
-        field['required'] = false
-    }
-    if (!(field['field_class'])) {
-        field['field_class'] = ''
-    }
-    if (!(field['field_type'])) {
-        field['field_type'] = 'regular'
-    }
-    if (!(field['icon_class'])) {
-        field['icon_class'] = ''
-    }
-    if (!(field['spellcheck'])) {
-        field['spellcheck'] = false
-    }
-    if (!(field['name'])) {
-        field['name'] = ''
-    }
-    if (!(field['validation'])) {
-        field['validation'] = false
-    }
-    if (typeof field['editable'] === 'undefined') {
-        field['editable'] = true
-    }
-    if (!(field['placeholder'])) {
-        field['placeholder'] = Nice._t('Type some text')
-    }
-    if (!(field['label'])) {
-        field['label'] = Nice._t('Really nice field')
-    }
-    if (!(field['error_message'])) {
-        field['error_message'] = Nice._t('Enter valid data')
-    }
-    if (field['show_label'] === "" || !(field['show_label'])) {
-        field['show_label'] = true
-    }
-    if (!(field['no_min_width'])) {
-        field['no_min_width'] = false
-    }
-    if (!(field['align_center'])) {
-        field['align_center'] = false
-    }
-    if (!(field['border_type'])) {
-        field['border_type'] = 'regular_border'
-    }
-    if (!(field['label_type'])) {
-        field['label_type'] = 'above_border'
-    }
+}
+
+export function niceField( field = {} ) {
+
+    field = Object.assign( {}, defaultRegularField(), field );
+
+    // if (!(field['value'])) {
+    //     field['value'] = ''
+    // }
+    // if (!(field['type'])) {
+    //     field['type'] = 'text'
+    // }
+    // if (!(field['size'])) {
+    //     field['size'] = 'medium'
+    // }
+    // if (!(field['class'])) {
+    //     field['class'] = ''
+    // }
+    // if (!(field['inline'])) {
+    //     field['inline'] = false
+    // }
+    // if (!(field['required'])) {
+    //     field['required'] = false
+    // }
+    // if (!(field['field_class'])) {
+    //     field['field_class'] = ''
+    // }
+    // if (!(field['field_type'])) {
+    //     field['field_type'] = 'regular'
+    // }
+    // if (!(field['icon_class'])) {
+    //     field['icon_class'] = ''
+    // }
+    // if (!(field['spellcheck'])) {
+    //     field['spellcheck'] = false
+    // }
+    // if (!(field['name'])) {
+    //     field['name'] = ''
+    // }
+    // if (!(field['validation'])) {
+    //     field['validation'] = false
+    // }
+    // if (typeof field['editable'] === 'undefined') {
+    //     field['editable'] = true
+    // }
+    // if (!(field['placeholder'])) {
+    //     field['placeholder'] = Nice._t('Type some text')
+    // }
+    // if (!(field['label'])) {
+    //     field['label'] = Nice._t('Really nice field')
+    // }
+    // if (!(field['error_message'])) {
+    //     field['error_message'] = Nice._t('Enter valid data')
+    // }
+    // if (field['show_label'] === "" || !(field['show_label'])) {
+    //     field['show_label'] = true
+    // }
+    // if (!(field['no_min_width'])) {
+    //     field['no_min_width'] = false
+    // }
+    // if (!(field['align_center'])) {
+    //     field['align_center'] = false
+    // }
+    // if (!(field['border_type'])) {
+    //     field['border_type'] = 'regular_border'
+    // }
+    // if (!(field['label_type'])) {
+    //     field['label_type'] = 'above_border'
+    // }
 
     /** Default values for simple fields **/
     if (field['field_type'] === 'regular' || field['field_type'] === 'vanilla') {
@@ -80,43 +149,55 @@ export function niceField(field = {}) {
 
         field['type'] = 'select';
 
-        if (!(field['select_type'])) {
-            field['select_type'] = 'single';
-        }
-        if (!(field['open'])) {
-            field['open'] = false;
-        }
-        if (field['checkboxes'] === '') {
-            field['checkboxes'] = true;
-        }
-        if (!(field['content'])) {
-            field['content'] = '';
-        }
-        if (!(field['editable'])) {
-            field['editable'] = false;
-        }
+        field = Object.assign( {}, defaultSelectList(), field );
 
-        if (!(field['callback'])) {
-            field['callback'] = '';
-        }
-        if (typeof field['icon'] === 'undefined') {
-            field['icon'] = false
-        }
+        // if (!(field['select_type'])) {
+        //     field['select_type'] = 'single';
+        // }
+        // if (!(field['open'])) {
+        //     field['open'] = false;
+        // }
+        // if (field['checkboxes'] === '') {
+        //     field['checkboxes'] = true;
+        // }
+        // if (!(field['content'])) {
+        //     field['content'] = '';
+        // }
+        // if (!(field['editable'])) {
+        //     field['editable'] = false;
+        // }
+        //
+        // if (!(field['callback'])) {
+        //     field['callback'] = '';
+        // }
+        // if (typeof field['icon'] === 'undefined') {
+        //     field['icon'] = false
+        // }
+        //
+        // if (!field['can_be_empty']) {
+        //     field['can_be_empty'] = true;
+        // }
 
-        if (!field['can_be_empty']) {
-            field['can_be_empty'] = true;
-        }
+
+        field.selections.forEach( function ( name, selection ) {
+            field.selections[name] = Object.assign( {}, defaultSelection(), selection );
+
+            // if ( typeof selection['icon']          === 'undefined' ) { selection['icon'] = false; }
+            // if ( typeof selection['hide_checkbox'] === 'undefined' ) { selection['hide_checkbox'] = false; }
+        });
+
 
         if (field['select_type'] === 'single') {
 
             let default_select_value = '';
             let default_select_content = '';
             let default_select_icon = '';
-            jQuery.each(field['selections'], function (i, element) {
-                if (element['default']) {
-                    default_select_value = element['value'];
-                    default_select_content = element['text'];
-                    default_select_icon = element['icon'];
+
+            field.selections.forEach( function ( i, selection ) {
+                if ( selection['default'] ) {
+                    default_select_value   = selection['value'];
+                    default_select_content = selection['text'];
+                    default_select_icon    = selection['icon'];
                 }
             });
 
@@ -133,7 +214,8 @@ export function niceField(field = {}) {
             }
 
             field['data-nothing'] = true;
-            if (field['value']) {
+
+            if ( field['value'] ) {
                 field['data-nothing'] = false;
             }
         } else {
@@ -145,8 +227,9 @@ export function niceField(field = {}) {
             let content = '';
             let check_count = -1;
 
-            field['selections'].forEach(function (name, selection) {
-                if (selection['checked']) {
+            field.selections.forEach( function ( name, selection ) {
+
+                if ( selection['checked'] ) {
                     field['data-nothing'] = false;
                     check_count++;
                     if (check_count === 0) {
