@@ -12,7 +12,11 @@ import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
-import { NiceSettings, toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
+
+import { NiceSettings, switchTab, collapseSidebar, toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
+import { NiceSettings_Blocks, toggleBlock, expandAll, collapseAll } from './components/settings/blocks.js';
+
+
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
 import { NiceWPEditor } from './components/fields/wp_editor.js';
 import { SvgMap } from './components/svg/map.js';
@@ -119,11 +123,16 @@ class Nice {
 
         /** Settings **/
         this.settings = {};
+        this.settings.switchTab = switchTab;
+        this.settings.collapseSidebar = collapseSidebar;
         this.settings.toggleCollapseSettingsMenu = toggleCollapseSettingsMenu;
         this.settings.collapseAllTabsBlocks = collapseAllTabsBlocks;
         this.settings.expandAllTabsBlocks = expandAllTabsBlocks;
         this.settings.toggleSettingBlock = toggleSettingBlock;
         this.settings.updateSettings = updateSettings;
+        this.settings.toggleBlock = toggleBlock;
+        this.settings.expandAll = expandAll;
+        this.settings.collapseAll = collapseAll;
 
         /** Tabs **/
         this.switchTabs = switchTabs;
@@ -193,6 +202,7 @@ customElements.define('nice-modal_area', modalArea );
 customElements.define('nice-modal_list', modalsList );
 customElements.define('nice-modal',      NiceModal );
 customElements.define('nice-settings',   NiceSettings );
+customElements.define('nice-settings_block',   NiceSettings_Blocks );
 addLightBox();
 addModalArea();
 addModalList();

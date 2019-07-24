@@ -6,7 +6,8 @@ export function defaultModel() {
         'type': 'regular',
         'icon': false,
         'size': 'medium',
-        'onclick': ''
+        'onclick': '',
+        'icon_rotate': ''
     };
 }
 
@@ -37,6 +38,7 @@ export class NiceButton extends HTMLElement {
             newModel.type = this.getAttribute('type') ? this.getAttribute('type') : defaultModel.type;
             newModel.text = this.getAttribute('text') ? this.getAttribute('text') : defaultModel.text;
             newModel.icon = this.getAttribute('icon') ? this.getAttribute('icon') : defaultModel.icon;
+            newModel.icon_rotate = this.getAttribute('icon_rotate') ? this.getAttribute('icon_rotate') : defaultModel.icon_rotate;
             this.currentModel = newModel;
         }
 
@@ -61,7 +63,10 @@ export class NiceButton extends HTMLElement {
     updateClass() {
         let model = this.currentModel;
         this.classList.add( model.size );
-        this.classList.add( model.type )
+        this.classList.add( model.type );
+        if ( model.icon_rotate ) {
+            this.classList.add('icon_rotate');
+        }
     }
 
 }
@@ -76,5 +81,6 @@ export function niceButton( data ) {
         text="${button.text}"
         icon="${button.icon}"
         onclick="${button.onclick}"
+        ${ button.icon_rotate ? `icon_rotate="true"` : ''}
     ></nice-button>`;
 }
