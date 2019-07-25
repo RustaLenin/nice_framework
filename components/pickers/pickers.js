@@ -11,11 +11,11 @@ export function handlePickers( area = document, selectors ) {
 
 }
 
-export function handleDatePicker( area = document, selector = '.DatePicker' ) {
+export function handleDatePicker( area = document, selector = '.DatePicker', callback ) {
 
     let fields = jQuery( area ).find( selector );
     fields.each(function () {
-        jQuery( this ).datepicker();
+        jQuery( this ).datepicker(callback);
     });
 
 }

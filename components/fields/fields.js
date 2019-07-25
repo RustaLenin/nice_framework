@@ -9,6 +9,7 @@ function defaultRegularField(){
         value:           '',                           // string
         default_value:   false,                        // false || string
         data_type:       'text',                       // string
+        type:            'text',                       // string
         field_type:      'regular',                    // string: regular, vanilla, select_list, media, wp_editor
 
         /** Classes **/
