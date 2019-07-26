@@ -69,6 +69,32 @@ export class NiceButton extends HTMLElement {
         }
     }
 
+    isLoading() {
+        return this.classList.contains('loading');
+    }
+
+    setLoading() {
+        let model = this.currentModel;
+        this.classList.add('loading');
+        if ( model.icon ) {
+            model.preloadingIcon = this.querySelector('nice-svg').getAttribute('svg-id');
+            this.querySelector('nice-svg').setAttribute('svg-id', 'loader');
+            this.querySelector('nice-svg').classList.add('spin');
+        }
+        model.preloadingText = this.querySelector('.text').innerHTML;
+        this.querySelector('.text').innerHTML = Nice._t('Loading');
+    }
+
+    removeLoading() {
+        let model = this.currentModel;
+        this.classList.remove('loading');
+        if ( model.preloadingIcon ) {
+            model.preloadingIcon = this.querySelector('nice-svg').setAttribute('svg-id', model.preloadingIcon );
+            this.querySelector('nice-svg').classList.remove('spin');
+        }
+        this.querySelector('.text').innerHTML = model.preloadingText;
+    }
+
 }
 
 export function niceButton( data ) {

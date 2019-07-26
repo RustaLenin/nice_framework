@@ -78,6 +78,10 @@ export class NiceSettings extends HTMLElement {
         Object.assign( newModel, this.defaultModel, data );
         this.currentModel = newModel;
         data = this.currentModel;
+
+        if ( data.submit ) {
+            data.button_submit.onclick = data.submit;
+        }
     }
 
     renderHeader() {

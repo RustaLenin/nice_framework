@@ -8,6 +8,8 @@ export const ru = {
 
     // Buttons
     'Another one nice button': 'Ещё одна nice кнопка',
+    'Collapse menu': 'Свернуть меню',
+    'Loading': 'Загрузка',
 
     // Fields
     'Type some text': 'Введите текст',

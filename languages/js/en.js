@@ -9,6 +9,7 @@ export const en = {
     // Buttons
     'Another one nice button': 'Another one nice button',
     'Collapse menu': 'Collapse menu',
+    'Loading': 'Loading',
 
     // Fields
     'Type some text': 'Type some text',
