@@ -44,6 +44,20 @@ export class NiceSettings extends HTMLElement {
         this.checkCurrentTab();
     }
 
+    connectedCallback() {
+        let listen = this.getAttribute('listen');
+        if ( listen ) {
+            document.addEventListener( listen, this.updateElem.bind(this) );
+        }
+    }
+
+    disconnectedCallback() {
+        let listen = this.getAttribute('listen');
+        if ( listen ) {
+            document.removeEventListener( listen, this.updateElem.bind(this) );
+        }
+    }
+
     checkCurrentTab() {
         let model = this.currentModel;
         let currentExist = false;

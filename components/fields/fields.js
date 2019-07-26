@@ -188,30 +188,45 @@ export function niceField( field = {} ) {
         });
 
 
-        if (field['select_type'] === 'single') {
+        if ( field['select_type'] === 'single') {
 
-            let default_select_value = '';
-            let default_select_content = '';
-            let default_select_icon = '';
-
+            let checked = false;
             field.selections.forEach( function ( i, selection ) {
-                if ( selection['default'] ) {
-                    default_select_value   = selection['value'];
-                    default_select_content = selection['text'];
-                    default_select_icon    = selection['icon'];
+                if ( selection.checked === true ) {
+                    checked = i;
                 }
             });
 
-            if (!field['value'] && default_select_value) {
-                field['value'] = default_select_value;
-            }
+            if ( checked ) {
+                field.value = field.selections[checked].value;
+                field.content = field.selections[checked].text;
+                if ( field.selections[checked].icon ) {
+                    field.icon = field.selections[checked].icon
+                }
+            } else {
+                let default_select_value = '';
+                let default_select_content = '';
+                let default_select_icon = '';
 
-            if (!field['content'] && default_select_content) {
-                field['content'] = default_select_content;
-            }
+                field.selections.forEach( function ( i, selection ) {
+                    if ( selection['default'] ) {
+                        default_select_value   = selection['value'];
+                        default_select_content = selection['text'];
+                        default_select_icon    = selection['icon'];
+                    }
+                });
 
-            if (!field['icon'] && default_select_icon) {
-                field['icon'] = default_select_icon;
+                if (!field['value'] && default_select_value) {
+                    field['value'] = default_select_value;
+                }
+
+                if (!field['content'] && default_select_content) {
+                    field['content'] = default_select_content;
+                }
+
+                if (!field['icon'] && default_select_icon) {
+                    field['icon'] = default_select_icon;
+                }
             }
 
             field['data-nothing'] = true;
