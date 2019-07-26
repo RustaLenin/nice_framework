@@ -32,10 +32,10 @@ import { modalArea, addModalArea } from './components/modals/area.js';
 import { NiceModal, newModal, toggleModal, removeModal } from './components/modals/modal.js';
 
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
-import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle, loopFieldRequired} from './components/validation/validation.js';
+import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isTime,  maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle, loopFieldRequired} from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
-import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
+import { handlePickers, handleDatePicker, handleDateBirthdayPicker } from './components/pickers/pickers.js';
 import { update_jQuery } from './jquery/plugins.js';
 import { colorMethods } from './components/logic_patterns/color_methods.js';
 import { _t, switchLocale } from './languages/translate.js';
@@ -86,6 +86,7 @@ class Nice {
         this.validation.HandleFieldsValidate = HandleFieldsValidate;
         this.validation.RunFieldsValidate = RunFieldsValidate;
         this.validation.isCurrency = isCurrency;
+        this.validation.isTime = isTime;
         this.validation.isDate = isDate;
         this.validation.isHex = isHex;
         this.validation.isImgUrl = isImgUrl;
@@ -160,6 +161,7 @@ class Nice {
         this.pickers = {};
         this.pickers.handle = handlePickers;
         this.pickers.handleData = handleDatePicker;
+        this.pickers.handleDateBirthday = handleDateBirthdayPicker;
         this.pickers.media = WPMediaForFields;
 
         /** colorMethods **/

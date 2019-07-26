@@ -142,7 +142,7 @@ Here is styles for
 
 /** Sizes **/
 /** Large **/
-.nice_field.large { min-width: 320px; }
+.nice_field.large .area { min-width: 320px; }
 .nice_field.large input.input { width: 320px; }
 .nice_field.large .input {
     font-size: 22px;
@@ -154,7 +154,7 @@ Here is styles for
 .nice_field.large .input::placeholder { font-size: 22px; }
 
 /** Medium **/
-.nice_field.medium { min-width: 270px; }
+.nice_field.medium .area{ min-width: 270px; }
 .nice_field.medium input.input { width: 270px; }
 .nice_field.medium .input {
     font-size: 20px;
@@ -166,7 +166,7 @@ Here is styles for
 .nice_field.medium .input::placeholder { font-size: 18px; }
 
 /** Small **/
-.nice_field.small { min-width: 220px; }
+.nice_field.small .area{ min-width: 220px; }
 .nice_field.small input.input { width: 220px; }
 .nice_field.small .input {
     font-size: 16px;
@@ -178,7 +178,7 @@ Here is styles for
 .nice_field.small .input::placeholder { font-size: 16px; }
 
 /** Tiny **/
-.nice_field.tiny { min-width: 170px; }
+.nice_field.tiny .area{ min-width: 170px; }
 .nice_field.tiny input.input { width: 170px; }
 .nice_field.tiny .input {
     font-size: 14px;

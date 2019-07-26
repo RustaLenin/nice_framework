@@ -15,11 +15,15 @@ export const validationTypes = {
     'hex': /^(#)[0-9a-fA-F]{6,8}$/,
     'url': /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
     'img_url': /^(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))$/,
-    'phone': /^[-0-9()+]*$/
+    'phone': /^[-0-9()+]*$/,
+    'time': /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/,
 };
 
 export function isCurrency(val) {
     return Nice.validation.types['currency'].test(val);
+}
+export function isTime(val) {
+    return Nice.validation.types['time'].test(val);
 }
 
 export function isImgUrl(val) {

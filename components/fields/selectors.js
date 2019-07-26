@@ -84,29 +84,25 @@ export function chooseThis( elem = null ) {
 
         } else {
 
-            if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
-                elem.classList.toggle('checked');
-                let new_field_content = '';
-                let count = countChecked( elem );
-                if ( elem.classList.contains('checked') ) {
-                    new_field_content= elem.querySelector('.selection_list__element_text').textContent;
-                    if ( count > 1 ) {
-                        count -= 1;
-                        new_field_content += Nice._t(' and + ') + count;
-                    }
-                } else {
-                    new_field_content = getTextOfFirstCheckedElem( elem );
-                    if ( count > 1 ) {
-                        count -= 1;
-                        new_field_content += Nice._t(' and + ') + count;
-                    } else if( count === 0){
-                        input.setAttribute('data-nothing', 'true' );
-                    }
+            elem.classList.toggle('checked');
+            let new_field_content = '';
+            let count = countChecked( elem );
+            if ( elem.classList.contains('checked') ) {
+                new_field_content= elem.querySelector('.selection_list__element_text').textContent;
+                if ( count > 1 ) {
+                    count -= 1;
+                    new_field_content += Nice._t(' and + ') + count;
                 }
-                input.textContent = new_field_content;
             } else {
-                Nice.notify({'type': 'warning', 'message': Nice._t('All ready selected') });
+                new_field_content = getTextOfFirstCheckedElem( elem );
+                if ( count > 1 ) {
+                    count -= 1;
+                    new_field_content += Nice._t(' and + ') + count;
+                } else if( count === 0){
+                    input.setAttribute('data-nothing', 'true' );
+                }
             }
+            input.textContent = new_field_content;
 
         }
 

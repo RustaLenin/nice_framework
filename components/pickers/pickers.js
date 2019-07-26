@@ -14,6 +14,18 @@ export function handlePickers( area = document, selectors ) {
 export function handleDatePicker( area = document, selector = '.DatePicker', callback ) {
 
     let fields = jQuery( area ).find( selector );
+    let date = {
+        minDate: new Date()
+    };
+    let data = Object.assign({}, date, callback);
+    fields.each(function () {
+        jQuery( this ).datepicker(data);
+    });
+
+}
+export function handleDateBirthdayPicker( area = document, selector = '.DatePicker', callback ) {
+
+    let fields = jQuery( area ).find( selector );
     fields.each(function () {
         jQuery( this ).datepicker(callback);
     });
