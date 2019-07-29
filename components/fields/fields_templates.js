@@ -12,7 +12,7 @@ export function baseField( field ) {
             class="nice_field NiceField ${field['class']} ${field['size']} ${field['border_type']} ${field['label_type']} ${fieldClass(field)}
             ">
             
-               ${ fieldLabel( field ) }
+               ${ field['show_label'] ? fieldLabel( field ) : '' }
                 
                 <div class="area NiceFieldArea">
                     ${ fields_templates[field['field_type']](field) }
