@@ -16,30 +16,35 @@ export class NiceCheckbox extends HTMLElement {
 
     }
 
-    render(){
-        let buffer = `<span class="box"><nice-svg svg-id="check"></nice-svg></span>`;
-        if ( this.currentModel.description ) {
-            buffer += `<span class="checkbox_description">${this.currentModel.description}</span>`
-        }
-        return buffer;
+    static get observedAttributes() {
+        return [ 'checked', 'description', 'name', 'callback', 'size', 'data' ];
+    }
+
+    attributeChangedCallback( name, oldValue, newValue ) {
+        this.updateElem();
     }
 
     updateElem(){
 
-        let defaults = this.defaultModel;
-        let attrs = {
-            'checked': this.getAttribute('checked'),
-            'description': this.getAttribute('description'),
-            'name': this.getAttribute('name'),
-            'callback': this.getAttribute('callback'),
-            'size': this.getAttribute('size')
-        };
-        let newModel = {};
-        newModel['checked'] = attrs['checked'] ? attrs['checked'] : defaults['checked'];
-        newModel['description'] = attrs['description'] ? attrs['description'] : defaults['description'];
-        newModel['name'] = attrs['name'] ? attrs['name'] : defaults['name'];
-        newModel['callback'] = attrs['callback'] ? attrs['callback'] : defaults['callback'];
-        newModel['size'] = attrs['size'] ? attrs['size'] : defaults['size'];
+        let
+            defaults = this.defaultModel,
+            attrs = {},
+            newModel = {},
+            self = this,
+            data = this.getAttribute('data')
+        ;
+        if ( eval( data ) ) {
+            newModel = Object.assign( {}, defaults, eval(data) );
+        } else {
+            /** Get all attributes from element **/
+            defaults.forEach( function ( key, val ) {
+                attrs[key] = self.getAttribute( key );
+            });
+            /** Combine new Model with data from attributes, or defaults **/
+            defaults.forEach( function ( key, val ) {
+                newModel[key] = attrs[key] ? attrs[key] : val;
+            });
+        }
 
         if ( typeof newModel['checked'] === 'string' ) {
             if ( newModel['checked'] === 'true' ) {
@@ -50,9 +55,16 @@ export class NiceCheckbox extends HTMLElement {
         }
 
         this.currentModel = newModel;
-
         this.innerHTML = this.render();
         this.updateClass();
+    }
+
+    render(){
+        let buffer = `<span class="box"><nice-svg svg-id="check"></nice-svg></span>`;
+        if ( this.currentModel.description ) {
+            buffer += `<span class="checkbox_description">${ this.currentModel.description }</span>`
+        }
+        return buffer;
     }
 
     updateClass(){
