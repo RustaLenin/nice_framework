@@ -181,6 +181,7 @@ export function fieldRequired(input) {
 
     let container = input.closest('.NiceField');
     let required = input.getAttribute('data-required');
+    container.classList.remove('success', 'error');
     let type = input.getAttribute('data-type');
     if(required === 'true'){
         let value = '';
@@ -210,7 +211,6 @@ export function fieldRequired(input) {
 }
 
 export function loopFieldValidation(elem) {
-    console.log(elem)
     let el = document.querySelector(elem);
     let list = el.querySelectorAll('.input');
     list.forEach(
@@ -254,7 +254,6 @@ export function isValidForm(elem) {
             }
         }
     );
-    console.log(check)
     return check;
 }
 

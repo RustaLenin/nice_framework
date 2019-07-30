@@ -248,7 +248,7 @@ export function validateText( field ) {
     if ( field['validation'] !== 'false' ) {
         buffer += `<span class="error_message">${ field['error_message'] }</span>`;
         if ( field['success_message'] ) {
-            buffer += `<span class="success_message">${ field['error_message'] }</span>`;
+            buffer += `<span class="success_message">${ field['success_message'] }</span>`;
         }
     }
     if ( field['comment_message'] ) {
