@@ -33,7 +33,7 @@ function defaultRegularField(){
         comment_message: '',                           // string: text
 
         /** Styling **/
-        size:            'medium',                     // string: tiny, small, medium, large, huge
+        size:            'small',                     // string: tiny, small, medium, large, huge
         inline:          false,                        // bool
         show_label:      true,                         // bool
         no_min_width:    false,                        // no_min_width

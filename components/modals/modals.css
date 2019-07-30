@@ -4,18 +4,19 @@
     right: 0;
     bottom: 0;
     left: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
     opacity: 0;
+    display: none;
+    z-index: 10;
     visibility: hidden;
     background-color: #000000aa;
-    z-index: 10;
     transition: var( --regular_transition );
     overflow-y: auto;
 }
 
 .modal_area.show {
+    display: flex;
     opacity: 1;
     visibility: visible;
 }
@@ -56,6 +57,8 @@
 .nice_modal .header .control {
     display: flex;
     align-items: center;
+    justify-content: center;
+    min-width: 80px;
 }
 
 .nice_modal .header .control nice-svg {
