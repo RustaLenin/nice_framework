@@ -98,6 +98,11 @@ export function collectData( selector = '.input', formSelector = document ) {
 
         }
 
+        if ( this.tagName.toLowerCase() === 'nice-checkbox' ) {
+            data_name = this.name();
+            data_value = this.isChecked();
+        }
+
         /** This part is for textarea **/
         else if ( field.is('textarea') ) {
 

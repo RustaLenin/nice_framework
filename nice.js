@@ -11,6 +11,8 @@ import { NiceButton } from './components/buttons/button.js';
 import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
 import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
+import { NiceCheckbox } from './components/checkbox/checkbox.js';
+
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
 
 import { NiceSettings, switchTab, collapseSidebar, toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
@@ -205,6 +207,7 @@ customElements.define('nice-modal_list', modalsList );
 customElements.define('nice-modal',      NiceModal );
 customElements.define('nice-settings',   NiceSettings );
 customElements.define('nice-settings_block',   NiceSettings_Blocks );
+customElements.define('nice-checkbox',   NiceCheckbox );
 addLightBox();
 addModalArea();
 addModalList();

@@ -59,7 +59,7 @@ export function defaultTempalte() {
             --field_select_box_border: #BDBDBD;
             --field_select_box_border_hover: #BDBDBD;
             --field_select_box_border_remove: #BDBDBD;
-            --field_select_box_border_checked: #ffffff;
+            --field_select_box_border_checked: #27AE60;
             --field_select_box_border_blocked: #EB575788;
             --field_select_box_border_blocked_hover: #EB5757;
         
@@ -179,7 +179,7 @@ export function notFoundTemplate() {
             --field_select_box_border: #BDBDBD;
             --field_select_box_border_hover: #BDBDBD;
             --field_select_box_border_remove: #BDBDBD;
-            --field_select_box_border_checked: #ffffff;
+            --field_select_box_border_checked: #27AE60;
             --field_select_box_border_blocked: #EB575788;
             --field_select_box_border_blocked_hover: #EB5757;
         
