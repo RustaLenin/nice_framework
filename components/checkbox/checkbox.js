@@ -16,13 +16,13 @@ export class NiceCheckbox extends HTMLElement {
 
     }
 
-    static get observedAttributes() {
-        return [ 'checked', 'description', 'name', 'callback', 'size', 'data' ];
-    }
-
-    attributeChangedCallback( name, oldValue, newValue ) {
-        this.updateElem();
-    }
+    // static get observedAttributes() {
+    //     return [ 'checked', 'description', 'name', 'callback', 'size', 'data' ];
+    // }
+    //
+    // attributeChangedCallback( name, oldValue, newValue ) {
+    //     this.updateElem();
+    // }
 
     updateElem(){
 
