@@ -602,6 +602,9 @@ nice-wp_editor  {
     display: flex;
     padding-bottom: 16px;
 }
+nice-wp_editor  iframe{
+    min-height: 160px;
+}
 
 nice-wp_editor > div {
     width: 640px;
