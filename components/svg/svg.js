@@ -9,19 +9,17 @@ export class NiceSvg extends HTMLElement {
         let id = this.getAttribute('svg-id');
         if ( !id ) {
             this.remove();
-        } else {
-            this.updateElement();
         }
     }
 
-    // static get observedAttributes() {
-    //     return [ 'svg-id', 'svg-size', 'svg-pointer', 'svg-rotate', 'data'];
-    // }
-    //
-    // /** This function will fired, when observed attr of element will be changed **/
-    // attributeChangedCallback( name, oldValue, newValue ) {
-    //     this.updateElement();
-    // }
+    static get observedAttributes() {
+        return [ 'svg-id'];
+    }
+
+    /** This function will fired, when observed attr of element will be changed **/
+    attributeChangedCallback( name, oldValue, newValue ) {
+        this.updateElement();
+    }
 
     updateElement() {
 
