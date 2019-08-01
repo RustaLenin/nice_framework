@@ -91,6 +91,9 @@ export class NiceCheckbox extends HTMLElement {
     toggleCheckbox() {
         this.classList.toggle('checked');
         this.currentModel.checked = !this.currentModel.checked;
+        if(this.classList.contains('no')){
+            this.classList.remove('no');
+        }
         if ( this.currentModel.callback ) {
             eval( this.currentModel.callback );
         }

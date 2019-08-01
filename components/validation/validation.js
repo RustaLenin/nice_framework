@@ -144,7 +144,7 @@ export function fieldValidation(input) {
     let error_text = input.getAttribute('data-error-text');
 
     if (validation) {
-        let value;
+        let value = '';
         if (dom.isInput(input)) {
             value = input.value;
         } else {
@@ -210,14 +210,14 @@ export function fieldRequired(input) {
 
 }
 
-export function loopFieldValidation(elem) {
-    let el = document.querySelector(elem);
-    let list = el.querySelectorAll('.input');
+export function loopFieldValidation(selector) {
+    let el = document.querySelector(selector);
+        let list = el.querySelectorAll('.input');
     list.forEach(
-        function (currentValue) {
-            let validation = currentValue.getAttribute('data-validation');
+        function (field) {
+            let validation = field.getAttribute('data-validation');
             if (validation && validation !== 'false') {
-                fieldValidation(currentValue)
+                fieldValidation(field)
             }
         }
     );
@@ -225,9 +225,9 @@ export function loopFieldValidation(elem) {
 
 }
 
-export function loopFieldRequired(elem) {
+export function loopFieldRequired(selector) {
 
-    let el = document.querySelector(elem);
+    let el = document.querySelector(selector);
     let list = el.querySelectorAll('.input');
     list.forEach(
         function (currentValue) {
