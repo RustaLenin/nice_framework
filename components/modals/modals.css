@@ -82,7 +82,7 @@
     min-height: 30vh;
     min-width: 33vw;
     max-width: 75vw;
-    max-height: 80vh;
+    max-height: calc(75vh - 15vh);
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
 }
@@ -151,15 +151,15 @@
 .nice_modal .tab {
     visibility: hidden;
     opacity: 0;
+    display: none;
     height: 0;
     transition: var( --regular_transition );
-    overflow: hidden;
-    padding: 4px;
 }
 
 .nice_modal .tab.current {
     visibility: visible;
     opacity: 1;
+    display: block;
     height: auto;
 }
 
