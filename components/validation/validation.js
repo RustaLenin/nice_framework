@@ -161,20 +161,22 @@ export function fieldValidation(input) {
             }
 
             if ( value === '') {
-                
-            }
-
-            let fn = Nice.validation[validation];
-            if ( typeof fn !== 'function') {
-                setError( container );
-            } else {
-                if ( fn( value, input ) ) {
-                    setSuccess( container );
-                    container.classList.add('success');
-                } else {
+                if ( required !== 'false' ) {
                     setError( container );
                 }
+            } else {
+                let fn = Nice.validation[validation];
+                if ( typeof fn !== 'function') {
+                    setError( container );
+                } else {
+                    if ( fn( value, input ) ) {
+                        setSuccess( container );
+                        container.classList.add('success');
+                    } else {
+                        setError( container );
+                    }
 
+                }
             }
         }
     }
