@@ -146,36 +146,44 @@ export function fieldValidation(input) {
         let validation = input.getAttribute('data-validation');
         let error_text = input.getAttribute('data-error-text');
         let required = input.getAttribute('data-required');
-        console.log( validation );
+        let field_type = input.getAttribute('data-type');
 
         if ( ( required !== 'false' && !validation ) || ( required !== 'false' && validation === 'false' ) ) {
             validation = 'isNotEmpty';
         }
 
-        if ( validation ) {
-            let value;
-            if (dom.isInput( input) ) {
-                value = input.value;
-            } else {
-                value = input.innerHTML;
+        if ( field_type === 'select' ) {
+            let isEmpty = input.getAttribute('data-nothing');
+            if ( isEmpty !== 'false' ) {
+                setError( container );
             }
-
-            if ( value === '') {
-                if ( required !== 'false' ) {
-                    setError( container );
-                }
-            } else {
-                let fn = Nice.validation[validation];
-                if ( typeof fn !== 'function') {
-                    setError( container );
+        } else {
+            if ( validation ) {
+                let value;
+                if (dom.isInput( input) ) {
+                    value = input.value;
                 } else {
-                    if ( fn( value, input ) ) {
-                        setSuccess( container );
-                        container.classList.add('success');
-                    } else {
+
+                    value = input.innerHTML;
+                }
+
+                if ( value === '') {
+                    if ( required !== 'false' ) {
                         setError( container );
                     }
+                } else {
+                    let fn = Nice.validation[validation];
+                    if ( typeof fn !== 'function') {
+                        setError( container );
+                    } else {
+                        if ( fn( value, input ) ) {
+                            setSuccess( container );
+                            container.classList.add('success');
+                        } else {
+                            setError( container );
+                        }
 
+                    }
                 }
             }
         }
