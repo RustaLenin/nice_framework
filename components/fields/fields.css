@@ -382,6 +382,8 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
     max-height: 35vh;
     overflow-y: auto;
     z-index: 12;
+
+    border-radius: 0 0 6px 6px;
 }
 
 .nice_field .area.open .selections_list {
@@ -601,6 +603,9 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 nice-wp_editor  {
     display: flex;
     padding-bottom: 16px;
+}
+nice-wp_editor  iframe{
+    min-height: 160px;
 }
 
 nice-wp_editor > div {
