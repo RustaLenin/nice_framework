@@ -160,6 +160,10 @@ export function fieldValidation(input) {
                 value = input.innerHTML;
             }
 
+            if ( value === '') {
+                
+            }
+
             let fn = Nice.validation[validation];
             if ( typeof fn !== 'function') {
                 setError( container );
