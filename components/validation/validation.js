@@ -139,41 +139,55 @@ export function maxCount(val, elem) {
 export function fieldValidation(input) {
 
     let container = input.closest('.NiceField');
-    container.classList.remove('success', 'error');
-    let validation = input.getAttribute('data-validation');
-    let error_text = input.getAttribute('data-error-text');
 
-    if (validation) {
-        let value;
-        if (dom.isInput(input)) {
-            value = input.value;
-        } else {
-            value = input.innerHTML;
+    if ( container ) {
+        container.classList.remove('success', 'error');
+
+        let validation = input.getAttribute('data-validation');
+        let error_text = input.getAttribute('data-error-text');
+        let required = input.getAttribute('data-required');
+        console.log( validation );
+
+        if ( ( required !== 'false' && !validation ) || ( required !== 'false' && validation === 'false' ) ) {
+            validation = 'isNotEmpty';
         }
 
-        if (value === '') {
-
-        } else {
-            let fn = Nice.validation[validation];
-
-            if (typeof fn !== 'function') {
-                container.classList.add('error');
-                if (container.closest('.error_message')) {
-                    container.closest('.error_message').innerText = Nice._t('Unknown validation method');
-                }
+        if ( validation ) {
+            let value;
+            if (dom.isInput( input) ) {
+                value = input.value;
             } else {
+                value = input.innerHTML;
+            }
 
-                if (fn(value, input)) {
+            let fn = Nice.validation[validation];
+            if ( typeof fn !== 'function') {
+                setError( container );
+            } else {
+                if ( fn( value, input ) ) {
+                    setSuccess( container );
                     container.classList.add('success');
                 } else {
-                    container.classList.add('error');
-                    if (container.querySelector('.error_message')) {
-                        container.querySelector('.error_message').innerText = error_text;
-                    }
+                    setError( container );
                 }
 
             }
         }
+    }
+
+    function runValidation() {
+
+    }
+
+    function setError( container ) {
+        container.classList.add('error');
+        if (container.closest('.error_message')) {
+            container.closest('.error_message').innerText = Nice._t('Unknown validation method');
+        }
+    }
+
+    function setSuccess( container ) {
+        container.classList.add('success');
     }
 }
 
@@ -183,7 +197,7 @@ export function fieldRequired(input) {
     let required = input.getAttribute('data-required');
     container.classList.remove('success', 'error');
     let type = input.getAttribute('data-type');
-    if(required === 'true'){
+    if( required === 'true' ){
         let value = '';
         if (dom.isInput(input)) {
             value = input.value;
@@ -216,24 +230,9 @@ export function loopFieldValidation(elem) {
     list.forEach(
         function (currentValue) {
             let validation = currentValue.getAttribute('data-validation');
-            if (validation && validation !== 'false') {
+            let required = currentValue.getAttribute('data-required');
+            if ( validation && validation !== 'false' || required !== 'false' ) {
                 fieldValidation(currentValue)
-            }
-        }
-    );
-
-
-}
-
-export function loopFieldRequired(elem) {
-
-    let el = document.querySelector(elem);
-    let list = el.querySelectorAll('.input');
-    list.forEach(
-        function (currentValue) {
-            let validation = currentValue.getAttribute('data-required');
-            if (validation === 'true') {
-                fieldRequired(currentValue)
             }
         }
     );

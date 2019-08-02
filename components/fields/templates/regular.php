@@ -11,7 +11,7 @@
     data-validation="<?php echo $field['validation']; ?>"
     data-placeholder="<?php echo $field['placeholder']; ?>"
     data-required="<?php if ( $field['required'] ) { echo 'true'; } ?>"
-    <?php if ( $field['validation'] ) { ?>
+    <?php if ( $field['validation'] || $field['required'] ) { ?>
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
         onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
         onfocusout="Nice.field.validate(this); "

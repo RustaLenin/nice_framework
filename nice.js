@@ -34,7 +34,7 @@ import { modalArea, addModalArea } from './components/modals/area.js';
 import { NiceModal, newModal, toggleModal, removeModal } from './components/modals/modal.js';
 
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
-import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isTime,  maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle, loopFieldRequired} from './components/validation/validation.js';
+import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isTime,  maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
 import { handlePickers, handleDatePicker, handleDateBirthdayPicker } from './components/pickers/pickers.js';
@@ -77,7 +77,6 @@ class Nice {
         this.field.searchList = searchList;
         this.field.validate = fieldValidation;
         this.field.loopFieldValidation = loopFieldValidation;
-        this.field.loopFieldRequired = loopFieldRequired;
         this.field.delayValidate = delayFieldValidation;
         this.field.delayRequired = delayFieldRequired;
         this.field.updateMediaField = updateMediaField;

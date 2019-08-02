@@ -12,7 +12,7 @@ export function base( field ) {
     }
 
     buffer += `</div>`;
-    if ( field['validation'] !== 'false' ) {
+    if ( field['validation'] || field['required'] ) {
         buffer += `<span class="error_message">${ field['error_message'] }</span>`;
         if ( field['success_message'] ) {
             buffer += `<span class="success_message">${ field['success_message'] }</span>`;
@@ -131,7 +131,7 @@ export function fieldIcon( field ) {
 }
 
 export function validateIcons( field ) {
-    if ( field['validation'] !== 'false' ) {
+    if ( field['validation'] || field['required'] ) {
         return `
             ${ Nice.svg({
             'id': 'check',
@@ -165,7 +165,7 @@ export function previewBox( field ) {
 }
 
 export function validateMediaHandlers( field ) {
-    if ( field['validation'] ) {
+    if ( field['validation'] || field['required'] ) {
         return `
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');Nice.field.updateMediaField(this);"
         onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');Nice.field.updateMediaField(this);"
@@ -178,7 +178,7 @@ export function validateMediaHandlers( field ) {
 }
 
 export function validateHandlers( field ) {
-    if ( field['validation'] ) {
+    if ( field['validation'] || field['required'] ) {
         return `
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
         onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
