@@ -101,6 +101,7 @@ export function defaultTempalte() {
             --accent_icon_color: #009C4F;
             --accent_hover_icon_color: #FF6600;
             --icon_reverce_accent_color: #ffffff;
+            --icon_close_delete: #E00000;
             
             /** LightBox **/
             --lightbox_background: #000000cc;
@@ -221,6 +222,7 @@ export function notFoundTemplate() {
             --accent_icon_color: #58c5c7;
             --accent_hover_icon_color: #58c5c7;
             --icon_reverce_accent_color: #ffffff;
+            --icon_close_delete: #E00000;
             
             /** LightBox **/
             --lightbox_background: #000000cc;

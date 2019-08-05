@@ -29,9 +29,9 @@ import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
 
-import { modalsList, addModalList } from './components/modals/list.js'
 import { modalArea, addModalArea } from './components/modals/area.js';
-import { NiceModal, newModal, toggleModal, removeModal } from './components/modals/modal.js';
+import { modalsList, addModalList } from './components/modals/list.js'
+import { NiceModal, newModal } from './components/modals/modal.js';
 
 import { toggleZebra, toggleBorder, togglePin, toggleAlignCenter, setTallRows, setMiddleRows, setLowRows } from './components/tables/table.js';
 
@@ -146,6 +146,7 @@ class Nice {
 
         /** Modals **/
         this.modal = modal;
+        this.newModal = newModal;
         this.showModal = showModal;
         this.modal.collapse = collapseModal;
         this.modal.close = closeModal;
@@ -203,8 +204,6 @@ window.uniqID = uniqID;
 window.isJson = isJson;
 window.fadeAndDelete = fadeAndDelete;
 window.newModal = newModal;
-window.toggleModal = toggleModal;
-window.removeModal = removeModal;
 customElements.define('nice-svg',        NiceSvg );
 customElements.define('nice-wp_editor',  NiceWPEditor );
 customElements.define('nice-lightbox',   lightBox );

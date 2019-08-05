@@ -1,19 +1,22 @@
+import { NiceModals } from './area.js';
+
 export class modalsList extends HTMLElement {
-
-
 
     constructor() {
         super();
-        this.currentModel = {};
         this.initModel();
-        let self = this;
-        document.addEventListener( 'modals_updated', function () {
-            self.updateElem();
-        });
     }
 
-    initModel(){
-        this.currentModel = nice_modals.modals;
+    connectedCallback() {
+        document.addEventListener( 'modals_updated', this.updateElem.bind(this) );
+    }
+
+    disconnectedCallback(){
+        document.removeEventListener( 'modals_updated', this.updateElem.bind(this) );
+    }
+
+    initModel() {
+        this.state = NiceModals.modals;
         this.updateElem();
     }
 
@@ -23,17 +26,17 @@ export class modalsList extends HTMLElement {
 
     render() {
 
-        let model = this.currentModel;
-
+        let state = this.state;
         let buffer = ``;
-        model.forEach( function ( key, val ) {
-            let showing_icon = val.show ? 'minus' : 'expand' ;
+
+        state.forEach( function ( id, modal ) {
+            let showing_icon = modal.show ? 'minus' : 'expand' ;
             buffer += `
                 <div class="collapsed_modal">
-                    <span class="title">${val.icon ? Nice.svg(val.icon) : '' } ${ val.title }</span>
+                    <span class="title">${modal.icon ? Nice.svg(modal.icon) : '' } ${ modal.title }</span>
                     <span class="controls">
-                        ${ Nice.svg({'id': showing_icon, 'onclick': `toggleModal('${key}')`, 'size': 'small'}) }
-                        ${ Nice.svg({'id': 'close', 'onclick': `removeModal('${key}')`, 'size': 'small'}) }
+                        <nice-svg svg-id="${showing_icon}" svg-size="small" onclick="${id}.toggleShow()"></nice-svg>
+                        <nice-svg svg-id="close" svg-size="small" onclick="${id}.close()"></nice-svg>
                     </span>
                 </div>`;
         });

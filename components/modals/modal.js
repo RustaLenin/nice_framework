@@ -1,39 +1,23 @@
+import { NiceModals } from './area.js';
+
 export class NiceModal extends HTMLElement {
 
-
-    constructor( id, template ) {
+    constructor( id = null ) {
         super();
-
-        this.defaultModel = {
-            'title': 'Title',
-            'icon': false,
-            'submit_text': 'Submit',
-            'content': emptyContent,
-            'onsubmit': ''
-        };
-
-        this.currentModel = {};
-        this.setAttribute('id', id );
-        this.setAttribute('template', template );
-        this.initModel( id );
-    }
-
-    initModel( id ){
-        let new_model = {};
-        Object.assign( new_model, this.defaultModel, nice_modals.modals[id]  );
-        nice_modals.modals[id] = new_model;
-        this.currentModel = nice_modals.modals[id];
-        this.currentModel.id = id;
+        if ( id ) { this.setAttribute('id', id ); }
+        else { id = window.uniqID(); this.setAttribute('id', id ); }
+        this.initState();
         this.updateElem();
     }
 
-    updateElem() {
-        this.innerHTML = this.render();
+    initState() {
+        let id = this.getAttribute('id');
+        this.state = NiceModals.modals[id];
     }
 
     updateClass() {
-        let model = this.currentModel;
-        if ( model.show ) {
+        let state = this.state;
+        if ( state.show ) {
             this.classList.add('show');
         } else {
             if ( this.classList.contains('show') ) {
@@ -42,8 +26,12 @@ export class NiceModal extends HTMLElement {
         }
     }
 
-    render() {
+    updateElem() {
         this.updateClass();
+        this.innerHTML = this.render();
+    }
+
+    render() {
         let buffer = ``;
         buffer += this.renderHeader();
         buffer += this.renderBody();
@@ -52,77 +40,92 @@ export class NiceModal extends HTMLElement {
     }
 
     renderHeader() {
-        let model = this.currentModel;
+        let id = this.getAttribute('id');
+        let state = this.state;
         return `<div class="header">
                     
                     <span class="title">
-                        ${ Nice.svg( model.icon )}
-                        ${ model.title }
+                        ${ state.icon ? Nice.svg( state.icon ) : '' }
+                        ${ state.title }
                     </span>
 
                     <div class="control">
-                        <nice-svg svg-id="minus" svg-size="tiny" svg-pointer="true" onclick="toggleModal('${model.id}');"></nice-svg>
-                        <nice-svg svg-id="close" svg-size="tiny" svg-pointer="true" onclick="removeModal('${model.id}')"></nice-svg>
+                        <nice-svg svg-id="minus" svg-size="tiny" svg-pointer="true" onclick="${id}.collapse()"></nice-svg>
+                        <nice-svg svg-id="close" svg-size="tiny" svg-pointer="true" onclick="${id}.close()"></nice-svg>
                     </div>
 
                 </div>`;
     }
 
     renderBody() {
-        let model = this.currentModel;
+        let state = this.state;
+        let content = ``;
+
+        if (state.content && state.data) {
+            content = state.content(state.data);
+        } else if (state.content) {
+            if (typeof state.content === 'function') {
+                content = state.content();
+            } else {
+                content = state.content;
+            }
+        }
+
         return `
             <div class="body">
-                ${ model.content() }
+                ${ content }
             </div>`
     }
 
     renderFooter() {
-        let model = this.currentModel;
+        let state = this.state;
         return `<div class="footer">
-                    <div class="nice_button submit" onclick="${model.onsubmit}">${model.submit_text}</div>
+                    <div class="nice_button submit" onclick="${state.submit ? state.submit : '' }">${state.submit_text}</div>
                 </div>`
     }
 
+    collapse() {
+        NiceModals.actions.collapseAllModals();
+        this.updateClass();
+    }
+
     close() {
-        removeModal( this.currentModel.id );
+        let id = this.getAttribute('id');
+        console.log( id );
+        console.log( NiceModals.modals[id] );
+        delete NiceModals.modals[id];
+        NiceModals.show = false;
+        NiceModals.currentModal = '';
+        this.innerHTML = ' ';
+        this.remove();
+        // document.querySelector('#'+id).remove();
+        document.dispatchEvent( NiceModals.events.modals_updated );
+    }
+
+    show() {
+        NiceModals.actions.collapseAllModals();
+        this.state.show = true;
+        NiceModals.show = true;
+        NiceModals.currentModal = this.getAttribute('id');
+        this.updateClass();
+        document.dispatchEvent( NiceModals.events.modals_updated );
+    }
+
+    toggleShow() {
+        let state = this.state;
+        state.show ? this.collapse() : this.show();
     }
 
 }
 
-function emptyContent() {
-
-}
-
-export function newModal( template, templates = nice_modals.templates ) {
-    if ( templates[template] ){
-        let uniqID = window.uniqID();
-        nice_modals.modals[uniqID] = Object.assign( {}, templates[template] );
-        nice_modals.show = true;
-        nice_modals.modals[uniqID]['show'] = true;
-        document.querySelector('nice-modal_area').prepend( new NiceModal( uniqID, template ) );
-        document.dispatchEvent( nice_modals.event );
-        return 'Modal Open';
-    } else {
-        return 'No such modal';
-    }
-}
-
-export function removeModal( id ) {
-    delete nice_modals.modals[id];
-    document.querySelector('#'+id).remove();
-    nice_modals.show = false;
-    document.dispatchEvent( nice_modals.event );
-}
-
-export function toggleModal( id ) {
-    console.log(nice_modals.modals[id]['show']);
-    if ( nice_modals.modals[id]['show'] ) {
-        nice_modals.modals[id]['show'] = false;
-    } else {
-        nice_modals.modals[id]['show'] = true;
-    }
-    console.log(nice_modals.modals[id]['show']);
-    document.querySelector('#'+id).updateClass();
-    nice_modals.show = !nice_modals.show;
-    document.dispatchEvent( nice_modals.event );
+export function newModal( model ) {
+    let id = window.uniqID();
+    NiceModals.actions.collapseAllModals();
+    NiceModals.modals[id] = model;
+    NiceModals.modals[id].show = true;
+    let modal = new NiceModal( id );
+    document.querySelector('nice-modal_area').prepend( modal );
+    NiceModals.show = true;
+    NiceModal.currentModal = id;
+    document.dispatchEvent( NiceModals.events.modals_updated );
 }

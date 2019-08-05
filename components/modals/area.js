@@ -1,30 +1,35 @@
+export const NiceModals =  {
+    'show': false,
+    'modals': {
+
+    },
+    'events': {
+        'modals_updated': new Event('modals_updated')
+    },
+    'currentModal': '',
+    'actions': {
+        collapseAllModals
+    }
+};
+
 export class modalArea extends HTMLElement {
-
-
 
     constructor() {
         super();
-        this.currentModel = {
-            'show': false,
-            'modals': {
-
-            },
-            'templates': {
-                'test_modal': {},
-            }
-        };
         this.initModel();
-        let self = this;
-        document.addEventListener( 'modals_updated', function () {
-            self.updateElem();
-        });
         this.innerHTML = this.render();
     }
 
+    connectedCallback() {
+        document.addEventListener( 'modals_updated', this.updateElem.bind(this) );
+    }
+
+    disconnectedCallback(){
+        document.removeEventListener( 'modals_updated', this.updateElem.bind(this) );
+    }
+
     initModel(){
-        let model = this.currentModel;
-        window.nice_modals = model;
-        model.event = new Event('modals_updated');
+        this.state = NiceModals;
         this.updateElem();
     }
 
@@ -34,12 +39,12 @@ export class modalArea extends HTMLElement {
 
     render() {
 
-        let model = this.currentModel;
+        let state = this.state;
         this.updateClass();
 
         let buffer = ``;
 
-        model.modals.forEach( function ( key, val ) {
+        state.modals.forEach( function ( key, val ) {
             buffer += `<nice-modal id="${key}"></nice-modal>`;
         });
 
@@ -48,7 +53,7 @@ export class modalArea extends HTMLElement {
     }
 
     updateClass() {
-        let model = this.currentModel;
+        let model = this.state;
         if ( model.show ) {
             this.classList.add('show');
         } else {
@@ -59,13 +64,13 @@ export class modalArea extends HTMLElement {
     }
 
     show() {
-        this.currentModel.show = true;
+        this.state.show = true;
         this.classList.add('show');
         return 'Modal area showing';
     }
 
     hide() {
-        this.currentModel.show = false;
+        this.state.show = false;
         this.classList.remove('show');
         return 'Modal area hiding';
     }
@@ -74,4 +79,16 @@ export class modalArea extends HTMLElement {
 
 export function addModalArea() {
     document.body.prepend( new modalArea() );
+}
+
+function collapseAllModals() {
+    NiceModals.show = false;
+    NiceModals.currentModal = '';
+    NiceModals.modals.forEach( function ( modal, model ) {
+        model.show = false;
+        if( document.querySelector('#'+modal).classList.contains('show') ) {
+            document.querySelector('#'+modal).classList.remove('show');
+        }
+    });
+    document.dispatchEvent( NiceModals.events.modals_updated );
 }
