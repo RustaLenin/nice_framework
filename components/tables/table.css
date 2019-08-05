@@ -1,0 +1,118 @@
+.nice_table {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    border-radius: 6px;
+}
+
+.nice_table table {
+    border-collapse: collapse;
+}
+
+.nice_table thead {
+    background-color: var( --content_background );
+}
+
+.nice_table thead .table_header {
+
+}
+
+.nice_table thead .table_title {
+    display: flex;
+    font-size: 24px;
+    font-weight: bold;
+    color: var( --font_title_color );
+}
+
+.nice_table thead .table_controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.nice_table thead .table_controls nice-svg {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 12px;
+}
+
+.nice_table thead .table_controls nice-svg.active svg {
+    fill: var( --field_validate_success );
+}
+
+.nice_table thead tr {
+    border-bottom: 1px solid var( --divider_color );
+}
+
+.nice_table thead tr th {
+    padding: 12px;
+}
+.nice_table thead tr:last-of-type th {
+    background-color: #666666;
+    color: #ffffff;
+}
+
+.nice_table tbody {
+
+}
+
+.nice_table tbody tr {
+    background-color: var( --content_background );
+    transition: 0.4s;
+}
+
+.nice_table tbody tr td {
+    transition: 0.4s;
+}
+
+.nice_table tbody tr td nice-svg {
+    width: 24px;
+    height: 24px;
+}
+
+.nice_table.zebra tbody tr:nth-of-type(2n) {
+    background-color: #ececec;
+}
+
+.nice_table.tall tbody tr td {
+    padding: 20px 8px;
+}
+
+.nice_table.medium tbody tr td {
+    padding: 12px 6px;
+}
+
+.nice_table.low tbody tr td {
+    padding: 4px;
+}
+
+.nice_table.border thead tr:last-of-type {
+    border-bottom: 1px solid var( --divider_color );
+}
+
+.nice_table.border tbody tr {
+    border-bottom: 1px solid var( --divider_color );
+}
+
+.nice_table.border tbody tr:last-of-type {
+    border-bottom: none;
+}
+
+.nice_table.pinned thead tr th {
+    position: sticky;
+    top: 80px;
+    z-index: 10;
+}
+
+.nice_table tbody tr:hover {
+    background-color: #2F80ED44;
+}
+
+.nice_table.zebra tbody tr:hover {
+    background-color: #2F80ED44;
+}
+
+.nice_table.center tbody tr td {
+    text-align: center;
+}

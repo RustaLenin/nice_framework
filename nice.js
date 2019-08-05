@@ -33,6 +33,8 @@ import { modalsList, addModalList } from './components/modals/list.js'
 import { modalArea, addModalArea } from './components/modals/area.js';
 import { NiceModal, newModal, toggleModal, removeModal } from './components/modals/modal.js';
 
+import { toggleZebra, toggleBorder, togglePin, toggleAlignCenter, setTallRows, setMiddleRows, setLowRows } from './components/tables/table.js';
+
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
 import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isTime,  maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
@@ -150,6 +152,15 @@ class Nice {
         this.modalTemplates = {};
         this.modalTemplates['example'] = exampleTemplate;
         this.modalTemplates['default'] = defaultTemplate;
+
+        this.table = {};
+        this.table.toggleZebra = toggleZebra;
+        this.table.toggleBorder = toggleBorder;
+        this.table.togglePin = togglePin;
+        this.table.toggleAlignCenter = toggleAlignCenter;
+        this.table.setTallRows = setTallRows;
+        this.table.setMiddleRows = setMiddleRows;
+        this.table.setLowRows = setLowRows;
 
         /** Loader **/
         this.addLoader = addLoader;
