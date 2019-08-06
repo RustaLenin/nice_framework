@@ -48,8 +48,6 @@ export function getFieldValue( selector = '.input' ) {
         else if ( data_type === 'text' ) {
             value  = field_input.html();
         }
-
-        console.log(value);
     }
 
     return value;
@@ -257,7 +255,6 @@ export function collectValidData( selector = '.input', formSelector = document )
             else if ( field.is("textarea") ) {
                 if ( field.parents('nice-wp_editor').length > 0 ) {
                     let wp_editor = field.parents('nice-wp_editor')[0];
-                    console.log( wp_editor );
                     data_name = wp_editor.getName();
                     data_value = wp_editor.getValue();
                 } else {

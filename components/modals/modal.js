@@ -91,8 +91,6 @@ export class NiceModal extends HTMLElement {
 
     close() {
         let id = this.getAttribute('id');
-        console.log( id );
-        console.log( NiceModals.modals[id] );
         delete NiceModals.modals[id];
         NiceModals.show = false;
         NiceModals.currentModal = '';

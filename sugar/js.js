@@ -39,8 +39,6 @@ export function ajaxPost( data = {}, silent = true, url = undefined ) {
         requestData = objectToUrlParamsRecursive( data );
     }
 
-    console.log('Sending to ' + url + ' \nthis data: \n' + requestData );
-
     return fetch( url, {
         method: 'POST',
         // mode: '*same-origin',
@@ -51,7 +49,6 @@ export function ajaxPost( data = {}, silent = true, url = undefined ) {
         // referrer: '*client',
         body: requestData
     }).then( function ( response ) {
-        console.log( response );
         return response.json();
     }).then( function ( json ) {
         console.log( json );

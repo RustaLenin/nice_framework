@@ -368,7 +368,6 @@ export function WPMediaForFields(icon, e) {
     media_frame.on('close', function () {
         let selection = media_frame.state().get('selection');
         selection.each(function (attachment) {
-            console.log( attachment );
             let size = document.querySelector('.media-modal-content .size').value;
             if ( typeof size === 'undefined') {
                 size = 'full';

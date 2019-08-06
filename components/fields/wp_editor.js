@@ -18,13 +18,11 @@ export class NiceWPEditor extends HTMLElement {
 
     connectedCallback() {
         let id = this.getID();
-        // console.log('wp editor ' + id + ' init');
         wp.editor.initialize( id, wpEditorDefaultArgs() );
     }
 
     disconnectedCallback() {
         let id = this.getID();
-        // console.log('wp editor ' + id + ' removing');
         wp.editor.remove( id );
     }
 

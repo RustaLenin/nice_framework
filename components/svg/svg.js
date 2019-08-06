@@ -32,7 +32,6 @@ export class NiceSvg extends HTMLElement {
         ;
 
         if ( eval( data ) ) {
-            console.log( 'eval' );
             newModel = eval( data );
         } else {
             defaults.forEach( function ( key, val ) {

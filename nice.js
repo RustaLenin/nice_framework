@@ -1,6 +1,5 @@
 'use strict';
 
-console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
@@ -54,8 +53,6 @@ class Nice {
     constructor( args = {
         'locale': 'en'
     }) {
-
-        console.log('Nice Construction started...');
 
         /** JS wrappers **/
         this.get = get;
@@ -192,7 +189,6 @@ class Nice {
 
         let end_time = new Date();
         let res_time = end_time - initial_time;
-        console.log( _t('Nice Construction ended in ') + res_time + 'ms' );
     }
 }
 
@@ -220,5 +216,3 @@ customElements.define('nice-checkbox',   NiceCheckbox );
 addLightBox();
 addModalArea();
 addModalList();
-console.log( _t('Nice added in document') );
-console.log( window.Nice );
