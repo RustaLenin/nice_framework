@@ -53,10 +53,6 @@
     line-height: 1.33;
 }
 
-.nice_field .input.hidetext {
-    font-family: text-security-disc, sans-serif;
-}
-
 .nice_field .input:empty:before {
     content: attr(data-placeholder);
     display: block;

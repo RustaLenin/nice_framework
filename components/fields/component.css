@@ -53,10 +53,6 @@ nice-field .input {
     line-height: 1.33;
 }
 
-nice-field .input.hidetext {
-    font-family: text-security-disc, sans-serif;
-}
-
 nice-field .input[contenteditable=true]:empty:before {
     content: attr(placeholder);
     display: block;
