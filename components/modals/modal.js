@@ -80,7 +80,7 @@ export class NiceModal extends HTMLElement {
     renderFooter() {
         let state = this.state;
         return `<div class="footer">
-                    <div class="nice_button submit" onclick="${state.submit ? state.submit : '' }">${state.submit_text}</div>
+                    <nice-button type="submit" icon="send" text="${state.submit_text}" onclick="${state.submit ? state.submit : '' }"></nice-button>
                 </div>`
     }
 

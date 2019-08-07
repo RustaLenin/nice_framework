@@ -95,7 +95,7 @@ export function niceSvg( newIcon = defaultModel ) {
     let icon = {};
 
     if ( typeof newIcon === 'string' ) {
-        newIcon = {
+        icon = {
             'id': newIcon
         }
     }

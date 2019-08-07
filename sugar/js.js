@@ -39,6 +39,7 @@ export function ajaxPost( data = {}, silent = true, url = undefined ) {
         requestData = objectToUrlParamsRecursive( data );
     }
 
+    console.log( data );
     return fetch( url, {
         method: 'POST',
         // mode: '*same-origin',
@@ -137,4 +138,8 @@ export function fadeAndDelete( elem ) {
         elem.remove();
     }, 400);
 
+}
+
+export function isElement( element ) {
+    return element instanceof Element || element instanceof HTMLDocument;
 }

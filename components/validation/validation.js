@@ -1,4 +1,5 @@
-import {debounce} from '../logic_patterns/logic.js'
+import { debounce } from '../logic_patterns/logic.js'
+import { isElement } from '../../sugar/js.js';
 
 export const delayFieldValidation = debounce(fieldValidation, 2400);
 export const delayFieldRequired = debounce(fieldRequired, 2400);
@@ -239,7 +240,14 @@ export function fieldRequired(input) {
 }
 
 export function loopFieldValidation(elem) {
-    let el = document.querySelector(elem);
+
+    let el;
+    if ( isElement(elem) ) {
+        el = elem;
+    } else {
+        let el = document.querySelector(elem);
+    }
+
     let list = el.querySelectorAll('.input');
     list.forEach(
         function (currentValue) {
@@ -256,7 +264,13 @@ export function loopFieldValidation(elem) {
 
 export function isValidForm(elem) {
 
-    let el = document.querySelector(elem);
+    let el;
+    if ( isElement(elem) ) {
+        el = elem;
+    } else {
+        let el = document.querySelector(elem);
+    }
+
     let list = el.querySelectorAll('.NiceField');
     let check = true;
     list.forEach(
