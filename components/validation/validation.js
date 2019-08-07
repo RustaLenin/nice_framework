@@ -245,7 +245,7 @@ export function loopFieldValidation(elem) {
     if ( isElement(elem) ) {
         el = elem;
     } else {
-        let el = document.querySelector(elem);
+        el = document.querySelector(elem);
     }
 
     let list = el.querySelectorAll('.input');
@@ -268,7 +268,7 @@ export function isValidForm(elem) {
     if ( isElement(elem) ) {
         el = elem;
     } else {
-        let el = document.querySelector(elem);
+        el = document.querySelector(elem);
     }
 
     let list = el.querySelectorAll('.NiceField');
