@@ -1,5 +1,5 @@
 export function addLoader( element) {
-    element.prepend('<div class="overlay"><div class="loader Loader"></div></div>');
+    element.prepend('<div class="nice_overlay"><div class="loader Loader"></div></div>');
 }
 
 export function runLoader( element) {
