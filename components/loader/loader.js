@@ -4,7 +4,7 @@ export function addLoader( element) {
 
 export function runLoader( element) {
     element.find('.Loader').addClass('go');
-    element.find('.overlay').addClass('show');
+    element.find('.nice_overlay').addClass('show');
 }
 
 export function addAndRunLoader( element ) {
@@ -13,7 +13,7 @@ export function addAndRunLoader( element ) {
 
 export function stopLoader( element ) {
     element.find('.Loader').removeClass('go');
-    element.find('.overlay').removeClass('show');
+    element.find('.nice_overlay').removeClass('show');
 }
 
 export function removeLoader( element ) {
