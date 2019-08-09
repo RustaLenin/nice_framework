@@ -126,4 +126,5 @@ export function newModal( model ) {
     NiceModals.show = true;
     NiceModal.currentModal = id;
     document.dispatchEvent( NiceModals.events.modals_updated );
+    return modal;
 }

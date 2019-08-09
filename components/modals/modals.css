@@ -164,7 +164,7 @@
 }
 
 nice-modal_area {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     display: none;
@@ -266,6 +266,7 @@ nice-modal .body {
     max-height: 50vh;
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
+    position: relative;
 }
 
 nice-modal .body .nice_field {
