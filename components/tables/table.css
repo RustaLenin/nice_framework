@@ -116,3 +116,16 @@
 .nice_table.center tbody tr td {
     text-align: center;
 }
+
+.nice_table .table_link {
+    font-weight: bold;
+    color: var(--font_title_color);
+    text-decoration: underline;
+    opacity: 0.8;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.nice_table .table_link:hover {
+    opacity: 1;
+}

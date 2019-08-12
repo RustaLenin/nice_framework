@@ -79,9 +79,13 @@ export class NiceModal extends HTMLElement {
 
     renderFooter() {
         let state = this.state;
-        return `<div class="footer">
+        if ( state.hide_footer ) {
+            return ``;
+        } else {
+            return `<div class="footer">
                     <nice-button type="submit" icon="send" text="${state.submit_text}" onclick="${state.submit ? state.submit : '' }"></nice-button>
                 </div>`
+        }
     }
 
     collapse() {
