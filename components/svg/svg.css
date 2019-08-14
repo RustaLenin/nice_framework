@@ -77,3 +77,11 @@ nice-svg.spin svg {
     from {transform:rotate(0deg);}
     to {transform:rotate(360deg);}
 }
+
+nice-svg.success svg {
+    fill: var( --success );
+}
+
+nice-svg.error svg {
+    fill: var( --icon_close_delete );
+}

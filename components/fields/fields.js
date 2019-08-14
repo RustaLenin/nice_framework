@@ -313,8 +313,9 @@ export function clearEditableInArea(area) {
 export function pastePlain(e) {
     e.preventDefault();
     let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    plain_text = plain_text.replace(/(?:\r\n|\r|\n)/g, '<br>');
     if (typeof plain_text !== 'undefined') {
-        document.execCommand('insertText', false, plain_text);
+        document.execCommand('insertHTML', false, plain_text);
     }
     return false;
 }

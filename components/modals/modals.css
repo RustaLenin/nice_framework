@@ -190,7 +190,7 @@ nice-modal {
     position: relative;
     min-width: 460px;
     max-width: 90vw;
-    max-height: 90vh;
+    max-height: 98vh;
     overflow: hidden;
     box-sizing: border-box;
     border-radius: 6px;
@@ -203,7 +203,7 @@ nice-modal.show {
 
 nice-modal .header {
     position: relative;
-    height: 68px;
+    height: 60px;
     background-color: var( --content_background );
     border-bottom: 1px solid var( --divider_color );
     font-weight: 600;
@@ -263,10 +263,14 @@ nice-modal .body {
     min-height: 30vh;
     min-width: 33vw;
     max-width: 80vw;
-    max-height: 50vh;
+    max-height: calc( 100vh - 120px);
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
     position: relative;
+}
+
+nice-modal .body.no_padding {
+    padding: 0;
 }
 
 nice-modal .body .nice_field {
@@ -350,7 +354,7 @@ nice-modal .tab.current {
 nice-modal_list {
     height: auto;
     position: fixed;
-    z-index: 9999;
+    z-index: 9;
     right: 16px;
     min-width: 240px;
     bottom: 16px;

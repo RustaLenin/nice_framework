@@ -72,7 +72,7 @@ export class NiceModal extends HTMLElement {
         }
 
         return `
-            <div class="body">
+            <div class="body ${state.no_padding ? 'no_padding': ''}">
                 ${ content }
             </div>`
     }

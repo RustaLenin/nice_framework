@@ -40,7 +40,6 @@
 .nice_field .input {
     display: inline-flex;
     flex-direction: column;
-    justify-content: center;
     color: var( --field_font_color );
     background-color: var( --field_background );
     outline: none;
@@ -51,6 +50,7 @@
     word-break: break-word;
     min-width: 100%;
     line-height: 1.33;
+    max-height: 240px;
 }
 
 .nice_field .input:empty:before {
