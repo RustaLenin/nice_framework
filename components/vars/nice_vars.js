@@ -85,6 +85,7 @@ export function defaultTempalte() {
     
             /** Font **/
             --regular_font_family: Roboto, sans-serif;
+            --default_font_color: #101010;
             --regular_font_color: #212121;
             --second_font_color: #4D4D4D;
             --accent_font_color: #009C4F;
@@ -206,6 +207,7 @@ export function notFoundTemplate() {
         
             /** Font **/
             --regular_font_family:'manrope', sans-serif;
+            --default_font_color: #101010;
             --regular_font_color: #828282;
             --second_font_color: #000000;
             --accent_font_color: #ffffff;
