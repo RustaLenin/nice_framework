@@ -309,7 +309,7 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field .success_message,
 .nice_field .info_message{
     position: absolute;
-    bottom: 0;
+    top: 100%;
     left: 12px;
     font-size: 12px;
 }
