@@ -262,7 +262,7 @@ nice-modal .body {
     overflow-y: auto;
     min-height: 30vh;
     min-width: 33vw;
-    max-width: 80vw;
+    max-width: 100%;
     max-height: calc( 100vh - 120px);
     border-bottom: 1px solid var( --divider_color );
     background-color: var( --content_background );
