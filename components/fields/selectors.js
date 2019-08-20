@@ -40,10 +40,10 @@ export function chooseThis( elem = null ) {
             });
 
             /** Add checked class to clicked list element **/
-            elem.classList.add('checked');
 
             /** Insert value and html **/
             if ( !checked ) {
+                elem.classList.add('checked');
                 input.textContent =  title;
                 input.setAttribute('data-value', value );
                 if ( icon ) {
@@ -59,7 +59,7 @@ export function chooseThis( elem = null ) {
             } else {
 
                 if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
-
+                    elem.classList.remove('checked');
                     input.textContent = Nice._t('Nothing selected');
                     input.setAttribute('data-nothing', 'true' );
                     input.setAttribute('data-value', '' );
