@@ -29,7 +29,15 @@ export class NiceSettings extends HTMLElement {
                 'type': 'submit',
             },
             'sidebar_collapsed': false,
-            'tabs': {},
+            'tabs': {
+                'nice': {
+                    'icon': 'cog',
+                    'text': 'Nice tab',
+                    'blocks': [],
+                    'fields': [],
+                    'current': true
+                },
+            },
             'blocks': {},
             'fields': {}
         };
@@ -40,7 +48,7 @@ export class NiceSettings extends HTMLElement {
     }
 
     updateElem() {
-        this.innerHTML = this.render();
+        this.init();
         this.checkCurrentTab();
     }
 
@@ -92,10 +100,10 @@ export class NiceSettings extends HTMLElement {
         Object.assign( newModel, this.defaultModel, data );
         this.currentModel = newModel;
         data = this.currentModel;
-
         if ( data.submit ) {
             data.button_submit.onclick = data.submit;
         }
+        this.innerHTML = this.render();
     }
 
     renderHeader() {

@@ -3,6 +3,7 @@
     flex-direction: column;
     margin-bottom: 24px;
     border-radius: 6px;
+    overflow: hidden;
 }
 
 .nice_table table {
