@@ -7,6 +7,7 @@
 
 .nice_table table {
     border-collapse: collapse;
+    width: 100%;
 }
 
 .nice_table thead {
