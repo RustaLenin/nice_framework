@@ -8,7 +8,7 @@ export function runLoader( element) {
 }
 
 export function addAndRunLoader( element ) {
-    element.prepend('<div class="nice_overlay show"><div class="loader Loader go"></div></div>');
+    element.insertAdjacentHTML('afterbegin', '<div class="nice_overlay show"><div class="loader Loader go"></div></div>');
 }
 
 export function stopLoader( element ) {
