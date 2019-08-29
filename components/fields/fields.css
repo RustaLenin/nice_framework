@@ -16,7 +16,9 @@
     align-items: flex-start;
     justify-content: center;
 }
-
+.nice_field.w100{
+    width: 100%;
+}
 .nice_field .label {
     position: absolute;
     top: 0;
