@@ -1,9 +1,7 @@
 .nice_metabox {
     display: inline-flex;
     flex-direction: column;
-    background: var( --content_background );
-    margin-bottom: 16px;
-    border-radius: 4px;
+    margin-bottom: 24px;
 }
 
 .nice_metabox .head {
@@ -12,14 +10,17 @@
     align-items: center;
     padding: 8px;
     border-bottom: 1px solid var( --divider_color );
+    background: var( --content_background );
     cursor: pointer;
+    border-radius: 6px 6px 0 0;
 }
 
 .nice_metabox .head .title {
-    font-size: 22px;
+    font-size: 16px;
     color: var( --regular_font_color );
     display: flex;
     align-items: center;
+    margin-right: 8px;
 }
 
 .nice_metabox .head .about_icon {
@@ -27,13 +28,20 @@
 }
 
 .nice_metabox .head .collapse_icon {
+    cursor: pointer;
+}
 
+.nice_metabox .head .collapse_icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 .nice_metabox .body {
     display: flex;
     flex-direction: column;
     padding: 8px;
+    border-radius: 0 0 6px 6px;
+    background: var( --content_background );
     transition: var( --regular_transition );
     height: auto;
     visibility: visible;
@@ -42,6 +50,10 @@
 
 .nice_metabox.closed {
 
+}
+
+.nice_metabox.closed .head {
+    border-radius: 6px;
 }
 
 .nice_metabox.closed .head .collapse_icon {
