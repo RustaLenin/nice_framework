@@ -2,11 +2,11 @@ nice-svg {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
     line-height: 0;
     transition: 1s;
     opacity: 1;
     visibility: visible;
+    position: relative;
 }
 
 nice-svg svg {
@@ -84,4 +84,45 @@ nice-svg.success svg {
 
 nice-svg.error svg {
     fill: var( --icon_close_delete );
+}
+
+nice-svg .icon_tooltip {
+    position: absolute;
+    bottom: calc( 100% + 4px);
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+    z-index: 9;
+    padding: 4px 8px;
+    background-color: var( --content_background );
+    font-size: 14px;
+    font-weight: bold;
+    color: var( --regular_font_color );
+    border: 1px solid var(--divider_color);
+    border-radius: 6px;
+    line-height: 18px;
+}
+
+nice-svg:hover .icon_tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+nice-svg:hover .icon_tooltip:before,
+nice-svg:hover .icon_tooltip:after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+nice-svg:hover .icon_tooltip:before {
+    border: 6px solid;
+    border-color: var( --divider_color ) transparent transparent transparent;
+}
+
+nice-svg:hover .icon_tooltip:after {
+    border: 5px solid;
+    border-color: var(--content_background) transparent transparent transparent;
 }

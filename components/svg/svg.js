@@ -44,6 +44,9 @@ export class NiceSvg extends HTMLElement {
 
         this.currentModel = newModel;
         this.innerHTML = SvgMap[newModel.id] ? SvgMap[newModel.id] : SvgMap[defaults.id];
+        if ( newModel.tooltip ) {
+            this.insertAdjacentHTML('afterbegin', `<span class="icon_tooltip">${ newModel.tooltip }</span>`);
+        }
         this.updateClass();
 
     }
@@ -82,6 +85,7 @@ const defaultModel = {
     'pointer': false,
     'rotate': false,
     'class': '',
+    'tooltip': '',
 };
 
 /**
