@@ -15,7 +15,8 @@ export function handleDatePicker( area = document, selector = '.DatePicker', cal
 
     let fields = jQuery( area ).find( selector );
     let date = {
-        minDate: new Date()
+        minDate: new Date(),
+        language: currentLocale
     };
     let data = Object.assign({}, date, callback);
     fields.each(function () {
@@ -26,8 +27,12 @@ export function handleDatePicker( area = document, selector = '.DatePicker', cal
 export function handleDateBirthdayPicker( area = document, selector = '.DatePicker', callback ) {
 
     let fields = jQuery( area ).find( selector );
+    let date = {
+        language: currentLocale
+    };
+    let data = Object.assign({}, date, callback);
     fields.each(function () {
-        jQuery( this ).datepicker(callback);
+        jQuery( this ).datepicker(data);
     });
 
 }
