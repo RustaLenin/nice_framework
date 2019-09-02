@@ -61,10 +61,8 @@
             </div>
 
             <div class="menu_toggle" onclick="Nice.settings.toggleCollapseSettingsMenu(this)">
-                <?php echo nice_svg([
-                    'id' => 'arrow_down',
-                    'size' => 'medium'
-                ]); ?>
+
+                <nice-svg svg-id="arrow_down" svg-size="medium"></nice-svg>
                 <span class="text"><?php echo _t('Collapse'); ?></span>
             </div>
 
