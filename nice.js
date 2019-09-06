@@ -45,8 +45,9 @@ import { _t, switchLocale } from './languages/translate.js';
 import { en } from './languages/js/en.js';
 import { ru } from './languages/js/ru.js';
 
-/** dom-api **/
-import {isInput} from './sugar/dom-api.js';
+/** Sugar**/
+import { isInput } from './sugar/dom-api.js';
+import { getUrlParams } from './sugar/url.js';
 
 class Nice {
 
@@ -193,6 +194,7 @@ class Nice {
 }
 
 forEach();
+window.$_GET = getUrlParams();
 window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;

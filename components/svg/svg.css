@@ -11,12 +11,19 @@ nice-svg {
 
 nice-svg svg {
     transition: var( --regular_transition );
-    opacity: var( --opacity_blured );
+    opacity: 1;
     fill: var( --icon_color );
 }
 
 nice-svg:hover svg {
     fill: var( --icon_hover_color );
+}
+
+nice-svg.charm svg {
+    opacity: var( --opacity_blured );
+}
+
+nice-svg.charm:hover svg {
     opacity: 1;
 }
 

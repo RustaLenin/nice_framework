@@ -1,10 +1,10 @@
 export function addLoader( element) {
-    element.prepend('<div class="nice_overlay"><div class="loader Loader"></div></div>');
+    element.insertAdjacentHTML('afterbegin', '<div class="nice_overlay"><div class="loader Loader"></div></div>');
 }
 
 export function runLoader( element) {
-    element.find('.Loader').addClass('go');
-    element.find('.nice_overlay').addClass('show');
+    element.querySelector('.Loader').classList.add('go');
+    element.querySelector('.nice_overlay').classList.add('show');
 }
 
 export function addAndRunLoader( element ) {
@@ -12,10 +12,10 @@ export function addAndRunLoader( element ) {
 }
 
 export function stopLoader( element ) {
-    element.find('.Loader').removeClass('go');
-    element.find('.nice_overlay').removeClass('show');
+    element.querySelector('.Loader').classList.remove('go');
+    element.querySelector('.nice_overlay').classList.remove('show');
 }
 
 export function removeLoader( element ) {
-    element.find('.Loader').remove();
+    element.querySelector('.nice_overlay').remove();
 }
