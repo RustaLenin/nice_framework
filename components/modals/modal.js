@@ -50,8 +50,8 @@ export class NiceModal extends HTMLElement {
                     </span>
 
                     <div class="control">
-                        <nice-svg svg-id="minus" svg-size="tiny" svg-pointer="true" onclick="${id}.collapse()"></nice-svg>
-                        <nice-svg svg-id="close" svg-size="tiny" svg-pointer="true" onclick="${id}.close()"></nice-svg>
+                        <nice-svg svg-id="minus" svg-size="tiny" svg-pointer="true" onclick="${id}.collapse()" svg-tooltip="${ t_('Collapse') }"></nice-svg>
+                        <nice-svg svg-id="close" svg-size="tiny" svg-pointer="true" onclick="${id}.close()" svg-tooltip="${ t_('Close') }" ></nice-svg>
                     </div>
 
                 </div>`;

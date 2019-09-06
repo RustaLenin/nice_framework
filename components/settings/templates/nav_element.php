@@ -9,11 +9,7 @@
      })">
 
 
-    <?php echo nice_svg([
-        'size' => 'medium',
-        'id'   => $icon
-    ]); ?>
-
+    <nice-svg svg-id="<?php echo $icon; ?>" svg-size="medium" ></nice-svg>
     <span class="item_name">
          <?php echo $title; ?>
     </span>

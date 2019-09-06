@@ -15,7 +15,9 @@
     <?php if( $button['onclick'] ) { echo 'onclick="'. $button['onclick'] .'"'; }?>>
 
     <?php if ( $button['icon'] ) {
-        echo nice_svg($button['icon']);
+        ?>
+        <nice-svg svg-id="<?php echo $button['icon']; ?>"></nice-svg>
+    <?php
     }
     echo $button['text'];
     ?>

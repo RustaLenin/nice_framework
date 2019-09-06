@@ -143,8 +143,6 @@
 }
 
 .nice_modal .tabs_content {
-    display: flex;
-    flex-direction: column;
     padding: 16px 0;
 }
 

@@ -26,10 +26,9 @@
 
     ><?php if ( $field['content'] ) { echo $field['content']; } else if ( $field['label'] ) { echo $field['label']; } ?></span>
 
-    <?php
-    echo nice_svg( [ 'id' => 'arrow_down', 'size' => 'micro', 'class' => ['selector_arrow', 'SelectorArrow'] ] );
-    echo nice_svg( $field['icon'] );
-    ?>
+    <nice-svg svg-id="arrow_down" svg-size="micro" class="selector_arrow SelectorArrow"></nice-svg>
+
+    <nice-svg svg-id="<?php echo $field['icon']['id']; ?>" class="<?php echo $field['icon']['class']; ?>"></nice-svg>
 
 </div>
 
@@ -49,7 +48,12 @@
             <?php if ( $selector['color'] ) { echo 'style="border-left:3px solid ' . $selector['color'] . '"';} ?>
         >
             <span class="selection_list__element_icon">
-                <?php echo nice_svg( $selector['icon'] );?>
+                <?php if($selector['icon']){
+                    ?>
+                    <nice-svg svg-id="<?php echo $selector['icon']; ?>" ></nice-svg>
+                <?php
+
+                }?>
             </span>
 
             <span class="selection_list__element_text"><?php echo $selector['text']; ?></span>
@@ -57,7 +61,7 @@
             <?php if ( $field['checkboxes'] ) {
                     if( !$selector['hide_checkbox'] ) { ?>
                         <span class="selection_list__element_check">
-                        <?php echo nice_svg([ 'size' => $field['size'], 'id' => 'check' ]); ?>
+                    <nice-svg svg-id="check" svg-size="<?php echo $field['size']; ?>"></nice-svg>
                         </span>
                         <?php
                     }

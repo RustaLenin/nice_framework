@@ -1,12 +1,3 @@
-<?php
-
-echo nice_svg([
-    'id' => 'check',
-    'class' => 'success_icon',
-    'size' => 'medium',
-]);
-echo nice_svg([
-    'id' => 'close',
-    'class' => 'error_icon',
-    'size' => 'medium',
-]);
+<?php ?>
+<nice-svg svg-id="check" svg-size="medium" class="success_icon"></nice-svg>
+<nice-svg svg-id="close" svg-size="medium" class="error_icon"></nice-svg>
