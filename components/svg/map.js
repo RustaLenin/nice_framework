@@ -278,13 +278,15 @@ const copy = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0
 		c0-4.551,3.703-8.254,8.254-8.254h88.271c4.551,0,8.254,3.703,8.254,8.254V160.746z"/>
 </svg>`;
 
-const cancel = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 50 50">
-<circle cx="25" cy="25" r="25"/>
-<polyline points="16,34 25,25 34,16 
+const cancel = `<svg xmlns="http://www.w3.org/2000/svg"  x="0px" y="0px"
+	 viewBox="0 0 50 50">
+<circle style="fill:#D75A4A;" cx="25" cy="25" r="25"/>
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,34 25,25 34,16 
 	"/>
-<polyline points="16,16 25,25 34,34 
+<polyline style="fill:none;stroke:#FFFFFF;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="16,16 25,25 34,34 
 	"/>
-</svg>`;
+</svg>
+`;
 
 const code = `<svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="94.504px" height="94.504px" viewBox="0 0 94.504 94.504">
     <path d="M93.918,45.833L69.799,21.714c-0.75-0.75-2.077-0.75-2.827,0l-5.229,5.229c-0.781,0.781-0.781,2.047,0,2.828
