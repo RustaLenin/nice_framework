@@ -592,11 +592,14 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
     fill: var( --field_validate_error );
 }
 
-.nice_field.large .preview_box { right: -66px; width: 58px; height: 58px; }
-.nice_field.medium .preview_box { right: -58px; width: 48px; height: 48px; }
-.nice_field.small .preview_box { right: -55px; width: 45px; height: 45px; }
-.nice_field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
 
+.nice_field.large .preview_box { right: -86px; width: 58px; height: 58px; }
+.nice_field.medium .preview_box { right: -78px; width: 48px; height: 48px; }
+.nice_field.small .preview_box { right: -75px; width: 45px; height: 45px; }
+.nice_field.tiny .preview_box { right: -61px; width: 33px; height: 33px; }
+.nice_field .preview_box {
+    margin-right: 20px;
+}
 
 nice-wp_editor  {
     display: flex;
