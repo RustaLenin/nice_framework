@@ -151,7 +151,7 @@ export function selectField( field ) {
                     data-nothing="${ field['data-nothing'] }"
                      
                     data-data_format="${ field['data_format'] }"
-                    data-can_be_empty="${ field['can_be_empty'] ? `true` : `false` }"
+                    data-can_be_empty="${ field['can_be_empty'] === true ? `true` : `false` }"
                            ${ validateSelectHandlers( field ) }
                     ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }

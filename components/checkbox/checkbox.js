@@ -45,7 +45,6 @@ export class NiceCheckbox extends HTMLElement {
                 newModel[key] = attrs[key] ? attrs[key] : val;
             });
         }
-
         if ( typeof newModel['checked'] === 'string' ) {
             if ( newModel['checked'] === 'true' ) {
                 newModel['checked'] = true;
@@ -69,7 +68,7 @@ export class NiceCheckbox extends HTMLElement {
 
     updateClass(){
         let model = this.currentModel;
-        if ( model.isChecked ) {
+        if ( model.checked ) {
             this.classList.add('checked');
         } else {
             if ( this.classList.contains('checked') ) {
