@@ -33,16 +33,17 @@ export function chooseThis( elem = null ) {
 
         if ( select_type === 'single' ) {
 
-            /** Remove checked from all element except clicked **/
-            let list_elems = area.querySelectorAll('.selection_list__element');
-            list_elems.forEach( function ( l_elem ) {
-                l_elem.classList.remove('checked');
-            });
+
 
             /** Add checked class to clicked list element **/
 
             /** Insert value and html **/
             if ( !checked ) {
+                /** Remove checked from all element except clicked **/
+                let list_elems = area.querySelectorAll('.selection_list__element');
+                list_elems.forEach( function ( l_elem ) {
+                    l_elem.classList.remove('checked');
+                });
                 elem.classList.add('checked');
                 input.textContent =  title;
                 input.setAttribute('data-value', value );
@@ -57,7 +58,6 @@ export function chooseThis( elem = null ) {
                     }
                 }
             } else {
-
                 if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
                     elem.classList.remove('checked');
                     input.textContent = Nice._t('Nothing selected');

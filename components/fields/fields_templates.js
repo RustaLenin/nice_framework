@@ -49,7 +49,10 @@ export function regularField( field ) {
 }
 
 export function vanillaField( field ) {
-    return `
+    if(field['type'] === 'textarea') {
+        return `<textarea name="${ field['name'] }"  placeholder="${ field['placeholder'] }" class="input ${ field['field_class'] }" cols="30" rows="5">${ field['value'] }</textarea>`
+    } else{
+        return `
     <input
         class="input ${ field['field_class'] }"
         spellcheck="${ field['spellcheck'] }"
@@ -67,6 +70,8 @@ export function vanillaField( field ) {
     
     ${ validateIcons( field['validation'] ) }
     `;
+    }
+
 }
 
 export function textArea( field ) {
@@ -146,7 +151,7 @@ export function selectField( field ) {
                     data-nothing="${ field['data-nothing'] }"
                      
                     data-data_format="${ field['data_format'] }"
-                    data-can_be_empty="${ field['can_be_empty'] ? `true` : `false` }"
+                    data-can_be_empty="${ field['can_be_empty'] === true ? `true` : `false` }"
                            ${ validateSelectHandlers( field ) }
                     ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }

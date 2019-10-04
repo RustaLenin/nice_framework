@@ -35,8 +35,8 @@ export class modalsList extends HTMLElement {
                 <div class="collapsed_modal">
                     <span class="title">${modal.icon ? Nice.svg(modal.icon) : '' } ${ modal.title }</span>
                     <span class="controls">
-                        <nice-svg svg-id="${showing_icon}" svg-size="small" onclick="${id}.toggleShow()"></nice-svg>
-                        <nice-svg svg-id="close" svg-size="small" onclick="${id}.close()"></nice-svg>
+                        <nice-svg svg-id="${showing_icon}" svg-size="small" onclick="${id}.toggleShow()" tooltip=""></nice-svg>
+                        <nice-svg svg-id="close" svg-size="small" onclick="${id}.close()" tooltip=""></nice-svg>
                     </span>
                 </div>`;
         });
