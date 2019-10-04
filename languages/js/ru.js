@@ -28,6 +28,7 @@ export const ru = {
     'Notification': 'Уведомление',
     'Something happens': 'Что-то случилось',
     'This element is blocked': 'Этот элемент заблокирован',
+    'Seems ok': 'Все хорошо',
 
     // MediaPicker
     'Choose Image': 'Выберите картинку',

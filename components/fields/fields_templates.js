@@ -37,9 +37,9 @@ export function regularField( field ) {
         data-placeholder="${ field['placeholder'] }"
         data-valid_count="${ field['valid_count'] ? field['valid_count'] : '' }"
         data-required="${ field['required'] }"
-        onpaste="Nice.field.pastePlain(event);"
+        onpaste="${ field['paste_chat'] ? 'Nice.field.pastePlainChat(event);' : 'Nice.field.pastePlain(event);' }"
         ${ validateHandlers( field ) }
-    >${ field['value'] }</span>
+    >${ typeof(field['value']) !== 'undefined' ? field['value'] : ''  }</span>
                     
                     
         ${ fieldIcon( field ) }
@@ -63,7 +63,7 @@ export function vanillaField( field ) {
         placeholder="${ field['placeholder'] }"
         data-required="${ field['required'] }"
         autocomplete="${ field['autocomplete'] }"
-        value="${ field['value'] }"
+        value="${ typeof(field['value']) !== 'undefined' ? field['value'] : ''  }"
     >
     
     ${ fieldIcon( field ) }
