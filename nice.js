@@ -9,7 +9,7 @@ import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson, fad
 import { NiceButton } from './components/buttons/button.js';
 import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
-import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
+import { niceField, clearEditable, clearEditableInArea, pastePlain,pastePlainChat, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
 import { NiceCheckbox } from './components/checkbox/checkbox.js';
 
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
@@ -72,6 +72,7 @@ class Nice {
         this.field.clearEditable = clearEditable;
         this.field.clearEditableInArea = clearEditableInArea;
         this.field.pastePlain = pastePlain;
+        this.field.pastePlainChat = pastePlainChat;
         this.field.toggleSelector = toggleSelector;
         this.field.chooseThis = chooseThis;
         this.field.searchList = searchList;

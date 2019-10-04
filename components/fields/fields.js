@@ -20,6 +20,7 @@ function defaultRegularField(){
         /** Form data **/
         required:        false,                        // bool
         validation:      false,                        // bool
+        paste_chat:      false,                        // bool
 
         /** Editable settings **/
         spellcheck:      false,                        // bool
@@ -311,6 +312,15 @@ export function clearEditableInArea(area) {
 }
 
 export function pastePlain(e) {
+    e.preventDefault();
+    let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
+    if (typeof plain_text !== 'undefined') {
+        document.execCommand('insertText', false, plain_text);
+    }
+    return false;
+}
+
+export function pastePlainChat(e) {
     e.preventDefault();
     let plain_text = (e.originalEvent || e).clipboardData.getData('text/plain');
     plain_text = plain_text.replace(/(?:\r\n|\r|\n)/g, '<br>');
