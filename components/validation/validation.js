@@ -1,13 +1,14 @@
-import {debounce} from '../logic_patterns/logic.js'
+import { debounce } from '../logic_patterns/logic.js'
+import { isElement } from '../../sugar/js.js';
 
 export const delayFieldValidation = debounce(fieldValidation, 2400);
 export const delayFieldRequired = debounce(fieldRequired, 2400);
 
 export const validationTypes = {
     'email': /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-    'login': /^[-a-zA-Z0-9]+$/,
+    'login': /^[-a-zA-Z0-9 ]+$/,
     'latin': /^[a-zA-Z0-9 ]+$/,
-    'title': /^[a-zA-Z0-9 \.\-\"\']+$/,
+    'title': /^[a-zA-Z0-9 \.\\,\-\"\']+$/,
     'currency': /^[A-Z]{3,6}$/,
     'int': /^[0-9]*$/,
     'ddmmyyyy': /^([0-3][0-9])[\.\-\\\/]([0-1][0-9])[\.\-\\\/]([0-9]{2,4})$/,
@@ -15,11 +16,15 @@ export const validationTypes = {
     'hex': /^(#)[0-9a-fA-F]{6,8}$/,
     'url': /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-z]{1,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/,
     'img_url': /^(http)?s?:?(\/\/[^"']*\.(?:png|jpg|jpeg|gif|png|svg))$/,
-    'phone': /^[-0-9()+]*$/
+    'phone': /^[-0-9()+]*$/,
+    'time': /^([0-1]?[0-9]|2[0-4]):([0-5][0-9])(:[0-5][0-9])?$/,
 };
 
 export function isCurrency(val) {
     return Nice.validation.types['currency'].test(val);
+}
+export function isTime(val) {
+    return Nice.validation.types['time'].test(val);
 }
 
 export function isImgUrl(val) {
@@ -135,53 +140,80 @@ export function maxCount(val, elem) {
 export function fieldValidation(input) {
 
     let container = input.closest('.NiceField');
-    container.classList.remove('success', 'error');
-    let validation = input.getAttribute('data-validation');
-    let error_text = input.getAttribute('data-error-text');
 
-    if (validation) {
-        let value;
-        if (dom.isInput(input)) {
-            value = input.value;
-        } else {
-            value = input.innerHTML;
+    if ( container ) {
+        container.classList.remove('success', 'error');
+
+        let validation = input.getAttribute('data-validation');
+        let error_text = input.getAttribute('data-error-text');
+        let required = input.getAttribute('data-required');
+        let field_type = input.getAttribute('data-type');
+
+        if ( ( required !== 'false' && !validation ) || ( required !== 'false' && validation === 'false' ) ) {
+            validation = 'isNotEmpty';
         }
 
-        if (value === '') {
-
+        if ( field_type === 'select' ) {
+            let isEmpty = input.getAttribute('data-nothing');
+            if ( isEmpty !== 'false' ) {
+                setError( container );
+            }
         } else {
-            let fn = Nice.validation[validation];
-
-            if (typeof fn !== 'function') {
-                container.classList.add('error');
-                if (container.closest('.error_message')) {
-                    container.closest('.error_message').innerText = Nice._t('Unknown validation method');
-                }
-            } else {
-
-                if (fn(value, input)) {
-                    container.classList.add('success');
+            if ( validation ) {
+                let value;
+                if (dom.isInput( input) ) {
+                    value = input.value;
                 } else {
-                    container.classList.add('error');
-                    if (container.querySelector('.error_message')) {
-                        container.querySelector('.error_message').innerText = error_text;
+
+                    value = input.innerHTML;
+                }
+
+                if ( value === '') {
+                    if ( required !== 'false' ) {
+                        setError( container );
+                    }
+                } else {
+                    let fn = Nice.validation[validation];
+                    if ( typeof fn !== 'function') {
+                        setError( container );
+                    } else {
+                        if ( fn( value, input ) ) {
+                            setSuccess( container );
+                            container.classList.add('success');
+                        } else {
+                            setError( container );
+                        }
+
                     }
                 }
-
             }
         }
+    }
+
+    function runValidation() {
+
+    }
+
+    function setError( container ) {
+        container.classList.add('error');
+        if (container.closest('.error_message')) {
+            container.closest('.error_message').innerText = Nice._t('Unknown validation method');
+        }
+    }
+
+    function setSuccess( container ) {
+        container.classList.add('success');
     }
 }
 
 export function fieldRequired(input) {
 
     let container = input.closest('.NiceField');
-    container.classList.remove('success', 'error');
     let required = input.getAttribute('data-required');
+    container.classList.remove('success', 'error');
     let type = input.getAttribute('data-type');
-    if(required){
-
-        let value;
+    if( required === 'true' ){
+        let value = '';
         if (dom.isInput(input)) {
             value = input.value;
         } else {
@@ -190,7 +222,6 @@ export function fieldRequired(input) {
         if (type === 'select' ) {
             let nothing = input.getAttribute('data-nothing');
             if (nothing === 'true' ) {
-                console.log(value);
                 container.classList.add('error');
                 if (container.querySelector('.error_message')) {
                     container.querySelector('.error_message').innerText = 'Выберите элемент';
@@ -210,29 +241,20 @@ export function fieldRequired(input) {
 
 export function loopFieldValidation(elem) {
 
-    let el = document.querySelector(elem);
+    let el;
+    if ( isElement(elem) ) {
+        el = elem;
+    } else {
+        el = document.querySelector(elem);
+    }
+
     let list = el.querySelectorAll('.input');
     list.forEach(
         function (currentValue) {
             let validation = currentValue.getAttribute('data-validation');
-            if (validation && validation !== 'false') {
+            let required = currentValue.getAttribute('data-required');
+            if ( validation && validation !== 'false' || required !== 'false' ) {
                 fieldValidation(currentValue)
-            }
-        }
-    );
-
-
-}
-
-export function loopFieldRequired(elem) {
-
-    let el = document.querySelector(elem);
-    let list = el.querySelectorAll('.input');
-    list.forEach(
-        function (currentValue) {
-            let validation = currentValue.getAttribute('data-required');
-            if (validation === 'true') {
-                fieldRequired(currentValue)
             }
         }
     );
@@ -242,7 +264,13 @@ export function loopFieldRequired(elem) {
 
 export function isValidForm(elem) {
 
-    let el = document.querySelector(elem);
+    let el;
+    if ( isElement(elem) ) {
+        el = elem;
+    } else {
+        el = document.querySelector(elem);
+    }
+
     let list = el.querySelectorAll('.NiceField');
     let check = true;
     list.forEach(

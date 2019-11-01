@@ -23,7 +23,6 @@ export function renderForm( model = null, values = null ) {
 }
 
 export function getFieldValue( selector = '.input' ) {
-
     let
         value = null,
         field_cont = jQuery(selector),
@@ -49,7 +48,6 @@ export function getFieldValue( selector = '.input' ) {
         else if ( data_type === 'text' ) {
             value  = field_input.html();
         }
-
     }
 
     return value;
@@ -96,6 +94,11 @@ export function collectData( selector = '.input', formSelector = document ) {
                 }
             }
 
+        }
+
+        if ( this.tagName.toLowerCase() === 'nice-checkbox' ) {
+            data_name = this.name();
+            data_value = this.isChecked();
         }
 
         /** This part is for textarea **/
@@ -252,7 +255,6 @@ export function collectValidData( selector = '.input', formSelector = document )
             else if ( field.is("textarea") ) {
                 if ( field.parents('nice-wp_editor').length > 0 ) {
                     let wp_editor = field.parents('nice-wp_editor')[0];
-                    console.log( wp_editor );
                     data_name = wp_editor.getName();
                     data_value = wp_editor.getValue();
                 } else {

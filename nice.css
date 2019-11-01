@@ -9,3 +9,5 @@
 @import 'components/modals/modals.css';
 @import 'components/lightbox/lightbox.css';
 @import "components/chooser/chooser.css";
+@import "components/checkbox/checkbox.css";
+@import "components/tables/table.css";

@@ -16,6 +16,7 @@ Class NICE_FIELDS {
         if ( !isset( $field['value'] ) )            { $field['value']            = ''; }
         if ( !isset( $field['type'] ) )             { $field['type']             = 'text'; }
         if ( !isset( $field['size'] ) )             { $field['size']             = 'medium'; }
+        if ( !isset( $field['editable'] ) )         { $field['editable']         = true; }
 
         if ( !isset( $field['class'] ) )            { $field['class']            = ''; }
         if ( !isset( $field['inline'] ) )           { $field['inline']           = false; }

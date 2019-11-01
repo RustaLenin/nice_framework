@@ -33,18 +33,18 @@ export function chooseThis( elem = null ) {
 
         if ( select_type === 'single' ) {
 
-            /** Remove checked from all element except clicked **/
-            let list_elems = area.querySelectorAll('.selection_list__element');
-            list_elems.forEach( function ( l_elem ) {
-                l_elem.classList.remove('checked');
-            });
-            if ( !checked ) {
-                elem.classList.add('checked');
-            }
 
+
+            /** Add checked class to clicked list element **/
 
             /** Insert value and html **/
             if ( !checked ) {
+                /** Remove checked from all element except clicked **/
+                let list_elems = area.querySelectorAll('.selection_list__element');
+                list_elems.forEach( function ( l_elem ) {
+                    l_elem.classList.remove('checked');
+                });
+                elem.classList.add('checked');
                 input.textContent =  title;
                 input.setAttribute('data-value', value );
                 if ( icon ) {
@@ -58,13 +58,15 @@ export function chooseThis( elem = null ) {
                     }
                 }
             } else {
-
                 if ( input.getAttribute('data-can_be_empty') !== 'false' ) {
+                    elem.classList.remove('checked');
                     input.textContent = Nice._t('Nothing selected');
                     input.setAttribute('data-nothing', 'true' );
                     input.setAttribute('data-value', '' );
-                    if ( area.querySelector('nice-svg') ) {
-                        area.querySelector('.field_icon').remove();
+                    if ( area.querySelector('.FieldIcon') ) {
+                        if ( area.querySelector('.field_icon') ) {
+                            area.querySelector('.field_icon').remove();
+                        }
                         let new_icon = svgNode({'id': 'notify_warning', 'class': 'field_icon'});
                         new_icon.classList.add('field_icon');
                         area.prepend( new_icon );
@@ -81,6 +83,7 @@ export function chooseThis( elem = null ) {
             area.classList.remove('open');
 
         } else {
+
             elem.classList.toggle('checked');
             let new_field_content = '';
             let count = countChecked( elem );

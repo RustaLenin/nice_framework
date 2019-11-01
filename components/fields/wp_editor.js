@@ -18,13 +18,11 @@ export class NiceWPEditor extends HTMLElement {
 
     connectedCallback() {
         let id = this.getID();
-        // console.log('wp editor ' + id + ' init');
         wp.editor.initialize( id, wpEditorDefaultArgs() );
     }
 
     disconnectedCallback() {
         let id = this.getID();
-        // console.log('wp editor ' + id + ' removing');
         wp.editor.remove( id );
     }
 
@@ -81,7 +79,7 @@ export function wpEditorDefaultArgs( lang ) {
                 ],
                 strikethrough: {inline: 'del'}
             },
-            relative_urls: true,
+            relative_urls: false,
             remove_script_host: true,
             convert_urls: true,
             browser_spellcheck: true,

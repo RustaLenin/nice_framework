@@ -8,6 +8,8 @@ export const en = {
 
     // Buttons
     'Another one nice button': 'Another one nice button',
+    'Collapse menu': 'Collapse menu',
+    'Loading': 'Loading',
 
     // Fields
     'Type some text': 'Type some text',
@@ -26,7 +28,13 @@ export const en = {
     'Notification': 'Notification',
     'Something happens': 'Something happens',
     'This element is blocked': 'This element is blocked',
+    'Seems ok': 'Seems ok',
 
     // MediaPicker
-    'Choose Image': 'Choose Image'
+    'Choose Image': 'Choose Image',
+
+    // Settings
+    'Expand All': 'Expand All',
+    'Collapse All': 'Collapse All',
+    'Save Settings': 'Save Settings'
 };

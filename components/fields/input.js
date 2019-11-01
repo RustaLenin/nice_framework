@@ -1,9 +1,10 @@
 export class niceInput extends HTMLElement {
 
-    currentModel = {};
+
 
     constructor() {
         super();                                                      // Make it first, cause we need access to this props and methods
+        this.currentModel = {};
         this.currentModel = this.closest('nice-field').currentModel;
         this.classList.add('input');
         this.innerHTML = this.currentModel.value;

@@ -351,3 +351,252 @@
     opacity: 0;
     padding: 0 32px;
 }
+
+nice-settings {
+    display: flex;
+    flex-direction: column;
+    background: var( --content_background );
+    font-family: var(--regular_font_family), sans-serif;
+    font-size: 14px;
+    letter-spacing: 0;
+    height: 75vh;
+    width: 100%;
+}
+
+nice-settings .settings_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid var( --divider_color);
+}
+
+nice-settings .settings_header .settings_title {
+    font-size: 22px;
+    color: var( --font_title_color );
+    font-weight: 600;
+}
+
+nice-settings .settings_header .settings_buttons {
+    display: flex;
+}
+
+nice-settings .settings_header .settings_buttons nice-button {
+    margin-right: 16px;
+}
+
+nice-settings .settings_header .settings_buttons nice-button:last-of-type {
+    margin-right: 0;
+}
+
+nice-settings .settings_body {
+    display: flex;
+    flex: 1;
+}
+
+nice-settings .settings_sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 240px;
+    width: fit-content;
+    border-right: 1px solid var( --divider_color);
+}
+
+nice-settings .settings_menu {
+    display: flex;
+    flex-direction: column;
+}
+
+nice-settings .settings_sidebar .menu_element {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-bottom: 1px solid var( --divider_color);
+    cursor: pointer;
+    background-color: var( --field_select_background );
+    transition: 0.4s;
+    height: 48px;
+    position: relative;
+}
+
+nice-settings .settings_sidebar .menu_element:last-of-type {
+    border-bottom: none;
+}
+
+nice-settings .settings_sidebar .menu_element .element_text {
+    transition: 0.4s;
+    color: var( --field_select_text );
+    font-weight: 600;
+}
+
+nice-settings .settings_sidebar .menu_element svg {
+    margin-right: 8px;
+    fill: var( --field_select_icon );
+}
+
+nice-settings .settings_sidebar .menu_element:hover {
+    background-color: var(  --field_select_background_hover );
+}
+
+nice-settings .settings_sidebar .menu_element:hover .element_text {
+    color: var( --field_select_text_hover );
+}
+
+nice-settings .settings_sidebar .menu_element:hover svg {
+    fill: var( --field_select_icon_hover );
+}
+
+nice-settings .settings_sidebar .menu_element.current {
+    background-color: var( --field_select_background_checked );
+}
+
+nice-settings .settings_sidebar .menu_element.current .element_text {
+    color: var( --field_select_text_checked );
+}
+
+nice-settings .settings_sidebar .menu_element.current svg {
+    fill: var( --field_select_icon_checked );
+}
+
+nice-settings .settings_sidebar .menu_element.current:before,
+nice-settings .settings_sidebar .menu_element.current:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: -24px;
+    transition: 0.4s;
+}
+
+nice-settings .settings_sidebar .menu_element.current:before {
+    border: 12px solid;
+    top: 0;
+    border-color: transparent transparent var( --field_select_background_checked ) var( --field_select_background_checked );
+}
+
+nice-settings .settings_sidebar .menu_element.current:after {
+    border: 12px solid;
+    bottom: 0;
+    border-color: var( --field_select_background_checked ) transparent transparent  var( --field_select_background_checked );
+}
+
+/** Collapsed Sidebar **/
+
+nice-settings .settings_sidebar.collapsed .menu_element {
+    min-width: 60px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 1px solid var( --divider_color );
+    opacity: 0;
+    visibility: hidden;
+    width: max-content;
+    padding: 4px 8px;
+    border-radius: 6px;
+    z-index: 5;
+    background: var(--content_background);
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:before,
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:before {
+    border: 10px solid;
+    border-color: transparent var( --divider_color);
+    border-left-width: 0;
+    left: -10px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element .element_text:after {
+    border: 9px solid;
+    border-color: transparent var(--content_background);
+    border-left-width: 0;
+    left: -9px;
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element.current .element_text {
+    left: calc(100% + 34px);
+}
+
+nice-settings .settings_sidebar.collapsed .menu_element:hover .element_text {
+    opacity: 1;
+    visibility: visible;
+    color: var( --field_select_text );
+}
+
+nice-settings .settings_content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow: auto;
+}
+
+nice-settings .settings_tab {
+    display: none;
+    flex-direction: column;
+}
+
+nice-settings .settings_tab.current {
+    display: flex;
+}
+
+nice-settings_block {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid var(--divider_color);
+}
+
+nice-settings .block_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    background: var( --sub_bacground);
+    padding: 0 32px;
+    cursor: pointer;
+}
+
+nice-settings .block_header .block_title {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    color: var( --regular_font_color );
+}
+
+nice-settings .block_header .block_title nice-svg {
+    margin-right: 8px;
+}
+
+nice-settings .block_header .block_title svg {
+    opacity: 1;
+}
+
+nice-settings .block_content {
+    padding: 16px 24px;
+    opacity: 1;
+    visibility: visible;
+}
+
+nice-settings nice-settings_block.hidden .toggle_icon {
+    transform: rotate( 180deg );
+}
+
+nice-settings nice-settings_block.hidden .block_content {
+    padding: 0;
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+}
+
+nice-settings .custom_content {
+    padding: 12px 24px;
+}

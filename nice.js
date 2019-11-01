@@ -1,17 +1,23 @@
 'use strict';
 
-console.log('Nice initializing...');
 let initial_time = new Date();
 
 /** PolyFill and JS boost **/
 import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson, fadeAndDelete } from './sugar/js.js';
 
 /** Nice **/
+import { NiceButton } from './components/buttons/button.js';
 import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
-import { niceField, clearEditable, clearEditableInArea, pastePlain, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
+import { niceField, clearEditable, clearEditableInArea, pastePlain,pastePlainChat, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
+import { NiceCheckbox } from './components/checkbox/checkbox.js';
+
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
-import { toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
+
+import { NiceSettings, switchTab, collapseSidebar, toggleCollapseSettingsMenu, collapseAllTabsBlocks, expandAllTabsBlocks, toggleSettingBlock, updateSettings } from './components/settings/settings.js';
+import { NiceSettings_Blocks, toggleBlock, expandAll, collapseAll } from './components/settings/blocks.js';
+
+
 import { niceSvg, NiceSvg, regularSVGTemplate } from './components/svg/svg.js';
 import { NiceWPEditor } from './components/fields/wp_editor.js';
 import { SvgMap } from './components/svg/map.js';
@@ -21,27 +27,33 @@ import { notFoundTemplate, defaultTempalte, insertCssVars, replaceCssVars } from
 import { switchTabs } from './components/tabs/tabs.js'
 import { toggleMetaBox } from './components/metabox/metabox.js';
 import { modal, showModal, collapseModal, closeModal, defaultTemplate, exampleTemplate, insertModalArea } from './components/modals/modals.js';
+
+import { modalArea, addModalArea } from './components/modals/area.js';
+import { modalsList, addModalList } from './components/modals/list.js'
+import { NiceModal, newModal } from './components/modals/modal.js';
+
+import { toggleZebra, toggleBorder, togglePin, toggleAlignCenter, setTallRows, setMiddleRows, setLowRows } from './components/tables/table.js';
+
 import { addLoader, runLoader, addAndRunLoader, stopLoader, removeLoader} from './components/loader/loader.js';
-import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle, loopFieldRequired} from './components/validation/validation.js';
+import { validationTypes, delayFieldValidation, delayFieldRequired, fieldValidation, loopFieldValidation, HandleFieldsValidate, RunFieldsValidate, isCurrency, isTime,  maxCount, isDate, isHex, isImgUrl, isInt, isNotEmpty, isPhone, isUrl, isValidEmail, isValidLogin, isValidLatin, isValidForm, isValidTitle } from './components/validation/validation.js';
 import { renderForm, collectData, collectValidData, getFieldValue, collectFlatData } from './components/form/form.js';
 import { toggleSelector, chooseThis } from './components/fields/selectors.js';
-import { handlePickers, handleDatePicker } from './components/pickers/pickers.js';
+import { handlePickers, handleDatePicker, handleDateBirthdayPicker } from './components/pickers/pickers.js';
 import { update_jQuery } from './jquery/plugins.js';
 import { colorMethods } from './components/logic_patterns/color_methods.js';
 import { _t, switchLocale } from './languages/translate.js';
 import { en } from './languages/js/en.js';
 import { ru } from './languages/js/ru.js';
 
-/** dom-api **/
-import {isInput} from './sugar/dom-api.js';
+/** Sugar**/
+import { isInput } from './sugar/dom-api.js';
+import { getUrlParams } from './sugar/url.js';
 
 class Nice {
 
     constructor( args = {
         'locale': 'en'
     }) {
-
-        console.log('Nice Construction started...');
 
         /** JS wrappers **/
         this.get = get;
@@ -60,12 +72,12 @@ class Nice {
         this.field.clearEditable = clearEditable;
         this.field.clearEditableInArea = clearEditableInArea;
         this.field.pastePlain = pastePlain;
+        this.field.pastePlainChat = pastePlainChat;
         this.field.toggleSelector = toggleSelector;
         this.field.chooseThis = chooseThis;
         this.field.searchList = searchList;
         this.field.validate = fieldValidation;
         this.field.loopFieldValidation = loopFieldValidation;
-        this.field.loopFieldRequired = loopFieldRequired;
         this.field.delayValidate = delayFieldValidation;
         this.field.delayRequired = delayFieldRequired;
         this.field.updateMediaField = updateMediaField;
@@ -76,6 +88,7 @@ class Nice {
         this.validation.HandleFieldsValidate = HandleFieldsValidate;
         this.validation.RunFieldsValidate = RunFieldsValidate;
         this.validation.isCurrency = isCurrency;
+        this.validation.isTime = isTime;
         this.validation.isDate = isDate;
         this.validation.isHex = isHex;
         this.validation.isImgUrl = isImgUrl;
@@ -113,11 +126,16 @@ class Nice {
 
         /** Settings **/
         this.settings = {};
+        this.settings.switchTab = switchTab;
+        this.settings.collapseSidebar = collapseSidebar;
         this.settings.toggleCollapseSettingsMenu = toggleCollapseSettingsMenu;
         this.settings.collapseAllTabsBlocks = collapseAllTabsBlocks;
         this.settings.expandAllTabsBlocks = expandAllTabsBlocks;
         this.settings.toggleSettingBlock = toggleSettingBlock;
         this.settings.updateSettings = updateSettings;
+        this.settings.toggleBlock = toggleBlock;
+        this.settings.expandAll = expandAll;
+        this.settings.collapseAll = collapseAll;
 
         /** Tabs **/
         this.switchTabs = switchTabs;
@@ -127,12 +145,22 @@ class Nice {
 
         /** Modals **/
         this.modal = modal;
+        this.newModal = newModal;
         this.showModal = showModal;
         this.modal.collapse = collapseModal;
         this.modal.close = closeModal;
         this.modalTemplates = {};
         this.modalTemplates['example'] = exampleTemplate;
         this.modalTemplates['default'] = defaultTemplate;
+
+        this.table = {};
+        this.table.toggleZebra = toggleZebra;
+        this.table.toggleBorder = toggleBorder;
+        this.table.togglePin = togglePin;
+        this.table.toggleAlignCenter = toggleAlignCenter;
+        this.table.setTallRows = setTallRows;
+        this.table.setMiddleRows = setMiddleRows;
+        this.table.setLowRows = setLowRows;
 
         /** Loader **/
         this.addLoader = addLoader;
@@ -145,6 +173,7 @@ class Nice {
         this.pickers = {};
         this.pickers.handle = handlePickers;
         this.pickers.handleData = handleDatePicker;
+        this.pickers.handleDateBirthday = handleDateBirthdayPicker;
         this.pickers.media = WPMediaForFields;
 
         /** colorMethods **/
@@ -162,23 +191,31 @@ class Nice {
 
         let end_time = new Date();
         let res_time = end_time - initial_time;
-        console.log( _t('Nice Construction ended in ') + res_time + 'ms' );
     }
 }
 
 forEach();
+window.$_GET = getUrlParams();
 window.Nice = new Nice();
 window.dom = {};
 window.dom.isInput = isInput;
 window.uniqID = uniqID;
 window.isJson = isJson;
 window.fadeAndDelete = fadeAndDelete;
-customElements.define('nice-svg', NiceSvg );
-customElements.define('nice-wp_editor', NiceWPEditor );
-customElements.define('nice-lightbox', lightBox );
-customElements.define('nice-chooser', chooser );
-customElements.define('nice-field', niceFieldComponent );
-customElements.define('nice-input', niceInput );
+window.newModal = newModal;
+customElements.define('nice-svg',        NiceSvg );
+customElements.define('nice-wp_editor',  NiceWPEditor );
+customElements.define('nice-lightbox',   lightBox );
+customElements.define('nice-chooser',    chooser );
+customElements.define('nice-field',      niceFieldComponent );
+customElements.define('nice-button',     NiceButton );
+customElements.define('nice-input',      niceInput );
+customElements.define('nice-modal_area', modalArea );
+customElements.define('nice-modal_list', modalsList );
+customElements.define('nice-modal',      NiceModal );
+customElements.define('nice-settings',   NiceSettings );
+customElements.define('nice-settings_block',   NiceSettings_Blocks );
+customElements.define('nice-checkbox',   NiceCheckbox );
 addLightBox();
-console.log( _t('Nice added in document') );
-console.log( window.Nice );
+addModalArea();
+addModalList();

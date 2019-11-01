@@ -59,7 +59,7 @@ export function defaultTempalte() {
             --field_select_box_border: #BDBDBD;
             --field_select_box_border_hover: #BDBDBD;
             --field_select_box_border_remove: #BDBDBD;
-            --field_select_box_border_checked: #ffffff;
+            --field_select_box_border_checked: #27AE60;
             --field_select_box_border_blocked: #EB575788;
             --field_select_box_border_blocked_hover: #EB5757;
         
@@ -85,6 +85,7 @@ export function defaultTempalte() {
     
             /** Font **/
             --regular_font_family: Roboto, sans-serif;
+            --default_font_color: #101010;
             --regular_font_color: #212121;
             --second_font_color: #4D4D4D;
             --accent_font_color: #009C4F;
@@ -92,6 +93,7 @@ export function defaultTempalte() {
             --support_font_color: #8C8C8C;
             --accent_hover_font_color: #FF6600;
             --font_reverce_accent_color: #ffffff;
+            --font_title_color: #2F80ED;
     
             /** Icons **/
             --unactive_icon_color: #D1CFCF;
@@ -100,6 +102,7 @@ export function defaultTempalte() {
             --accent_icon_color: #009C4F;
             --accent_hover_icon_color: #FF6600;
             --icon_reverce_accent_color: #ffffff;
+            --icon_close_delete: #E00000;
             
             /** LightBox **/
             --lightbox_background: #000000cc;
@@ -138,7 +141,7 @@ export function notFoundTemplate() {
             --field_border: #9d56a2;
             --field_background: #ffffff;
             --field_placeholder: #B9B9B9;
-            --field_font_color: #000000;
+            --field_font_color: #9D56A2;
             --field_focus_color: #3784DC;
             --field_validate_error: #E00000;
             --field_validate_success: #1AC119;
@@ -178,7 +181,7 @@ export function notFoundTemplate() {
             --field_select_box_border: #BDBDBD;
             --field_select_box_border_hover: #BDBDBD;
             --field_select_box_border_remove: #BDBDBD;
-            --field_select_box_border_checked: #ffffff;
+            --field_select_box_border_checked: #27AE60;
             --field_select_box_border_blocked: #EB575788;
             --field_select_box_border_blocked_hover: #EB5757;
         
@@ -204,6 +207,7 @@ export function notFoundTemplate() {
         
             /** Font **/
             --regular_font_family:'manrope', sans-serif;
+            --default_font_color: #101010;
             --regular_font_color: #828282;
             --second_font_color: #000000;
             --accent_font_color: #ffffff;
@@ -211,6 +215,7 @@ export function notFoundTemplate() {
             --support_font_color: #9D56A2;
             --accent_hover_font_color: #58c5c7;
             --font_reverce_accent_color: #ffffff;
+            --font_title_color: #9D56A2;
         
             /** Icons **/
             --unactive_icon_color: #D1CFCF;
@@ -219,6 +224,7 @@ export function notFoundTemplate() {
             --accent_icon_color: #58c5c7;
             --accent_hover_icon_color: #58c5c7;
             --icon_reverce_accent_color: #ffffff;
+            --icon_close_delete: #E00000;
             
             /** LightBox **/
             --lightbox_background: #000000cc;

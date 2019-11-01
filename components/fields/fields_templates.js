@@ -12,7 +12,7 @@ export function baseField( field ) {
             class="nice_field NiceField ${field['class']} ${field['size']} ${field['border_type']} ${field['label_type']} ${fieldClass(field)}
             ">
             
-               ${ fieldLabel( field ) }
+               ${ field['show_label'] ? fieldLabel( field ) : '' }
                 
                 <div class="area NiceFieldArea">
                     ${ fields_templates[field['field_type']](field) }
@@ -28,7 +28,7 @@ export function regularField( field ) {
     return `
     <span 
         class="input ${ field['field_class'] }"
-        contenteditable="true"
+        contenteditable="${ field['editable'] ? 'true' : 'false'}"
         spellcheck="${ field['spellcheck'] }"
         data-type="${ field['type'] }"
         data-error-text="${ field['error_message'] }"
@@ -37,9 +37,9 @@ export function regularField( field ) {
         data-placeholder="${ field['placeholder'] }"
         data-valid_count="${ field['valid_count'] ? field['valid_count'] : '' }"
         data-required="${ field['required'] }"
-        onpaste="Nice.field.pastePlain(event);"
+        onpaste="${ field['paste_chat'] ? 'Nice.field.pastePlainChat(event);' : 'Nice.field.pastePlain(event);' }"
         ${ validateHandlers( field ) }
-    >${ field['value'] }</span>
+    >${ typeof(field['value']) !== 'undefined' ? field['value'] : ''  }</span>
                     
                     
         ${ fieldIcon( field ) }
@@ -49,7 +49,10 @@ export function regularField( field ) {
 }
 
 export function vanillaField( field ) {
-    return `
+    if(field['type'] === 'textarea') {
+        return `<textarea name="${ field['name'] }"  placeholder="${ field['placeholder'] }" class="input ${ field['field_class'] }" cols="30" rows="5">${ field['value'] }</textarea>`
+    } else{
+        return `
     <input
         class="input ${ field['field_class'] }"
         spellcheck="${ field['spellcheck'] }"
@@ -60,13 +63,15 @@ export function vanillaField( field ) {
         placeholder="${ field['placeholder'] }"
         data-required="${ field['required'] }"
         autocomplete="${ field['autocomplete'] }"
-        value="${ field['value'] }"
+        value="${ typeof(field['value']) !== 'undefined' ? field['value'] : ''  }"
     >
     
     ${ fieldIcon( field ) }
     
     ${ validateIcons( field['validation'] ) }
     `;
+    }
+
 }
 
 export function textArea( field ) {
@@ -143,9 +148,10 @@ export function selectField( field ) {
                     data-required="${ field['required'] }"
                     data-callback="${ field['callback'] }"
                     data-select_type="${ field['select_type'] }"
-                     ${ field['value'] ? '' :  'data-nothing="true"'}
+                    data-nothing="${ field['data-nothing'] }"
+                     
                     data-data_format="${ field['data_format'] }"
-                    data-can_be_empty="${ field['data_format'] ? `true` : `false` }"
+                    data-can_be_empty="${ field['can_be_empty'] === true ? `true` : `false` }"
                            ${ validateSelectHandlers( field ) }
                     ${ field['editable'] ? `oninput="Nice.field.searchList(this)" contenteditable="true" onpaste="Nice.field.pastePlain(event);"` : `contenteditable="false"` }
             > ${ field['content'] ? field['content'] : field['label'] }
@@ -189,7 +195,7 @@ export function selectElement( field, element ) {
                 ${ Nice.svg( element['icon'] ) }
             </span>
             
-            <span class="selection_list__element_text">${ element['text'] }</span>
+            <span class="selection_list__element_text">${ element['text'] ? element['text'] : 'Something' }</span>
             
             ${selectElementChecks(field) }
             
@@ -230,10 +236,9 @@ export function selectElementColor( element ) {
 
 export function selectElementChecks( field ) {
     if ( field['checkboxes'] ) {
-        if (!field['hide_checkbox']) {
-            return `
+        return `
             <span class="selection_list__element_check">
-                ${ Nice.svg({'id': 'check', 'size': field['size']}) }
+                ${ Nice.svg( { 'id': 'check', 'size': field['size'] } ) }
             </span>`
     } else{
         return '';
@@ -241,18 +246,25 @@ export function selectElementChecks( field ) {
 }
 
 
-export function validateText( field) {
-    if ( field['validation'] !== 'false' ) {
-        return `
-            <span class="error_message">${ field['error_message'] }</span>
-        `;
-    } else {
-        return ``;
+export function validateText( field ) {
+
+    let buffer = ``;
+
+    if ( field['validation'] || field['required'] ) {
+        buffer += `<span class="error_message">${ field['error_message'] }</span>`;
+        if ( field['success_message'] ) {
+            buffer += `<span class="success_message">${ field['success_message'] }</span>`;
+        }
     }
+    if ( field['comment_message'] ) {
+        buffer += `<span class="comment_message">${ field['comment_message'] }</span>`;
+    }
+
+    return buffer;
 }
 
 export function validateIcons( field ) {
-    if ( field['validation'] !== 'false' ) {
+    if ( field['validation'] || field['required'] ) {
         return `
             ${ Nice.svg({
                 'id': 'check',
@@ -287,7 +299,7 @@ export function fieldIcon( field ) {
 }
 
 export function validateHandlers( field ) {
-    if ( field['validation'] ) {
+    if ( field['validation'] || field['required'] ) {
         return `
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
         onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');"
@@ -300,7 +312,7 @@ export function validateHandlers( field ) {
 }
 
 export function validateMediaHandlers( field ) {
-    if ( field['validation'] ) {
+    if ( field['validation'] || field['required'] ) {
         return `
         oninput="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');Nice.field.updateMediaField(this);"
         onfocus="Nice.field.delayValidate(this); this.closest('.nice_field').classList.remove('error', 'success');Nice.field.updateMediaField(this);"

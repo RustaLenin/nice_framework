@@ -7,47 +7,48 @@ import { base, regular, validateHandlers, fieldIcon, validateIcons, previewBox, 
 
 export class niceFieldComponent extends HTMLElement {
 
-    defaultModel = {
-        /** Core **/
-        'name':           'name',
-        'field_type':     'regular',                        // regular | textarea | wp_media | wp_editor | select_list
-        'data_type':      'text',                           // text
-        'required':       false,                            // true || false
-        'field_class':    '',                               // any string
-        'value':          '',                               // data
-        'spellcheck':     false,                            // true || false
-        'validation':     false,                            // false || func_name
 
-        /** Required styling **/
-        'size':           'medium',                         // tiny | small | medium | large
-        'border_type':    'regular_border',                 // regular_border || bottom_border
-        'label_type':     'above_border',                   // above_border || over_border
 
-        /** Optional styling **/
-        'class': '',                                        // string
-        'hide_label':      false,                           // false || true
-        'inline':          false,                           // false || true
-        'no_min_width':    false,                           // false || true
-        'align_center':    false,                           // false || true
 
-        /** Text **/
-        'label':           Nice._t('Really nice field'),    // text
-        'placeholder':     Nice._t('Type some text'),       // text
-        'error_message':   Nice._t('Enter valid data'),     // text
-        'comment_message': '',                              // text
-        'success_message': '',                              // text
-
-        /** Icon **/
-        'icon':            false,                           // false | icon - object | icon_id - string
-        'icon_class':      '',                              // string
-
-    };
-
-    currentModel = {};
 
     constructor() {
         super();                                            // Make it first, cause we need access to this props and methods
+        this.defaultModel = {
+            /** Core **/
+            'name':           'name',
+            'field_type':     'regular',                        // regular | textarea | wp_media | wp_editor | select_list
+            'data_type':      'text',                           // text
+            'required':       false,                            // true || false
+            'field_class':    '',                               // any string
+            'value':          '',                               // data
+            'spellcheck':     false,                            // true || false
+            'validation':     false,                            // false || func_name
 
+            /** Required styling **/
+            'size':           'medium',                         // tiny | small | medium | large
+            'border_type':    'regular_border',                 // regular_border || bottom_border
+            'label_type':     'above_border',                   // above_border || over_border
+
+            /** Optional styling **/
+            'class': '',                                        // string
+            'hide_label':      false,                           // false || true
+            'inline':          false,                           // false || true
+            'no_min_width':    false,                           // false || true
+            'align_center':    false,                           // false || true
+
+            /** Text **/
+            'label':           Nice._t('Really nice field'),    // text
+            'placeholder':     Nice._t('Type some text'),       // text
+            'error_message':   Nice._t('Enter valid data'),     // text
+            'comment_message': '',                              // text
+            'success_message': '',                              // text
+
+            /** Icon **/
+            'icon':            false,                           // false | icon - object | icon_id - string
+            'icon_class':      '',                              // string
+
+        };
+        this.currentModel = {};
         let dataString = this.getAttribute('data');
         let data =  isJson( dataString ) ? JSON.parse( dataString ) : eval( dataString );
         let listen = this.getAttribute('listen');

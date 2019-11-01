@@ -1,0 +1,49 @@
+nice-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/** Regular **/
+nice-checkbox .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var( --field_select_box_border );
+    padding: 1px;
+    transition: var( --regular_transition );
+    border-radius: 4px;
+    background-color: var( --field_select_box_background );
+    margin-right: 8px;
+}
+nice-checkbox .box svg { fill: var( --field_select_box_icon ); opacity: 0; }
+/** Hover **/
+nice-checkbox .box:hover { border-color: var( --field_select_box_border_hover ); background-color: var( --field_select_box_background_hover ); }
+nice-checkbox .box:hover svg { fill: var( --field_select_box_icon_hover ); opacity: 1; }
+/** Checked **/
+nice-checkbox.checked .box { border-color: var( --field_select_box_border_checked ); background-color: var( --field_select_box_background_checked ); }
+nice-checkbox.checked .box svg { fill: var( --field_select_box_icon_checked ); opacity: 1; }
+/** Hover Checked **/
+nice-checkbox.checked .box:hover { border-color: var( --field_select_box_border_remove ); background-color: var( --field_select_box_background_remove ); }
+nice-checkbox.checked .box:hover svg { fill: var( --field_select_box_icon_remove ); opacity: 1; }
+
+/** Sizes **/
+/** Tiny **/
+nice-checkbox.tiny .box { width: 16px; height: 16px; }
+nice-checkbox.tiny .box svg { width: 12px; height: 12px; }
+
+/** Small **/
+nice-checkbox.small .box { width: 20px; height: 20px; }
+nice-checkbox.small .box svg { width: 14px; height: 14px; }
+
+/** Medium **/
+nice-checkbox.medium .box { width: 24px; height: 24px; }
+nice-checkbox.medium .box svg { width: 16px; height: 16px; }
+
+/** Large **/
+nice-checkbox.large .box { width: 28px; height: 28px; }
+nice-checkbox.large .box svg { width: 18px; height: 18px; }
+
+/** Huge **/
+nice-checkbox.huge .box { width: 32px; height: 32px; }
+nice-checkbox.huge .box svg { width: 22px; height: 22px; }

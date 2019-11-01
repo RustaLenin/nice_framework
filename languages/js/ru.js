@@ -8,6 +8,8 @@ export const ru = {
 
     // Buttons
     'Another one nice button': 'Ещё одна nice кнопка',
+    'Collapse menu': 'Свернуть меню',
+    'Loading': 'Загрузка',
 
     // Fields
     'Type some text': 'Введите текст',
@@ -26,7 +28,14 @@ export const ru = {
     'Notification': 'Уведомление',
     'Something happens': 'Что-то случилось',
     'This element is blocked': 'Этот элемент заблокирован',
+    'Seems ok': 'Все хорошо',
 
     // MediaPicker
-    'Choose Image': 'Выберите картинку'
+    'Choose Image': 'Выберите картинку',
+
+    // Settings
+    'Expand All': 'Развернуть все',
+    'Collapse All': 'Свернуть все',
+    'Save Settings': 'Сохранить настройки'
+
 };

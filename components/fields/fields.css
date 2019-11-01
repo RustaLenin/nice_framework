@@ -16,10 +16,12 @@
     align-items: flex-start;
     justify-content: center;
 }
-
+.nice_field.w100{
+    width: 100%;
+}
 .nice_field .label {
     position: absolute;
-    top: 0;
+    top: -2px;
     left: 12px;
     font-size: 12px;
     color: var( --support_font_color );
@@ -40,7 +42,6 @@
 .nice_field .input {
     display: inline-flex;
     flex-direction: column;
-    justify-content: center;
     color: var( --field_font_color );
     background-color: var( --field_background );
     outline: none;
@@ -51,13 +52,10 @@
     word-break: break-word;
     min-width: 100%;
     line-height: 1.33;
+    max-height: 240px;
 }
 
-.nice_field .input.hidetext {
-    font-family: text-security-disc, sans-serif;
-}
-
-.nice_field .input[contenteditable=true]:empty:before {
+.nice_field .input:empty:before {
     content: attr(data-placeholder);
     display: block;
     color: var( --field_placeholder );
@@ -142,7 +140,7 @@ Here is styles for
 
 /** Sizes **/
 /** Large **/
-.nice_field.large { min-width: 320px; }
+.nice_field.large .area { min-width: 320px; }
 .nice_field.large input.input { width: 320px; }
 .nice_field.large .input {
     font-size: 22px;
@@ -154,7 +152,7 @@ Here is styles for
 .nice_field.large .input::placeholder { font-size: 22px; }
 
 /** Medium **/
-.nice_field.medium { min-width: 270px; }
+.nice_field.medium .area{ min-width: 270px; }
 .nice_field.medium input.input { width: 270px; }
 .nice_field.medium .input {
     font-size: 20px;
@@ -166,7 +164,7 @@ Here is styles for
 .nice_field.medium .input::placeholder { font-size: 18px; }
 
 /** Small **/
-.nice_field.small { min-width: 220px; }
+.nice_field.small .area{ min-width: 220px; }
 .nice_field.small input.input { width: 220px; }
 .nice_field.small .input {
     font-size: 16px;
@@ -178,7 +176,7 @@ Here is styles for
 .nice_field.small .input::placeholder { font-size: 16px; }
 
 /** Tiny **/
-.nice_field.tiny { min-width: 170px; }
+.nice_field.tiny .area{ min-width: 170px; }
 .nice_field.tiny input.input { width: 170px; }
 .nice_field.tiny .input {
     font-size: 14px;
@@ -217,6 +215,9 @@ If you not show any label, you not need margin-top
 .nice_field.no_comment:last-of-type {
     padding-bottom: 0;
 }
+.nice_modal .nice_field {
+    padding-bottom: 16px!important;
+}
 /** Border types
 Nice_Fields have two (2) border types
 Regular border - All 4 border's included (top, right, bottom, down). This is default.
@@ -224,7 +225,7 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 **/
 
 .nice_field.regular_border .input {
-    border: 0.5px solid var( --field_border );
+    border: 1px solid var( --field_border );
 }
 
 .nice_field.regular_border .input:focus {
@@ -379,6 +380,8 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
     max-height: 35vh;
     overflow-y: auto;
     z-index: 12;
+
+    border-radius: 0 0 6px 6px;
 }
 
 .nice_field .area.open .selections_list {
@@ -431,9 +434,6 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 }
 
 /** States **/
-
-/** Hidden **/
-.nice_field .selection_list__element.hidden {visibility: hidden; opacity: 0; height: 0; padding: 0;}
 
 /** Regular **/
 .nice_field .selection_list__element { background-color: var( --field_select_background ); }
@@ -519,6 +519,9 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.tiny .selection_list__element_check { width: 16px; height: 16px; }
 .nice_field.tiny .selection_list__element_check svg { width: 12px; height: 12px; }
 
+/** Hidden **/
+.nice_field .selection_list__element.hidden {visibility: hidden; opacity: 0; height: 0; padding: 0; border-bottom: 0;}
+
 .nice_field .input.textarea {
     justify-content: flex-start;
     overflow: hidden;
@@ -589,11 +592,22 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
     fill: var( --field_validate_error );
 }
 
-.nice_field.large .preview_box { right: -66px; width: 58px; height: 58px; }
-.nice_field.medium .preview_box { right: -58px; width: 48px; height: 48px; }
-.nice_field.small .preview_box { right: -55px; width: 45px; height: 45px; }
-.nice_field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
 
+.nice_field.large .preview_box { right: -86px; width: 58px; height: 58px; }
+.nice_field.medium .preview_box { right: -78px; width: 48px; height: 48px; }
+.nice_field.small .preview_box { right: -75px; width: 45px; height: 45px; }
+.nice_field.tiny .preview_box { right: -61px; width: 33px; height: 33px; }
+.nice_field .preview_box {
+    margin-right: 20px;
+}
+
+nice-wp_editor  {
+    display: flex;
+    padding-bottom: 16px;
+}
+nice-wp_editor  iframe{
+    min-height: 160px;
+}
 
 nice-wp_editor > div {
     width: 640px;

@@ -21,8 +21,8 @@
     <?php } ?>
 >
 
-<?php echo nice_svg( $field['icon']);
-
+<nice-svg svg-id="<?php echo $field['icon']; ?>"></nice-svg>
+<?php
 if ( $field['validation'] ) {
     include('validate_icons.php');
 } ?>

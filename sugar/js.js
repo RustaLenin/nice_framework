@@ -39,8 +39,7 @@ export function ajaxPost( data = {}, silent = true, url = undefined ) {
         requestData = objectToUrlParamsRecursive( data );
     }
 
-    console.log('Sending to ' + url + ' \nthis data: \n' + requestData );
-
+    console.log( data );
     return fetch( url, {
         method: 'POST',
         // mode: '*same-origin',
@@ -51,7 +50,6 @@ export function ajaxPost( data = {}, silent = true, url = undefined ) {
         // referrer: '*client',
         body: requestData
     }).then( function ( response ) {
-        console.log( response );
         return response.json();
     }).then( function ( json ) {
         console.log( json );
@@ -91,39 +89,39 @@ export function uniqID( pr = '', en = false ) {
             (w > s.length) ? new Array(1 + (w - s.length)).join('0') + s : s;
     }
 
-    result = pr + seed(parseInt(new Date().getTime() / 1000, 10), 8)
+    result = + pr + seed(parseInt(new Date().getTime() / 1000, 10), 8)
         + seed(Math.floor(Math.random() * 0x75bcd15) + 1, 5);
 
     if (en) { result += (Math.random() * 10).toFixed(8).toString(); }
 
-    return result;
+    return 'id' + result;
 }
 
-export function objectToUrlParamsRecursive( obj, url_params = false, namespace = false ) {
+    export function objectToUrlParamsRecursive( obj, url_params = false, namespace = false ) {
 
-    let urlParams = url_params ? url_params : '';
-    let DataKey;
+        let urlParams = url_params ? url_params : '';
+        let DataKey;
 
-    obj.forEach( function ( key, val ) {
+        obj.forEach( function ( key, val ) {
 
-        DataKey = namespace ? namespace + '[' + key + ']' : key;
+            DataKey = namespace ? namespace + '[' + key + ']' : key;
 
-        if( typeof val === 'object' && !( val instanceof File ) ) {
-            urlParams = objectToUrlParamsRecursive( val, urlParams, DataKey );
-        } else {
-            if ( urlParams === '' ) {
-                urlParams = urlParams + DataKey + '=' + val.toString();
+            if( typeof val === 'object' && !( val instanceof File ) ) {
+                urlParams = objectToUrlParamsRecursive( val, urlParams, DataKey );
             } else {
-                urlParams = urlParams + '&' + DataKey + '=' + val.toString();
+                if ( urlParams === '' ) {
+                    urlParams = urlParams + DataKey + '=' + val.toString();
+                } else {
+                    urlParams = urlParams + '&' + DataKey + '=' + val.toString();
+                }
+
             }
 
-        }
+        });
 
-    });
+        return urlParams;
 
-    return urlParams;
-
-}
+    }
 
 export function isJson( str ) {
     try {
@@ -140,4 +138,8 @@ export function fadeAndDelete( elem ) {
         elem.remove();
     }, 400);
 
+}
+
+export function isElement( element ) {
+    return element instanceof Element || element instanceof HTMLDocument;
 }

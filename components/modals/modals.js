@@ -8,7 +8,6 @@ export function modal( template, props ) {
     if ( typeof props['modal']    === 'undefined' ) { Data = {};
     } else { Data = props['modal'] }
 
-    console.log( Data );
     if ( !template || typeof template == 'undefined' ) { template = Nice.modalTemplates['example']; }
     let html = ejs.render( template, Data );
     jQuery( props['area'] ).html( html );

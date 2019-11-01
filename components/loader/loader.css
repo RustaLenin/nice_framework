@@ -1,3 +1,25 @@
+.nice_overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000bb;
+    z-index: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.nice_overlay.show {
+    z-index: 9;
+    visibility: visible;
+    opacity: 1;
+}
+
 .loader {
     position: relative;
     border: 3px solid transparent;

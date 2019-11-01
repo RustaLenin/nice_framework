@@ -11,11 +11,28 @@ export function handlePickers( area = document, selectors ) {
 
 }
 
-export function handleDatePicker( area = document, selector = '.DatePicker' ) {
+export function handleDatePicker( area = document, selector = '.DatePicker', callback ) {
 
     let fields = jQuery( area ).find( selector );
+    let date = {
+        minDate: new Date(),
+        language: currentLocale
+    };
+    let data = Object.assign({}, date, callback);
     fields.each(function () {
-        jQuery( this ).datepicker();
+        jQuery( this ).datepicker(data);
+    });
+
+}
+export function handleDateBirthdayPicker( area = document, selector = '.DatePicker', callback ) {
+
+    let fields = jQuery( area ).find( selector );
+    let date = {
+        language: currentLocale
+    };
+    let data = Object.assign({}, date, callback);
+    fields.each(function () {
+        jQuery( this ).datepicker(data);
     });
 
 }

@@ -1,21 +1,21 @@
 export function addLoader( element) {
-    element.prepend('<div class="overlay"><div class="loader Loader"></div></div>');
+    element.insertAdjacentHTML('afterbegin', '<div class="nice_overlay"><div class="loader Loader"></div></div>');
 }
 
 export function runLoader( element) {
-    element.find('.Loader').addClass('go');
-    element.find('.overlay').addClass('show');
+    element.querySelector('.Loader').classList.add('go');
+    element.querySelector('.nice_overlay').classList.add('show');
 }
 
 export function addAndRunLoader( element ) {
-    element.prepend('<div class="overlay show"><div class="loader Loader go"></div></div>');
+    element.insertAdjacentHTML('afterbegin', '<div class="nice_overlay show"><div class="loader Loader go"></div></div>');
 }
 
 export function stopLoader( element ) {
-    element.find('.Loader').removeClass('go');
-    element.find('.overlay').removeClass('show');
+    element.querySelector('.Loader').classList.remove('go');
+    element.querySelector('.nice_overlay').classList.remove('show');
 }
 
 export function removeLoader( element ) {
-    element.find('.Loader').remove();
+    element.querySelector('.nice_overlay').remove();
 }

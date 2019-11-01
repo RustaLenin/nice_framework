@@ -1,3 +1,3 @@
 export function toggleMetaBox( elem ) {
-    jQuery( elem ).parents('.niceMetaBox').toggleClass('closed');
+    elem.closest('.nice_metabox').classList.toggle('closed');
 }
