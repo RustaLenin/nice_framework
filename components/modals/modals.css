@@ -413,6 +413,10 @@ nice-modal_list .collapsed_modal .controls nice-svg:last-of-type:hover svg {
     }
     .nice_modal .body {
         max-width: 100%;
+        max-height: calc(500px - 70px);
+    }
+    .nice_modal .footer{
+        padding: 15px;
     }
     nice-modal{
         width: 90%;

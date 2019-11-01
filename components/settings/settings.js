@@ -141,7 +141,7 @@ export class NiceSettings extends HTMLElement {
         });
         buffer += `</div>`;
 
-        buffer += `<div class="menu_element" onclick="Nice.settings.collapseSidebar(this)">${ Nice.svg({'id': 'arrow_left'}) }<span class="element_text">${Nice._t('Collapse menu')}</span></div></div>`;
+        buffer += `<div class="menu_element no_mobile" onclick="Nice.settings.collapseSidebar(this)">${ Nice.svg({'id': 'arrow_left'}) }<span class="element_text">${Nice._t('Collapse menu')}</span></div></div>`;
         return buffer;
     }
 
