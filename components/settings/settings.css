@@ -600,3 +600,37 @@ nice-settings nice-settings_block.hidden .block_content {
 nice-settings .custom_content {
     padding: 12px 24px;
 }
+
+@media (max-width: 800px) {
+    nice-settings {
+        height: auto;
+    }
+    nice-settings .settings_sidebar{
+        width: 100%;
+        max-width: 100%;
+        border: none;
+        margin-bottom: 20px;
+    }
+    nice-settings .settings_body{
+        display: block;
+    }
+    nice-settings .settings_sidebar .menu_element.current:before,
+    nice-settings .settings_sidebar .menu_element.current:after{
+        display: none;
+    }
+    nice-settings .custom_content{
+        padding: 0;
+    }
+    nice-settings .settings_sidebar .menu_element.no_mobile{
+        display: none;
+    }
+    nice-settings .settings_header{
+        display: block;
+    }
+    nice-settings .settings_header .settings_buttons{
+        flex-wrap: wrap;
+    }
+    nice-settings .settings_header .settings_buttons nice-button{
+        margin-bottom: 14px;
+    }
+}
