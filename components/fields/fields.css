@@ -58,7 +58,6 @@
 
 .nice_field .input.MediaField  {
     min-width: initial;
-    margin-right: 20px;
 }
 
 .nice_field .input:empty:before {
@@ -612,10 +611,7 @@ Only Bottom - So, here is only one, bottom border. This is optional, mostly used
 .nice_field.small .preview_box {  width: 45px; height: 45px; }
 .nice_field.tiny .preview_box { width: 33px; height: 33px; }
 .nice_field .preview_box {
-    margin-right: 20px;
-}
-.nice_field .preview_box:last-of-type {
-    margin-right: 0;
+    margin-left: 20px;
 }
 
 nice-wp_editor  {

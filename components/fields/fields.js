@@ -397,7 +397,7 @@ export function WPMediaForFields(icon, e) {
 
 export function updateMediaField(elem) {
 
-    let preview_box = elem.parentNode.querySelector('.preview_box');
+    let preview_box = elem.parentNode.parentNode.querySelector('.preview_box');
     let preview_box_icon = preview_box.querySelector('.preview_box__icon');
 
     if (preview_box.classList.contains('preview')) {
@@ -413,10 +413,10 @@ export function updateMediaField(elem) {
 export const delayMediaImagePreview = debounce(mediaImagePreview, 1200);
 
 export function mediaImagePreview(elem) {
-
-    let preview_box = elem.parentNode.querySelector('.preview_box');
+    let parent = elem.parentNode.parentNode;
+    let preview_box = parent.querySelector('.preview_box');
     let preview_box_icon = preview_box.querySelector('.preview_box__icon');
-    let add_icon_box = elem.parentNode.querySelector('.add_icon_box');
+    let add_icon_box = parent.querySelector('.add_icon_box');
 
     Nice.get(elem.textContent).then(function (response) {
         preview_box_icon.classList.remove('spin');
@@ -424,6 +424,7 @@ export function mediaImagePreview(elem) {
             if(elem.textContent){
                 preview_box.querySelector('.preview_img').setAttribute('src', elem.textContent);
                 preview_box.classList.add('preview');
+                add_icon_box.setAttribute('svg-id', 'edit');
             } else{
                 add_icon_box.setAttribute('svg-id', 'add_image');
             }

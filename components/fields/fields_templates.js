@@ -44,7 +44,7 @@ export function regularField(field) {
                     
         ${ fieldIcon(field) }
     
-        ${ validateIcons(field['validation']) }
+        ${ validateIcons(field) }
     `;
 }
 
@@ -68,7 +68,7 @@ export function vanillaField(field) {
     
     ${ fieldIcon(field) }
     
-    ${ validateIcons(field['validation']) }
+    ${ validateIcons(field) }
     `;
     }
 
@@ -102,7 +102,7 @@ export function wpEditor(field) {
 export function mediaField(field) {
     return `
     
-
+        <span style="position: relative;">
         <span
             class="input MediaField  ${ field['field_class'] }"
             contenteditable="true"
@@ -114,6 +114,8 @@ export function mediaField(field) {
             data-required="${ field['required'] }"
             ${ validateMediaHandlers(field) }
         >${ field['value'] }</span>  
+        ${ validateIcons(field) }
+</span>
           <span class="preview_box preview_el ${field['value'] ? `preview` : `` }"
             onclick="lightbox.view( this.querySelector('.preview_img').getAttribute('src') );">
             ${ Nice.svg({'id': 'blind', 'class': 'preview_box__icon'}) }
@@ -123,7 +125,6 @@ export function mediaField(field) {
         <nice-svg svg-id="${field['value'] ? `edit` : `add_image`}" svg-size="${field['size']}"  class="add_icon_box" ></nice-svg>
         </span>
 
-        ${ validateIcons(field['validation']) }
     `;
 }
 
