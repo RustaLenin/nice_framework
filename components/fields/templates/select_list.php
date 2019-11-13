@@ -1,4 +1,7 @@
-<?php ?>
+<?php
+foreach( $field['selections'] as $key => $selector ) {
+    if ( $field['select_type'] === 'multiple' ) { if ( $selector['checked'] ) { $field['multiple_checked'] = true; } }
+}?>
 
 <div class="head_wrapper" onclick="Nice.field.toggleSelector( this )">
 
@@ -10,9 +13,10 @@
         data-value="<?php echo $field['value']; ?>"
         data-validation="<?php echo $field['validation']; ?>"
         data-placeholder="<?php echo $field['placeholder']; ?>"
-        data-required="<?php echo $field['required']; ?>"
+        data-required="<?php echo $field['required'] ? 'true': 'false'; ?>"
         data-callback="<?php echo $field['callback']; ?>"
         data-select_type="<?php echo $field['select_type']; ?>"
+        data-nothing ="<?php echo $field['value'] || $field['multiple_checked'] ? 'false': 'true'; ?>"
         data-data_format="<?php echo $field['data_format']; ?>"
         data-can_be_empty="<?php if ( $field['can_be_empty'] ) { echo 'true'; } else { echo 'false'; } ?>"
 

@@ -7,7 +7,7 @@
     name="<?php echo $field['name']; ?>"
     data-validation="<?php echo $field['validation']; ?>"
     placeholder="<?php echo $field['placeholder']; ?>"
-    data-required="<?php echo $field['required']; ?>"
+    data-required="<?php echo $field['required'] ? $field['required']: 'false'; ?>"
     autocomplete="<?php echo $field['autocomplete']; ?>"
     value="<?php echo $field['value']; ?>"
     <?php if ( $field['validation'] ) { ?>

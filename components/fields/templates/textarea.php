@@ -8,7 +8,7 @@
     data-type="text"
     data-name="<?php echo $field['name']; ?>"
     data-placeholder="<?php echo $field['placeholder']; ?>"
-    data-required="<?php if ( $field['required'] ) { echo 'true'; } ?>"
+    data-required="<?php echo $field['required'] ? $field['required']: 'false'; ?>"
     onpaste="Nice.field.pastePlain(event);"
 
 ><?php echo $field['value']; ?></span>

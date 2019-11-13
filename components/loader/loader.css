@@ -19,6 +19,13 @@
     visibility: visible;
     opacity: 1;
 }
+.nice_overlay.all_page{
+    position: fixed;
+}
+
+.nice_overlay.all_page.show {
+    z-index: 9999;
+}
 
 .loader {
     position: relative;

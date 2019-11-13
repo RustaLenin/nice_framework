@@ -116,6 +116,7 @@
 
 .nice_table.center tbody tr td {
     text-align: center;
+    white-space: nowrap;
 }
 
 .nice_table .table_link {
@@ -129,4 +130,12 @@
 
 .nice_table .table_link:hover {
     opacity: 1;
+}
+@media (max-width: 800px) {
+    .nice_table, .table-cell{
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -ms-overflow-style: -ms-autohiding-scrollbar;
+    }
 }
