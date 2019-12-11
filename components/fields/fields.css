@@ -58,6 +58,7 @@
 
 .nice_field .input.MediaField  {
     min-width: initial;
+    max-width: 600px;
 }
 
 .nice_field .input:empty:before {

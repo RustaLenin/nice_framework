@@ -270,7 +270,9 @@ export function openCropCanvasImg(self) {
         Nice.ajaxPost(requestData, false).then(function (answer) {
             if(answer.result === 'success'){
                 modal.close();
-                input.innerText = answer.payload
+                input.innerText = answer.payload;
+                Nice.field.updateMediaField(input);
+                Nice.field.validate(input);
                 removeHandlers();
             }
         });

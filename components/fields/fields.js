@@ -412,7 +412,7 @@ export function cropModalButton(self) {
         'submit_text': t_('Crop')
     };
     Nice.newModal(modal_data);
-    let modal = document.querySelector('nice-modal');
+    let modal = document.querySelector('.crop-image').closest('nice-modal');
     input.setAttribute('data-modal', modal.getAttribute('id'));
     Nice.pickers.crop(document.querySelector('.crop-image'));
 }
