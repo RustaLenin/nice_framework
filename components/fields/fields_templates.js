@@ -50,7 +50,7 @@ export function regularField(field) {
 
 export function vanillaField(field) {
     if (field['type'] === 'textarea') {
-        return `<textarea name="${ field['name'] }"  placeholder="${ field['placeholder'] }" class="input ${ field['field_class'] }" cols="30" rows="5">${ field['value'] }</textarea>`
+        return `<textarea data-required="${ field['required'] }" name="${ field['name'] }"  placeholder="${ field['placeholder'] }" class="input ${ field['field_class'] }" cols="30" rows="5">${ field['value'] }</textarea>`
     } else {
         return `
     <input
@@ -113,7 +113,7 @@ export function mediaField(field) {
             data-placeholder="${ field['placeholder'] }"
             data-required="${ field['required'] }"
             ${ validateMediaHandlers(field) }
-        >${ field['value'] }</span>  
+        >${ field['value'] }</span>
         ${ validateIcons(field) }
 </span>
           <span class="preview_box preview_el ${field['value'] ? `preview` : `` }"
@@ -124,6 +124,10 @@ export function mediaField(field) {
         <span class="preview_box" onclick="Nice.pickers.media( this, event );">
         <nice-svg svg-id="${field['value'] ? `edit` : `add_image`}" svg-size="${field['size']}"  class="add_icon_box" ></nice-svg>
         </span>
+        ${field['avatar'] ? ` <span class="preview_box" onclick="Nice.field.cropModalButton(this);">
+        <nice-svg svg-id="dotted_line" svg-size="${field['size']}"  class="add_icon_box" ></nice-svg>
+        </span>`: '' }
+       
 
     `;
 }

@@ -592,7 +592,7 @@ nice-field.tiny .preview_box { right: -41px; width: 33px; height: 33px; }
 
 
 nice-wp_editor > div {
-    width: 640px;
+    width: 100%;
 }
 
 .wp_editor_textarea {

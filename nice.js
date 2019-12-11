@@ -9,7 +9,8 @@ import { forEach, get, ajaxPost, uniqID, objectToUrlParamsRecursive, isJson, fad
 import { NiceButton } from './components/buttons/button.js';
 import { niceInput } from './components/fields/input.js';
 import { niceFieldComponent } from './components/fields/component.js';
-import { niceField, clearEditable, clearEditableInArea, pastePlain,pastePlainChat, searchList, WPMediaForFields, updateMediaField } from './components/fields/fields.js';
+import { niceField, clearEditable, clearEditableInArea, pastePlain,pastePlainChat, searchList, WPMediaForFields, updateMediaField, cropModalButton } from './components/fields/fields.js';
+import { init, openCropCanvasImg } from './components/fields/crop_img.js';
 import { NiceCheckbox } from './components/checkbox/checkbox.js';
 
 import { niceNotify, insertNotifyArea } from './components/notifications/notifications.js';
@@ -81,6 +82,7 @@ class Nice {
         this.field.delayValidate = delayFieldValidation;
         this.field.delayRequired = delayFieldRequired;
         this.field.updateMediaField = updateMediaField;
+        this.field.cropModalButton = cropModalButton;
 
         /** Validation **/
         this.validation = {};
@@ -175,6 +177,8 @@ class Nice {
         this.pickers.handleData = handleDatePicker;
         this.pickers.handleDateBirthday = handleDateBirthdayPicker;
         this.pickers.media = WPMediaForFields;
+        this.pickers.crop = init;
+        this.pickers.base64 = openCropCanvasImg;
 
         /** colorMethods **/
         this.colorMethods = colorMethods;

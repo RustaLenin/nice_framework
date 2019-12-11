@@ -39,4 +39,9 @@
             echo 'add_image';
         } ?>" svg-size="<?php echo $field['size']; ?>" class="add_icon_box"></nice-svg>
         </span>
+<?php if($field['avatar']){ ?>
+<span class="preview_box" onclick="Nice.field.cropModalButton(this);">
+        <nice-svg svg-id="dotted_line" svg-size="<?php echo $field['size']; ?>"  class="add_icon_box" ></nice-svg>
+        </span>
+<?php } ?>
 

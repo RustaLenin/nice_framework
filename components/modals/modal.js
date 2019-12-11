@@ -4,6 +4,7 @@ export class NiceModal extends HTMLElement {
 
     constructor( id = null ) {
         super();
+        this.classList.add('nice-modal');
         if ( id ) { this.setAttribute('id', id ); }
         else { id = window.uniqID(); this.setAttribute('id', id ); }
         this.initState();

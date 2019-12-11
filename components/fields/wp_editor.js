@@ -60,7 +60,7 @@ export function wpEditorDefaultArgs( lang ) {
 
     return {
         tinymce: {
-            wpautop: true,
+            wpautop: false,
             theme:"modern",
             skin:"lightgray",
             language: language,

@@ -1,79 +1,79 @@
-import { baseField, wpEditor } from './fields_templates.js';
-import { debounce } from '../logic_patterns/logic.js';
+import {baseField, wpEditor} from './fields_templates.js';
+import {debounce} from '../logic_patterns/logic.js';
 
-function defaultRegularField(){
+function defaultRegularField() {
     return {
 
         /** Core **/
-        name:            '',                           // string
-        value:           '',                           // string
-        default_value:   false,                        // false || string
-        data_type:       'text',                       // string
-        type:            'text',                       // string
-        field_type:      'regular',                    // string: regular, vanilla, select_list, media, wp_editor
+        name: '',                           // string
+        value: '',                           // string
+        default_value: false,                        // false || string
+        data_type: 'text',                       // string
+        type: 'text',                       // string
+        field_type: 'regular',                    // string: regular, vanilla, select_list, media, wp_editor
 
         /** Classes **/
-        class:           '',                           // string
-        field_class:     '',                           // string
-        icon_class:      '',                           // string
+        class: '',                           // string
+        field_class: '',                           // string
+        icon_class: '',                           // string
 
         /** Form data **/
-        required:        false,                        // bool
-        validation:      false,                        // bool
-        paste_chat:      false,                        // bool
+        required: false,                        // bool
+        validation: false,                        // bool
+        paste_chat: false,                        // bool
 
         /** Editable settings **/
-        spellcheck:      false,                        // bool
-        editable:        true,                         // bool
+        spellcheck: false,                        // bool
+        editable: true,                         // bool
 
         /** Text **/
-        placeholder:     Nice._t('Type some text'),    // string: text
-        label:           Nice._t('Really nice field'), // string: text
-        error_message:   Nice._t('Enter valid data'),  // string: text
+        placeholder: Nice._t('Type some text'),    // string: text
+        label: Nice._t('Really nice field'), // string: text
+        error_message: Nice._t('Enter valid data'),  // string: text
         success_message: Nice._t('Seems ok'),          // string: text
         comment_message: '',                           // string: text
 
         /** Styling **/
-        size:            'small',                     // string: tiny, small, medium, large, huge
-        inline:          false,                        // bool
-        show_label:      true,                         // bool
-        no_min_width:    false,                        // no_min_width
-        align_center:    false,                        // align_center
-        border_type:     'regular_border',             // border_type
-        label_type:      'above_border',               // label_type
-        icon:            false,                        // false | string | object
+        size: 'small',                     // string: tiny, small, medium, large, huge
+        inline: false,                        // bool
+        show_label: true,                         // bool
+        no_min_width: false,                        // no_min_width
+        align_center: false,                        // align_center
+        border_type: 'regular_border',             // border_type
+        label_type: 'above_border',               // label_type
+        icon: false,                        // false | string | object
 
         /** Functionality **/
-        callback:        false,                        // false || function name
+        callback: false,                        // false || function name
 
     };
 }
 
 function defaultSelectList() {
     return {
-        select_type:     'single',                     // string: single | multiple
-        open:            false,                        // bool
-        checkboxes:      false,                        // bool
-        content:         '',                           // string text
-        can_be_empty:    true,                         // bool
+        select_type: 'single',                     // string: single | multiple
+        open: false,                        // bool
+        checkboxes: false,                        // bool
+        content: '',                           // string text
+        can_be_empty: true,                         // bool
     };
 }
 
 function defaultSelection() {
     return {
-        name:            '',                           // string
-        value:           '',                           // string
-        text:            '',                           // string text
-        icon:            false,                        // false | string
-        checked:         false,                        // bool
-        default:         false,                        // bool
-        hide_checkbox:   false,                        // bool
+        name: '',                           // string
+        value: '',                           // string
+        text: '',                           // string text
+        icon: false,                        // false | string
+        checked: false,                        // bool
+        default: false,                        // bool
+        hide_checkbox: false,                        // bool
     }
 }
 
-export function niceField( field = {} ) {
+export function niceField(field = {}) {
 
-    field = Object.assign( {}, defaultRegularField(), field );
+    field = Object.assign({}, defaultRegularField(), field);
 
     // if (!(field['value'])) {
     //     field['value'] = ''
@@ -151,7 +151,7 @@ export function niceField( field = {} ) {
 
         field['type'] = 'select';
 
-        field = Object.assign( {}, defaultSelectList(), field );
+        field = Object.assign({}, defaultSelectList(), field);
 
         // if (!(field['select_type'])) {
         //     field['select_type'] = 'single';
@@ -181,27 +181,27 @@ export function niceField( field = {} ) {
         // }
 
 
-        field.selections.forEach( function ( name, selection ) {
-            field.selections[name] = Object.assign( {}, defaultSelection(), selection );
+        field.selections.forEach(function (name, selection) {
+            field.selections[name] = Object.assign({}, defaultSelection(), selection);
 
             // if ( typeof selection['icon']          === 'undefined' ) { selection['icon'] = false; }
             // if ( typeof selection['hide_checkbox'] === 'undefined' ) { selection['hide_checkbox'] = false; }
         });
 
 
-        if ( field['select_type'] === 'single') {
+        if (field['select_type'] === 'single') {
 
             let checked = false;
-            field.selections.forEach( function ( i, selection ) {
-                if ( selection.checked === true ) {
+            field.selections.forEach(function (i, selection) {
+                if (selection.checked === true) {
                     checked = i;
                 }
             });
 
-            if ( checked ) {
+            if (checked) {
                 field.value = field.selections[checked].value;
                 field.content = field.selections[checked].text;
-                if ( field.selections[checked].icon ) {
+                if (field.selections[checked].icon) {
                     field.icon = field.selections[checked].icon
                 }
             } else {
@@ -209,11 +209,11 @@ export function niceField( field = {} ) {
                 let default_select_content = '';
                 let default_select_icon = '';
 
-                field.selections.forEach( function ( i, selection ) {
-                    if ( selection['default'] ) {
-                        default_select_value   = selection['value'];
+                field.selections.forEach(function (i, selection) {
+                    if (selection['default']) {
+                        default_select_value = selection['value'];
                         default_select_content = selection['text'];
-                        default_select_icon    = selection['icon'];
+                        default_select_icon = selection['icon'];
                     }
                 });
 
@@ -232,7 +232,7 @@ export function niceField( field = {} ) {
 
             field['data-nothing'] = true;
 
-            if ( field['value'] ) {
+            if (field['value']) {
                 field['data-nothing'] = false;
             }
         } else {
@@ -244,9 +244,9 @@ export function niceField( field = {} ) {
             let content = '';
             let check_count = -1;
 
-            field.selections.forEach( function ( name, selection ) {
+            field.selections.forEach(function (name, selection) {
 
-                if ( selection['checked'] ) {
+                if (selection['checked']) {
                     field['data-nothing'] = false;
                     check_count++;
                     if (check_count === 0) {
@@ -358,8 +358,7 @@ export function searchList(elem) {
 
 }
 
-export function WPMediaForFields(icon, e) {
-
+export function WPMediaForFields(icon, e, avatar = false) {
     e.preventDefault();
 
     let
@@ -378,21 +377,49 @@ export function WPMediaForFields(icon, e) {
 
     media_frame.on('close', function () {
         let selection = media_frame.state().get('selection');
+        let link = '';
         selection.each(function (attachment) {
             let size = document.querySelector('.media-modal-content .size').value;
-            if ( typeof size === 'undefined') {
+            if (typeof size === 'undefined') {
                 size = 'full';
             }
-            input.innerHTML = attachment['attributes']['sizes'][size]['url'];
+            link = attachment['attributes']['sizes'][size]['url'];
+            input.innerHTML = link;
             if (input.getAttribute('data-validation')) {
                 Nice.field.updateMediaField(input);
                 Nice.field.validate(input);
             }
+
         });
     });
 
     media_frame.open();
 
+}
+
+
+export function cropModalButton(self) {
+
+    let
+        container = self.closest('.NiceField'),
+        input = container.querySelector('.input');
+    let modal_data = {
+        'icon': false,
+        'title': t_('Choose area'),
+        'content': cropModal,
+        'data': input.textContent,
+        'submit': `Nice.pickers.base64( this )`,
+        'submit_text': t_('Crop')
+    };
+    Nice.newModal(modal_data);
+    let modal = document.querySelector('nice-modal');
+    input.setAttribute('data-modal', modal.getAttribute('id'));
+    Nice.pickers.crop(document.querySelector('.crop-image'));
+}
+function cropModal(link) {
+    return `<div class="center">
+    <img crossorigin="Anonymous" src="${link}" class="crop-image" alt=""/>
+</div>`;
 }
 
 export function updateMediaField(elem) {
@@ -421,11 +448,11 @@ export function mediaImagePreview(elem) {
     Nice.get(elem.textContent).then(function (response) {
         preview_box_icon.classList.remove('spin');
         if (response.status === 200) {
-            if(elem.textContent){
+            if (elem.textContent) {
                 preview_box.querySelector('.preview_img').setAttribute('src', elem.textContent);
                 preview_box.classList.add('preview');
                 add_icon_box.setAttribute('svg-id', 'edit');
-            } else{
+            } else {
                 add_icon_box.setAttribute('svg-id', 'add_image');
             }
         } else {
